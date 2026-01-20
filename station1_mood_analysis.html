@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 3: Mood Passage Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mystery-gold: #c9a227;
+            --mystery-cream: #f5e6c8;
+            --mystery-brown: #3d2914;
+            --horror-green: #1a3a2a;
+            --horror-pale: #a8c5a8;
+            --horror-dark: #0d1f15;
+            --blood-accent: #6b1c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--mystery-cream) 0%, var(--mystery-cream) 50%, var(--horror-dark) 50%, var(--horror-dark) 100%);
+            color: var(--mystery-brown);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            background: linear-gradient(to right, 
+                rgba(245, 230, 200, 0.95) 0%, 
+                rgba(245, 230, 200, 0.95) 48%,
+                rgba(13, 31, 21, 0.95) 52%,
+                rgba(13, 31, 21, 0.95) 100%);
+            border-bottom: 3px solid var(--mystery-gold);
+            margin-bottom: 2rem;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(107, 28, 28, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .station-number {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            background: linear-gradient(to right, var(--mystery-gold) 50%, var(--horror-pale) 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            background: linear-gradient(to right, var(--mystery-brown) 48%, var(--horror-pale) 52%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--mystery-brown);
+            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+        }
+
+        .key-question {
+            background: linear-gradient(135deg, var(--mystery-cream) 0%, #fff 100%);
+            border-left: 4px solid var(--mystery-gold);
+            border-right: 4px solid var(--horror-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.15rem;
+            font-style: italic;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .key-question::before {
+            content: '?';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--mystery-gold);
+        }
+
+        .key-question strong {
+            color: var(--blood-accent);
+        }
+
+        .passages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 2rem 0;
+        }
+
+        .passage-card {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .passage-card.mystery {
+            background: var(--mystery-cream);
+            border: 2px solid var(--mystery-gold);
+            border-right: 1px solid var(--mystery-gold);
+        }
+
+        .passage-card.horror {
+            background: var(--horror-dark);
+            color: var(--horror-pale);
+            border: 2px solid var(--horror-green);
+            border-left: 1px solid var(--horror-green);
+        }
+
+        .passage-label {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .mystery .passage-label {
+            color: var(--mystery-gold);
+        }
+
+        .horror .passage-label {
+            color: var(--horror-pale);
+        }
+
+        .passage-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid currentColor;
+        }
+
+        .passage-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            padding: 1rem;
+            background: rgba(255,255,255,0.5);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .horror .passage-text {
+            background: rgba(0,0,0,0.3);
+        }
+
+        .passage-source {
+            font-size: 0.85rem;
+            font-style: italic;
+            text-align: right;
+            opacity: 0.7;
+        }
+
+        .pair-divider {
+            grid-column: 1 / -1;
+            height: 3px;
+            background: linear-gradient(to right, var(--mystery-gold) 50%, var(--horror-green) 50%);
+            margin: 1rem 0;
+        }
+
+        .instructions {
+            background: #fff;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+
+        .instructions::before {
+            content: 'YOUR TASK';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #fff;
+            padding: 0 10px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: var(--blood-accent);
+        }
+
+        .instructions h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--mystery-brown);
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.75rem;
+        }
+
+        .annotation-guide {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #ccc;
+        }
+
+        .annotation-column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .annotation-column.mystery-guide h4 {
+            color: var(--mystery-brown);
+        }
+
+        .annotation-column.horror-guide h4 {
+            color: var(--horror-dark);
+        }
+
+        .annotation-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .annotation-column li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .mystery-guide li::before {
+            content: '🔍';
+            position: absolute;
+            left: 0;
+        }
+
+        .horror-guide li::before {
+            content: '👁';
+            position: absolute;
+            left: 0;
+        }
+
+        .timer-note {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(to right, var(--mystery-cream), var(--horror-dark));
+            color: #fff;
+            font-family: 'Special Elite', monospace;
+            letter-spacing: 0.1em;
+            margin-top: 2rem;
+        }
+
+        .timer-note span {
+            background: var(--blood-accent);
+            padding: 0.3rem 1rem;
+            border-radius: 3px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .passage-card.horror {
+                background: #f0f0f0;
+                color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="station-number">Station One</span>
+        <h1>Mood Passage Analysis</h1>
+        <p class="subtitle">Suspense vs. Dread: How Authors Create Atmosphere</p>
+    </header>
+
+    <div class="container">
+        <div class="key-question">
+            Mystery creates <strong>suspense</strong>: "What happened? Can we solve it?"<br>
+            Horror creates <strong>dread</strong>: "I fear what I'm about to understand."<br><br>
+            <em>How do Doyle and Gaiman use language differently to achieve these effects?</em>
+        </div>
+
+        <div class="instructions">
+            <h3>How to Analyze These Passages</h3>
+            <ol>
+                <li>Read each paired set of passages carefully—they describe similar situations</li>
+                <li>Use your worksheet to annotate: What <strong>word choices</strong> stand out? What <strong>information</strong> is given vs. withheld?</li>
+                <li>Consider: What does each narrator <strong>want you to feel</strong>? How do you know?</li>
+                <li>Record your observations using the guiding questions on your worksheet</li>
+            </ol>
+            
+            <div class="annotation-guide">
+                <div class="annotation-column mystery-guide">
+                    <h4>Look for in Doyle (Mystery):</h4>
+                    <ul>
+                        <li>Precise, observable details</li>
+                        <li>Logical sequence of events</li>
+                        <li>Clues the reader can follow</li>
+                        <li>Building toward revelation</li>
+                    </ul>
+                </div>
+                <div class="annotation-column horror-guide">
+                    <h4>Look for in Gaiman (Horror):</h4>
+                    <ul>
+                        <li>Sensory overload or confusion</li>
+                        <li>What the narrator avoids saying</li>
+                        <li>Physical/emotional reactions</li>
+                        <li>The unknowable or incomprehensible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="font-family: 'Playfair Display', serif; text-align: center; margin: 2rem 0; font-size: 1.5rem;">Paired Passages for Analysis</h2>
+
+        <!-- Pair 1: Discovering Trauma -->
+        <div class="passages-grid">
+            <div class="passage-card mystery">
+                <span class="passage-label">The Speckled Band</span>
+                <h3 class="passage-title">Pair 1: Witnessing Trauma</h3>
+                <div class="passage-text">
+                    "She raised her veil as she spoke, and we could see that she was indeed in a pitiable state of agitation, her face all drawn and grey, with restless frightened eyes, like those of some hunted animal. Her features and figure were those of a woman of thirty, but her hair was shot with premature grey, and her expression was weary and haggard."
+                </div>
+                <p class="passage-source">— Helen Stoner's appearance, as described by Watson</p>
+            </div>
+            <div class="passage-card horror">
+                <span class="passage-label">A Study in Emerald</span>
+                <h3 class="passage-title">Pair 1: Witnessing Trauma</h3>
+                <div class="passage-text">
+                    "That I survived was a miracle, but survive I did, and I returned to England with my nerves in shreds and tatters. The place that leech-like mouth had touched me was tattooed forever, frog-white, into the skin of my now-withered shoulder. I had once been a crack-shot. Now I had nothing, save a fear of the world-beneath-the-world akin to panic..."
+                </div>
+                <p class="passage-source">— The narrator describing his return from Afghanistan</p>
+            </div>
+
+            <div class="pair-divider"></div>
+
+            <!-- Pair 2: Entering the Crime Scene -->
+            <div class="passage-card mystery">
+                <span class="passage-label">The Speckled Band</span>
+                <h3 class="passage-title">Pair 2: Encountering Death</h3>
+                <div class="passage-text">
+                    "It was a singular sight which met our eyes. On the table stood a dark-lantern with the shutter half open, throwing a brilliant beam of light upon the iron safe, the door of which was ajar. Beside this table, on the wooden chair, sat Dr. Grimesby Roylott clad in a long grey dressing-gown... Round his brow he had a peculiar yellow band, with brownish speckles, which seemed to be bound tightly round his head."
+                </div>
+                <p class="passage-source">— Watson describing Dr. Roylott's death</p>
+            </div>
+            <div class="passage-card horror">
+                <span class="passage-label">A Study in Emerald</span>
+                <h3 class="passage-title">Pair 2: Encountering Death</h3>
+                <div class="passage-text">
+                    "The body, what was left of it, was still there, on the floor. I saw it, but, at first, somehow, I did not see it. What I saw instead was what had sprayed and gushed from the throat and chest of the victim: in colour it ranged from bile-green to grass-green. It had soaked into the threadbare carpet and spattered the wallpaper. I imagined it for one moment the work of some hellish artist, who had decided to create a study in emerald."
+                </div>
+                <p class="passage-source">— The narrator at the Shoreditch crime scene</p>
+            </div>
+
+            <div class="pair-divider"></div>
+
+            <!-- Pair 3: The Night Vigil -->
+            <div class="passage-card mystery">
+                <span class="passage-label">The Speckled Band</span>
+                <h3 class="passage-title">Pair 3: Waiting in Darkness</h3>
+                <div class="passage-text">
+                    "How shall I ever forget that dreadful vigil? I could not hear a sound, not even the drawing of a breath, and yet I knew that my companion sat open-eyed, within a few feet of me, in the same state of nervous tension in which I was myself. The shutters cut off the least ray of light, and we waited in absolute darkness."
+                </div>
+                <p class="passage-source">— Watson waiting with Holmes in Julia's room</p>
+            </div>
+            <div class="passage-card horror">
+                <span class="passage-label">A Study in Emerald</span>
+                <h3 class="passage-title">Pair 3: Waiting in Darkness</h3>
+                <div class="passage-text">
+                    "I dreamed of shadows that night, vast shadows that blotted out the sun, and I called out to them in my desperation, but they did not listen."
+                </div>
+                <p class="passage-source">— The narrator after visiting the theatre</p>
+            </div>
+        </div>
+
+        <div class="timer-note">
+            <span>⏱ 15 MINUTES AT THIS STATION</span>
+        </div>
+    </div>
+</body>
+</html>

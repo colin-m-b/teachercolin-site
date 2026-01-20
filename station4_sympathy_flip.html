@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 9: Sympathy Flip Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Bebas+Neue&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-red: #8b0000;
+            --gold: #d4af37;
+            --cream: #faf3e0;
+            --black: #1a1a1a;
+            --shadow: rgba(0,0,0,0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: var(--black);
+            min-height: 100vh;
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        .stage-curtain {
+            background: 
+                linear-gradient(90deg, 
+                    var(--deep-red) 0%, 
+                    #a00000 10%,
+                    var(--deep-red) 20%,
+                    #700000 50%,
+                    var(--deep-red) 80%,
+                    #a00000 90%,
+                    var(--deep-red) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .stage-curtain::before,
+        .stage-curtain::after {
+            content: '🎭';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .stage-curtain::before { left: 2rem; }
+        .stage-curtain::after { right: 2rem; transform: translateY(-50%) scaleX(-1); }
+
+        .station-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.5em;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px var(--shadow);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--cream);
+            text-shadow: 3px 3px 6px var(--shadow);
+            margin: 0.5rem 0;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--gold);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .key-question {
+            background: linear-gradient(135deg, var(--deep-red) 0%, #5a0000 100%);
+            border: 2px solid var(--gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.15rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .key-question::before,
+        .key-question::after {
+            content: '★';
+            color: var(--gold);
+            font-size: 1.5rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .key-question::before { left: 1rem; }
+        .key-question::after { right: 1rem; }
+
+        .instructions {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .instructions h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Character Cards - Playing Card Style */
+        .character-flip {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .character-card {
+            background: var(--cream);
+            color: var(--black);
+            padding: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            position: relative;
+        }
+
+        .card-header {
+            padding: 1rem 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .card-header.hero {
+            background: linear-gradient(135deg, #1a3a5c 0%, #0d1f2d 100%);
+            color: white;
+        }
+
+        .card-header.villain {
+            background: linear-gradient(135deg, var(--deep-red) 0%, #3a0000 100%);
+            color: white;
+        }
+
+        .card-role {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            opacity: 0.8;
+        }
+
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0.25rem 0;
+        }
+
+        .card-subtitle {
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .card-body {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .card-section {
+            margin-bottom: 1rem;
+        }
+
+        .card-section h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            color: #666;
+            margin-bottom: 0.3rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.2rem;
+        }
+
+        .card-section p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .flip-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .versus-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(to bottom, var(--black), #2a2a2a, var(--black));
+            margin: 2rem 0;
+        }
+
+        .versus-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .versus-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .convention-clash {
+            background: rgba(139, 0, 0, 0.2);
+            border: 1px solid var(--deep-red);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .convention-clash h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .clash-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .clash-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .clash-item.convention {
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        .clash-vs {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .clash-item h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .discussion-questions {
+            background: var(--cream);
+            color: var(--black);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .discussion-questions h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--deep-red);
+            text-align: center;
+        }
+
+        .discussion-questions ol {
+            margin-left: 1.5rem;
+        }
+
+        .discussion-questions li {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .timer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--deep-red);
+            border: 2px solid var(--gold);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            color: var(--cream);
+            margin-top: 2rem;
+        }
+
+        @media print {
+            body { background: white; color: black; }
+            .stage-curtain { background: #ddd; }
+            .character-card { box-shadow: none; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stage-curtain">
+        <span class="station-label">STATION FOUR</span>
+        <h1>Sympathy Flip</h1>
+        <p class="subtitle">When the Detective Becomes the Villain</p>
+    </div>
+
+    <div class="container">
+        <div class="key-question">
+            Genre conventions teach us: <strong>detectives are heroes</strong>, those they pursue are <strong>villains</strong>.<br>
+            Gaiman flips this. Who did you root for—and who were you <em>supposed</em> to root for?
+        </div>
+
+        <div class="instructions">
+            <h3>Your Task</h3>
+            <ol>
+                <li>Examine how each character functions in their narrative role</li>
+                <li>Consider how genre conventions shaped your initial sympathies</li>
+                <li>Analyze how the "flip" changes the story's meaning</li>
+                <li>Record your analysis on your worksheet</li>
+            </ol>
+        </div>
+
+        <div class="character-flip">
+            <!-- The "Detective" -->
+            <div class="character-card">
+                <div class="card-header villain">
+                    <span class="flip-indicator">🔄</span>
+                    <span class="card-role">PRESENTED AS: DETECTIVE</span>
+                    <h3 class="card-name">The Consulting Detective</h3>
+                    <p class="card-subtitle">Actually: Professor James Moriarty</p>
+                </div>
+                <div class="card-body">
+                    <div class="card-section">
+                        <h4>How He Appears</h4>
+                        <p>Brilliant deductive reasoner. Lives at Baker Street. Solves "insoluble" problems. Helps the police. Plays violin (badly).</p>
+                    </div>
+                    <div class="card-section">
+                        <h4>What He Actually Does</h4>
+                        <p>Serves the alien rulers. Hunts humans who resist. Uses his "consulting" to track down freedom fighters.</p>
+                    </div>
+                    <div class="card-section">
+                        <h4>Why We Trust Him</h4>
+                        <p>He matches every convention of the "detective hero." The narrative voice treats him with admiration.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The "Villains" -->
+            <div class="character-card">
+                <div class="card-header hero">
+                    <span class="flip-indicator">🔄</span>
+                    <span class="card-role">PRESENTED AS: VILLAINS</span>
+                    <h3 class="card-name">The Restorationists</h3>
+                    <p class="card-subtitle">Actually: Sherlock Holmes & Dr. Watson</p>
+                </div>
+                <div class="card-body">
+                    <div class="card-section">
+                        <h4>How They Appear</h4>
+                        <p>"Rache." Murderers. Terrorists. Killers of royalty. Dangerous radicals who must be stopped.</p>
+                    </div>
+                    <div class="card-section">
+                        <h4>What They Actually Do</h4>
+                        <p>Fight to free humanity from alien enslavement. Kill a prince to destabilize inhuman rule. Risk everything for human freedom.</p>
+                    </div>
+                    <div class="card-section">
+                        <h4>Why We Fear Them</h4>
+                        <p>The narrator calls them villains. They commit violence. We see them through the eyes of their enemy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="versus-section">
+            <h2>THE INVERSION</h2>
+            <p>In traditional Holmes stories, we follow the detective and celebrate when the criminal is caught. In "A Study in Emerald," we follow the detective—but the "criminal" is actually fighting for human liberation, and the "detective" serves our alien oppressors.</p>
+        </div>
+
+        <div class="convention-clash">
+            <h3>Genre Convention vs. Moral Reality</h3>
+            <div class="clash-grid">
+                <div class="clash-item convention">
+                    <h4>GENRE SAYS</h4>
+                    <p>The detective is the hero.<br>We should want them to succeed.</p>
+                </div>
+                <div class="clash-vs">VS</div>
+                <div class="clash-item convention">
+                    <h4>STORY REVEALS</h4>
+                    <p>The detective serves evil.<br>His success means humanity loses.</p>
+                </div>
+            </div>
+            <div class="clash-grid" style="margin-top: 1rem;">
+                <div class="clash-item convention">
+                    <h4>GENRE SAYS</h4>
+                    <p>Murder is wrong.<br>Killers must be brought to justice.</p>
+                </div>
+                <div class="clash-vs">VS</div>
+                <div class="clash-item convention">
+                    <h4>STORY REVEALS</h4>
+                    <p>The "victim" was an alien oppressor.<br>The "murderers" fight for freedom.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="discussion-questions">
+            <h3>Questions to Consider</h3>
+            <ol>
+                <li><strong>While reading:</strong> At what point (if any) did you start to suspect something was wrong? What clues made you uncomfortable?</li>
+                <li><strong>After the reveal:</strong> Does knowing the truth change how you feel about the narrator? About his "friend"? About the "Restorationists"?</li>
+                <li><strong>About genre:</strong> Why is it so easy to trust a "detective" character? What other genre conventions do we accept without question?</li>
+                <li><strong>About perspective:</strong> The narrator never lies—he just tells the story from his side. Is that enough to call him "unreliable"?</li>
+            </ol>
+        </div>
+
+        <div class="timer">⏱ 15 MINUTES AT THIS STATION</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 8: Setting as Character</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;600&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --fog-light: #d4d8d9;
+            --fog-medium: #8a9499;
+            --gaslight-gold: #d4a84b;
+            --gaslight-glow: #fff3d4;
+            --shadow-deep: #1a1e21;
+            --brick-brown: #3d2b1f;
+            --emerald-sick: #2a4a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: linear-gradient(180deg, 
+                var(--shadow-deep) 0%, 
+                #2a2e31 30%,
+                var(--fog-medium) 70%,
+                var(--fog-light) 100%);
+            min-height: 100vh;
+            color: var(--fog-light);
+            line-height: 1.7;
+        }
+
+        /* Fog overlay effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255,243,212,0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 60%, rgba(255,243,212,0.08) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 80%, rgba(212,168,75,0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .gaslight {
+            width: 60px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            position: relative;
+        }
+
+        .gaslight::before {
+            content: '🏮';
+            font-size: 3rem;
+            filter: drop-shadow(0 0 20px rgba(212, 168, 75, 0.6));
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+            75% { opacity: 0.95; }
+        }
+
+        .station-label {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gaslight-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            font-size: 3rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gaslight-glow);
+            text-shadow: 0 0 30px rgba(212, 168, 75, 0.3);
+        }
+
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--fog-medium);
+            margin-top: 0.5rem;
+        }
+
+        .key-question {
+            background: linear-gradient(135deg, rgba(42, 74, 58, 0.9) 0%, rgba(26, 30, 33, 0.95) 100%);
+            border: 1px solid var(--gaslight-gold);
+            border-left: 4px solid var(--gaslight-gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.15rem;
+            position: relative;
+        }
+
+        .key-question::before {
+            content: '?';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--gaslight-gold);
+            text-shadow: 0 0 15px rgba(212, 168, 75, 0.5);
+        }
+
+        .instructions {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .instructions h3 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            color: var(--gaslight-glow);
+            margin-bottom: 1rem;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+            color: var(--fog-light);
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        .city-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 2rem 0;
+        }
+
+        .city-panel {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .city-panel.doyle {
+            background: linear-gradient(135deg, var(--gaslight-glow) 0%, #e8dcc8 100%);
+            color: var(--brick-brown);
+        }
+
+        .city-panel.gaiman {
+            background: linear-gradient(135deg, var(--shadow-deep) 0%, var(--emerald-sick) 100%);
+            color: var(--fog-light);
+        }
+
+        .city-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid currentColor;
+        }
+
+        .city-icon {
+            font-size: 2rem;
+        }
+
+        .city-title {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 0.1em;
+        }
+
+        .city-subtitle {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .passage-block {
+            background: rgba(255,255,255,0.3);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .gaiman .passage-block {
+            background: rgba(0,0,0,0.3);
+        }
+
+        .passage-source {
+            font-size: 0.85rem;
+            font-style: italic;
+            text-align: right;
+            margin-top: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .analysis-prompt {
+            background: rgba(0,0,0,0.1);
+            padding: 0.75rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            border-left: 3px solid currentColor;
+        }
+
+        .gaiman .analysis-prompt {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .center-divider {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 1rem;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gaslight-gold);
+            background: linear-gradient(to right, var(--gaslight-glow) 0%, var(--gaslight-glow) 48%, var(--shadow-deep) 52%, var(--shadow-deep) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .additional-elements {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(212, 168, 75, 0.3);
+        }
+
+        .additional-elements h3 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            color: var(--gaslight-gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .elements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .element-card {
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-left: 3px solid var(--gaslight-gold);
+        }
+
+        .element-card h4 {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.85rem;
+            color: var(--gaslight-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .element-card p {
+            font-size: 0.95rem;
+            color: var(--fog-light);
+        }
+
+        .timer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--shadow-deep);
+            border: 1px solid var(--gaslight-gold);
+            font-family: 'Special Elite', monospace;
+            letter-spacing: 0.15em;
+            color: var(--gaslight-gold);
+            margin-top: 2rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .city-panel.gaiman {
+                background: #f0f0f0;
+                color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="gaslight"></div>
+            <span class="station-label">Station Three</span>
+            <h1>Setting as Character</h1>
+            <p class="subtitle">Two Londons, Two Worlds, Two Kinds of Truth</p>
+        </header>
+
+        <div class="key-question">
+            Both stories are set in Victorian London—the same streets, the same fog, the same gaslight.<br><br>
+            But Doyle's London is a place where <strong>observation leads to truth</strong>.<br>
+            Gaiman's London is a place where <strong>truth might destroy you</strong>.<br><br>
+            <em>How does each author make the same city do different work?</em>
+        </div>
+
+        <div class="instructions">
+            <h3>Your Task</h3>
+            <ol>
+                <li>Read the paired passages describing similar aspects of London</li>
+                <li>Identify how each author uses setting details to create a specific <strong>relationship between the world and knowledge</strong></li>
+                <li>Consider: What can be "solved" in each London? What cannot?</li>
+                <li>Record your analysis on your worksheet</li>
+            </ol>
+        </div>
+
+        <div class="city-comparison">
+            <!-- Panel 1: The Journey -->
+            <div class="city-panel doyle">
+                <div class="city-header">
+                    <span class="city-icon">🔍</span>
+                    <div>
+                        <div class="city-title">Doyle's London</div>
+                        <div class="city-subtitle">The Knowable World</div>
+                    </div>
+                </div>
+                <div class="passage-block">
+                    "At Waterloo we were fortunate in catching a train for Leatherhead, where we hired a trap at the station inn and drove for four or five miles through the lovely Surrey lanes. It was a perfect day, with a bright sun and a few fleecy clouds in the heavens. The trees and wayside hedges were just throwing out their first green shoots, and the air was full of the pleasant smell of the moist earth."
+                </div>
+                <p class="passage-source">— Watson, traveling to Stoke Moran</p>
+                <div class="analysis-prompt">
+                    <strong>Notice:</strong> The world is pleasant, orderly, navigable. Even on a "sinister quest," nature is beautiful and the journey is "fortunate." What does this suggest about how problems can be approached?
+                </div>
+            </div>
+
+            <div class="city-panel gaiman">
+                <div class="city-header">
+                    <span class="city-icon">👁</span>
+                    <div>
+                        <div class="city-title">Gaiman's London</div>
+                        <div class="city-subtitle">The World Beneath</div>
+                    </div>
+                </div>
+                <div class="passage-block">
+                    "Still, the fogs and darknesses of London comforted me, took me in. I had lost my first lodgings because I screamed in the night. I had been in Afghanistan; I was there no longer."
+                </div>
+                <p class="passage-source">— The narrator, returning to London</p>
+                <div class="analysis-prompt">
+                    <strong>Notice:</strong> London's fog and darkness are described as comforting—hiding places. The narrator needs to be hidden. What does this suggest about the relationship between knowledge and safety?
+                </div>
+            </div>
+
+            <div class="center-divider">— Same City, Different Rules —</div>
+
+            <!-- Panel 2: The Social World -->
+            <div class="city-panel doyle">
+                <div class="city-header">
+                    <span class="city-icon">🏛</span>
+                    <div>
+                        <div class="city-title">Society & Order</div>
+                        <div class="city-subtitle">Institutions That Work</div>
+                    </div>
+                </div>
+                <div class="passage-block">
+                    "I have seen the will of the deceased wife," said he. "To determine its exact meaning I have been obliged to work out the present prices of the investments with which it is concerned. The total income, which at the time of the wife's death was little short of £1100, is now, through the fall in agricultural prices, not more than £750."
+                </div>
+                <p class="passage-source">— Holmes, after visiting Doctors' Commons</p>
+                <div class="analysis-prompt">
+                    <strong>Notice:</strong> Holmes can access official records, calculate finances, establish motive. Institutions (courts, banks, offices) preserve and reveal truth. The system works.
+                </div>
+            </div>
+
+            <div class="city-panel gaiman">
+                <div class="city-header">
+                    <span class="city-icon">👑</span>
+                    <div>
+                        <div class="city-title">Society & Order</div>
+                        <div class="city-subtitle">Institutions That Rule</div>
+                    </div>
+                </div>
+                <div class="passage-block">
+                    "She was called Victoria, because she had beaten us in battle, seven hundred years before, and she was called Gloriana, because she was glorious, and she was called the Queen, because the human mouth was not shaped to say her true name. She was huge, huger than I had imagined possible, and she squatted in the shadows staring down at us, without moving."
+                </div>
+                <p class="passage-source">— The narrator, meeting Queen Victoria</p>
+                <div class="analysis-prompt">
+                    <strong>Notice:</strong> The institution (the monarchy) is literally inhuman. Her "true name" cannot be spoken. Some truths in this London are not meant for human understanding.
+                </div>
+            </div>
+        </div>
+
+        <div class="additional-elements">
+            <h3>Additional Setting Elements to Consider</h3>
+            <div class="elements-grid">
+                <div class="element-card">
+                    <h4>The Newspaper Format</h4>
+                    <p>Gaiman presents his story as if printed in a Victorian newspaper, complete with advertisements. How does this format create a sense of "normal life" hiding cosmic horror?</p>
+                </div>
+                <div class="element-card">
+                    <h4>Baker Street</h4>
+                    <p>Both stories use 221B Baker Street—the famous address. But one is a place of rational deduction; the other is a place of conspiracy. Same rooms, different meanings.</p>
+                </div>
+                <div class="element-card">
+                    <h4>The Underground</h4>
+                    <p>Gaiman's narrator fears "the world-beneath-the-world" and won't travel by subway. Doyle's characters use trains casually. What does the Underground symbolize in each world?</p>
+                </div>
+                <div class="element-card">
+                    <h4>Light Sources</h4>
+                    <p>Doyle uses daylight, lamps, and matches to reveal truth. In Gaiman, light reveals things better left unseen—green blood, alien rulers. When is light dangerous?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timer">⏱ 15 MINUTES AT THIS STATION</div>
+    </div>
+</body>
+</html>

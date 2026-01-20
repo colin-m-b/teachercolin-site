@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 5: The Unreliable Narrator</title>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --aged-paper: #f4ead5;
+            --ink-black: #1a1612;
+            --faded-ink: #3d3632;
+            --blood-red: #6b1c1c;
+            --secret-green: #1a3a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background: #2a2520;
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .newspaper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--aged-paper);
+            padding: 2rem 3rem;
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.1),
+                0 10px 40px rgba(0,0,0,0.5),
+                inset 0 0 100px rgba(139, 119, 91, 0.3);
+            position: relative;
+        }
+
+        .newspaper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.01) 2px,
+                    rgba(0,0,0,0.01) 4px
+                );
+            pointer-events: none;
+        }
+
+        .masthead {
+            text-align: center;
+            border-bottom: 3px double var(--ink-black);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .masthead h1 {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 3rem;
+            color: var(--ink-black);
+            letter-spacing: 0.05em;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+        }
+
+        .masthead-subtitle {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            color: var(--faded-ink);
+        }
+
+        .station-label {
+            display: inline-block;
+            background: var(--ink-black);
+            color: var(--aged-paper);
+            padding: 0.2rem 1rem;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            margin: 1rem 0;
+        }
+
+        .headline {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 1rem 0;
+            line-height: 1.2;
+            color: var(--ink-black);
+        }
+
+        .subheadline {
+            font-style: italic;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--faded-ink);
+            margin-bottom: 1.5rem;
+        }
+
+        .key-revelation {
+            background: linear-gradient(135deg, #fff9e6 0%, var(--aged-paper) 100%);
+            border: 2px solid var(--blood-red);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .key-revelation::before {
+            content: '⚠ THE TWIST';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--blood-red);
+            color: white;
+            padding: 0.2rem 0.75rem;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+        }
+
+        .key-revelation p {
+            font-size: 1rem;
+            color: var(--ink-black);
+        }
+
+        .instructions-box {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .instructions-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--ink-black);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        .instructions-box ol {
+            margin-left: 1.5rem;
+        }
+
+        .instructions-box li {
+            margin-bottom: 0.5rem;
+            color: var(--faded-ink);
+        }
+
+        .evidence-section {
+            margin: 2rem 0;
+        }
+
+        .evidence-section h2 {
+            font-family: 'Special Elite', monospace;
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--faded-ink);
+            border-bottom: 1px solid var(--faded-ink);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .excerpt-card {
+            background: #fffef8;
+            border-left: 4px solid var(--secret-green);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .excerpt-number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            background: var(--secret-green);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+        }
+
+        .excerpt-text {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--ink-black);
+            font-style: italic;
+        }
+
+        .excerpt-source {
+            font-size: 0.85rem;
+            color: var(--faded-ink);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .analysis-prompt {
+            background: rgba(107, 28, 28, 0.1);
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--blood-red);
+            border-radius: 3px;
+        }
+
+        .analysis-prompt strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .final-evidence {
+            border: 2px solid var(--ink-black);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            background: #fff;
+        }
+
+        .final-evidence h3 {
+            font-family: 'Special Elite', monospace;
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .advertisement {
+            border: 3px double var(--ink-black);
+            padding: 1rem;
+            text-align: center;
+            font-family: 'IM Fell English', serif;
+        }
+
+        .advertisement .names {
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+
+        .advertisement .names strong {
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .key-question-final {
+            background: var(--blood-red);
+            color: white;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .timer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--ink-black);
+            color: var(--aged-paper);
+            font-family: 'Special Elite', monospace;
+            letter-spacing: 0.1em;
+            margin-top: 2rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .newspaper {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <div class="masthead">
+            <h1>The Star of Albion</h1>
+            <p class="masthead-subtitle">A Daily Newspaper for All Classes • Price One Penny</p>
+        </div>
+
+        <div class="station-label">STATION TWO</div>
+
+        <h2 class="headline">The Unreliable Narrator</h2>
+        <p class="subheadline">Re-Reading for Misdirection: What Did He Choose Not to Tell Us?</p>
+
+        <div class="key-revelation">
+            <p><strong>You know the twist:</strong> The narrator of "A Study in Emerald" is not Watson—he is Colonel Sebastian Moran. His "friend" is not Sherlock Holmes—he is Professor James Moriarty. The "villains" they hunt? The real Holmes and Watson, who are trying to overthrow the alien rulers.</p>
+            <p style="margin-top: 0.75rem;">Now that you know, look back at these excerpts. <em>What clues were hidden in plain sight?</em></p>
+        </div>
+
+        <div class="instructions-box">
+            <h3>Your Task</h3>
+            <ol>
+                <li>Read each excerpt knowing what you now know about the narrator's identity</li>
+                <li>Identify what the narrator <strong>omits</strong>, <strong>obscures</strong>, or <strong>misdirects</strong> us about</li>
+                <li>Consider: Is he lying? Or just... not telling the whole truth?</li>
+                <li>Record your findings on your worksheet</li>
+            </ol>
+        </div>
+
+        <div class="evidence-section">
+            <h2>Excerpts for Re-Examination</h2>
+
+            <div class="excerpt-card">
+                <span class="excerpt-number">1</span>
+                <p class="excerpt-text">"He was a mystery to me. We were partaking of one of our landlady's magnificent breakfasts one morning, when my friend rang the bell to summon that good lady. 'There will be a gentleman joining us, in about four minutes,' he said. 'We will need another place at table.'"</p>
+                <p class="excerpt-source">— Section I: The New Friend</p>
+                <div class="analysis-prompt">
+                    <strong>Now that you know:</strong> The narrator calls his companion a "mystery." Watson never describes Holmes this way—he's fascinated, but he understands Holmes. What does this word choice reveal about the narrator's relationship with his "friend"?
+                </div>
+            </div>
+
+            <div class="excerpt-card">
+                <span class="excerpt-number">2</span>
+                <p class="excerpt-text">"'I have a feeling,' he said. 'I have a feeling that we were meant to be together. That we have fought the good fight, side by side, in the past or in the future, I do not know. I am a rational man, but I have learned the value of a good companion, and from the moment I clapped eyes on you, I knew I trusted you as well as I do myself.'"</p>
+                <p class="excerpt-source">— Section I: The New Friend</p>
+                <div class="analysis-prompt">
+                    <strong>Now that you know:</strong> This speech is oddly intense for a first meeting. Holmes would never say this to Watson. What kind of relationship is actually being described here? What genre conventions is this mimicking—and why?
+                </div>
+            </div>
+
+            <div class="excerpt-card">
+                <span class="excerpt-number">3</span>
+                <p class="excerpt-text">"'So you are truly a consulting detective?' I said. 'The only one in London, or perhaps, the world,' said my friend. 'I do not take cases. Instead, I consult. Others bring me their insoluble problems, they describe them, and, sometimes, I solve them.'"</p>
+                <p class="excerpt-source">— Section I: The New Friend</p>
+                <div class="analysis-prompt">
+                    <strong>Now that you know:</strong> Compare this to how Sherlock Holmes describes his work. What's different? What kind of "consulting" does Moriarty actually do?
+                </div>
+            </div>
+
+            <div class="excerpt-card">
+                <span class="excerpt-number">4</span>
+                <p class="excerpt-text">"'I must warn you not to be such a fathead,' said my friend. 'Because it was the Restorationists that killed Prince Franz Drago. They murder, they kill, in a vain effort to force our masters to leave us alone in the darkness. The Prince was killed by a rache—it's an old term for a hunting dog, Inspector, as you would know if you had looked in a dictionary.'"</p>
+                <p class="excerpt-source">— Section 5: The Skin and the Pit</p>
+                <div class="analysis-prompt">
+                    <strong>Now that you know:</strong> The "Restorationists" are fighting to free humanity from alien rule. The narrator's "friend" calls them murderers. How does this passage read differently when you understand which side the narrator is actually on?
+                </div>
+            </div>
+
+            <div class="excerpt-card">
+                <span class="excerpt-number">5</span>
+                <p class="excerpt-text">"I kept the note. I have said things in this retelling of events that are not to be said. If I were a sensible man I would burn all these pages, but then, as my friend taught me, even ashes can give up their secrets. Instead, I shall place these papers in a strongbox at my bank with instructions that the box may not be opened until long after anyone now living is dead."</p>
+                <p class="excerpt-source">— Final section</p>
+                <div class="analysis-prompt">
+                    <strong>Now that you know:</strong> Why would the narrator hide this document? What "things not to be said" has he included? What might he still be hiding even now?
+                </div>
+            </div>
+        </div>
+
+        <div class="final-evidence">
+            <h3>THE FINAL CLUE — THE ADVERTISEMENT</h3>
+            <div class="advertisement">
+                <p>Strand Players wish to make it known that they shall be appearing at the Royal Court Theatre, Drury Lane, for a LIMITED ENGAGEMENT...</p>
+                <div class="names">
+                    Featuring:
+                    <strong>SHERRY VERNET</strong>
+                    and
+                    <strong>HENRY CAMBERLEY</strong>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">Also appearing: <em>Sebastian Moran, Dorian Gray, J. Moriarty</em></p>
+            </div>
+            <div class="key-question-final">
+                Gaiman hid the truth in a theatrical advertisement. What does this say about how horror—and mystery—can hide in plain sight?
+            </div>
+        </div>
+
+        <div class="timer">⏱ 15 MINUTES AT THIS STATION</div>
+    </div>
+</body>
+</html>
