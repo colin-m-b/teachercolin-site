@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre Collision: Mystery Meets Horror</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Text:ital@0;1&family=Special+Elite&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c9a227;
+            --cream: #f5e6c8;
+            --dark-brown: #3d2914;
+            --horror-green: #1a3a2a;
+            --horror-pale: #a8c5a8;
+            --deep-dark: #0d1f15;
+            --blood-red: #6b1c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: var(--deep-dark);
+            min-height: 100vh;
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        /* Hero section with split design */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(245, 230, 200, 0.95) 0%, 
+                    rgba(245, 230, 200, 0.9) 45%,
+                    rgba(13, 31, 21, 0.95) 55%,
+                    rgba(13, 31, 21, 0.98) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="80" opacity="0.03">🔍👁</text></svg>');
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 50%, rgba(201, 162, 39, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 75% 50%, rgba(107, 28, 28, 0.3) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .activity-label {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--dark-brown) 0%, var(--dark-brown) 45%, var(--horror-pale) 55%, var(--horror-pale) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 0.4rem 1.5rem;
+            border-radius: 3px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Books section */
+        .books-section {
+            padding: 3rem 2rem;
+            background: linear-gradient(180deg, var(--deep-dark) 0%, #1a1a1a 100%);
+        }
+
+        .books-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .book-card {
+            padding: 2rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .book-card.mystery {
+            background: linear-gradient(135deg, var(--cream) 0%, #e8dcc8 100%);
+            color: var(--dark-brown);
+            border: 3px solid var(--gold);
+        }
+
+        .book-card.horror {
+            background: linear-gradient(135deg, var(--horror-green) 0%, var(--deep-dark) 100%);
+            color: var(--horror-pale);
+            border: 3px solid var(--horror-green);
+        }
+
+        .book-genre {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .mystery .book-genre { color: var(--gold); }
+        .horror .book-genre { color: var(--horror-pale); }
+
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .book-author {
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .book-elements {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .book-elements strong {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .vs-divider {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--blood-red);
+            text-shadow: 0 0 20px rgba(107, 28, 28, 0.5);
+        }
+
+        /* Central question */
+        .central-question {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem 3rem;
+            background: rgba(255,255,255,0.03);
+            border-left: 4px solid var(--gold);
+            border-right: 4px solid var(--horror-green);
+            text-align: center;
+        }
+
+        .central-question p {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--cream);
+        }
+
+        .central-question p strong {
+            color: var(--gold);
+        }
+
+        /* Stations section */
+        .stations-section {
+            padding: 3rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .stations-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .stations-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .stations-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .station-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .station-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .station-card:nth-child(1) { border-top: 3px solid var(--gold); }
+        .station-card:nth-child(2) { border-top: 3px solid var(--horror-green); }
+        .station-card:nth-child(3) { border-top: 3px solid #4a90a4; }
+        .station-card:nth-child(4) { border-top: 3px solid var(--blood-red); }
+        .station-card:nth-child(5) { border-top: 3px solid #9d4edd; }
+
+        .station-number {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+
+        .station-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .station-description {
+            font-size: 0.95rem;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Instructions section */
+        .instructions-section {
+            padding: 3rem 2rem;
+            background: var(--deep-dark);
+        }
+
+        .instructions-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .instructions-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .instruction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instruction-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .instruction-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .instruction-label {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .instruction-text {
+            font-size: 1.1rem;
+            color: var(--cream);
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #333;
+            color: #ccc;
+        }
+
+        .instructions-list li:last-child {
+            border-bottom: none;
+        }
+
+        .instructions-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Footer */
+        .footer-quote {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0a0a 0%, var(--deep-dark) 100%);
+            border-top: 1px solid #222;
+        }
+
+        .footer-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-quote cite {
+            display: block;
+            margin-top: 1rem;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.9rem;
+            font-style: normal;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .books-container { grid-template-columns: 1fr; }
+            .vs-divider { padding: 1rem 0; }
+        }
+
+        @media print {
+            body { background: white; color: black; }
+            .hero { background: #f5f5f5; }
+            .station-card { background: #f0f0f0; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="activity-label">Station Activity</span>
+            <h1>Genre Collision</h1>
+            <p class="tagline">When Mystery Meets Horror</p>
+        </div>
+    </section>
+
+    <section class="books-section">
+        <div class="books-container">
+            <div class="book-card mystery">
+                <span class="book-genre">Classic Mystery</span>
+                <h3 class="book-title">"The Speckled Band"</h3>
+                <p class="book-author">Arthur Conan Doyle (1892)</p>
+                <div class="book-elements">
+                    <strong>Genre Elements:</strong>
+                    Detective hero • Logical deduction • Clues lead to truth • Justice restored • Knowable world
+                </div>
+            </div>
+
+            <div class="vs-divider">VS</div>
+
+            <div class="book-card horror">
+                <span class="book-genre">Mystery + Horror + Alt-History</span>
+                <h3 class="book-title">"A Study in Emerald"</h3>
+                <p class="book-author">Neil Gaiman (2003)</p>
+                <div class="book-elements">
+                    <strong>Genre Elements:</strong>
+                    Inverted roles • Cosmic horror • Truth destroys • Morality unclear • Unknowable world
+                </div>
+            </div>
+        </div>
+
+        <div class="central-question">
+            <p>Both stories feature a brilliant detective solving a murder in Victorian London.<br>
+            But one follows the rules of mystery. The other <strong>breaks them</strong>.<br><br>
+            How does genre shape what a story can say—and what it can hide?</p>
+        </div>
+    </section>
+
+    <section class="stations-section">
+        <h2>The Five Stations</h2>
+        <p class="stations-subtitle">Rotate through each station. Spend 15 minutes at each.</p>
+
+        <div class="stations-grid">
+            <div class="station-card">
+                <span class="station-number">STATION 1</span>
+                <h3 class="station-title">Mood Passage Analysis</h3>
+                <p class="station-description">Compare paired passages from both texts. How does Doyle create <em>suspense</em> ("What happened?") while Gaiman creates <em>dread</em> ("I fear what I'm about to understand")?</p>
+            </div>
+
+            <div class="station-card">
+                <span class="station-number">STATION 2</span>
+                <h3 class="station-title">The Unreliable Narrator</h3>
+                <p class="station-description">Now that you know the twist, re-read key excerpts from Gaiman. What clues were hidden in plain sight? What did the narrator choose not to tell us?</p>
+            </div>
+
+            <div class="station-card">
+                <span class="station-number">STATION 3</span>
+                <h3 class="station-title">Setting as Character</h3>
+                <p class="station-description">Both stories use Victorian London—but the city does different work. In Doyle's world, observation leads to truth. In Gaiman's, truth might destroy you.</p>
+            </div>
+
+            <div class="station-card">
+                <span class="station-number">STATION 4</span>
+                <h3 class="station-title">Sympathy Flip</h3>
+                <p class="station-description">Genre conventions teach us: detectives are heroes. Gaiman flips this. Analyze how the story manipulates our sympathies by using familiar roles.</p>
+            </div>
+
+            <div class="station-card">
+                <span class="station-number">STATION 5</span>
+                <h3 class="station-title">Genre Mashup Pitch</h3>
+                <p class="station-description">Design your own Sherlock Holmes remix! Choose a genre (sci-fi, romance, Western, etc.) and plan how Holmes would work within it. Pitch to your group.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="instructions-section">
+        <div class="instructions-container">
+            <h2>How This Works</h2>
+            
+            <div class="instruction-grid">
+                <div class="instruction-item">
+                    <div class="instruction-icon">⏱</div>
+                    <div class="instruction-label">Time</div>
+                    <div class="instruction-text">15 min/station</div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">📋</div>
+                    <div class="instruction-label">Materials</div>
+                    <div class="instruction-text">Worksheet at each</div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">🔄</div>
+                    <div class="instruction-label">Rotation</div>
+                    <div class="instruction-text">Move when signaled</div>
+                </div>
+            </div>
+
+            <ul class="instructions-list">
+                <li>Read the station instructions carefully before beginning</li>
+                <li>Use your worksheet to record your analysis—you'll need these notes later</li>
+                <li>Discuss with your group, but everyone completes their own worksheet</li>
+                <li>If you finish early, review your notes or explore the texts further</li>
+                <li>Station 5 includes a 1-minute pitch—practice with your group!</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer-quote">
+        <blockquote>
+            "There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy."
+            <cite>— Shakespeare, Hamlet (and exactly what Lovecraftian horror wants you to fear)</cite>
+        </blockquote>
+    </footer>
+</body>
+</html>
