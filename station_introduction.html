@@ -245,7 +245,17 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+.station-card a {
+    text-decoration: none; /* Removes the default underline */
+    color: inherit;        /* Keeps your cream/gold text colors */
+    display: block;        /* Makes the link fill the entire card */
+    height: 100%;
+}
 
+.station-card a:hover {
+    text-decoration: none; /* Prevents underline on hover */
+}
+/* ------------------------------ */
         .station-card:nth-child(1) { border-top: 3px solid var(--gold); }
         .station-card:nth-child(2) { border-top: 3px solid var(--horror-green); }
         .station-card:nth-child(3) { border-top: 3px solid #4a90a4; }
