@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Fiction: Genre Blending | MYP 2 Language & Literature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slate: #1e2a3a;
+            --midnight: #0f1419;
+            --gold: #d4a84b;
+            --burgundy: #8b2942;
+            --cream: #faf8f5;
+            --warm-gray: #e8e4df;
+            --steel: #64748b;
+            --success: #059669;
+            --film-strip: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 8px,
+                rgba(212, 168, 75, 0.1) 8px,
+                rgba(212, 168, 75, 0.1) 10px
+            );
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--slate);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* Header - Production Company Style */
+        .header {
+            background: linear-gradient(135deg, var(--midnight) 0%, var(--slate) 100%);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--film-strip);
+            opacity: 0.3;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .production-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--midnight);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            padding: 0.4rem 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .header h1 span {
+            color: var(--gold);
+        }
+
+        .header-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: rgba(250, 248, 245, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+            color: rgba(250, 248, 245, 0.7);
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: var(--slate);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-tabs {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: none;
+            color: rgba(250, 248, 245, 0.6);
+            padding: 1rem 1.5rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tab:hover {
+            color: var(--cream);
+            background: rgba(212, 168, 75, 0.1);
+        }
+
+        .nav-tab.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--slate);
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.2rem;
+            color: var(--slate);
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* Cards */
+        .pitch-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--gold);
+        }
+
+        .pitch-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--slate);
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .slate-card {
+            background: var(--slate);
+            color: var(--cream);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .slate-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .burgundy-card {
+            background: linear-gradient(135deg, var(--burgundy), #6b1d32);
+            color: var(--cream);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .burgundy-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Criterion Boxes */
+        .criterion-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .criterion-box {
+            background: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+            border: 2px solid var(--warm-gray);
+            transition: all 0.3s ease;
+        }
+
+        .criterion-box:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .criterion-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--burgundy);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .criterion-box p {
+            font-size: 0.95rem;
+            margin: 0;
+            color: var(--steel);
+        }
+
+        /* Requirements List */
+        .requirements-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .requirements-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid var(--warm-gray);
+        }
+
+        .requirements-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .requirements-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Word Count Badge */
+        .word-count {
+            display: inline-block;
+            background: var(--warm-gray);
+            color: var(--slate);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--gold), var(--burgundy));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1rem 0 1.5rem 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 1.2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--cream);
+        }
+
+        .timeline-date {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: var(--burgundy);
+            letter-spacing: 1px;
+        }
+
+        .timeline-content {
+            margin-top: 0.25rem;
+        }
+
+        /* Success Criteria */
+        .success-box {
+            background: white;
+            border: 2px solid var(--warm-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .success-box h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: var(--slate);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .success-box ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .success-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .success-box.meeting {
+            border-color: var(--success);
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.08), rgba(5, 150, 105, 0.03));
+        }
+
+        .success-box.meeting h4 {
+            color: var(--success);
+        }
+
+        .success-box.exceeding {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(212, 168, 75, 0.1), rgba(212, 168, 75, 0.05));
+        }
+
+        .success-box.exceeding h4 {
+            color: #b8860b;
+        }
+
+        .success-section-label {
+            font-weight: 700;
+            color: var(--burgundy);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Parent Tips */
+        .parent-section {
+            background: var(--warm-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .parent-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--slate);
+            letter-spacing: 1px;
+            margin-top: 0;
+        }
+
+        .parent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .parent-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .parent-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--slate);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .parent-card ul {
+            margin: 0;
+            padding-left: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .parent-card li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Collapsible */
+        .collapsible {
+            margin: 1rem 0;
+        }
+
+        .collapsible-toggle {
+            width: 100%;
+            background: white;
+            border: 2px solid var(--warm-gray);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--slate);
+            transition: all 0.3s ease;
+        }
+
+        .collapsible-toggle:hover {
+            border-color: var(--gold);
+        }
+
+        .collapsible-toggle::after {
+            content: '+';
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible-toggle.active::after {
+            transform: rotate(45deg);
+        }
+
+        .collapsible-content {
+            display: none;
+            padding: 1.25rem;
+            background: white;
+            border: 2px solid var(--warm-gray);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            margin-top: -8px;
+        }
+
+        .collapsible-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--midnight);
+            color: rgba(250, 248, 245, 0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-tab {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .parent-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="production-badge">MYP 2 LANGUAGE & LITERATURE</div>
+            <h1>HISTORICAL FICTION: <span>GENRE BLENDING</span></h1>
+            <p class="header-subtitle">Develop your original concept for publishers and studios</p>
+            <div class="header-meta">
+                <span>📚 Grade 7 Ghent</span>
+                <span>📅 Due: February 12, 2025</span>
+                <span>📝 Summative Assessment</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="overview">Overview</button>
+            <button class="nav-tab" data-tab="packet">Work Packet</button>
+            <button class="nav-tab" data-tab="success">Success Criteria</button>
+            <button class="nav-tab" data-tab="parents">Parent Guide</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- OVERVIEW TAB -->
+        <div id="overview" class="tab-content active">
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">THE SCENARIO</h2>
+                </div>
+                
+                <div class="slate-card">
+                    <h4>Your Production Company Has Secured a Pitch Meeting</h4>
+                    <p>Publishers and studio executives want to see fresh takes on historical fiction—stories that blend genres in unexpected ways. You've been asked to develop a complete work packet for your original concept: a historical fiction story (set at least 50 years in the past) that incorporates conventions from another genre.</p>
+                    <p style="margin-bottom: 0;">Your packet will demonstrate that you understand both genres deeply, have researched your historical period thoroughly, and can create a compelling protagonist worthy of a series.</p>
+                </div>
+
+                <p><strong>After the break</strong>, you'll form production companies with classmates and pitch your projects to the class. But first, you need to prove your concept on paper.</p>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">ASSESSMENT OVERVIEW</h2>
+                </div>
+
+                <p>This summative assessment evaluates three MYP criteria:</p>
+
+                <div class="criterion-grid">
+                    <div class="criterion-box">
+                        <div class="criterion-label">Criterion A: Analysing</div>
+                        <p>Your understanding of genre conventions, historical context, and thematic connections</p>
+                    </div>
+                    <div class="criterion-box">
+                        <div class="criterion-label">Criterion C: Producing Text</div>
+                        <p>Your creativity, imagination, and development of your protagonist</p>
+                    </div>
+                    <div class="criterion-box">
+                        <div class="criterion-label">Criterion D: Using Language</div>
+                        <p>Your vocabulary, sentence structure, grammar, and professional register throughout</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">TIMELINE</h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">FEBRUARY 2 — FORMATIVE DUE</div>
+                        <div class="timeline-content">Submit your planning document (genre choice, historical context, protagonist concept, sources)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">FEBRUARY 4 — FEEDBACK RETURNED</div>
+                        <div class="timeline-content">Receive feedback on your formative to guide your summative work</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">FEBRUARY 12 — SUMMATIVE DUE</div>
+                        <div class="timeline-content">Submit your complete work packet by end of class</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">POST-HOLIDAY — PITCH PRESENTATIONS</div>
+                        <div class="timeline-content">Form production companies and pitch your projects (separate assessment)</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- WORK PACKET TAB -->
+        <div id="packet" class="tab-content">
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">GENRE BLEND ANALYSIS</h2>
+                </div>
+
+                <div class="burgundy-card">
+                    <h4>What This Section Demonstrates</h4>
+                    <p style="margin-bottom: 0;">You understand what makes your chosen genre work—not just its surface features, but why those conventions matter to readers and viewers.</p>
+                </div>
+
+                <h3>Required Elements</h3>
+                <ul class="requirements-list">
+                    <li><strong>Name your second genre</strong> (the one you're blending with historical fiction)</li>
+                    <li><strong>Genre Conventions Table</strong>: List 3-4 key conventions of your chosen genre. For each convention, explain:
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Why is this convention essential to the genre? (What does it do for readers/viewers?)</li>
+                            <li>How will you incorporate this convention into your historical fiction story?</li>
+                        </ul>
+                    </li>
+                    <li><strong>Genre Tension Analysis</strong> <span class="word-count">100-150 words</span>: Identify 1-2 potential conflicts between historical fiction conventions (accuracy, real events, period-appropriate details) and your chosen genre's conventions. Explain how your story navigates these tensions.</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">HISTORICAL CONTEXT</h2>
+                </div>
+
+                <div class="burgundy-card">
+                    <h4>What This Section Demonstrates</h4>
+                    <p style="margin-bottom: 0;">You've researched your time period and made purposeful choices about how history shapes your story.</p>
+                </div>
+
+                <h3>Required Elements</h3>
+                <ul class="requirements-list">
+                    <li><strong>Time period</strong> (must be at least 50 years ago) and <strong>location</strong></li>
+                    <li><strong>Historical Events</strong> (minimum 2): For each event, provide 2-3 sentences explaining what happened historically AND how it features in your story</li>
+                    <li><strong>Historical Figure</strong>: Name one real person from this era. In 3-4 sentences, explain who they were historically and how they appear or are referenced in your story</li>
+                    <li><strong>Creative Approach Statement</strong> <span class="word-count">75-100 words</span>: State whether you prioritize historical accuracy or creative license. Explain why this choice serves your specific story</li>
+                    <li><strong>Thematic Justification</strong> <span class="word-count">75-100 words</span>: Why does this particular time period enhance your story thematically or dramatically? What can you explore in THIS setting that wouldn't resonate the same way in another era?</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">THEMATIC ANALYSIS</h2>
+                </div>
+
+                <div class="burgundy-card">
+                    <h4>What This Section Demonstrates</h4>
+                    <p style="margin-bottom: 0;">You can think critically about how genre, history, and character work together to create meaning.</p>
+                </div>
+
+                <h3>Required Elements</h3>
+                <p>Write a cohesive response <span class="word-count">150-200 words</span> addressing:</p>
+                <ul class="requirements-list">
+                    <li>What central theme emerges from combining your two genres in this historical context?</li>
+                    <li>How does the historical setting deepen or complicate this theme in ways a contemporary setting couldn't?</li>
+                    <li>How does your protagonist's journey illuminate this theme?</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title">PROTAGONIST PROFILE</h2>
+                </div>
+
+                <div class="burgundy-card">
+                    <h4>What This Section Demonstrates</h4>
+                    <p style="margin-bottom: 0;">You can create a compelling character who feels alive, complex, and rooted in their historical moment.</p>
+                </div>
+
+                <h3>Required Elements</h3>
+                <ul class="requirements-list">
+                    <li><strong>Name and age</strong></li>
+                    <li><strong>Background</strong> <span class="word-count">75-100 words</span>: Who is this person? What is their social position, family situation, and relationship to the historical moment they live in?</li>
+                    <li><strong>What makes them compelling?</strong> <span class="word-count">50-75 words</span>: Why would readers/viewers invest in this character? What's interesting, contradictory, or relatable about them?</li>
+                    <li><strong>Character's Goal</strong>: State their primary want/need in one clear sentence</li>
+                    <li><strong>Historical Obstacles</strong> <span class="word-count">75-100 words</span>: How does the historical context specifically challenge this character's goal? What barriers exist in THIS time period that wouldn't exist today?</li>
+                    <li><strong>Series Potential</strong> <span class="word-count">50-75 words</span>: If this became a series, what would keep audiences returning? What's unresolved, evolving, or expandable about this character and world?</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h2 class="section-title">RESEARCH & SOURCES</h2>
+                </div>
+
+                <div class="burgundy-card">
+                    <h4>What This Section Demonstrates</h4>
+                    <p style="margin-bottom: 0;">You've done genuine research and can reflect on how it shaped your creative choices.</p>
+                </div>
+
+                <h3>Required Elements</h3>
+                <ul class="requirements-list">
+                    <li><strong>Three sources</strong> with full citations (at least one primary source if available for your time period)</li>
+                    <li>For each source, explain in 3-4 sentences what specifically it taught you about your historical context</li>
+                    <li><strong>Research Reflection</strong> <span class="word-count">50-75 words</span>: How did your research change or deepen your original concept? What did you discover that you didn't expect?</li>
+                </ul>
+
+                <div class="pitch-card">
+                    <h4>Primary vs. Secondary Sources</h4>
+                    <p><strong>Primary sources</strong> are from the time period itself: diaries, letters, newspaper articles, photographs, speeches, government documents.</p>
+                    <p style="margin-bottom: 0;"><strong>Secondary sources</strong> are written later, analyzing or describing the time period: history books, documentaries, academic articles, encyclopedias.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">📋</span>
+                    <h2 class="section-title">SUBMISSION REQUIREMENTS</h2>
+                </div>
+
+                <div class="slate-card">
+                    <h4>Format & Submission</h4>
+                    <ul style="margin: 0; padding-left: 1.25rem;">
+                        <li>Submit as a Google Doc</li>
+                        <li>Clear section headings matching the packet structure</li>
+                        <li>12pt font, 1.5 line spacing</li>
+                        <li>Your name and class at the top</li>
+                        <li>Due: <strong>February 12, 2025</strong> by end of class</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- SUCCESS CRITERIA TAB -->
+        <div id="success" class="tab-content">
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">✓</span>
+                    <h2 class="section-title">SUCCESS CRITERIA</h2>
+                </div>
+
+                <p>Use these criteria to evaluate your own work before submitting. The goal is to <strong>meet standard (5-6)</strong> in each criterion.</p>
+
+                <!-- Meeting Standard 5-6 -->
+                <div class="success-box meeting">
+                    <h4>✓ Meeting Standard (5-6)</h4>
+                    
+                    <p class="success-section-label">Criterion A: Analysing (Sections 1-3)</p>
+                    <ul>
+                        <li>I provide <strong>substantial identification and explanation</strong> of genre conventions, showing I understand why they matter</li>
+                        <li>My historical context is <strong>researched and specific</strong>—I include real events, figures, and accurate details</li>
+                        <li>My thematic analysis makes <strong>meaningful connections</strong> between genre, history, and character</li>
+                        <li>I identify tensions between genres and explain how my story <strong>navigates them thoughtfully</strong></li>
+                    </ul>
+
+                    <p class="success-section-label">Criterion C: Producing Text (Sections 4-5)</p>
+                    <ul>
+                        <li>My protagonist demonstrates <strong>considerable personal engagement and creativity</strong></li>
+                        <li>My character is <strong>developed and interesting</strong>, with clear connections to historical context</li>
+                        <li>Historical obstacles are <strong>relevant and specific</strong> to the time period</li>
+                        <li>My research reflection shows <strong>meaningful engagement</strong> with sources</li>
+                    </ul>
+
+                    <p class="success-section-label">Criterion D: Using Language (Entire Packet)</p>
+                    <ul>
+                        <li>I use a <strong>varied range of vocabulary</strong> and sentence structures competently</li>
+                        <li>I write in an <strong>appropriate professional register</strong> most of the time</li>
+                        <li>Grammar, syntax, and punctuation are used with <strong>considerable accuracy</strong></li>
+                        <li>I make <strong>few spelling errors</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Exceeding Standard 7-8 -->
+                <div class="success-box exceeding">
+                    <h4>★ Exceeding Standard (7-8)</h4>
+                    
+                    <p class="success-section-label">Criterion A: Analysing</p>
+                    <ul>
+                        <li>I provide <strong>perceptive identification and explanation</strong> of genre conventions, showing <strong>insightful</strong> understanding</li>
+                        <li>My historical choices feel <strong>purposeful and sophisticated</strong>—not arbitrary</li>
+                        <li>My thematic analysis reveals something <strong>non-obvious</strong> about why this combination works</li>
+                        <li>I explore genre tensions with <strong>depth and originality</strong></li>
+                    </ul>
+
+                    <p class="success-section-label">Criterion C: Producing Text</p>
+                    <ul>
+                        <li>My protagonist demonstrates <strong>a high degree of personal engagement, creativity, and originality</strong></li>
+                        <li>My character feels <strong>layered and alive</strong>—their relationship to history creates genuine tension</li>
+                        <li>Series potential shows <strong>imaginative thinking</strong> about story possibilities</li>
+                        <li>My research reflection demonstrates <strong>genuine insight</strong> into how research shaped my choices</li>
+                    </ul>
+
+                    <p class="success-section-label">Criterion D: Using Language</p>
+                    <ul>
+                        <li>I use a <strong>wide and effective range</strong> of vocabulary and sentence structures</li>
+                        <li>I write in a <strong>consistently appropriate professional register</strong></li>
+                        <li>Grammar, syntax, and punctuation are used with <strong>a high degree of accuracy</strong></li>
+                        <li>I make <strong>very few spelling errors</strong></li>
+                    </ul>
+                </div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle">Self-Check Questions Before Submitting</button>
+                    <div class="collapsible-content">
+                        <p><strong>For Genre Analysis:</strong></p>
+                        <ul>
+                            <li>Did I explain WHY each convention matters, not just WHAT it is?</li>
+                            <li>Did I identify real tensions between genres and explain how I'll handle them?</li>
+                        </ul>
+                        <p><strong>For Historical Context:</strong></p>
+                        <ul>
+                            <li>Are my historical events and figures accurate and specific?</li>
+                            <li>Did I justify my creative approach choice (accuracy vs. license)?</li>
+                            <li>Does my time period genuinely enhance the story, not just provide backdrop?</li>
+                        </ul>
+                        <p><strong>For Thematic Analysis:</strong></p>
+                        <ul>
+                            <li>Is my theme specific to THIS combination of genre + history + character?</li>
+                            <li>Did I explain how history deepens the theme, not just provide setting?</li>
+                        </ul>
+                        <p><strong>For Protagonist:</strong></p>
+                        <ul>
+                            <li>Would someone want to read/watch a story about this character?</li>
+                            <li>Are their obstacles genuinely tied to the historical moment?</li>
+                            <li>Is there potential for more stories with this character?</li>
+                        </ul>
+                        <p><strong>For Language:</strong></p>
+                        <ul>
+                            <li>Does my writing sound professional, like I'm pitching to industry professionals?</li>
+                            <li>Did I proofread for grammar, spelling, and punctuation?</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PARENT GUIDE TAB -->
+        <div id="parents" class="tab-content">
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-number">🏠</span>
+                    <h2 class="section-title">TIPS FOR PARENTS</h2>
+                </div>
+
+                <p>This assessment asks students to create an original historical fiction concept that blends two genres. Here's how you can support your student without doing the work for them.</p>
+
+                <div class="parent-section">
+                    <h3>How to Help</h3>
+                    <div class="parent-grid">
+                        <div class="parent-card">
+                            <h4>💬 Questions to Ask</h4>
+                            <ul>
+                                <li>"Why did you choose this genre/time period?"</li>
+                                <li>"What makes your protagonist interesting?"</li>
+                                <li>"How does the history affect your story?"</li>
+                                <li>"What did you discover in your research?"</li>
+                            </ul>
+                        </div>
+                        <div class="parent-card">
+                            <h4>✅ Helpful Actions</h4>
+                            <ul>
+                                <li>Listen as they talk through their ideas</li>
+                                <li>Help them access library databases for research</li>
+                                <li>Ask if they've met word count requirements</li>
+                                <li>Remind them of the timeline and due dates</li>
+                            </ul>
+                        </div>
+                        <div class="parent-card">
+                            <h4>🚫 What to Avoid</h4>
+                            <ul>
+                                <li>Don't choose their genre or time period for them</li>
+                                <li>Don't write or heavily edit their sentences</li>
+                                <li>Don't do the historical research for them</li>
+                                <li>Don't stress perfection—this is about learning</li>
+                            </ul>
+                        </div>
+                        <div class="parent-card">
+                            <h4>📚 Research Support</h4>
+                            <ul>
+                                <li>Students have access to school library databases</li>
+                                <li>Encourage primary sources when possible</li>
+                                <li>Discuss what makes sources reliable</li>
+                                <li>Help them evaluate if sources fit their time period</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pitch-card">
+                    <h4>Understanding the Assessment</h4>
+                    <p>This packet builds toward a group presentation after the holiday break. The written work is assessed individually on three criteria: how well students analyze genre conventions and history (Criterion A), how creatively they develop their protagonist (Criterion C), and how effectively they use professional language throughout (Criterion D).</p>
+                    <p style="margin-bottom: 0;">The goal is genuine thinking and creativity—a "perfect" packet with shallow analysis will score lower than a thoughtful packet with minor polish issues.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>MYP Language & Literature | Grade 7 Ghent | Historical Fiction: Genre Blending</p>
+    </footer>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs and content
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+                
+                // Scroll to top of content
+                window.scrollTo({ top: 200, behavior: 'smooth' });
+            });
+        });
+
+        // Collapsible sections
+        document.querySelectorAll('.collapsible-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                toggle.classList.toggle('active');
+                toggle.nextElementSibling.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
