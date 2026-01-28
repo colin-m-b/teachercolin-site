@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Ghent | MYP 2 English Language & Literature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #4A9BA0;
+            --teal-dark: #3a7a7e;
+            --teal-light: #5fb5ba;
+            --cream: #f8f6f1;
+            --slate: #2d3e4a;
+            --slate-light: #4a5f6d;
+            --white: #ffffff;
+            --confetti-opacity: 0.4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        /* Confetti Background Pattern */
+        .confetti-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+            background-color: var(--teal);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,var(--confetti-opacity)) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,var(--confetti-opacity)) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 40% 70%, rgba(255,255,255,var(--confetti-opacity)) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,var(--confetti-opacity)) 2px, transparent 2px),
+                radial-gradient(circle at 10% 90%, rgba(255,255,255,var(--confetti-opacity)) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 60% 10%, rgba(255,255,255,var(--confetti-opacity)) 1px, transparent 1px),
+                radial-gradient(circle at 30% 50%, rgba(255,255,255,var(--confetti-opacity)) 2px, transparent 2px),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,var(--confetti-opacity)) 1px, transparent 1px),
+                radial-gradient(circle at 50% 90%, rgba(255,255,255,var(--confetti-opacity)) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 15% 15%, rgba(255,255,255,var(--confetti-opacity)) 1px, transparent 1px);
+            background-size: 
+                100px 100px,
+                150px 150px,
+                120px 120px,
+                80px 80px,
+                200px 200px,
+                90px 90px,
+                110px 110px,
+                130px 130px,
+                170px 170px,
+                140px 140px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--teal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255,255,255,0.2) 1.5px, transparent 1.5px);
+            background-size: 30px 30px, 50px 50px;
+            background-position: 0 0, 25px 25px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--white);
+        }
+
+        .header-title {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .class-badge {
+            background: var(--white);
+            color: var(--teal);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-top: 0.75rem;
+            max-width: 600px;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            background: var(--white);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-tab {
+            padding: 1.25rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--slate-light);
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-tab:hover {
+            color: var(--teal);
+            background: rgba(74, 155, 160, 0.05);
+        }
+
+        .nav-tab.active {
+            color: var(--teal);
+            border-bottom-color: var(--teal);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        /* Section Styling */
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--slate-light);
+            font-size: 1.05rem;
+        }
+
+        /* Unit Card */
+        .unit-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .unit-card-header {
+            background: var(--teal);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .unit-card-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .unit-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .unit-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .unit-card-body {
+            padding: 2rem;
+        }
+
+        .essential-question {
+            background: linear-gradient(135deg, rgba(74, 155, 160, 0.08) 0%, rgba(74, 155, 160, 0.03) 100%);
+            border-left: 4px solid var(--teal);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .essential-question-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--teal);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .essential-question-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: var(--slate);
+            font-style: italic;
+        }
+
+        .unit-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .unit-detail {
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 8px;
+        }
+
+        .unit-detail-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--teal);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .unit-detail-value {
+            font-size: 1rem;
+            color: var(--slate);
+        }
+
+        .unit-description {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .unit-description h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            color: var(--slate);
+            margin-bottom: 1rem;
+        }
+
+        .unit-description p {
+            color: var(--slate-light);
+            margin-bottom: 1rem;
+        }
+
+        .unit-description ul {
+            margin-left: 1.5rem;
+            color: var(--slate-light);
+        }
+
+        .unit-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        .central-text {
+            background: linear-gradient(135deg, rgba(74, 155, 160, 0.12) 0%, rgba(74, 155, 160, 0.05) 100%);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .central-text-icon {
+            font-size: 1.5rem;
+        }
+
+        .central-text-content {
+            flex: 1;
+        }
+
+        .central-text-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--teal);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .central-text-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            color: var(--slate);
+            font-style: italic;
+        }
+
+        .central-text-author {
+            font-size: 0.9rem;
+            color: var(--slate-light);
+        }
+
+        /* Assignment Cards Grid */
+        .assignments-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .assignment-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: stretch;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .assignment-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .assignment-status {
+            width: 6px;
+            background: var(--teal);
+        }
+
+        .assignment-status.due-soon {
+            background: #e67e22;
+        }
+
+        .assignment-status.overdue {
+            background: #c0392b;
+        }
+
+        .assignment-content {
+            padding: 1.5rem;
+        }
+
+        .assignment-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .assignment-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background: rgba(74, 155, 160, 0.1);
+            color: var(--teal);
+        }
+
+        .assignment-due {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--slate-light);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .assignment-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .assignment-description {
+            color: var(--slate-light);
+            font-size: 0.95rem;
+        }
+
+        .assignment-arrow {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            color: var(--teal);
+            font-size: 1.5rem;
+        }
+
+        .no-assignments {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .no-assignments-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-assignments h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .no-assignments p {
+            color: var(--slate-light);
+        }
+
+        /* Parent Corner */
+        .parent-corner {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .parent-corner-header {
+            background: linear-gradient(135deg, var(--slate) 0%, var(--slate-light) 100%);
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .parent-corner-header h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .parent-corner-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .parent-corner-body {
+            padding: 2rem;
+        }
+
+        .parent-tip {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--cream);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .parent-tip:last-child {
+            margin-bottom: 0;
+        }
+
+        .parent-tip-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .parent-tip-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--slate);
+            margin-bottom: 0.35rem;
+        }
+
+        .parent-tip-content p {
+            color: var(--slate-light);
+            font-size: 0.9rem;
+        }
+
+        .contact-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(74, 155, 160, 0.08) 0%, rgba(74, 155, 160, 0.03) 100%);
+            border-radius: 8px;
+            border: 1px solid rgba(74, 155, 160, 0.2);
+        }
+
+        .contact-box h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box p {
+            color: var(--slate-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--slate);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer a {
+            color: var(--teal-light);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .nav-tabs-inner {
+                padding: 0 1rem;
+                overflow-x: auto;
+            }
+
+            .nav-tab {
+                padding: 1rem;
+                white-space: nowrap;
+            }
+
+            .assignment-card {
+                grid-template-columns: 6px 1fr;
+            }
+
+            .assignment-arrow {
+                display: none;
+            }
+
+            .unit-card-header {
+                padding: 1.5rem;
+            }
+
+            .unit-card-body {
+                padding: 1.5rem;
+            }
+
+            .central-text {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti-bg"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <nav class="breadcrumb">
+                <a href="index.html">teachercolin.com</a> / 7 Ghent
+            </nav>
+            <div class="header-title">
+                <span class="class-badge">MYP 2 • Grade 7</span>
+                <h1>Ghent</h1>
+            </div>
+            <p class="header-subtitle">English Language & Literature with Mr. Colin</p>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <div class="nav-tabs-inner">
+            <a class="nav-tab active" data-tab="unit">Current Unit</a>
+            <a class="nav-tab" data-tab="assignments">Assignments</a>
+            <a class="nav-tab" data-tab="parents">Parent Corner</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Current Unit Section -->
+        <section class="section active" id="unit">
+            <div class="section-header">
+                <h2>What We're Learning</h2>
+                <p>Our current focus and essential questions</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="unit-card-header">
+                    <div class="unit-card-header-content">
+                        <div class="unit-number">Unit 2 • Weeks 1–10 • Started January</div>
+                        <h3 class="unit-title">How can we separate fact from fiction?</h3>
+                    </div>
+                </div>
+                <div class="unit-card-body">
+                    <div class="essential-question">
+                        <div class="essential-question-label">Essential Question</div>
+                        <div class="essential-question-text">How can we separate fact from fiction?</div>
+                    </div>
+
+                    <div class="central-text">
+                        <span class="central-text-icon">📖</span>
+                        <div class="central-text-content">
+                            <div class="central-text-label">Central Text</div>
+                            <div class="central-text-title">The Ruby in the Smoke</div>
+                            <div class="central-text-author">by Philip Pullman</div>
+                        </div>
+                    </div>
+
+                    <div class="unit-details">
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Key Concept</div>
+                            <div class="unit-detail-value">Creativity</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Related Concepts</div>
+                            <div class="unit-detail-value">Genres, Point of View, Setting</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Global Context</div>
+                            <div class="unit-detail-value">Orientation in Space and Time</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Assessment Criteria</div>
+                            <div class="unit-detail-value">Criteria A, C & D</div>
+                        </div>
+                    </div>
+
+                    <div class="unit-description">
+                        <h3>What We're Exploring</h3>
+                        <p>Using Philip Pullman's <em>The Ruby in the Smoke</em> as a central text, this unit guides students through a structured inquiry into how creative works can illuminate our understanding of the past and its profound connection to the present.</p>
+                        <p>By exploring the conventions of the genre, the historical context of Victorian London, and enduring social issues, students will develop critical analytical and communication skills.</p>
+                        <p><strong>Statement of Inquiry:</strong> Writers of the genre of historical fiction can shed light on our orientation in space and time by using setting creatively to help us better understand and learn from the events which have shaped history.</p>
+                        <p>Students will learn to:</p>
+                        <ul>
+                            <li>Identify and analyze conventions of historical fiction as a genre</li>
+                            <li>Understand how setting shapes narrative and character</li>
+                            <li>Explore how historical fiction balances fact and imagination</li>
+                            <li>Create original historical fiction concepts that blend genres thoughtfully</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assignments Section -->
+        <section class="section" id="assignments">
+            <div class="section-header">
+                <h2>Current Assignments</h2>
+                <p>Click on any assignment for full details and instructions</p>
+            </div>
+
+            <div class="assignments-grid">
+                <!-- Historical Fiction: Genre Blending Assignment -->
+                <a href="assignments/ghent-historical-fiction-summative.html" class="assignment-card">
+                    <div class="assignment-status"></div>
+                    <div class="assignment-content">
+                        <div class="assignment-meta">
+                            <span class="assignment-tag">Criteria A, C & D</span>
+                            <span class="assignment-due">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Due: Before February Holiday
+                            </span>
+                        </div>
+                        <h3 class="assignment-title">Historical Fiction: Genre Blending</h3>
+                        <p class="assignment-description">Create an original historical fiction concept that blends two genres. You'll develop a "pitch packet" including genre analysis, historical research, thematic exploration, and an original protagonist.</p>
+                    </div>
+                    <div class="assignment-arrow">→</div>
+                </a>
+
+                <!-- Add more assignment cards here as needed -->
+            </div>
+        </section>
+
+        <!-- Parent Corner Section -->
+        <section class="section" id="parents">
+            <div class="section-header">
+                <h2>Parent Corner</h2>
+                <p>How you can support your student's learning at home</p>
+            </div>
+
+            <div class="parent-corner">
+                <div class="parent-corner-header">
+                    <h3>Supporting Your Grade 7 Reader & Writer</h3>
+                    <p>Partnership between home and school helps students thrive</p>
+                </div>
+                <div class="parent-corner-body">
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">📚</div>
+                        <div class="parent-tip-content">
+                            <h4>Discuss Historical Fiction</h4>
+                            <p>We're reading <em>The Ruby in the Smoke</em> by Philip Pullman, set in Victorian London. Ask your child what they're discovering about the era and how the author blends fact with fiction. What surprises them about life in the 1870s?</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">🎬</div>
+                        <div class="parent-tip-content">
+                            <h4>Explore Genre Together</h4>
+                            <p>Historical fiction is everywhere—films, TV shows, and books. When watching or reading together, talk about what's historically accurate versus what's invented for the story. This builds the critical thinking skills we're developing in class.</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">🔍</div>
+                        <div class="parent-tip-content">
+                            <h4>Support Research, Don't Do It</h4>
+                            <p>The summative assignment requires historical research. Help your child access resources (library databases, reliable websites) but let them do the searching. Ask guiding questions: "How do you know that source is reliable?" rather than finding answers for them.</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">💡</div>
+                        <div class="parent-tip-content">
+                            <h4>Value Creativity Over Perfection</h4>
+                            <p>The goal of our current assignment is genuine thinking and creativity—a "perfect" packet with shallow analysis will score lower than a thoughtful packet with minor polish issues. Encourage risk-taking and original ideas.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-box">
+                        <h4>Questions or Concerns?</h4>
+                        <p>Please reach out via the <strong>Edufit Parents app</strong>. I check messages daily and will respond within 24 hours on school days. I'm here to support both you and your student!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Mr. Colin Brownlie • Dewey Schools IB Program • <a href="index.html">teachercolin.com</a></p>
+    </footer>
+
+    <!-- Tab Navigation Script -->
+    <script>
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active from all tabs
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                
+                // Add active to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const tabId = this.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
