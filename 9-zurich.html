@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9 Zurich | MYP 4 English Language & Literature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral: #E86B6B;
+            --coral-dark: #d45454;
+            --coral-light: #f08080;
+            --cream: #f8f6f1;
+            --slate: #2d3e4a;
+            --slate-light: #4a5f6d;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        /* Header with clean frame aesthetic */
+        .header {
+            background: var(--coral);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            border: 2px solid rgba(255,255,255,0.3);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--white);
+        }
+
+        .header-title {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .class-badge {
+            background: var(--white);
+            color: var(--coral);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            background: var(--white);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-tab {
+            padding: 1.25rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--slate-light);
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-tab:hover {
+            color: var(--coral);
+            background: rgba(232, 107, 107, 0.05);
+        }
+
+        .nav-tab.active {
+            color: var(--coral);
+            border-bottom-color: var(--coral);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--slate-light);
+            font-size: 1.05rem;
+        }
+
+        /* Unit Card with frame aesthetic */
+        .unit-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .unit-card::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 2px solid rgba(232, 107, 107, 0.2);
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .unit-card-header {
+            background: var(--coral);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .unit-card-header::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .unit-card-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .unit-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .unit-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .unit-card-body {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .essential-question {
+            background: linear-gradient(135deg, rgba(232, 107, 107, 0.08) 0%, rgba(232, 107, 107, 0.03) 100%);
+            border-left: 4px solid var(--coral);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .essential-question-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--coral);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .essential-question-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: var(--slate);
+            font-style: italic;
+        }
+
+        .unit-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .unit-detail {
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 8px;
+        }
+
+        .unit-detail-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--coral);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .unit-detail-value {
+            font-size: 1rem;
+            color: var(--slate);
+        }
+
+        .unit-description {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .unit-description h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            color: var(--slate);
+            margin-bottom: 1rem;
+        }
+
+        .unit-description p {
+            color: var(--slate-light);
+            margin-bottom: 1rem;
+        }
+
+        .unit-description ul {
+            margin-left: 1.5rem;
+            color: var(--slate-light);
+        }
+
+        .unit-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        .texts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .text-card {
+            background: linear-gradient(135deg, rgba(232, 107, 107, 0.1) 0%, rgba(232, 107, 107, 0.03) 100%);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            position: relative;
+        }
+
+        .text-card::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid rgba(232, 107, 107, 0.15);
+            border-radius: 6px;
+            pointer-events: none;
+        }
+
+        .text-card-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--coral);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .text-card-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1rem;
+            color: var(--slate);
+            font-style: italic;
+        }
+
+        .text-card-author {
+            font-size: 0.85rem;
+            color: var(--slate-light);
+        }
+
+        /* Assignment Cards */
+        .assignments-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .assignment-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: stretch;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+
+        .assignment-card::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 1px solid rgba(232, 107, 107, 0.15);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .assignment-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .assignment-status {
+            width: 6px;
+            background: var(--coral);
+        }
+
+        .assignment-content {
+            padding: 1.5rem;
+        }
+
+        .assignment-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .assignment-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background: rgba(232, 107, 107, 0.1);
+            color: var(--coral);
+        }
+
+        .assignment-due {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--slate-light);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .assignment-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .assignment-description {
+            color: var(--slate-light);
+            font-size: 0.95rem;
+        }
+
+        .assignment-arrow {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            color: var(--coral);
+            font-size: 1.5rem;
+        }
+
+        .no-assignments {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .no-assignments::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(232, 107, 107, 0.15);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .no-assignments-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-assignments h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .no-assignments p {
+            color: var(--slate-light);
+        }
+
+        /* Parent Corner */
+        .parent-corner {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .parent-corner::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(232, 107, 107, 0.15);
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .parent-corner-header {
+            background: linear-gradient(135deg, var(--slate) 0%, var(--slate-light) 100%);
+            padding: 2rem;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .parent-corner-header h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .parent-corner-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .parent-corner-body {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .parent-tip {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--cream);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .parent-tip:last-child {
+            margin-bottom: 0;
+        }
+
+        .parent-tip-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--coral);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .parent-tip-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--slate);
+            margin-bottom: 0.35rem;
+        }
+
+        .parent-tip-content p {
+            color: var(--slate-light);
+            font-size: 0.9rem;
+        }
+
+        .contact-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(232, 107, 107, 0.08) 0%, rgba(232, 107, 107, 0.03) 100%);
+            border-radius: 8px;
+            border: 1px solid rgba(232, 107, 107, 0.2);
+        }
+
+        .contact-box h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--coral);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box p {
+            color: var(--slate-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--slate);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer a {
+            color: var(--coral-light);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .nav-tabs-inner {
+                padding: 0 1rem;
+                overflow-x: auto;
+            }
+
+            .nav-tab {
+                padding: 1rem;
+                white-space: nowrap;
+            }
+
+            .assignment-card {
+                grid-template-columns: 6px 1fr;
+            }
+
+            .assignment-arrow {
+                display: none;
+            }
+
+            .texts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <nav class="breadcrumb">
+                <a href="index.html">teachercolin.com</a> / 9 Zurich
+            </nav>
+            <div class="header-title">
+                <span class="class-badge">MYP 4 • Grade 9</span>
+                <h1>Zurich</h1>
+            </div>
+            <p class="header-subtitle">English Language & Literature with Mr. Colin</p>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <div class="nav-tabs-inner">
+            <a class="nav-tab active" data-tab="unit">Current Unit</a>
+            <a class="nav-tab" data-tab="assignments">Assignments</a>
+            <a class="nav-tab" data-tab="parents">Parent Corner</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Current Unit Section -->
+        <section class="section active" id="unit">
+            <div class="section-header">
+                <h2>What We're Learning</h2>
+                <p>Our current focus and essential questions</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="unit-card-header">
+                    <div class="unit-card-header-content">
+                        <div class="unit-number">Unit 2 • 8 Weeks • Started October</div>
+                        <h3 class="unit-title">How can growing and learning be portrayed in short stories?</h3>
+                    </div>
+                </div>
+                <div class="unit-card-body">
+                    <div class="essential-question">
+                        <div class="essential-question-label">Essential Question</div>
+                        <div class="essential-question-text">How can growing and learning be portrayed in short stories?</div>
+                    </div>
+
+                    <div class="texts-grid">
+                        <div class="text-card">
+                            <div class="text-card-label">Short Story</div>
+                            <div class="text-card-title">Through the Tunnel</div>
+                            <div class="text-card-author">by Doris Lessing</div>
+                        </div>
+                        <div class="text-card">
+                            <div class="text-card-label">Short Story</div>
+                            <div class="text-card-title">Split Cherry Tree</div>
+                            <div class="text-card-author">by Jesse Stuart</div>
+                        </div>
+                    </div>
+
+                    <div class="unit-details">
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Key Concept</div>
+                            <div class="unit-detail-value">Connections</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Related Concepts</div>
+                            <div class="unit-detail-value">Character, Intertextuality, Theme</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Global Context</div>
+                            <div class="unit-detail-value">Identities and Relationships</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Assessment Criteria</div>
+                            <div class="unit-detail-value">Criteria A, C & D</div>
+                        </div>
+                    </div>
+
+                    <div class="unit-description">
+                        <h3>What We're Exploring</h3>
+                        <p><strong>Statement of Inquiry:</strong> Writers' use of plot and character across different texts reveals how challenges of different kinds are connected with / may lead to the self-discovery, new learning and personal growth which help to form a person's identity.</p>
+                        <p>Through reading and analyzing short stories, students explore how authors portray the experience of growing up and facing challenges. We examine how structure, conflict, and character development work together to show transformation.</p>
+                        <p>Students will learn to:</p>
+                        <ul>
+                            <li>Analyze how short stories are structured</li>
+                            <li>Understand how writers construct dynamic characters who change</li>
+                            <li>Identify different types of conflict and their role in narrative</li>
+                            <li>Connect themes of growth and learning across multiple texts</li>
+                            <li>Write their own short story featuring a dynamic character</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assignments Section -->
+        <section class="section" id="assignments">
+            <div class="section-header">
+                <h2>Current Assignments</h2>
+                <p>Click on any assignment for full details and instructions</p>
+            </div>
+
+            <div class="assignments-grid">
+                <!-- Short Story Summative -->
+                <a href="assignments/zurich-short-story-summative.html" class="assignment-card">
+                    <div class="assignment-status"></div>
+                    <div class="assignment-content">
+                        <div class="assignment-meta">
+                            <span class="assignment-tag">Criteria C & D</span>
+                            <span class="assignment-due">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Due: End of Unit
+                            </span>
+                        </div>
+                        <h3 class="assignment-title">Write a Short Story</h3>
+                        <p class="assignment-description">Create an original short story featuring a dynamic character who grows, develops, or learns through encountering a challenge. Use the structural elements and techniques we've studied.</p>
+                    </div>
+                    <div class="assignment-arrow">→</div>
+                </a>
+
+                <!-- Analysis Summative -->
+                <a href="assignments/zurich-short-story-analysis.html" class="assignment-card">
+                    <div class="assignment-status"></div>
+                    <div class="assignment-content">
+                        <div class="assignment-meta">
+                            <span class="assignment-tag">Criterion A</span>
+                            <span class="assignment-due">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Due: End of Unit
+                            </span>
+                        </div>
+                        <h3 class="assignment-title">Analyse Your Short Story</h3>
+                        <p class="assignment-description">Write an analysis of your own short story, explaining the techniques you used to present a character who grows, develops, or learns as a result of a challenge.</p>
+                    </div>
+                    <div class="assignment-arrow">→</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Parent Corner Section -->
+        <section class="section" id="parents">
+            <div class="section-header">
+                <h2>Parent Corner</h2>
+                <p>How you can support your student's learning at home</p>
+            </div>
+
+            <div class="parent-corner">
+                <div class="parent-corner-header">
+                    <h3>Supporting Your Grade 9 Writer</h3>
+                    <p>Partnership between home and school helps students thrive</p>
+                </div>
+                <div class="parent-corner-body">
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">📖</div>
+                        <div class="parent-tip-content">
+                            <h4>Discuss Growth & Change</h4>
+                            <p>We're exploring how characters grow through challenges. Ask your child about the stories we're reading—"Through the Tunnel" and "Split Cherry Tree"—and what the characters learn about themselves.</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">✍️</div>
+                        <div class="parent-tip-content">
+                            <h4>Support Their Creative Writing</h4>
+                            <p>Students will write their own short story featuring a character who changes. Listen to their ideas, but let them develop their own characters and plots. Ask questions like "What challenge will your character face?"</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">🔍</div>
+                        <div class="parent-tip-content">
+                            <h4>Encourage Self-Analysis</h4>
+                            <p>Part of the assessment involves students analyzing their own writing choices. This builds metacognition—understanding why they made certain decisions. Ask: "Why did you have your character do that?"</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">💡</div>
+                        <div class="parent-tip-content">
+                            <h4>Share Your Own Stories</h4>
+                            <p>Talk about times you faced challenges and what you learned. These conversations can inspire your child's writing while also connecting to the unit's themes of growth and identity formation.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-box">
+                        <h4>Questions or Concerns?</h4>
+                        <p>Please reach out via the <strong>Edufit Parents app</strong>. I check messages daily and will respond within 24 hours on school days. I'm here to support both you and your student!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Mr. Colin Brownlie • Dewey Schools IB Program • <a href="index.html">teachercolin.com</a></p>
+    </footer>
+
+    <!-- Tab Navigation Script -->
+    <script>
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

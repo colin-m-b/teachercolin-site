@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Manchester | MYP 1 English Language & Literature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lime: #B4D455;
+            --lime-dark: #9bc23d;
+            --lime-light: #c5e070;
+            --cream: #f8f6f1;
+            --slate: #2d3e4a;
+            --slate-light: #4a5f6d;
+            --white: #ffffff;
+            --doodle-color: #3d4f5f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        /* Header with doodle aesthetic */
+        .header {
+            background: var(--lime);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, var(--doodle-color) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, var(--doodle-color) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, var(--doodle-color) 0.5px, transparent 0.5px);
+            background-size: 60px 60px, 80px 80px, 40px 40px;
+            opacity: 0.1;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--doodle-color) 0px,
+                var(--doodle-color) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: var(--slate);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: var(--slate);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .class-badge {
+            background: var(--white);
+            color: var(--slate);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            border: 2px dashed var(--doodle-color);
+        }
+
+        h1 {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--slate);
+        }
+
+        .header-subtitle {
+            color: var(--slate);
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            background: var(--white);
+            border-bottom: 3px dashed var(--lime);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0;
+        }
+
+        .nav-tab {
+            padding: 1.25rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--slate-light);
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+            margin-bottom: -3px;
+        }
+
+        .nav-tab:hover {
+            color: var(--lime-dark);
+            background: rgba(180, 212, 85, 0.1);
+        }
+
+        .nav-tab.active {
+            color: var(--slate);
+            border-bottom-color: var(--lime-dark);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--slate-light);
+            font-size: 1.05rem;
+        }
+
+        /* Unit Card */
+        .unit-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 3px dashed var(--lime);
+        }
+
+        .unit-card-header {
+            background: var(--lime);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .unit-card-header::before {
+            content: '✨';
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .unit-number {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 0.95rem;
+            color: var(--slate);
+            opacity: 0.8;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .unit-title {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.75rem;
+            color: var(--slate);
+        }
+
+        .unit-card-body {
+            padding: 2rem;
+        }
+
+        .essential-question {
+            background: linear-gradient(135deg, rgba(180, 212, 85, 0.15) 0%, rgba(180, 212, 85, 0.05) 100%);
+            border-left: 4px solid var(--lime-dark);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .essential-question-label {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 0.85rem;
+            color: var(--lime-dark);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .essential-question-text {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.35rem;
+            color: var(--slate);
+        }
+
+        .unit-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .unit-detail {
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 8px;
+            border: 2px dashed rgba(180, 212, 85, 0.5);
+        }
+
+        .unit-detail-label {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 0.8rem;
+            color: var(--lime-dark);
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .unit-detail-value {
+            font-size: 1rem;
+            color: var(--slate);
+        }
+
+        .unit-description {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px dashed rgba(0,0,0,0.1);
+        }
+
+        .unit-description h3 {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.25rem;
+            color: var(--slate);
+            margin-bottom: 1rem;
+        }
+
+        .unit-description p {
+            color: var(--slate-light);
+            margin-bottom: 1rem;
+        }
+
+        .unit-description ul {
+            margin-left: 1.5rem;
+            color: var(--slate-light);
+        }
+
+        .unit-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        .central-text {
+            background: linear-gradient(135deg, rgba(180, 212, 85, 0.2) 0%, rgba(180, 212, 85, 0.08) 100%);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 2px dashed var(--lime);
+        }
+
+        .central-text-icon {
+            font-size: 1.5rem;
+        }
+
+        .central-text-content {
+            flex: 1;
+        }
+
+        .central-text-label {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 0.8rem;
+            color: var(--lime-dark);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .central-text-title {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.1rem;
+            color: var(--slate);
+        }
+
+        .central-text-author {
+            font-size: 0.9rem;
+            color: var(--slate-light);
+        }
+
+        /* Assignment Cards */
+        .assignments-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .assignment-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: stretch;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            border: 3px dashed var(--lime);
+        }
+
+        .assignment-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-style: solid;
+        }
+
+        .assignment-status {
+            width: 6px;
+            background: var(--lime-dark);
+        }
+
+        .assignment-content {
+            padding: 1.5rem;
+        }
+
+        .assignment-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .assignment-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background: rgba(180, 212, 85, 0.2);
+            color: var(--lime-dark);
+        }
+
+        .assignment-due {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--slate-light);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .assignment-title {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.35rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .assignment-description {
+            color: var(--slate-light);
+            font-size: 0.95rem;
+        }
+
+        .assignment-arrow {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            color: var(--lime-dark);
+            font-size: 1.5rem;
+        }
+
+        .no-assignments {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 3px dashed var(--lime);
+        }
+
+        .no-assignments-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-assignments h3 {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.5rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .no-assignments p {
+            color: var(--slate-light);
+        }
+
+        /* Parent Corner */
+        .parent-corner {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 3px dashed var(--lime);
+        }
+
+        .parent-corner-header {
+            background: linear-gradient(135deg, var(--slate) 0%, var(--slate-light) 100%);
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .parent-corner-header h3 {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .parent-corner-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .parent-corner-body {
+            padding: 2rem;
+        }
+
+        .parent-tip {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--cream);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 2px dashed rgba(180, 212, 85, 0.4);
+        }
+
+        .parent-tip:last-child {
+            margin-bottom: 0;
+        }
+
+        .parent-tip-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--lime);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate);
+            font-size: 1.1rem;
+        }
+
+        .parent-tip-content h4 {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1rem;
+            color: var(--slate);
+            margin-bottom: 0.35rem;
+        }
+
+        .parent-tip-content p {
+            color: var(--slate-light);
+            font-size: 0.9rem;
+        }
+
+        .contact-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(180, 212, 85, 0.15) 0%, rgba(180, 212, 85, 0.05) 100%);
+            border-radius: 8px;
+            border: 2px dashed var(--lime);
+        }
+
+        .contact-box h4 {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1rem;
+            color: var(--lime-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box p {
+            color: var(--slate-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--slate);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer a {
+            color: var(--lime);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .nav-tabs-inner {
+                padding: 0 1rem;
+                overflow-x: auto;
+            }
+
+            .nav-tab {
+                padding: 1rem;
+                white-space: nowrap;
+            }
+
+            .assignment-card {
+                grid-template-columns: 6px 1fr;
+            }
+
+            .assignment-arrow {
+                display: none;
+            }
+
+            .central-text {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <nav class="breadcrumb">
+                <a href="index.html">teachercolin.com</a> / 6 Manchester
+            </nav>
+            <div class="header-title">
+                <span class="class-badge">MYP 1 • Grade 6</span>
+                <h1>Manchester</h1>
+            </div>
+            <p class="header-subtitle">English Language & Literature with Mr. Colin</p>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <div class="nav-tabs-inner">
+            <a class="nav-tab active" data-tab="unit">Current Unit</a>
+            <a class="nav-tab" data-tab="assignments">Assignments</a>
+            <a class="nav-tab" data-tab="parents">Parent Corner</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Current Unit Section -->
+        <section class="section active" id="unit">
+            <div class="section-header">
+                <h2>What We're Learning</h2>
+                <p>Our current focus and essential questions</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="unit-card-header">
+                    <div class="unit-number">Unit 3 • Weeks 1–10 • Started January</div>
+                    <h3 class="unit-title">Do You Believe in Magic?</h3>
+                </div>
+                <div class="unit-card-body">
+                    <div class="essential-question">
+                        <div class="essential-question-label">Essential Question</div>
+                        <div class="essential-question-text">How do writers use creativity to explore familiar themes in unfamiliar settings?</div>
+                    </div>
+
+                    <div class="central-text">
+                        <span class="central-text-icon">📚</span>
+                        <div class="central-text-content">
+                            <div class="central-text-label">Central Text</div>
+                            <div class="central-text-title">The Lion, the Witch and the Wardrobe</div>
+                            <div class="central-text-author">by C.S. Lewis</div>
+                        </div>
+                    </div>
+
+                    <div class="unit-details">
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Key Concept</div>
+                            <div class="unit-detail-value">Creativity</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Related Concepts</div>
+                            <div class="unit-detail-value">Character, Genres, Setting, Theme</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Global Context</div>
+                            <div class="unit-detail-value">Personal and Cultural Expression</div>
+                        </div>
+                        <div class="unit-detail">
+                            <div class="unit-detail-label">Assessment Criteria</div>
+                            <div class="unit-detail-value">Criteria A, C & D</div>
+                        </div>
+                    </div>
+
+                    <div class="unit-description">
+                        <h3>What We're Exploring</h3>
+                        <p><strong>Statement of Inquiry:</strong> In some genres, writers are able to use their creativity to transgress the bounds of space and time through exploring familiar themes in unfamiliar settings.</p>
+                        <p>Through reading <em>The Lion, the Witch and the Wardrobe</em>, students explore how fantasy literature uses magical worlds to examine universal human experiences. We're also making connections to <em>The Lightning Thief</em>, which we read earlier this year.</p>
+                        <p>Students will learn to:</p>
+                        <ul>
+                            <li>Identify and analyze conventions of the fantasy genre</li>
+                            <li>Explore how setting shapes narrative and theme</li>
+                            <li>Understand connections to Christian symbolism and allegory</li>
+                            <li>Analyze character development, especially Edmund's arc</li>
+                            <li>Compare how different authors use mythology and belief systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assignments Section -->
+        <section class="section" id="assignments">
+            <div class="section-header">
+                <h2>Current Assignments</h2>
+                <p>Click on any assignment for full details and instructions</p>
+            </div>
+
+            <div class="assignments-grid">
+                <!-- Narnia Choice Board Assignment -->
+                <a href="assignments/manchester-narnia-choiceboard.html" class="assignment-card">
+                    <div class="assignment-status"></div>
+                    <div class="assignment-content">
+                        <div class="assignment-meta">
+                            <span class="assignment-tag">Criteria A, C & D</span>
+                            <span class="assignment-due">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Due: End of Unit
+                            </span>
+                        </div>
+                        <h3 class="assignment-title">Narnia Analysis Choice Board</h3>
+                        <p class="assignment-description">Choose from 6 options to demonstrate your analytical skills: literary essays, character analysis, genre study, visual analysis, or debate preparation. All options explore themes from our reading.</p>
+                    </div>
+                    <div class="assignment-arrow">→</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Parent Corner Section -->
+        <section class="section" id="parents">
+            <div class="section-header">
+                <h2>Parent Corner</h2>
+                <p>How you can support your student's learning at home</p>
+            </div>
+
+            <div class="parent-corner">
+                <div class="parent-corner-header">
+                    <h3>Supporting Your Grade 6 Reader</h3>
+                    <p>Partnership between home and school helps students thrive</p>
+                </div>
+                <div class="parent-corner-body">
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">📖</div>
+                        <div class="parent-tip-content">
+                            <h4>Talk About the Book</h4>
+                            <p>We're reading <em>The Lion, the Witch and the Wardrobe</em>. Ask your child about the characters—especially Edmund—and what they think about his choices. What would they do in his situation?</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">🎬</div>
+                        <div class="parent-tip-content">
+                            <h4>Explore Fantasy Together</h4>
+                            <p>Watch fantasy films or discuss other fantasy books. Ask: "What makes this a fantasy story? What's real and what's magical?" This builds genre awareness.</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">🔗</div>
+                        <div class="parent-tip-content">
+                            <h4>Make Connections</h4>
+                            <p>We're connecting <em>Narnia</em> to <em>The Lightning Thief</em> from earlier this year. Ask your child: "How are these books similar? How are they different?" Both use mythology creatively.</p>
+                        </div>
+                    </div>
+                    <div class="parent-tip">
+                        <div class="parent-tip-icon">✏️</div>
+                        <div class="parent-tip-content">
+                            <h4>Support Their Analysis</h4>
+                            <p>The summative is a choice board with analytical options. Help by listening to their ideas, but let them form their own arguments. Ask "Why do you think that?" to encourage deeper thinking.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-box">
+                        <h4>Questions or Concerns?</h4>
+                        <p>Please reach out via the <strong>Edufit Parents app</strong>. I check messages daily and will respond within 24 hours on school days. I'm here to support both you and your student!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Mr. Colin Brownlie • Dewey Schools IB Program • <a href="index.html">teachercolin.com</a></p>
+    </footer>
+
+    <!-- Tab Navigation Script -->
+    <script>
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
