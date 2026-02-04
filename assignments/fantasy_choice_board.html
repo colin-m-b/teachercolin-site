@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Unit Choice Board | MYP 1 English</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight: #1a1a2e;
+            --deep-purple: #2d2d44;
+            --royal-purple: #4a3f6b;
+            --magic-gold: #d4af37;
+            --soft-gold: #f4e4ba;
+            --starlight: #e8e4f0;
+            --parchment: #faf8f5;
+            --narnia-winter: #a8d5e5;
+            --olympus-sea: #5b9aa0;
+            --text-dark: #2c2c2c;
+            --text-light: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, var(--midnight) 0%, var(--deep-purple) 50%, var(--royal-purple) 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Magical star background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 200px 50px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 250px 160px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(2px 2px at 300px 90px, rgba(255,255,255,0.6), transparent);
+            background-size: 350px 200px;
+            animation: twinkle 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+        }
+
+        .header-decoration {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5rem;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--magic-gold);
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.4);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--starlight);
+            margin-bottom: 0.5rem;
+        }
+
+        .class-info {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+        }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+        }
+
+        /* Overview Section */
+        .overview {
+            background: var(--parchment);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border: 2px solid var(--magic-gold);
+        }
+
+        .overview h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--royal-purple);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview p {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .overview p:last-child {
+            margin-bottom: 0;
+        }
+
+        .criteria-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .criteria-badge {
+            background: linear-gradient(135deg, var(--royal-purple), var(--deep-purple));
+            color: var(--soft-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .time-badge {
+            background: linear-gradient(135deg, var(--olympus-sea), #3d7a80);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Section Headers */
+        .section-header {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--magic-gold);
+            text-align: center;
+            margin: 2.5rem 0 1.5rem;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .section-subheader {
+            text-align: center;
+            color: var(--starlight);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        /* Choice Cards Grid */
+        .choices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Individual Choice Card */
+        .choice-card {
+            background: var(--parchment);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .choice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            color: white;
+            position: relative;
+        }
+
+        .card-number {
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            opacity: 0.3;
+            font-weight: 700;
+        }
+
+        .card-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-tagline {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Card color themes */
+        .card-1 .card-header { background: linear-gradient(135deg, #6b4c9a, #4a3570); }
+        .card-2 .card-header { background: linear-gradient(135deg, #8b4513, #654321); }
+        .card-3 .card-header { background: linear-gradient(135deg, #2e7d6b, #1a5c4b); }
+        .card-4 .card-header { background: linear-gradient(135deg, #c9302c, #962726); }
+        .card-5 .card-header { background: linear-gradient(135deg, #2980b9, #1a5276); }
+        .card-6 .card-header { background: linear-gradient(135deg, #7d5a50, #5c4039); }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-summary {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .expand-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--starlight);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--royal-purple);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .expand-btn:hover {
+            background: #d8d4e3;
+        }
+
+        .expand-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .choice-card.expanded .expand-btn .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Expanded Content */
+        .expanded-content {
+            display: none;
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid #e0dde5;
+            margin-top: 1rem;
+        }
+
+        .choice-card.expanded .expanded-content {
+            display: block;
+        }
+
+        .detail-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-section h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--royal-purple);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .detail-section ul {
+            margin-left: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .detail-section li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .good-for {
+            background: linear-gradient(135deg, var(--soft-gold), #f9f3e3);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--magic-gold);
+        }
+
+        .good-for p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .good-for strong {
+            color: var(--royal-purple);
+        }
+
+        /* Tips for Parents Section */
+        .parent-section {
+            background: var(--parchment);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border: 2px solid var(--olympus-sea);
+        }
+
+        .parent-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--olympus-sea);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .parent-section h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.15rem;
+            color: var(--royal-purple);
+            margin: 1.25rem 0 0.5rem;
+        }
+
+        .parent-section p {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .parent-section ul {
+            margin-left: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .parent-section li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .parent-tip-box {
+            background: #e8f4f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--olympus-sea);
+        }
+
+        .parent-tip-box p {
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            .overview, .parent-section {
+                padding: 1.5rem;
+            }
+
+            .choices-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .criteria-badges {
+                justify-content: center;
+            }
+        }
+
+        @media print {
+            .stars { display: none; }
+            body { background: white; }
+            .choice-card { break-inside: avoid; }
+            .expanded-content { display: block !important; }
+            .expand-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <header>
+        <div class="header-decoration">✦ ⚔️ 🦁 ⚡ 🏛️ ✦</div>
+        <h1>Choose Your Quest</h1>
+        <p class="subtitle">Fantasy Unit Summative Assessment</p>
+        <p class="class-info">Grade 6 Manchester • MYP 1 Language & Literature</p>
+    </header>
+
+    <main>
+        <!-- Overview Section -->
+        <section class="overview">
+            <h2>📜 Your Mission</h2>
+            <p>You've journeyed through the wardrobe into Narnia and traveled to Camp Half-Blood with Percy Jackson. Now it's time to show what you've discovered about fantasy literature, mythological storytelling, and the deeper meanings hidden within these magical worlds.</p>
+            <p><strong>Choose ONE quest below.</strong> Each option lets you demonstrate your understanding in a different way—whether you love designing games, building arguments, analyzing characters, or creating visual presentations. There's no "best" choice; pick the one that excites you most!</p>
+            <div class="criteria-badges">
+                <span class="criteria-badge">📊 Criterion A: Analysing</span>
+                <span class="criteria-badge">📊 Criterion C: Producing Text</span>
+                <span class="criteria-badge">📊 Criterion D: Using Language</span>
+                <span class="time-badge">⏱️ 240 minutes class time</span>
+            </div>
+        </section>
+
+        <!-- Choice Cards Section -->
+        <h2 class="section-header">⚔️ The Six Quests ⚔️</h2>
+        <p class="section-subheader">Click any card to reveal full details</p>
+
+        <div class="choices-grid">
+            <!-- Option 1: Board Game -->
+            <article class="choice-card card-1">
+                <div class="card-header">
+                    <span class="card-number">01</span>
+                    <div class="card-emoji">🎲</div>
+                    <h3 class="card-title">Board Game Designer</h3>
+                    <p class="card-tagline">Design a game that brings Narnia to life</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-summary">Create a detailed plan for a board game based on <em>The Lion, the Witch and the Wardrobe</em> where the rules and mechanics reflect Christian symbolism and themes.</p>
+                    <button class="expand-btn">
+                        <span>See Full Details</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="expanded-content">
+                    <div class="detail-section">
+                        <h4>📋 What You'll Create</h4>
+                        <ul>
+                            <li>Game objective and theme connecting to the book's deeper meaning</li>
+                            <li>At least 2 game mechanics that reflect Christian themes (sacrifice, temptation, redemption, resurrection)</li>
+                            <li>Complete list of game components (pieces, cards, dice, tokens)</li>
+                            <li>3 key scenes from the book incorporated into gameplay</li>
+                            <li>Designer's commentary explaining your creative choices</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4>💡 Example Mechanics</h4>
+                        <ul>
+                            <li>A "sacrifice" mechanic where giving up points helps another player</li>
+                            <li>"Temptation" cards that offer shortcuts with hidden consequences</li>
+                            <li>A "redemption" path that lets players recover from setbacks</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section good-for">
+                        <p><strong>Good for students who:</strong> Love games, enjoy creative design, and want to explore how themes can be translated into interactive experiences</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Option 2: Edmund Trial -->
+            <article class="choice-card card-2">
+                <div class="card-header">
+                    <span class="card-number">02</span>
+                    <div class="card-emoji">⚖️</div>
+                    <h3 class="card-title">The Trial of Edmund Pevensie</h3>
+                    <p class="card-tagline">Build a case file for Narnia's most famous traitor</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-summary">You're a detective investigating Edmund's actions. Should he face criminal charges for betraying his siblings, or does his transformation earn him freedom? Build your case with evidence.</p>
+                    <button class="expand-btn">
+                        <span>See Full Details</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="expanded-content">
+                    <div class="detail-section">
+                        <h4>📋 What You'll Create</h4>
+                        <ul>
+                            <li>Formal charges against Edmund (treason, conspiracy, endangerment)</li>
+                            <li>3-4 pieces of evidence proving guilt (with specific scene references)</li>
+                            <li>3-4 pieces of evidence showing redemption (with specific scene references)</li>
+                            <li>Character analysis: what made Edmund vulnerable to temptation, what caused his transformation</li>
+                            <li>Analysis of how Aslan's sacrifice affects your verdict</li>
+                            <li>Your final verdict with solid reasoning</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4>🔍 Key Questions to Consider</h4>
+                        <ul>
+                            <li>Was Edmund fully responsible for his choices, or was he manipulated?</li>
+                            <li>How does the Deep Magic change what "justice" means?</li>
+                            <li>Can someone's later actions "pay for" earlier crimes?</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section good-for">
+                        <p><strong>Good for students who:</strong> Enjoy debate and argument, like analyzing character motivation, and want to dig deep into one character's journey</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Option 3: Fantasy Formula -->
+            <article class="choice-card card-3">
+                <div class="card-header">
+                    <span class="card-number">03</span>
+                    <div class="card-emoji">🧪</div>
+                    <h3 class="card-title">Fantasy Formula Lab Report</h3>
+                    <p class="card-tagline">Discover what makes fantasy work</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-summary">Think like a genre scientist! Identify the essential elements of fantasy using both novels as evidence, then argue which book uses these conventions more effectively.</p>
+                    <button class="expand-btn">
+                        <span>See Full Details</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="expanded-content">
+                    <div class="detail-section">
+                        <h4>📋 What You'll Create</h4>
+                        <ul>
+                            <li>Analysis of 3-4 fantasy conventions (see options below)</li>
+                            <li>2+ examples from EACH book for each convention</li>
+                            <li>Evaluation of which book handles each convention better and why</li>
+                            <li>Clear thesis statement arguing which is the stronger fantasy</li>
+                            <li>Structured essay with introduction, body paragraphs, and conclusion</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4>🔮 Fantasy Conventions to Choose From</h4>
+                        <ul>
+                            <li>Portal to another world / Quest structure</li>
+                            <li>Magical world-building (rules, creatures, geography)</li>
+                            <li>Clear good vs. evil</li>
+                            <li>Mentor figures</li>
+                            <li>Ordinary character in extraordinary situation</li>
+                            <li>Magical objects/weapons</li>
+                            <li>Hero's journey / Character transformation</li>
+                            <li>Prophecy / Destiny / "Chosen one"</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section good-for">
+                        <p><strong>Good for students who:</strong> Like comparing and contrasting, enjoy analytical writing, and want to understand what makes fantasy work as a genre</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Option 4: Scene Analysis -->
+            <article class="choice-card card-4">
+                <div class="card-header">
+                    <span class="card-number">04</span>
+                    <div class="card-emoji">🎬</div>
+                    <h3 class="card-title">Narnia's Greatest Hits</h3>
+                    <p class="card-tagline">Spotlight the moments that matter most</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-summary">Identify two crucial scenes in <em>The Lion, the Witch and the Wardrobe</em>, analyze why they matter, and connect each to a parallel moment in <em>The Lightning Thief</em>. Present your analysis visually.</p>
+                    <button class="expand-btn">
+                        <span>See Full Details</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="expanded-content">
+                    <div class="detail-section">
+                        <h4>📋 What You'll Create</h4>
+                        <ul>
+                            <li>2 pivotal scenes from LWW</li>
+                            <li>Scene summary for each (50-75 words)</li>
+                            <li>Analysis of why each scene matters (100-150 words each)</li>
+                            <li>Connection to a parallel scene in <em>The Lightning Thief</em> (75-100 words each)</li>
+                            <li>Visual presentation (poster or digital slides)</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4>🎯 Pivotal Scenes to Consider</h4>
+                        <ul>
+                            <li>Lucy's first entry to Narnia</li>
+                            <li>Edmund meeting the White Witch (temptation)</li>
+                            <li>Edmund's betrayal</li>
+                            <li>The Stone Table scene (Aslan's sacrifice)</li>
+                            <li>Aslan's resurrection</li>
+                            <li>The final battle</li>
+                            <li>The coronation</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section good-for">
+                        <p><strong>Good for students who:</strong> Think visually, enjoy finding connections between stories, and like combining analysis with creative presentation</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Option 5: Character Infographic -->
+            <article class="choice-card card-5">
+                <div class="card-header">
+                    <span class="card-number">05</span>
+                    <div class="card-emoji">🧬</div>
+                    <h3 class="card-title">Character DNA Analysis</h3>
+                    <p class="card-tagline">Decode what makes characters tick</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-summary">Create an infographic comparing two characters from the two books. Go beyond surface similarities to analyze what each character reveals about their book's deeper themes.</p>
+                    <button class="expand-btn">
+                        <span>See Full Details</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="expanded-content">
+                    <div class="detail-section">
+                        <h4>📋 What You'll Create</h4>
+                        <ul>
+                            <li>Character pair selection (see options below)</li>
+                            <li>5-6 meaningful comparison points (NOT physical appearance)</li>
+                            <li>Evidence from both books for each comparison point</li>
+                            <li>Thematic analysis (50-75 words) for each comparison point</li>
+                            <li>Polished infographic (digital or hand-drawn A3 minimum)</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4>👥 Character Pairs to Choose From</h4>
+                        <ul>
+                            <li>Aslan & Chiron (mentor figures)</li>
+                            <li>Edmund & Percy (flawed heroes/protagonists)</li>
+                            <li>The White Witch & Medusa/Ares/Luke (villains)</li>
+                            <li>Lucy & Annabeth (loyal, brave supporting characters)</li>
+                            <li>Peter & Percy (leaders and heroes)</li>
+                            <li>Or propose your own pairing!</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4>🔍 Meaningful Comparison Categories</h4>
+                        <ul>
+                            <li>Their role in the story</li>
+                            <li>What they symbolize</li>
+                            <li>Character flaws/strengths</li>
+                            <li>How they change (or don't)</li>
+                            <li>Connection to mythology/religion</li>
+                            <li>Their most important choice</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section good-for">
+                        <p><strong>Good for students who:</strong> Love character analysis, enjoy visual design, and want to explore how different authors create similar character types</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Option 6: Advocacy Letter -->
+            <article class="choice-card card-6">
+                <div class="card-header">
+                    <span class="card-number">06</span>
+                    <div class="card-emoji">✉️</div>
+                    <h3 class="card-title">Curriculum Advocacy Letter</h3>
+                    <p class="card-tagline">Defend the book that deserves to stay</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-summary">Write a formal letter to the Executive Director arguing which book—<em>The Lion, the Witch and the Wardrobe</em> or <em>The Lightning Thief</em>—should remain in the curriculum. Focus on educational importance, not entertainment.</p>
+                    <button class="expand-btn">
+                        <span>See Full Details</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+                <div class="expanded-content">
+                    <div class="detail-section">
+                        <h4>📋 What You'll Create</h4>
+                        <ul>
+                            <li>Clear position on which book to keep</li>
+                            <li>3-4 strong arguments based on educational value</li>
+                            <li>Evidence from the book supporting each argument</li>
+                            <li>Acknowledgment and response to the strongest counterargument</li>
+                            <li>Formal letter structure (opening hook, body paragraphs, closing)</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4>💡 Argument Categories to Consider</h4>
+                        <ul>
+                            <li><strong>Cultural/historical importance:</strong> What does this book teach about its time period or lasting influence?</li>
+                            <li><strong>Religious/mythological literacy:</strong> How does it help students understand belief systems that shaped world culture?</li>
+                            <li><strong>Literary merit:</strong> What makes this book well-written and worth studying?</li>
+                            <li><strong>Relevance to students:</strong> Why does this book matter for young readers today?</li>
+                            <li><strong>Gateway effect:</strong> How might this book lead to more reading and learning?</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section good-for">
+                        <p><strong>Good for students who:</strong> Enjoy persuasive writing, like taking a stance and defending it, and want to think about why we study literature</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Tips for Parents Section -->
+        <section class="parent-section">
+            <h2>👨‍👩‍👧 Tips for Parents</h2>
+            <p>This summative assessment allows students to demonstrate their understanding of two fantasy novels through their chosen format. Here's how you can support your student effectively:</p>
+
+            <h3>✅ Helpful Ways to Support</h3>
+            <ul>
+                <li><strong>Discuss the books together:</strong> Ask your student to explain the plot, characters, and themes to you. Teaching someone else deepens understanding.</li>
+                <li><strong>Help them choose wisely:</strong> Encourage your student to pick the option that genuinely interests them, not just the one that seems "easiest."</li>
+                <li><strong>Ask guiding questions:</strong> "What evidence from the book supports that idea?" or "Why do you think the author made that choice?"</li>
+                <li><strong>Provide structure:</strong> Help your student break the 240 minutes into manageable chunks with clear goals for each work session.</li>
+                <li><strong>Encourage planning first:</strong> The planning worksheet exists for a reason—completing it thoroughly makes the final product much stronger.</li>
+            </ul>
+
+            <div class="parent-tip-box">
+                <p>"Can you explain to me how Aslan's sacrifice connects to Christian symbolism?" or "What makes Percy similar to Edmund?" are great conversation starters that help students articulate their thinking.</p>
+            </div>
+
+            <h3>🚫 What to Avoid</h3>
+            <ul>
+                <li><strong>Don't write or create for them:</strong> Even with good intentions, this prevents your student from learning and developing their own ideas.</li>
+                <li><strong>Don't provide your interpretations:</strong> Ask questions that help them find their own answers rather than telling them what themes to focus on.</li>
+                <li><strong>Don't prioritize polish over thinking:</strong> A thoughtful argument with simple presentation beats a beautiful product with shallow analysis.</li>
+            </ul>
+
+            <h3>📚 About the Assessment</h3>
+            <p>This assignment assesses <strong>Criterion A (Analysing)</strong>, <strong>Criterion C (Producing Text)</strong>, and <strong>Criterion D (Using Language)</strong>. Students have 240 minutes of class time to complete their chosen option. They will receive a planning worksheet to help organize their thinking before creating their final product.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>MYP 1 Language & Literature • Fantasy Unit Summative Assessment</p>
+    </footer>
+
+    <script>
+        // Card expansion functionality
+        document.querySelectorAll('.choice-card').forEach(card => {
+            const btn = card.querySelector('.expand-btn');
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                card.classList.toggle('expanded');
+                btn.querySelector('span:first-child').textContent = 
+                    card.classList.contains('expanded') ? 'Hide Details' : 'See Full Details';
+            });
+        });
+    </script>
+</body>
+</html>
