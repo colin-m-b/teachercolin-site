@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Colin Brownlie - Teaching Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.7;
+            color: #3d2817;
+            background-color: #faf8f5;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8b6f47 0%, #6b5940 100%);
+            color: #faf8f5;
+            padding: 4rem 2rem 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            border-bottom: 2px solid #e6dfd5;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: #6b5940;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: #c17c4a;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #6b5940;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid #c17c4a;
+        }
+
+        section h3 {
+            font-size: 1.5rem;
+            color: #8b6f47;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Download Buttons */
+        .download-btn, .external-link {
+            display: inline-block;
+            background-color: #c17c4a;
+            color: #fff;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .download-btn:hover, .external-link:hover {
+            background-color: #8b6f47;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 111, 71, 0.3);
+        }
+
+        /* Card Containers */
+        .card-container {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-top: 1.5rem;
+        }
+
+        .card-container h3 {
+            margin-top: 0;
+        }
+
+        /* Philosophy Statement */
+        .philosophy-text {
+            background-color: #f5f1eb;
+            padding: 2rem;
+            border-left: 4px solid #c17c4a;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Grid Layouts */
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .grid-item {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 3px solid #c17c4a;
+        }
+
+        .grid-item h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            color: #6b5940;
+            margin-bottom: 0.75rem;
+        }
+
+        .grid-item p {
+            font-size: 0.95rem;
+            color: #5a5a5a;
+        }
+
+        /* Placeholder boxes for missing content */
+        .placeholder-box {
+            background-color: #f5f1eb;
+            border: 2px dashed #c17c4a;
+            padding: 2rem;
+            border-radius: 6px;
+            text-align: center;
+            color: #8b6f47;
+            font-style: italic;
+            margin-top: 1.5rem;
+        }
+
+        /* Lists */
+        .content-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .content-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e6dfd5;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .content-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #c17c4a;
+            font-weight: bold;
+        }
+
+        /* Timeline Style */
+        .timeline-item {
+            padding-left: 2rem;
+            border-left: 3px solid #c17c4a;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background-color: #c17c4a;
+            border-radius: 50%;
+            position: absolute;
+            left: -7.5px;
+            top: 0.5rem;
+        }
+
+        .timeline-item h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            color: #6b5940;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .year {
+            color: #8b6f47;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #6b5940;
+            color: #faf8f5;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            .card-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Colin Brownlie</h1>
+        <p>Teacher - Coach - Learner</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#philosophy">Teaching Philosophy</a></li>
+            <li><a href="#professional-development">Professional Development</a></li>
+            <li><a href="#technology">Technology Integration</a></li>
+            <li><a href="#student-work">Student Work</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h2>Portfolio Overview</h2>
+            <div class="card-container">
+                <p>Hello and welcome to my teaching portfolio. Here you can see samples of my work as a teacher and as an instructional coach. I love my work — being able to help students learn and help educators teach is meaningful, enjoyable, and also just really interesting. Figuring out how to make the black box that is the human brain retain information and develop sophisticated skills is a challenge that never ends, and putting together lessons that are rich, rigorous, and fun lets me put my creative side to good use.</p>
+                <p>The basics you might want to know: I've got experience teaching in IB MYP, Common Core, and Cambridge GCSE curricula. I've been teaching internationally for six years now, and I've got other educational experience as well — all that stuff is on the resume you can download below. Although I don't have the most experience in the world, I've managed to do a lot of different things in my career, like building teaching and admin tools with AI, serving on the Student Safeguarding team, working on standardized test prep, plus I've collected a fair amount of certifications along the way. Take a look around!</p>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <h2>Resume</h2>
+            <div class="card-container">
+                <p>Click the button below to download my resume and see all the usual good stuff - experience, education, certificates, cute kittens*, etc.</p>
+                <p style="font-size: 0.9rem; font-style: italic; color: #8b6f47; margin-top: 0.5rem;">*note - no kittens actually appear on the resume, that's just false advertisement on my part, sorry about that.</p>
+                <a href="/colin-brownlie-resume.pdf" class="download-btn" download>Download Resume (PDF) ↓</a>
+            </div>
+        </section>
+
+        <!-- Teaching Philosophy Section -->
+        <section id="philosophy">
+            <h2>Teaching Philosophy</h2>
+            <div class="philosophy-text">
+                <p>I love my work - being able to help students learn and help educators teach is meaningful, enjoyable, and also just really interesting. Figuring out how to make the black box that is the human brain retain and apply information and develop sophisticated skills is a challenge that never ends, and putting together lessons that are rich, rigorous, and fun lets me put my creative side to good use.</p>
+                
+                <p>I came to education later in life than many; I had never really thought teaching was for me. But once I started, I realized that one of the best parts of teaching was how much learning there was to do within the profession. I dove in, listening to podcasts, reading books, attaining a master's degree, and constantly trying to improve my teaching practice. I'm not where I want to be yet, but I'm happy to be making progress.</p>
+                
+                <p>As a teacher and an instructional coach, I work to find the right mix of direct instruction and inquiry-based learning. This mix changes from person to person and from student to student; that's one reason this profession never gets stale. We need to meet everyone where they're at to help them move forward (to greatly simplify the work of Lev Vygotsky), so we have to look at people as individual learners as much as possible. It's not easy, and no one is perfect at it, but then again, if it was easy, what fun would that be?</p>
+            </div>
+        </section>
+
+        <!-- Professional Development Section -->
+        <section id="professional-development">
+            <h2>Professional Development</h2>
+
+            <h3>Example of Professional Development Session</h3>
+            <div class="card-container">
+                <p>In the 24-25 school year, I spent a good deal of time learning about Cognitive Load Theory. As an instructional coach, I wanted to share what I learned with my colleagues. I put together a series of short, 30-ish minute PD sessions, focusing on how theory could be helpful in the classroom.</p>
+                <p>You can find slides from the first session of the series here, to get an idea of how I put together professional development materials.</p>
+                <a href="/colin-brownlie-sample-PD.pdf" class="external-link" target="_blank">View PD Presentation Slides →</a>
+            </div>
+        </section>
+
+        <!-- Technology Integration Section -->
+        <section id="technology">
+            <h2>Technology Integration</h2>
+            
+            <div class="card-container">
+                <p>Using technology is necessary, but ensuring it is used to further education and student thinking is tricky. Today more and more can be done to help teachers and to deliver learning experiences to students, but it needs to be done thoughtfully and with intention.</p>
+                
+                <p>I've built many tools to improve my workflow and to make administrative work easier for my colleagues. Here at my website, you can see how I've used the internet to supplement learning material. EdTech is something I'm always happy to talk about - there's always more and more coming!</p>
+            </div>
+        </section>
+
+        <!-- Student Work Section -->
+        <section id="student-work">
+            <h2>Student Work & Outcomes</h2>
+            
+            <h3>Student-Created Magazine</h3>
+            <div class="card-container">
+                <p>This year my grade 7 class learned about biographies. After reading short biographies and thinking about how this genre works, the students were tasked with writing their own biographies for a magazine the class put together. The process of assembling the magazine was wonderful to watch - the class had to work together, take on the various jobs at a magazine, such as editing, cover design, page layout, etc. You can see a sample of that work here - with student pictures blurred, of course.</p>
+                <a href="/colin-brownlie-sample-student-work.pdf" class="external-link" target="_blank">View Student Magazine →</a>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <h2>Testimonials & Recognition</h2>
+
+            <h3>Student Appreciation</h3>
+            <div class="card-container">
+                <p>As any teacher would say, words of appreciation from teachers are the best gift we can get. In the 24-25 school year, my school held a contest, asking students to create visual or written art about a teacher who impacted them. I was so grateful that a student I worked with the previous year wrote a poem about my time with her class. Now I'm not going to force anyone to read poetry, at least not outside of the classroom, but if you'd like to see it to get a sense of how I work with students in the classroom, you can click the button below.</p>
+                <a href="/colin-brownlie-student-testimonial.pdf" class="external-link" target="_blank">Read Student's Poem →</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Colin Brownlie | English Language & Literature Teacher | Dewey Schools IB Program</p>
+        <p>This portfolio is a private professional document. Please do not share without permission.</p>
+    </footer>
+</body>
+</html>
