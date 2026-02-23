@@ -7,813 +7,428 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #1a1a2e;
-      --deep: #12122a;
-      --cream: #f7f3ec;
-      --warm-white: #faf8f4;
-      --accent: #8b1a1a;
-      --gold: #c9a84c;
-      --muted-gold: #e8d5a0;
-      --text-dark: #2a2a2a;
-      --text-mid: #4a4a4a;
-      --text-light: #6b6b6b;
-      --border: #d4c9b8;
-      --card-bg: #ffffff;
+      --ink: #1a1a2e; --deep: #12122a; --cream: #f7f3ec; --warm-white: #faf8f4;
+      --accent: #8b1a1a; --gold: #c9a84c; --muted-gold: #e8d5a0;
+      --text-dark: #2a2a2a; --text-mid: #4a4a4a; --text-light: #6b6b6b;
+      --border: #d4c9b8; --card-bg: #ffffff;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Crimson Pro', Georgia, serif;
-      background-color: var(--cream);
-      color: var(--text-dark);
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    /* ── MASTHEAD ── */
-    .masthead {
-      background-color: var(--ink);
-      color: var(--cream);
-      padding: 2.5rem 2rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .masthead::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
-    }
-
-    .masthead-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-
-    .masthead h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 700;
-      line-height: 1.1;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    .masthead h1 em {
-      font-style: italic;
-      color: var(--muted-gold);
-    }
-
-    .masthead-sub {
-      font-family: 'Crimson Pro', serif;
-      font-style: italic;
-      font-size: 1.15rem;
-      color: #c8c0b4;
-      margin-top: 0.5rem;
-    }
-
-    .masthead-meta {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .masthead-meta span {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: #a09888;
-      text-transform: uppercase;
-    }
-
-    .masthead-meta span strong {
-      color: var(--muted-gold);
-    }
-
-    /* ── NAV TABS ── */
-    .nav-tabs {
-      background-color: var(--deep);
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(201,168,76,0.25);
-    }
-
-    .nav-tab {
-      background: none;
-      border: none;
-      color: #a09888;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.85rem 1.5rem;
-      cursor: pointer;
-      transition: color 0.2s, border-bottom 0.2s;
-      border-bottom: 2px solid transparent;
-    }
-
+    body { font-family: 'Crimson Pro', Georgia, serif; background-color: var(--cream); color: var(--text-dark); font-size: 18px; line-height: 1.7; }
+    .masthead { background-color: var(--ink); color: var(--cream); padding: 2.5rem 2rem 2rem; text-align: center; position: relative; overflow: hidden; }
+    .masthead::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent)); }
+    .masthead-label { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .masthead h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700; line-height: 1.1; color: #fff; margin-bottom: 0.5rem; }
+    .masthead h1 em { font-style: italic; color: var(--muted-gold); }
+    .masthead-sub { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 1.15rem; color: #c8c0b4; margin-top: 0.5rem; }
+    .masthead-meta { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .masthead-meta span { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; color: #a09888; text-transform: uppercase; }
+    .masthead-meta span strong { color: var(--muted-gold); }
+    .nav-tabs { background-color: var(--deep); display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(201,168,76,0.25); flex-wrap: wrap; }
+    .nav-tab { background: none; border: none; color: #a09888; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 1.2rem; cursor: pointer; transition: color 0.2s; border-bottom: 2px solid transparent; }
     .nav-tab:hover { color: var(--muted-gold); }
-    .nav-tab.active {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
-    }
-
-    /* ── PANELS ── */
+    .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
     .panel { display: none; }
     .panel.active { display: block; }
-
-    /* ── MAIN CONTAINER ── */
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-
-    /* ── SECTION HEADINGS ── */
-    .section-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-
-    h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.6rem;
-    }
-
+    .container { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem; }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 1rem; }
+    h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
     p { margin-bottom: 1rem; }
-
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 2.5rem 0;
-    }
-
-    /* ── OVERVIEW CARD ── */
-    .overview-card {
-      background: var(--ink);
-      color: var(--cream);
-      border-radius: 4px;
-      padding: 2rem 2.5rem;
-      margin-bottom: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .overview-card::after {
-      content: '"';
-      position: absolute;
-      right: 1.5rem;
-      top: -0.5rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 10rem;
-      color: rgba(201,168,76,0.1);
-      line-height: 1;
-      pointer-events: none;
-    }
-
+    .divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .overview-card { background: var(--ink); color: var(--cream); border-radius: 4px; padding: 2rem 2.5rem; margin-bottom: 2.5rem; position: relative; overflow: hidden; }
+    .overview-card::after { content: '"'; position: absolute; right: 1.5rem; top: -0.5rem; font-family: 'Cormorant Garamond', serif; font-size: 10rem; color: rgba(201,168,76,0.1); line-height: 1; pointer-events: none; }
     .overview-card p { color: #d4ccc0; margin-bottom: 0.75rem; }
     .overview-card p:last-child { margin-bottom: 0; }
-
-    /* ── CRITERIA BADGES ── */
-    .criteria-row {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-top: 1.25rem;
-    }
-
-    .crit-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.35rem 0.85rem;
-      border-radius: 2px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-
-    .crit-badge.formative {
-      background: rgba(201,168,76,0.15);
-      border: 1px solid var(--gold);
-      color: var(--muted-gold);
-    }
-
-    .crit-badge.summative {
-      background: rgba(139,26,26,0.2);
-      border: 1px solid var(--accent);
-      color: #e8b0b0;
-    }
-
-    /* ── REQUIREMENT CARDS ── */
-    .req-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--ink);
-      border-radius: 0 3px 3px 0;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .req-card h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.4rem;
-    }
-
-    .req-card p {
-      color: var(--text-mid);
-      font-size: 0.97rem;
-      margin-bottom: 0;
-    }
-
+    .criteria-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .crit-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.85rem; border-radius: 2px; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; }
+    .crit-badge.formative { background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--muted-gold); }
+    .crit-badge.summative { background: rgba(139,26,26,0.2); border: 1px solid var(--accent); color: #e8b0b0; }
+    .req-card { background: var(--card-bg); border: 1px solid var(--border); border-left: 3px solid var(--ink); border-radius: 0 3px 3px 0; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .req-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+    .req-card p { color: var(--text-mid); font-size: 0.97rem; margin-bottom: 0; }
     .req-card.accent { border-left-color: var(--accent); }
     .req-card.gold { border-left-color: var(--gold); }
-
-    /* ── DEVICE GRID ── */
-    .device-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .device-card {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 1rem 1.2rem;
-    }
-
-    .device-icon {
-      font-size: 1.3rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .device-card h4 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--ink);
-      margin-bottom: 0.3rem;
-    }
-
-    .device-card p {
-      font-size: 0.9rem;
-      color: var(--text-mid);
-      margin-bottom: 0;
-    }
-
-    /* ── PLOT STRUCTURE ── */
-    .plot-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
+    .timeline { margin: 1.5rem 0; }
+    .timeline-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-date { flex-shrink: 0; min-width: 85px; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); padding-top: 0.15rem; }
+    .timeline-content strong { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 0.1rem; }
+    .timeline-content span { font-size: 0.9rem; color: var(--text-mid); }
+    .timeline-item.due .timeline-date { color: var(--accent); }
+    .timeline-item.due .timeline-content strong { color: var(--accent); }
+    .device-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .device-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 3px; padding: 1rem 1.2rem; }
+    .device-icon { font-size: 1.3rem; margin-bottom: 0.3rem; }
+    .device-card h4 { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink); margin-bottom: 0.3rem; }
+    .device-card p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 0; }
+    .plot-step { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
     .plot-step:last-child { border-bottom: none; }
-
-    .plot-num {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      background: var(--ink);
-      color: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
-
-    .plot-step-content h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.2rem;
-    }
-
-    .plot-step-content p {
-      font-size: 0.93rem;
-      color: var(--text-mid);
-      margin-bottom: 0;
-    }
-
-    /* ── FORMATIVE PLANNER ── */
-    .planner-section {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 1.25rem;
-    }
-
-    .planner-header {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 0.75rem 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .planner-header .step-tag {
-      background: var(--gold);
-      color: var(--deep);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.15rem 0.5rem;
-      border-radius: 2px;
-    }
-
-    .planner-header h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .planner-body {
-      padding: 1rem 1.25rem;
-      font-size: 0.95rem;
-      color: var(--text-mid);
-    }
-
+    .plot-num { flex-shrink: 0; width: 36px; height: 36px; background: var(--ink); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; }
+    .plot-step-content h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+    .plot-step-content p { font-size: 0.93rem; color: var(--text-mid); margin-bottom: 0; }
+    .planner-section { background: var(--warm-white); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 1.25rem; }
+    .planner-header { background: var(--ink); color: var(--cream); padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+    .planner-header .step-tag { background: var(--gold); color: var(--deep); font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 2px; }
+    .planner-header h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; }
+    .planner-body { padding: 1rem 1.25rem; font-size: 0.95rem; color: var(--text-mid); }
     .planner-body p { margin-bottom: 0.5rem; }
     .planner-body p:last-child { margin-bottom: 0; }
-
-    .prompt-q {
-      font-style: italic;
-      color: var(--accent);
-      font-size: 0.95rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--muted-gold);
-      margin: 0.5rem 0 0;
-    }
-
-    /* ── ASSESSMENT NOTICE ── */
-    .assess-notice {
-      padding: 1rem 1.25rem;
-      border-radius: 3px;
-      margin: 1.5rem 0;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .assess-notice.formative-notice {
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.4);
-      color: #7a6010;
-    }
-
-    .assess-notice.summative-notice {
-      background: rgba(139,26,26,0.08);
-      border: 1px solid rgba(139,26,26,0.3);
-      color: var(--accent);
-    }
-
-    /* ── CRITERION BOXES ── */
-    .criterion-box {
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-      margin-bottom: 1rem;
-    }
-
-    .criterion-box-header {
-      background: var(--ink);
-      color: var(--muted-gold);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.5rem 1rem;
-    }
-
-    .criterion-box-body {
-      background: var(--card-bg);
-      padding: 1rem 1.25rem;
-      font-size: 0.95rem;
-      color: var(--text-mid);
-    }
-
-    /* ── PARENT SECTION ── */
-    .parent-intro {
-      background: var(--ink);
-      color: var(--cream);
-      border-radius: 4px;
-      padding: 1.75rem 2rem;
-      margin-bottom: 2rem;
-    }
-
+    .prompt-q { font-style: italic; color: var(--accent); font-size: 0.95rem; padding-left: 0.75rem; border-left: 2px solid var(--muted-gold); margin: 0.5rem 0 0; }
+    .assess-notice { padding: 1rem 1.25rem; border-radius: 3px; margin: 1.5rem 0; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; }
+    .assess-notice.formative-notice { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.4); color: #7a6010; }
+    .assess-notice.summative-notice { background: rgba(139,26,26,0.08); border: 1px solid rgba(139,26,26,0.3); color: var(--accent); }
+    .criterion-box { border: 1px solid var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 1rem; }
+    .criterion-box-header { background: var(--ink); color: var(--muted-gold); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.5rem 1rem; }
+    .criterion-box-body { background: var(--card-bg); padding: 1rem 1.25rem; font-size: 0.95rem; color: var(--text-mid); }
+    .reflection-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 1.5rem; }
+    .reflection-header { background: var(--ink); padding: 0.85rem 1.25rem; display: flex; align-items: baseline; gap: 0.75rem; border-bottom: 2px solid var(--gold); flex-wrap: wrap; }
+    .reflection-header .section-num { font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .reflection-header h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: #fff; }
+    .reflection-header .section-sub { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 0.9rem; color: #a09888; margin-left: auto; }
+    .reflection-body { padding: 1.25rem 1.5rem; }
+    .reflection-question { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+    .reflection-question:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .reflection-question strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
+    .reflection-question .hint { font-size: 0.88rem; color: var(--accent); font-style: italic; }
+    .evidence-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .evidence-table thead tr { background: var(--ink); }
+    .evidence-table thead th { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-gold); padding: 0.6rem 0.85rem; text-align: left; border-bottom: 2px solid var(--gold); }
+    .evidence-table tbody tr { border-bottom: 1px solid var(--border); }
+    .evidence-table tbody tr:last-child { border-bottom: none; }
+    .evidence-table tbody tr:nth-child(even) { background: var(--warm-white); }
+    .evidence-table td { padding: 0.6rem 0.85rem; vertical-align: top; color: var(--text-mid); }
+    .evidence-table td.device-name { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+    .evidence-table td.device-name .minimum { display: block; font-weight: 400; font-style: italic; color: var(--text-light); font-size: 0.74rem; margin-top: 0.1rem; }
+    .evidence-table td.subrow { padding-left: 1.5rem; font-style: italic; color: var(--text-light); font-size: 0.85rem; }
+    .process-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0; }
+    .process-table thead tr { background: var(--ink); }
+    .process-table thead th { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-gold); padding: 0.6rem 0.85rem; text-align: left; border-bottom: 2px solid var(--gold); }
+    .process-table tbody tr { border-bottom: 1px solid var(--border); }
+    .process-table tbody tr:last-child { border-bottom: none; }
+    .process-table tbody tr:nth-child(even) { background: var(--warm-white); }
+    .process-table td { padding: 0.75rem 0.85rem; vertical-align: top; color: var(--text-mid); }
+    .process-table td.stage { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
+    .process-table td.prompt-text { font-style: italic; color: var(--accent); font-size: 0.88rem; }
+    .marker-note { background: var(--cream); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 3px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
+    .marker-note strong { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink); display: block; margin-bottom: 0.4rem; }
+    .marker-note p { font-size: 0.93rem; color: var(--text-mid); font-style: italic; margin-bottom: 0; }
+    .parent-intro { background: var(--ink); color: var(--cream); border-radius: 4px; padding: 1.75rem 2rem; margin-bottom: 2rem; }
     .parent-intro h2 { color: #fff; }
     .parent-intro p { color: #c8c0b4; margin-bottom: 0; }
-
-    .tip-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .tip-card h4 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-light);
-      margin-bottom: 0.75rem;
-    }
-
-    .tip-card ul {
-      padding-left: 1.25rem;
-    }
-
-    .tip-card ul li {
-      font-size: 0.95rem;
-      color: var(--text-mid);
-      margin-bottom: 0.4rem;
-    }
-
-    .q-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .q-list li {
-      font-style: italic;
-      color: var(--text-mid);
-      font-size: 0.97rem;
-      padding: 0.4rem 0 0.4rem 1rem;
-      border-left: 2px solid var(--muted-gold);
-      margin-bottom: 0.5rem;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--deep);
-      color: #6a6070;
-      text-align: center;
-      padding: 1.5rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-    }
-
-    /* ── RESPONSIVE ── */
+    .tip-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 3px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .tip-card h4 { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 0.75rem; }
+    .tip-card ul { padding-left: 1.25rem; }
+    .tip-card ul li { font-size: 0.95rem; color: var(--text-mid); margin-bottom: 0.4rem; }
+    .q-list { list-style: none; padding: 0; }
+    .q-list li { font-style: italic; color: var(--text-mid); font-size: 0.97rem; padding: 0.4rem 0 0.4rem 1rem; border-left: 2px solid var(--muted-gold); margin-bottom: 0.5rem; }
+    footer { background: var(--deep); color: #6a6070; text-align: center; padding: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.04em; }
     @media (max-width: 600px) {
-      .nav-tab { padding: 0.75rem 0.9rem; font-size: 0.7rem; }
+      .nav-tab { padding: 0.65rem 0.8rem; font-size: 0.68rem; }
       .container { padding: 2rem 1rem; }
       .overview-card { padding: 1.5rem; }
       .device-grid { grid-template-columns: 1fr 1fr; }
+      .reflection-header .section-sub { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- MASTHEAD -->
 <header class="masthead">
   <div class="masthead-label">Grade 9 Zurich · MYP 4/5 · Language &amp; Literature</div>
   <h1>The <em>Short Story</em></h1>
   <div class="masthead-sub">Craft a world. Shape a character. Say something true.</div>
   <div class="masthead-meta">
-    <span>Length: <strong>~1,500 words</strong></span>
-    <span>Formative: <strong>Criterion A</strong></span>
-    <span>Summative: <strong>Criteria B &amp; C</strong></span>
+    <span>Story due: <strong>March 13</strong></span>
+    <span>Reflection due: <strong>March 17</strong></span>
+    <span>Summative: <strong>Criteria A, B &amp; C</strong></span>
   </div>
 </header>
 
-<!-- NAV -->
 <nav class="nav-tabs">
   <button class="nav-tab active" onclick="switchTab('overview', this)">Overview</button>
   <button class="nav-tab" onclick="switchTab('planner', this)">Story Planner</button>
   <button class="nav-tab" onclick="switchTab('story', this)">The Story</button>
+  <button class="nav-tab" onclick="switchTab('reflection', this)">Reflection</button>
   <button class="nav-tab" onclick="switchTab('parents', this)">Parent Guide</button>
 </nav>
 
-<!-- ══════════════════════════════════════
-     TAB 1: OVERVIEW
-════════════════════════════════════════ -->
+<!-- TAB 1: OVERVIEW -->
 <div id="tab-overview" class="panel active">
   <div class="container">
-
     <div class="overview-card">
-      <div class="section-label" style="color: var(--muted-gold);">The Big Picture</div>
-      <h2 style="color:#fff; font-size:1.75rem; margin-bottom:0.75rem;">What is this assignment?</h2>
+      <div class="section-label" style="color:var(--muted-gold);">The Big Picture</div>
+      <h2 style="color:#fff;font-size:1.75rem;margin-bottom:0.75rem;">What is this assignment?</h2>
       <p>You're going to write an original short story — about 1,500 words — that demonstrates your command of the craft of fiction. Strong short stories aren't just plots; they use carefully chosen language, deliberate structure, and layered meaning to say something worth saying.</p>
-      <p>This assignment has two stages: first, a <strong style="color:var(--muted-gold);">Story Planner</strong> where you make and justify your creative decisions, and then the <strong style="color:var(--muted-gold);">story itself</strong>. The planner isn't busywork — it's where your best ideas will come from.</p>
+      <p>This assignment has three stages: a <strong style="color:var(--muted-gold);">Story Planner</strong> where you make and justify your creative decisions, the <strong style="color:var(--muted-gold);">story itself</strong>, and a <strong style="color:var(--muted-gold);">Writer's Reflection</strong> where you analyze your own choices with the same attention you'd bring to someone else's work.</p>
       <div class="criteria-row">
         <span class="crit-badge formative">📋 Criterion A — Planner (Formative)</span>
         <span class="crit-badge summative">✍️ Criterion B — Story (Summative)</span>
         <span class="crit-badge summative">📖 Criterion C — Story (Summative)</span>
+        <span class="crit-badge summative">🔍 Criterion A — Reflection (Summative)</span>
       </div>
     </div>
 
-    <div class="section-label">At a Glance</div>
-    <h2>What you'll do</h2>
+    <div class="section-label">What you'll do</div>
+    <h2>Three Stages</h2>
 
     <div class="req-card gold">
-      <h4>Stage 1 — Story Planner <span style="font-size:0.8rem; font-weight:400; color:var(--text-light);">(Formative · Criterion A)</span></h4>
-      <p>Before you write a word of your story, you'll complete a written planner that documents the creative decisions behind it. You'll identify and justify your conflict, setting, protagonist, and point of view. This is submitted separately and you'll receive feedback before you draft.</p>
+      <h4>Stage 1 — Story Planner <span style="font-size:0.8rem;font-weight:400;color:var(--text-light);">(Formative · Criterion A)</span></h4>
+      <p>Before you write a word of your story, you'll complete a written planner documenting your creative decisions — conflict, setting, protagonist, and point of view. Submitted separately; you'll receive feedback before you draft.</p>
     </div>
-
     <div class="req-card accent">
-      <h4>Stage 2 — The Short Story <span style="font-size:0.8rem; font-weight:400; color:var(--text-light);">(Summative · Criteria B &amp; C)</span></h4>
-      <p>You'll write a polished original short story of approximately 1,500 words. It must use specific literary devices and follow a complete six-part plot structure. Your story should feel like a real piece of writing — not a checklist.</p>
+      <h4>Stage 2 — The Short Story <span style="font-size:0.8rem;font-weight:400;color:var(--text-light);">(Summative · Criteria B &amp; C) · Due March 13</span></h4>
+      <p>A polished original short story of approximately 1,500 words using specific literary devices and a complete six-part plot structure. Your story should feel like a real piece of writing — not a checklist.</p>
     </div>
-
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     TAB 2: STORY PLANNER
-════════════════════════════════════════ -->
-<div id="tab-planner" class="panel">
-  <div class="container">
-
-    <div class="assess-notice formative-notice">
-      📋 This is your <strong>formative assessment</strong>. It will be assessed against Criterion A and you will receive written feedback before you begin drafting your story.
+    <div class="req-card accent">
+      <h4>Stage 3 — Writer's Reflection <span style="font-size:0.8rem;font-weight:400;color:var(--text-light);">(Summative · Criterion A) · Due March 17</span></h4>
+      <p>A structured written reflection in which you analyze your own story — identifying where you used required elements, evaluating what worked and what you'd revise, and reflecting on your process from brainstorm to final draft.</p>
     </div>
-
-    <div class="section-label">Stage 1</div>
-    <h2>The Story Planner</h2>
-    <p style="color:var(--text-mid);">For each of the four sections below, you need to make a decision and then explain your reasoning. Your planner should be written in full sentences and demonstrate genuine analytical thinking — not just describe what you'll do, but explain <em>why</em>.</p>
 
     <hr class="divider" />
 
+    <div class="section-label">Key Dates</div>
+    <h2>Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">Feb 23</div><div class="timeline-content"><strong>Introduction &amp; Mentor Text</strong><span>Assignment introduced; literary devices explored through <em>The Pedestrian</em></span></div></div>
+      <div class="timeline-item"><div class="timeline-date">Feb 26</div><div class="timeline-content"><strong>Story Planner — In Class</strong><span>Work through all four planner sections in class; finish at home</span></div></div>
+      <div class="timeline-item due"><div class="timeline-date">Feb 27</div><div class="timeline-content"><strong>Planner Due + First Lines</strong><span>Planner submitted; opening paragraph written in class to break the blank page</span></div></div>
+      <div class="timeline-item"><div class="timeline-date">Mar 2</div><div class="timeline-content"><strong>Planner Feedback + Drafting Begins</strong><span>Feedback returned; revise plans if needed and continue drafting</span></div></div>
+      <div class="timeline-item"><div class="timeline-date">Mar 5</div><div class="timeline-content"><strong>In-Class Drafting</strong><span>Sustained writing time; mid-session self-check against your planner. Rough draft should be complete at home before Friday.</span></div></div>
+      <div class="timeline-item"><div class="timeline-date">Mar 6</div><div class="timeline-content"><strong>Peer Feedback</strong><span>Structured peer feedback session — swap drafts in advance via Google Classroom</span></div></div>
+      <div class="timeline-item"><div class="timeline-date">Mar 9</div><div class="timeline-content"><strong>Revision Workshop</strong><span>Revise using peer feedback; teacher models revision moves at the start of class</span></div></div>
+      <div class="timeline-item"><div class="timeline-date">Mar 12</div><div class="timeline-content"><strong>Final Polish</strong><span>Read aloud to yourself quietly, fix endings, last edits</span></div></div>
+      <div class="timeline-item due"><div class="timeline-date">Mar 13</div><div class="timeline-content"><strong>🔴 Story Due + Sharing</strong><span>Final draft submitted — then read a favourite passage aloud; gallery walk of excerpts</span></div></div>
+      <div class="timeline-item due"><div class="timeline-date">Mar 17</div><div class="timeline-content"><strong>🔴 Reflection Due</strong><span>Writer's Reflection submitted via ManageBac</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: STORY PLANNER -->
+<div id="tab-planner" class="panel">
+  <div class="container">
+    <div class="assess-notice formative-notice">📋 This is your <strong>formative assessment</strong>. It will be assessed against Criterion A and you will receive written feedback before you begin drafting your story.</div>
+    <div class="section-label">Stage 1</div>
+    <h2>The Story Planner</h2>
+    <p style="color:var(--text-mid);">For each section, make a decision and explain your reasoning in full sentences. Don't just describe what you'll do — explain <em>why</em>.</p>
+    <hr class="divider" />
     <div class="planner-section">
-      <div class="planner-header">
-        <span class="step-tag">1 of 4</span>
-        <h4>Conflict</h4>
-      </div>
+      <div class="planner-header"><span class="step-tag">1 of 4</span><h4>Conflict</h4></div>
       <div class="planner-body">
         <p>Identify the type of conflict your story will use. Consider: character vs. character, character vs. self, character vs. society, character vs. nature, character vs. fate/supernatural.</p>
         <p>Explain <em>why</em> this type of conflict is the right choice for the story you want to tell. How does it shape what happens? What does it allow you to explore thematically?</p>
         <p class="prompt-q">Why is this conflict the engine of your story, and not a different type?</p>
       </div>
     </div>
-
     <div class="planner-section">
-      <div class="planner-header">
-        <span class="step-tag">2 of 4</span>
-        <h4>Setting</h4>
-      </div>
+      <div class="planner-header"><span class="step-tag">2 of 4</span><h4>Setting</h4></div>
       <div class="planner-body">
         <p>Describe the time and place of your story. Then explain how your setting connects to both your protagonist and your theme — a setting that's merely a backdrop is a missed opportunity.</p>
         <p class="prompt-q">How does where and when your story happens shape who your character is and what the story is ultimately about?</p>
       </div>
     </div>
-
     <div class="planner-section">
-      <div class="planner-header">
-        <span class="step-tag">3 of 4</span>
-        <h4>Protagonist</h4>
-      </div>
+      <div class="planner-header"><span class="step-tag">3 of 4</span><h4>Protagonist</h4></div>
       <div class="planner-body">
         <p>Describe your protagonist. Who are they? What do they want, and what do they fear? What makes them interesting as a character?</p>
         <p>Then explain why this particular character is the right choice for your story. Could a different kind of protagonist have told this story better — and why not?</p>
         <p class="prompt-q">Why is <em>this</em> person the right character to carry your story's weight?</p>
       </div>
     </div>
-
     <div class="planner-section">
-      <div class="planner-header">
-        <span class="step-tag">4 of 4</span>
-        <h4>Point of View</h4>
-      </div>
+      <div class="planner-header"><span class="step-tag">4 of 4</span><h4>Point of View</h4></div>
       <div class="planner-body">
         <p>Choose your narrative point of view: first person, third person limited, or third person omniscient.</p>
         <p>You must justify your choice. Think about what each POV allows you to do — and what it prevents. Why is your chosen POV the <em>best</em> lens for this particular story?</p>
         <p class="prompt-q">What does your chosen POV allow you to do that the others would not?</p>
       </div>
     </div>
-
     <hr class="divider" />
-
     <div class="criterion-box">
       <div class="criterion-box-header">Criterion A · Analyzing (Formative)</div>
-      <div class="criterion-box-body">
-        Your planner will be assessed on the quality of your analytical thinking — specifically, how well you explain and justify your creative decisions using literary understanding. Strong planners make clear connections between craft choices and the effects they create.
-      </div>
+      <div class="criterion-box-body">Your planner will be assessed on the quality of your analytical thinking — specifically, how well you explain and justify your creative decisions using literary understanding. Strong planners make clear connections between craft choices and the effects they create.</div>
     </div>
-
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     TAB 3: THE STORY
-════════════════════════════════════════ -->
+<!-- TAB 3: THE STORY -->
 <div id="tab-story" class="panel">
   <div class="container">
-
-    <div class="assess-notice summative-notice">
-      ✍️ This is your <strong>summative assessment</strong>, graded against Criteria B and C. Submit your final, polished draft.
-    </div>
-
+    <div class="assess-notice summative-notice">✍️ This is your <strong>summative assessment</strong>, graded against Criteria B and C. <strong>Due: March 13.</strong></div>
     <div class="section-label">Stage 2</div>
     <h2>Writing Your Story</h2>
-    <p style="color:var(--text-mid);">Your story must be approximately <strong>1,500 words</strong>. Below are the requirements — but remember: the best stories use these elements because they serve the story, not because they tick a box.</p>
-
+    <p style="color:var(--text-mid);">Your story must be approximately <strong>1,500 words</strong>. The best stories use these elements because they serve the story, not because they tick a box.</p>
     <hr class="divider" />
-
     <div class="section-label">Characterization</div>
     <h3>Bringing Characters to Life</h3>
     <p style="color:var(--text-mid);">Your story must use both types of characterization:</p>
-
-    <div class="req-card">
-      <h4>Direct Characterization</h4>
-      <p>The narrator or another character explicitly tells us something about a character's personality, appearance, or nature.</p>
-    </div>
-    <div class="req-card">
-      <h4>Indirect Characterization</h4>
-      <p>We infer what a character is like through their actions, dialogue, thoughts, appearance, or how others react to them — without being told directly.</p>
-    </div>
-
+    <div class="req-card"><h4>Direct Characterization</h4><p>The narrator or another character explicitly tells us something about a character's personality, appearance, or nature.</p></div>
+    <div class="req-card"><h4>Indirect Characterization</h4><p>We infer what a character is like through their actions, dialogue, thoughts, appearance, or how others react to them — without being told directly.</p></div>
     <hr class="divider" />
-
     <div class="section-label">Theme</div>
     <h3>Saying Something Without Saying It</h3>
-    <div class="req-card accent">
-      <h4>Implied Theme</h4>
-      <p>Your story must have a theme — a meaningful idea about human experience — that emerges through what happens and how, <em>not</em> through a character stating it outright. The reader should feel the theme without you spelling it out.</p>
-    </div>
-
+    <div class="req-card accent"><h4>Implied Theme</h4><p>Your story must have a theme — a meaningful idea about human experience — that emerges through what happens and how, <em>not</em> through a character stating it outright. The reader should feel the theme without you spelling it out.</p></div>
     <hr class="divider" />
-
     <div class="section-label">Literary Devices</div>
     <h3>The Craft Requirements</h3>
     <p style="color:var(--text-mid);">Your story must include at minimum:</p>
-
     <div class="device-grid">
-      <div class="device-card">
-        <div class="device-icon">🔮</div>
-        <h4>Foreshadowing</h4>
-        <p>At least 1 example — a hint or clue about what's to come.</p>
-      </div>
-      <div class="device-card">
-        <div class="device-icon">🌹</div>
-        <h4>Symbolism</h4>
-        <p>At least 1 example — an object, place, or event carrying deeper meaning.</p>
-      </div>
-      <div class="device-card">
-        <div class="device-icon">🔗</div>
-        <h4>Metaphors</h4>
-        <p>At least 2 — direct comparisons that deepen meaning without "like" or "as."</p>
-      </div>
-      <div class="device-card">
-        <div class="device-icon">⚖️</div>
-        <h4>Similes</h4>
-        <p>At least 2 — comparisons using "like" or "as."</p>
-      </div>
-      <div class="device-card">
-        <div class="device-icon">👁️</div>
-        <h4>Imagery</h4>
-        <p>At least 5 examples — specific sensory language (sight, sound, smell, taste, touch).</p>
-      </div>
+      <div class="device-card"><div class="device-icon">🔮</div><h4>Foreshadowing</h4><p>At least 1 — a hint or clue about what's to come.</p></div>
+      <div class="device-card"><div class="device-icon">🌹</div><h4>Symbolism</h4><p>At least 1 — an object, place, or event carrying deeper meaning.</p></div>
+      <div class="device-card"><div class="device-icon">🔗</div><h4>Metaphors</h4><p>At least 2 — direct comparisons that deepen meaning without "like" or "as."</p></div>
+      <div class="device-card"><div class="device-icon">⚖️</div><h4>Similes</h4><p>At least 2 — comparisons using "like" or "as."</p></div>
+      <div class="device-card"><div class="device-icon">👁️</div><h4>Imagery</h4><p>At least 5 — specific sensory language covering sight, sound, smell, taste, and touch.</p></div>
     </div>
-
     <hr class="divider" />
-
     <div class="section-label">Plot Structure</div>
     <h3>The Shape of Your Story</h3>
     <p style="color:var(--text-mid);">Your story must use all six parts of plot structure — in whatever proportions serve your narrative best.</p>
-
-    <div class="plot-step">
-      <div class="plot-num">1</div>
-      <div class="plot-step-content">
-        <h4>Exposition</h4>
-        <p>Establish your world — setting, characters, and situation — giving readers what they need to enter the story.</p>
-      </div>
-    </div>
-    <div class="plot-step">
-      <div class="plot-num">2</div>
-      <div class="plot-step-content">
-        <h4>Inciting Incident</h4>
-        <p>The moment that disrupts the status quo and sets the central conflict in motion.</p>
-      </div>
-    </div>
-    <div class="plot-step">
-      <div class="plot-num">3</div>
-      <div class="plot-step-content">
-        <h4>Rising Action</h4>
-        <p>A series of events that build tension as your protagonist works toward — or struggles against — the conflict.</p>
-      </div>
-    </div>
-    <div class="plot-step">
-      <div class="plot-num">4</div>
-      <div class="plot-step-content">
-        <h4>Climax</h4>
-        <p>The turning point — the moment of highest tension where something decisive happens or is decided.</p>
-      </div>
-    </div>
-    <div class="plot-step">
-      <div class="plot-num">5</div>
-      <div class="plot-step-content">
-        <h4>Falling Action</h4>
-        <p>The aftermath of the climax — events that begin to resolve the tension.</p>
-      </div>
-    </div>
-    <div class="plot-step">
-      <div class="plot-num">6</div>
-      <div class="plot-step-content">
-        <h4>Resolution</h4>
-        <p>The new equilibrium — how things end up, and what has changed.</p>
-      </div>
-    </div>
-
+    <div class="plot-step"><div class="plot-num">1</div><div class="plot-step-content"><h4>Exposition</h4><p>Establish your world — setting, characters, and situation — giving readers what they need to enter the story.</p></div></div>
+    <div class="plot-step"><div class="plot-num">2</div><div class="plot-step-content"><h4>Inciting Incident</h4><p>The moment that disrupts the status quo and sets the central conflict in motion.</p></div></div>
+    <div class="plot-step"><div class="plot-num">3</div><div class="plot-step-content"><h4>Rising Action</h4><p>A series of events that build tension as your protagonist works toward — or struggles against — the conflict.</p></div></div>
+    <div class="plot-step"><div class="plot-num">4</div><div class="plot-step-content"><h4>Climax</h4><p>The turning point — the moment of highest tension where something decisive happens or is decided.</p></div></div>
+    <div class="plot-step"><div class="plot-num">5</div><div class="plot-step-content"><h4>Falling Action</h4><p>The aftermath of the climax — events that begin to resolve the tension.</p></div></div>
+    <div class="plot-step"><div class="plot-num">6</div><div class="plot-step-content"><h4>Resolution</h4><p>The new equilibrium — how things end up, and what has changed.</p></div></div>
     <hr class="divider" />
-
     <div class="section-label">Assessment</div>
     <h3>How Your Story Will Be Graded</h3>
-
-    <div class="criterion-box">
-      <div class="criterion-box-header">Criterion B · Organizing</div>
-      <div class="criterion-box-body">
-        How effectively you organize and structure your story. This includes the coherence of your plot, use of paragraphing and sequencing, and how well the structure serves the narrative's meaning.
-      </div>
-    </div>
-
-    <div class="criterion-box">
-      <div class="criterion-box-header">Criterion C · Producing Text</div>
-      <div class="criterion-box-body">
-        How effectively you use language to create effect. This includes your use of literary devices, the quality and precision of your word choices, how well your style serves your story's purpose, and the overall control of your writing.
-      </div>
-    </div>
-
+    <div class="criterion-box"><div class="criterion-box-header">Criterion B · Organizing</div><div class="criterion-box-body">How effectively you organize and structure your story — the coherence of your plot, use of paragraphing and sequencing, and how well the structure serves the narrative's meaning.</div></div>
+    <div class="criterion-box"><div class="criterion-box-header">Criterion C · Producing Text</div><div class="criterion-box-body">How effectively you use language to create effect — your literary devices, word choices, style, and overall control of the writing.</div></div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     TAB 4: PARENT GUIDE
-════════════════════════════════════════ -->
+<!-- TAB 4: REFLECTION -->
+<div id="tab-reflection" class="panel">
+  <div class="container">
+    <div class="assess-notice summative-notice">🔍 This is your <strong>summative Criterion A assessment</strong>. Submit your completed reflection via ManageBac. <strong>Due: March 17.</strong></div>
+    <div class="section-label">Stage 3</div>
+    <h2>Writer's Reflection</h2>
+    <p style="color:var(--text-mid);">Analyze your own story with the same attention you'd bring to someone else's. Be specific, be honest, and use the language of literary craft. Vague answers — "I used a metaphor to add description" — do not demonstrate Criterion A thinking.</p>
+    <hr class="divider" />
+
+    <div class="reflection-section">
+      <div class="reflection-header">
+        <span class="section-num">Section 1</span>
+        <h4>Theme and Intention</h4>
+        <span class="section-sub">What is your story about beneath the surface?</span>
+      </div>
+      <div class="reflection-body">
+        <div class="reflection-question">
+          <strong>What is the theme of your story?</strong>
+          <span class="hint">State it as an idea about human experience — not a topic. Not "loyalty" but "loyalty has limits when it requires you to lose yourself."</span>
+        </div>
+        <div class="reflection-question">
+          <strong>How did you imply this theme without stating it directly?</strong>
+          <span class="hint">Identify two or three specific choices — a character decision, a symbol, an image, the ending — that carry the theme. Explain the connection.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection-section">
+      <div class="reflection-header">
+        <span class="section-num">Section 2</span>
+        <h4>Literary Device Evidence</h4>
+        <span class="section-sub">Show where you used each required element — and why.</span>
+      </div>
+      <div class="reflection-body">
+        <p style="color:var(--text-mid);font-size:0.93rem;margin-bottom:1rem;">For each device, identify the specific moment in your story and explain the intended effect. A brief quote is ideal where possible.</p>
+        <table class="evidence-table">
+          <thead><tr><th style="width:22%;">Device</th><th style="width:42%;">Quote or moment from your story</th><th style="width:36%;">Why did you make this choice?</th></tr></thead>
+          <tbody>
+            <tr><td class="device-name">Foreshadowing<span class="minimum">at least 1</span></td><td></td><td></td></tr>
+            <tr><td class="device-name">Symbolism<span class="minimum">at least 1</span></td><td></td><td></td></tr>
+            <tr><td class="device-name">Metaphor 1<span class="minimum">at least 2 total</span></td><td></td><td></td></tr>
+            <tr><td class="subrow">Metaphor 2</td><td></td><td></td></tr>
+            <tr><td class="device-name">Simile 1<span class="minimum">at least 2 total</span></td><td></td><td></td></tr>
+            <tr><td class="subrow">Simile 2</td><td></td><td></td></tr>
+            <tr><td class="device-name">Direct Characterization</td><td></td><td></td></tr>
+            <tr><td class="device-name">Indirect Characterization</td><td></td><td></td></tr>
+            <tr><td class="device-name">Imagery<span class="minimum">at least 5 — one per sense</span></td><td></td><td></td></tr>
+            <tr><td class="subrow">— See</td><td></td><td></td></tr>
+            <tr><td class="subrow">— Hear</td><td></td><td></td></tr>
+            <tr><td class="subrow">— Smell</td><td></td><td></td></tr>
+            <tr><td class="subrow">— Taste</td><td></td><td></td></tr>
+            <tr><td class="subrow">— Touch / Feel</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="reflection-section">
+      <div class="reflection-header">
+        <span class="section-num">Section 3</span>
+        <h4>What Worked</h4>
+        <span class="section-sub">Evaluate your writing with the same eye you'd use on someone else's.</span>
+      </div>
+      <div class="reflection-body">
+        <div class="reflection-question">
+          <strong>Identify one moment, line, or technique in your story that you feel was effective.</strong>
+          <span class="hint">Quote it or describe it precisely — then explain specifically why it works. What effect does it create for the reader?</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection-section">
+      <div class="reflection-header">
+        <span class="section-num">Section 4</span>
+        <h4>What You Would Revise</h4>
+        <span class="section-sub">Honest self-assessment is a sign of strength, not weakness.</span>
+      </div>
+      <div class="reflection-body">
+        <div class="reflection-question">
+          <strong>Identify one thing you would change if you had more time.</strong>
+          <span class="hint">What would you do differently — and what effect would that change create? "I'd fix my grammar" is not enough. Think about craft: structure, character, language, theme.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection-section">
+      <div class="reflection-header">
+        <span class="section-num">Section 5</span>
+        <h4>Process Reflection</h4>
+        <span class="section-sub">One or two sentences per stage — be specific, not general.</span>
+      </div>
+      <div class="reflection-body">
+        <table class="process-table">
+          <thead><tr><th style="width:18%;">Stage</th><th style="width:37%;">Prompt</th><th style="width:45%;">Your response</th></tr></thead>
+          <tbody>
+            <tr><td class="stage">Brainstorming</td><td class="prompt-text">What idea surprised you or took you in an unexpected direction?</td><td></td></tr>
+            <tr><td class="stage">Planning</td><td class="prompt-text">How did the planner change or sharpen your original idea?</td><td></td></tr>
+            <tr><td class="stage">Drafting</td><td class="prompt-text">Where did you get stuck, and how did you move forward?</td><td></td></tr>
+            <tr><td class="stage">Revising</td><td class="prompt-text">What did peer feedback make you see that you hadn't noticed yourself?</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="marker-note">
+      <strong>What good looks like.</strong>
+      <p>Strong reflections are specific. They quote the story. They name effects, not just techniques. They're honest about what didn't work as well as what did. The evidence table is your floor — Sections 3, 4, and 5 are where Criterion A thinking is really demonstrated.</p>
+    </div>
+
+    <hr class="divider" />
+    <div class="criterion-box">
+      <div class="criterion-box-header">Criterion A · Analyzing (Summative)</div>
+      <div class="criterion-box-body">This reflection is assessed on the depth and specificity of your literary analysis. Strong responses identify precise moments in the text, explain intended effects, and evaluate how successfully those effects were achieved — not just describe what techniques were used.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5: PARENT GUIDE -->
 <div id="tab-parents" class="panel">
   <div class="container">
-
     <div class="parent-intro">
       <div class="section-label" style="color:var(--muted-gold);">For Families</div>
       <h2>How to Support Your Writer</h2>
-      <p>This assignment asks students to make genuine creative decisions and write an original short story. Your role as a parent is not to shape the story — it's to support the conditions in which your student can do their best thinking.</p>
+      <p>This assignment asks students to make genuine creative decisions, write an original short story, and then reflect analytically on their own work. Your role is not to shape the story — it's to support the conditions in which your student can do their best thinking.</p>
     </div>
-
     <div class="tip-card">
-      <h4>🗓️ Understanding the Timeline</h4>
+      <h4>🗓️ Key Dates to Know</h4>
       <ul>
-        <li>The assignment has two stages: the <strong>Story Planner</strong> (submitted first) and the <strong>Short Story</strong> (submitted after planner feedback).</li>
-        <li>Encourage your student not to leave either stage to the last moment — the planner genuinely improves the story.</li>
-        <li>Ask your student what the deadlines are and help them block out time to work in advance.</li>
+        <li>The <strong>Story Planner</strong> is submitted first and returned with feedback before drafting begins.</li>
+        <li>The <strong>Short Story</strong> final draft is due <strong>March 13.</strong></li>
+        <li>The <strong>Writer's Reflection</strong> is due <strong>March 17</strong> — four days after the story, giving students time to look back with fresh eyes.</li>
       </ul>
     </div>
-
     <div class="tip-card">
       <h4>💬 Questions That Help (Without Doing the Work)</h4>
       <ul class="q-list">
@@ -821,45 +436,38 @@
         <li>"If someone read your story without any explanation, what do you think they'd walk away thinking or feeling?"</li>
         <li>"Why did you choose to tell it from that point of view? What would change if it were different?"</li>
         <li>"Where in the story do you feel the tension most? How did you build up to that moment?"</li>
-        <li>"Is there a moment in the story where you show something rather than just tell it?"</li>
+        <li>"For the reflection — is there one line in your story you're proud of? Why does it work?"</li>
       </ul>
     </div>
-
     <div class="tip-card">
       <h4>✅ Helpful Ways to Support</h4>
       <ul>
-        <li>Read through the assignment requirements with your student so you both understand what's expected.</li>
+        <li>Read through the assignment requirements together so you both understand what's expected.</li>
         <li>Ask your student to explain their story idea out loud — talking through a story often helps clarify it.</li>
         <li>Encourage a first draft that's imperfect — the goal is to get ideas down, then revise.</li>
-        <li>Help create a distraction-free environment during drafting sessions.</li>
+        <li>For the reflection, ask your student to read you their favourite line and explain why they wrote it that way. That's exactly the thinking the reflection asks for.</li>
       </ul>
     </div>
-
     <div class="tip-card">
       <h4>⚠️ What to Avoid</h4>
       <ul>
-        <li><strong>Don't write or rewrite any part of the story</strong> — even with good intentions, this takes away from your student's learning and their grade reflects their work.</li>
-        <li><strong>Don't dictate plot ideas or character decisions</strong> — ask questions instead and let your student arrive at answers independently.</li>
-        <li><strong>Don't use AI tools to generate the story</strong> — students should discuss any use of AI tools with their teacher first.</li>
+        <li><strong>Don't write or rewrite any part of the story or reflection</strong> — the grade reflects your student's work, and both documents need to be theirs.</li>
+        <li><strong>Don't dictate plot or character decisions</strong> — ask questions instead and let your student arrive at answers independently.</li>
+        <li><strong>Don't use AI tools to generate the story or reflection</strong> — students should discuss any use of AI tools with their teacher first.</li>
         <li><strong>Don't stress perfection</strong> — this assignment is designed to stretch students, and some struggle is part of the learning.</li>
       </ul>
     </div>
-
     <div class="tip-card">
       <h4>📬 Getting in Touch</h4>
       <ul>
-        <li>If your student is stuck or worried about the assignment, encourage them to reach out to Mr. Colin directly — that's always the best first step.</li>
+        <li>If your student is stuck or worried, encourage them to reach out to Mr. Colin directly — that's always the best first step.</li>
         <li>Questions about grades or criteria can be directed to ManageBac or via email.</li>
       </ul>
     </div>
-
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  Grade 9 Zurich · MYP 4/5 Language &amp; Literature · The Dewey Schools THT, Hanoi
-</footer>
+<footer>Grade 9 Zurich · MYP 4/5 Language &amp; Literature · The Dewey Schools THT, Hanoi · Story due March 13 · Reflection due March 17</footer>
 
 <script>
   function switchTab(id, btn) {
@@ -870,6 +478,5 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
-
 </body>
 </html>
