@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hexagonal Thinking — Teach Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #F7F5F0;
+    --surface:      #FFFFFF;
+    --surface-2:    #F2EFE8;
+    --border:       #E2DDD4;
+    --border-focus: #B5843A;
+    --text:         #28251E;
+    --text-mid:     #6B6457;
+    --text-light:   #A8A098;
+    --accent:       #B5843A;
+    --accent-hover: #9A6E2F;
+    --accent-soft:  #FBF4E8;
+    --green:        #4A7C59;
+    --green-soft:   #EBF4EE;
+    --locked:       #8C7B5E;
+    --locked-bg:    #EDE7D8;
+    --pro-badge:    #6B4F1E;
+    --hex-color:    #B5843A;
+    --radius:       10px;
+    --radius-sm:    6px;
+    --shadow:       0 1px 3px rgba(40,37,30,0.08), 0 1px 2px rgba(40,37,30,0.06);
+    --shadow-md:    0 4px 12px rgba(40,37,30,0.1), 0 2px 4px rgba(40,37,30,0.06);
+    --font-serif:   "Lora", Georgia, serif;
+    --font-sans:    "DM Sans", "Helvetica Neue", sans-serif;
+    --font-mono:    "JetBrains Mono", monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0 32px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .header-hex {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-title {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .header-title span {
+    color: var(--accent);
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-ghost {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-mid);
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, color 0.15s;
+    text-decoration: none;
+  }
+  .btn-ghost:hover { background: var(--surface-2); color: var(--text); }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 9px 20px;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, border-color 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+  .btn-secondary:hover { background: var(--surface-2); border-color: #ccc; }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 36px 24px 64px;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    margin-bottom: 32px;
+  }
+
+  .page-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .page-subtitle {
+    font-size: 15px;
+    color: var(--text-mid);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+  }
+
+  .card-title-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--accent-soft);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── FORM FIELDS ── */
+  .field {
+    margin-bottom: 20px;
+  }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  .field-hint {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 5px;
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text);
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    line-height: 1.5;
+    appearance: none;
+  }
+
+  input[type="text"]:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(181,132,58,0.12);
+    background: #fff;
+  }
+
+  input[type="text"]::placeholder,
+  textarea::placeholder {
+    color: var(--text-light);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  textarea.tall { min-height: 130px; }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A8A098' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  /* ── TWO-COL GRID ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* ── PRO BADGE ── */
+  .pro-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--locked-bg);
+    color: var(--pro-badge);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid #D4C4A0;
+  }
+
+  /* ── PRO SECTION ── */
+  .pro-section {
+    background: var(--accent-soft);
+    border: 1.5px solid #E8D4A8;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .pro-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .pro-section-title {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pro-lock-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(247,245,240,0.75);
+    border-radius: calc(var(--radius) - 1px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    backdrop-filter: blur(1px);
+    z-index: 5;
+  }
+
+  .pro-lock-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pro-badge);
+    text-align: center;
+  }
+
+  .pro-lock-sub {
+    font-size: 12px;
+    color: var(--text-mid);
+    text-align: center;
+  }
+
+  /* ── HEX PREVIEW ── */
+  .hex-preview-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 8px;
+    gap: 4px;
+  }
+
+  .hex-row {
+    display: flex;
+    gap: 4px;
+  }
+
+  .hex-row:nth-child(even) {
+    transform: translateX(calc(42px + 2px));
+  }
+
+  .hex {
+    width: 76px;
+    height: 66px;
+    background: var(--accent-soft);
+    border: 2px solid var(--accent);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    padding: 8px 6px;
+    cursor: default;
+    transition: background 0.15s;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
+  .hex.empty {
+    background: var(--surface-2);
+    border-color: var(--border);
+    color: var(--text-light);
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  /* ── CONCEPT TAGS ── */
+  .tag-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+    min-height: 32px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--accent-soft);
+    border: 1px solid #E8D4A8;
+    color: var(--accent-hover);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: default;
+  }
+
+  .tag-remove {
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--accent);
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  .tag-remove:hover { color: var(--accent-hover); }
+
+  .tag-input-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .tag-input-row input {
+    flex: 1;
+  }
+
+  .tag-input-row button {
+    flex-shrink: 0;
+  }
+
+  /* ── STUDENT COUNT ── */
+  .count-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--green-soft);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+    border: 1px solid #C2DFC9;
+    margin-left: 8px;
+    font-family: var(--font-mono);
+  }
+
+  /* ── SHARE SECTION ── */
+  .share-box {
+    background: var(--green-soft);
+    border: 1.5px solid #C2DFC9;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  .share-box.visible { display: block; }
+
+  .share-box-title {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .share-link-row {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .share-link-box {
+    flex: 1;
+    background: #fff;
+    border: 1.5px solid #C2DFC9;
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-mid);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-copy {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .btn-copy:hover { background: #3A6B49; }
+  .btn-copy.copied { background: #3A6B49; }
+
+  .share-sub {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 10px;
+  }
+
+  /* ── ACTION ROW ── */
+  .action-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    padding: 24px 0 0;
+  }
+
+  .action-row-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+
+  /* ── OPTION TOGGLES ── */
+  .option-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .option-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .option-row:first-child { padding-top: 0; }
+
+  .option-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .option-sub {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  .toggle {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  .toggle input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 11px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .toggle input:checked + .toggle-slider { background: var(--accent); }
+  .toggle input:checked + .toggle-slider::before { transform: translateX(18px); }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    font-size: 12px;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+  }
+
+  .footer a { color: var(--text-light); text-decoration: none; }
+  .footer a:hover { color: var(--text-mid); }
+
+  /* ── RESPONSIVENESS ── */
+  @media (max-width: 600px) {
+    .header { padding: 0 16px; }
+    .page-wrap { padding: 24px 16px 48px; }
+    .card { padding: 20px 18px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .page-title { font-size: 24px; }
+    .action-row { flex-direction: column; align-items: stretch; }
+    .action-row-right { flex-direction: column; }
+    .share-link-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a class="header-brand" href="#">
+    <svg class="header-hex" viewBox="0 0 32 32" fill="none">
+      <polygon points="16,2 29,9 29,23 16,30 3,23 3,9" fill="#FBF4E8" stroke="#B5843A" stroke-width="1.5"/>
+      <text x="16" y="20" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="12" font-weight="700" fill="#B5843A">Hx</text>
+    </svg>
+    <span class="header-title">Teach<span>Tools</span></span>
+  </a>
+  <nav class="header-nav">
+    <a class="btn-ghost" href="#">All Tools</a>
+    <a class="btn-ghost" href="#">Sign In</a>
+    <a class="btn-primary" href="#">Upgrade to Pro</a>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main class="page-wrap">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="page-eyebrow">Hexagonal Thinking</p>
+    <h1 class="page-title">Set Up Your Activity</h1>
+    <p class="page-subtitle">Add your concept words, configure the activity, and share a link with students. Each student gets their own canvas.</p>
+  </div>
+
+  <!-- ACTIVITY DETAILS CARD -->
+  <div class="card">
+    <div class="card-title">
+      <div class="card-title-icon">📝</div>
+      Activity Details
+    </div>
+
+    <div class="field">
+      <label for="activity-name">Activity Name</label>
+      <input type="text" id="activity-name" placeholder="e.g. The Great Gatsby — Chapter 5 Connections" />
+    </div>
+
+    <div class="grid-2">
+      <div class="field">
+        <label for="subject">Subject / Unit</label>
+        <input type="text" id="subject" placeholder="e.g. IB English Literature" />
+      </div>
+      <div class="field">
+        <label for="class-period">Class / Period</label>
+        <input type="text" id="class-period" placeholder="e.g. Period 3" />
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT WORDS CARD -->
+  <div class="card">
+    <div class="card-title">
+      <div class="card-title-icon">🔷</div>
+      Concept Words
+      <span id="word-count" class="count-badge">0</span>
+    </div>
+
+    <div id="tag-container" class="tag-wrap">
+      <!-- tags appear here -->
+    </div>
+
+    <div class="tag-input-row" style="margin-top: 14px;">
+      <input type="text" id="concept-input" placeholder="Type a concept and press Enter or Add" />
+      <button class="btn-secondary" onclick="addConcept()">+ Add</button>
+    </div>
+
+    <p class="field-hint">Or paste a comma-separated list: <em>identity, power, isolation, time, love, class</em></p>
+
+    <div class="divider"></div>
+
+    <!-- Live Hex Preview -->
+    <div id="hex-preview" style="margin-top: 4px;">
+      <div style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 8px; letter-spacing: 0.04em; text-transform: uppercase;">Preview</div>
+      <div class="hex-preview-wrap" id="hex-grid">
+        <!-- generated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDENT ROSTER CARD -->
+  <div class="card">
+    <div class="card-title">
+      <div class="card-title-icon">👥</div>
+      Student Roster
+    </div>
+
+    <div class="field">
+      <label for="student-list">Student Names</label>
+      <textarea class="tall" id="student-list" placeholder="Paste one name per line:
+Aisha Nguyen
+Ben Kowalski
+Carmen Vidal
+..."></textarea>
+      <p class="field-hint" id="student-hint">Add names above — each student will receive a unique activity link.</p>
+    </div>
+  </div>
+
+  <!-- OPTIONS CARD -->
+  <div class="card">
+    <div class="card-title">
+      <div class="card-title-icon">⚙️</div>
+      Activity Options
+    </div>
+
+    <div class="option-row">
+      <div>
+        <div class="option-label">Students can see concept descriptions</div>
+        <div class="option-sub">Show optional tooltips on each hexagon</div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-tooltips">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="option-row">
+      <div>
+        <div class="option-label">Require connection labels</div>
+        <div class="option-sub">Students must type a label between each adjacent hex pair</div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-labels" checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="option-row">
+      <div>
+        <div class="option-label">
+          Allow free-form hex placement
+          <span class="pro-badge">✦ Pro</span>
+        </div>
+        <div class="option-sub">Students can drag hexes anywhere on the canvas</div>
+      </div>
+      <label class="toggle" style="opacity: 0.4; pointer-events: none;">
+        <input type="checkbox" disabled>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="option-row">
+      <div>
+        <div class="option-label">
+          Add custom hex colors
+          <span class="pro-badge">✦ Pro</span>
+        </div>
+        <div class="option-sub">Assign color categories to hexagons</div>
+      </div>
+      <label class="toggle" style="opacity: 0.4; pointer-events: none;">
+        <input type="checkbox" disabled>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+  </div>
+
+  <!-- SHARE SECTION (shown after generate) -->
+  <div class="share-box" id="share-box">
+    <div class="share-box-title">✅ Activity Ready to Share</div>
+    <div class="share-link-row">
+      <div class="share-link-box" id="share-link-display">https://teachtools.app/hex/act_abc123</div>
+      <button class="btn-copy" id="copy-btn" onclick="copyLink()">Copy Link</button>
+    </div>
+    <p class="share-sub">Share this link with your students. Each student will get their own canvas automatically.</p>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="action-row">
+    <button class="btn-ghost" onclick="resetForm()">Clear All</button>
+    <div class="action-row-right">
+      <button class="btn-secondary" onclick="saveDraft()">Save Draft</button>
+      <button class="btn-primary" id="generate-btn" onclick="generateActivity()">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1v13M1 7.5h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Generate Activity Links
+      </button>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <a href="#">Teach Tools</a> &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; <a href="#">Help</a>
+</footer>
+
+<script>
+  // ── STATE ──
+  const concepts = [];
+
+  // ── CONCEPT TAGS ──
+  const conceptInput = document.getElementById('concept-input');
+
+  conceptInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); addConcept(); }
+    // detect paste of comma-separated list
+  });
+
+  conceptInput.addEventListener('paste', e => {
+    const text = (e.clipboardData || window.clipboardData).getData('text');
+    if (text.includes(',')) {
+      e.preventDefault();
+      text.split(',').map(s => s.trim()).filter(Boolean).forEach(word => addWord(word));
+    }
+  });
+
+  function addConcept() {
+    const raw = conceptInput.value;
+    // handle comma list
+    const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
+    parts.forEach(addWord);
+    conceptInput.value = '';
+    conceptInput.focus();
+  }
+
+  function addWord(word) {
+    if (!word || concepts.includes(word)) return;
+    concepts.push(word);
+    renderTags();
+    renderHexPreview();
+  }
+
+  function removeWord(word) {
+    const i = concepts.indexOf(word);
+    if (i !== -1) concepts.splice(i, 1);
+    renderTags();
+    renderHexPreview();
+  }
+
+  function renderTags() {
+    const container = document.getElementById('tag-container');
+    container.innerHTML = '';
+    concepts.forEach(word => {
+      const tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.innerHTML = `${word} <button class="tag-remove" onclick="removeWord('${word.replace(/'/g, "\\'")}')">×</button>`;
+      container.appendChild(tag);
+    });
+    document.getElementById('word-count').textContent = concepts.length;
+  }
+
+  // ── HEX PREVIEW ──
+  function renderHexPreview() {
+    const grid = document.getElementById('hex-grid');
+    grid.innerHTML = '';
+
+    const words = concepts.slice(0, 12); // show up to 12 in preview
+    const total = Math.max(words.length, 6);
+
+    // Build a honeycomb-ish layout: rows of 4, 3, 4, 3...
+    const layout = [4, 3, 4, 3];
+    let idx = 0;
+    for (let r = 0; r < layout.length && idx < total; r++) {
+      const row = document.createElement('div');
+      row.className = 'hex-row';
+      const cols = Math.min(layout[r], total - idx);
+      for (let c = 0; c < cols; c++) {
+        const hex = document.createElement('div');
+        hex.className = 'hex' + (idx >= words.length ? ' empty' : '');
+        hex.textContent = idx < words.length ? words[idx] : '+';
+        row.appendChild(hex);
+        idx++;
+      }
+      grid.appendChild(row);
+    }
+  }
+
+  // init preview
+  renderHexPreview();
+
+  // ── STUDENT ROSTER ──
+  document.getElementById('student-list').addEventListener('input', updateStudentHint);
+
+  function updateStudentHint() {
+    const val = document.getElementById('student-list').value.trim();
+    const names = val ? val.split('\n').filter(s => s.trim()) : [];
+    const hint = document.getElementById('student-hint');
+    if (names.length > 0) {
+      hint.textContent = `${names.length} student${names.length === 1 ? '' : 's'} detected — each will get a unique activity link.`;
+      hint.style.color = 'var(--green)';
+      hint.style.fontWeight = '600';
+    } else {
+      hint.textContent = 'Add names above — each student will receive a unique activity link.';
+      hint.style.color = '';
+      hint.style.fontWeight = '';
+    }
+  }
+
+  // ── GENERATE ──
+  function generateActivity() {
+    if (concepts.length < 2) {
+      alert('Please add at least 2 concept words before generating.');
+      return;
+    }
+
+    const activityName = document.getElementById('activity-name').value.trim();
+    if (!activityName) {
+      document.getElementById('activity-name').focus();
+      alert('Please give your activity a name.');
+      return;
+    }
+
+    // Show share box
+    const shareBox = document.getElementById('share-box');
+    const link = `https://teachtools.app/hex/act_${Math.random().toString(36).slice(2,10)}`;
+    document.getElementById('share-link-display').textContent = link;
+    shareBox.classList.add('visible');
+    shareBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    document.getElementById('generate-btn').textContent = '✓ Activity Generated';
+    document.getElementById('generate-btn').style.background = 'var(--green)';
+  }
+
+  function copyLink() {
+    const link = document.getElementById('share-link-display').textContent;
+    navigator.clipboard.writeText(link).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy Link'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  function saveDraft() {
+    const btn = document.querySelector('.btn-secondary');
+    btn.textContent = '✓ Draft Saved';
+    setTimeout(() => btn.textContent = 'Save Draft', 2000);
+  }
+
+  function resetForm() {
+    if (!confirm('Clear all fields and start over?')) return;
+    concepts.length = 0;
+    renderTags();
+    renderHexPreview();
+    document.getElementById('activity-name').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('class-period').value = '';
+    document.getElementById('concept-input').value = '';
+    document.getElementById('student-list').value = '';
+    document.getElementById('share-box').classList.remove('visible');
+    document.getElementById('generate-btn').textContent = 'Generate Activity Links';
+    document.getElementById('generate-btn').style.background = '';
+    updateStudentHint();
+  }
+</script>
+</body>
+</html>
