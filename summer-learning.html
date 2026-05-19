@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI study prompts for IB MYP English Language &amp; Literature — summer self-study">
+    <meta name="theme-color" content="#2c2420">
+    <title>Summer Learning | Teacher Colin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* ================================
+           Summer Learning — Page Styles
+           ================================ */
+
+        .page-header {
+            padding-top: calc(72px + var(--space-3xl));
+            padding-bottom: var(--space-3xl);
+            background-color: var(--color-white);
+        }
+
+        .page-header-label {
+            display: inline-block;
+            font-size: 0.813rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .page-header-title {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-lg);
+            color: var(--color-navy);
+        }
+
+        .page-header-title .accent {
+            color: var(--color-accent);
+        }
+
+        .page-header-description {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            max-width: 580px;
+        }
+
+        /* Section labels */
+        .summer-section-number {
+            font-size: 0.813rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Prompt grid */
+        .prompt-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+
+        /* Prompt card */
+        .prompt-card {
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-md);
+            transition: box-shadow var(--transition-base);
+        }
+
+        .prompt-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .prompt-header {
+            padding: var(--space-xl) var(--space-xl) var(--space-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .phase-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: var(--space-md);
+        }
+
+        .phase-pill {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 3px 10px;
+            background-color: var(--color-background);
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+        }
+
+        .prompt-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: var(--space-xs);
+            letter-spacing: -0.02em;
+        }
+
+        .prompt-description {
+            font-size: 0.938rem;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        .prompt-body {
+            padding: var(--space-xl);
+        }
+
+        .prompt-text {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: var(--color-text);
+            background-color: #f0ede7;
+            padding: var(--space-lg);
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin-bottom: var(--space-md);
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 10px 20px;
+            background-color: var(--color-navy);
+            color: var(--color-white);
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+            border-radius: var(--radius-sm);
+        }
+
+        .copy-btn:hover {
+            background-color: var(--color-accent);
+        }
+
+        .copy-btn.copied {
+            background-color: #4a7c59;
+        }
+
+        /* Reading section */
+        .reading-intro {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-top: var(--space-md);
+            max-width: 600px;
+        }
+
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-2xl);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .source-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-lg);
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            color: var(--color-navy);
+            font-weight: 600;
+            font-size: 0.938rem;
+            transition: all var(--transition-base);
+            border-bottom: 2px solid transparent;
+        }
+
+        .source-link:hover {
+            box-shadow: var(--shadow-md);
+            border-bottom-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .source-link svg {
+            flex-shrink: 0;
+            transition: transform var(--transition-fast);
+        }
+
+        .source-link:hover svg {
+            transform: translate(3px, -3px);
+        }
+
+        @media (max-width: 768px) {
+            .prompt-header {
+                padding: var(--space-lg) var(--space-lg) var(--space-md);
+            }
+
+            .prompt-body {
+                padding: var(--space-lg);
+            }
+
+            .source-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .source-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-initial">T</span>
+                <span class="brand-text">Teacher Colin</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#classes" class="nav-link">Classes</a></li>
+                <li><a href="summer-learning.html" class="nav-link active">Summer Learning</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header-label">IB MYP English Language &amp; Literature</div>
+            <h1 class="page-header-title">Summer <span class="accent">Learning</span></h1>
+            <p class="page-header-description">AI study prompts to keep your English skills sharp over the summer. Each prompt guides you through a structured session — from checking what you already know to producing your own writing.</p>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ================================
+             Section 1 — Grammar
+             ================================ -->
+        <section class="section" id="grammar">
+            <div class="container">
+                <div class="section-header">
+                    <div class="summer-section-number">Section 01</div>
+                    <h2 class="section-title">Grammar</h2>
+                    <p class="section-subtitle">Six prompts covering the grammar points most likely to sharpen your writing. Each session follows the same four-stage structure.</p>
+                </div>
+
+                <div class="prompt-grid">
+
+                    <!-- Grammar 1 — Subject-verb agreement -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Sentence writing</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Subject-verb agreement</h3>
+                            <p class="prompt-description">Making sure verbs match their subjects in number and person.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging English language tutor. I want to practise subject-verb agreement — making sure the verb matches its subject in number and person. We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know. Use my answers to decide how much explanation I need.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation of the rule. Include:
+- How to identify the subject of a sentence
+- Why the verb must agree with it in number (singular/plural) and person
+- Three or four examples, including at least one tricky case (e.g. subjects joined by "or"/"nor", collective nouns, indefinite pronouns like "everyone")
+Keep the explanation concise — we'll learn more through writing.
+
+Stage 3 — Sentence writing
+Give me five prompts and ask me to write one sentence for each, using the correct subject-verb agreement. Each prompt should push me to use a slightly different structure (e.g. a compound subject, an indefinite pronoun, a collective noun). After I write all five, give me specific feedback on each sentence. If something is wrong, explain why and show me the correct version. Ask me to revise any sentences that need it.
+
+Stage 4 — Paragraph writing
+Say something like: "Now let's put it all together. What do you feel like writing about today?" and suggest 2–3 topic options (e.g. a hobby, a place you know well, something happening in the world). Once I choose, ask me to write a short paragraph of 6–8 sentences on that topic. Tell me to focus on getting subject-verb agreement right throughout — especially when the subject is tricky.
+
+After I write the paragraph, give me detailed feedback:
+- Identify any subject-verb agreement errors and explain them
+- Point out two or three things I did well
+- Ask me to revise any errors before we finish
+
+Close by asking me to explain in my own words when subject-verb agreement becomes tricky and why — a quick reflection to consolidate what I've learned.
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Grammar 2 — Countable and uncountable nouns -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Sentence writing</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Countable and uncountable nouns</h3>
+                            <p class="prompt-description">Understanding which nouns can be counted and which can't — and the grammar that follows.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging English language tutor. I want to understand countable and uncountable nouns and practise using them correctly in my writing. We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know. Use my answers to decide how much explanation I need.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation covering:
+- What countable and uncountable nouns are, with examples of each
+- The key grammar rules that follow: articles (a/an vs no article), quantifiers (much/many, a little/a few, a lot of), and plural forms
+- Two or three tricky cases — nouns that can be countable or uncountable depending on meaning (e.g. "experience", "time", "hair", "light")
+Keep the explanation concise — we'll learn more through writing.
+
+Stage 3 — Sentence writing
+Give me five prompts and ask me to write one sentence for each, using a countable or uncountable noun correctly. The prompts should include: one uncountable noun in a quantity expression, one noun that can be both countable and uncountable (used in one of its meanings), one sentence using "much" or "many" correctly, and two others of your choice. After I write all five, give me specific feedback on each sentence — pointing out errors with quantifiers, articles, or plural forms, and explaining why. Ask me to revise any sentences that need it.
+
+Stage 4 — Paragraph writing
+Say something like: "Now let's put it all together. What do you feel like writing about today?" and suggest 2–3 topic options that will naturally require both countable and uncountable nouns (e.g. describing a meal, a place, a daily routine). Once I choose, ask me to write a short paragraph of 6–8 sentences, paying attention to how I use articles and quantifiers with different noun types.
+
+After I write the paragraph, give me detailed feedback:
+- Identify any countable/uncountable errors and explain them
+- Comment on my use of articles and quantifiers
+- Point out two or three things I did well
+- Ask me to revise any errors before we finish
+
+Close by asking me to explain in my own words how to tell whether a noun is countable or uncountable — and what to do when it can be both.
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Grammar 3 — Past vs present verb forms -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Sentence writing</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Past vs present verb forms</h3>
+                            <p class="prompt-description">Knowing when to use each tense — including the literary present for writing about texts.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging English language tutor. I want to practise choosing between past and present verb forms and maintaining consistent tense in my writing. We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know. Use my answers to decide how detailed to be.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation covering:
+- When we use simple present vs simple past, with examples
+- The literary present tense — why we use present tense when writing about events in stories, films, or other texts (e.g. "Macbeth murders Duncan" not "Macbeth murdered Duncan")
+- How unexpected tense shifts within a piece of writing confuse the reader — show a before/after example
+Keep the explanation concise — we'll learn more through writing.
+
+Stage 3 — Sentence writing
+Give me five prompts and ask me to write one sentence for each, choosing the correct tense. Include: one sentence about a past event, one sentence using the literary present about a story or film, one sentence in simple present for a general truth or habit, and two others that require a deliberate tense choice. After I write all five, give me specific feedback on each — explaining any tense errors and why the other tense would be wrong in that context. Ask me to revise any sentences that need it.
+
+Stage 4 — Paragraph writing
+Say something like: "Now let's put it all together. What do you feel like writing about today?" and suggest 2–3 topic options — for example: a short analysis of a story or film they know, a description of a past event or memory, or a piece about a habit or routine. Once I choose, ask me to write a short paragraph of 6–8 sentences, maintaining consistent tense throughout.
+
+After I write the paragraph, give me detailed feedback:
+- Identify any tense shifts or errors and explain them
+- Note whether I used the literary present correctly if it was relevant
+- Point out two or three things I did well
+- Ask me to revise any errors before we finish
+
+Close by asking me to explain in my own words: when would you use the literary present, and why does tense consistency matter in writing?
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Grammar 4 — Present perfect tense -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Sentence writing</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Present perfect tense</h3>
+                            <p class="prompt-description">When to use 'have/has + past participle' — and how it differs from simple past.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging English language tutor. I want to understand the present perfect tense and practise using it correctly in my writing. We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know. Use my answers to decide how detailed to be.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation covering:
+- How the present perfect is formed (have/has + past participle)
+- The key situations where we use it: actions connected to the present, life experiences, recent events with present relevance, unfinished time periods
+- A direct comparison with simple past — show three pairs of sentences and explain the difference in meaning (e.g. "I saw that film" vs "I have seen that film")
+- One or two common mistakes, especially the tendency to use simple past where present perfect is needed
+Keep the explanation concise — we'll learn more through writing.
+
+Stage 3 — Sentence writing
+Give me five prompts and ask me to write one sentence for each using the present perfect. Include: one life experience sentence, one sentence about a recent event with present relevance, one sentence with "already" or "yet", one sentence with "since" or "for", and one sentence where I must choose between present perfect and simple past and explain my choice. After I write all five, give me specific feedback — pointing out any formation errors or cases where simple past would be more appropriate, and explaining why. Ask me to revise any sentences that need it.
+
+Stage 4 — Paragraph writing
+Say something like: "Now let's put it all together. What do you feel like writing about today?" and suggest 2–3 topic options that naturally invite the present perfect — for example: things you have done or tried in your life so far, changes that have happened in a place or situation you know, or recent events that are still affecting things now. Once I choose, ask me to write a short paragraph of 6–8 sentences, using the present perfect where it's the right choice.
+
+After I write the paragraph, give me detailed feedback:
+- Identify any present perfect errors or cases where I used simple past when present perfect was needed (or vice versa)
+- Comment on whether my use of time expressions (since, for, already, yet, recently) is correct
+- Point out two or three things I did well
+- Ask me to revise any errors before we finish
+
+Close by asking me to explain in my own words: what is the key difference between present perfect and simple past, and when would you choose one over the other?
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Grammar 5 — Present continuous and stative verbs -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Sentence writing</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Present continuous and stative verbs</h3>
+                            <p class="prompt-description">Why some verbs can't be used in continuous form — and what to use instead.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging English language tutor. I want to understand the present continuous tense and stative verbs — especially why certain verbs cannot be used in continuous form. We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know. Use my answers to decide where to start.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation covering:
+- How and when we use the present continuous (am/is/are + -ing) for ongoing or temporary actions
+- What stative verbs are — verbs describing states rather than actions (e.g. know, believe, want, love, own, seem) — and why they don't take continuous form
+- The main categories of stative verbs: mental states, emotions, possession, perception, appearance
+- Verbs that can be stative or dynamic depending on meaning (e.g. "I think you're right" vs "I'm thinking about it") — give two or three examples
+Keep the explanation concise — we'll learn more through writing.
+
+Stage 3 — Sentence writing
+Give me five prompts and ask me to write one sentence for each. Include: two sentences using the present continuous correctly for an ongoing action, one sentence using a stative verb correctly in simple present (not continuous), one sentence with a verb that can be stative or dynamic — used in its dynamic sense — and one sentence where I must decide which form is correct and explain why. After I write all five, give me specific feedback on each — explaining any errors and why the stative verb cannot take continuous form in that context. Ask me to revise any sentences that need it.
+
+Stage 4 — Paragraph writing
+Say something like: "Now let's put it all together. What do you feel like writing about today?" and suggest 2–3 topic options that will naturally mix ongoing actions and states — for example: what you're doing and thinking about this summer, describing a character from a story you know, or a day in your life right now. Once I choose, ask me to write a short paragraph of 6–8 sentences, paying careful attention to which verbs take continuous form and which don't.
+
+After I write the paragraph, give me detailed feedback:
+- Identify any stative verb errors and explain them clearly
+- Comment on whether I've used present continuous correctly for genuine ongoing actions
+- Point out two or three things I did well
+- Ask me to revise any errors before we finish
+
+Close by asking me to name three stative verbs from memory and explain in my own words why they can't be used in continuous form.
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Grammar 6 — Avoiding comma splices -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Sentence writing</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Avoiding comma splices</h3>
+                            <p class="prompt-description">One of the most common punctuation errors — and four ways to fix it.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging English language tutor. I want to understand comma splices — what they are, why they're errors, and how to fix them — then practise avoiding them in my own writing. We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know. Use my answers to decide how much explanation I need.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation covering:
+- What a comma splice is: two independent clauses joined by only a comma
+- Why it's considered an error in formal and academic writing
+- The four main ways to fix one: (a) use a full stop and start a new sentence, (b) use a semicolon, (c) use a coordinating conjunction (for, and, nor, but, or, yet, so), (d) use a subordinating conjunction to make one clause dependent
+- Show all four fixes applied to the same comma splice sentence so I can see the difference
+Keep the explanation concise — we'll learn more through writing.
+
+Stage 3 — Sentence writing
+Give me five comma splice sentences and ask me to rewrite each one using a different fix each time — so I practise all four methods (plus one of my choice). After I rewrite all five, give me specific feedback on each — confirming whether the splice is fixed, whether the chosen method fits the context, and whether my punctuation is correct. Ask me to revise any that need it.
+
+Stage 4 — Paragraph writing
+Say something like: "Now let's put it all together. What do you feel like writing about today?" and suggest 2–3 topic options — for example: an opinion on something you care about, a description of a place or person, or a short argument about something you'd like to change. Once I choose, ask me to write a short paragraph of 6–8 sentences on that topic, paying careful attention to how I join clauses — no comma splices allowed.
+
+After I write the paragraph, give me detailed feedback:
+- Identify any comma splices and explain how to fix each one
+- Comment on the variety of sentence structures I've used — am I joining clauses in different ways, or relying on the same method every time?
+- Point out two or three things I did well
+- Ask me to revise any errors before we finish
+
+Close by asking me to explain in my own words: what is a comma splice, and what's your preferred way to fix one?
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================
+             Section 2 — Writing
+             ================================ -->
+        <section class="section section-alt" id="writing">
+            <div class="container">
+                <div class="section-header">
+                    <div class="summer-section-number">Section 02</div>
+                    <h2 class="section-title">Writing</h2>
+                    <p class="section-subtitle">Three prompts to develop your writing craft — from figurative language to academic style.</p>
+                </div>
+
+                <div class="prompt-grid">
+
+                    <!-- Writing 1 — Figurative language -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Sentence writing</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Figurative language</h3>
+                            <p class="prompt-description">Using simile, metaphor, personification, and symbolism to make writing more vivid and meaningful.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging creative writing tutor. I want to learn how to use figurative language — specifically simile, metaphor, personification, and symbolism — and practise using them in my own writing. We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know about figurative language. Use my answers to decide how much explanation I need and how sophisticated your examples should be.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation of each of the four devices:
+- Simile: a comparison using "like" or "as"
+- Metaphor: a direct comparison that says one thing is another
+- Personification: giving human qualities to non-human things
+- Symbolism: using an object, place, or event to represent something beyond its literal meaning
+
+For each device, give one weak example and one strong example — and explain what makes the strong one work. Help me understand that figurative language isn't decoration; it creates meaning and feeling.
+
+Stage 3 — Sentence writing
+Give me five writing prompts and ask me to write one sentence for each, using a specified device each time:
+- One simile describing a sound
+- One metaphor describing an emotion
+- One personification of something in nature
+- One sentence using any device to describe light or darkness
+- One sentence of my choice using any device
+
+After I write all five, give me specific feedback on each sentence:
+- Does the figurative language work? Is it fresh or clichéd?
+- Does it create a clear image or feeling?
+- Suggest one way to make each sentence stronger if needed
+Ask me to revise any that feel weak or clichéd.
+
+Stage 4 — Paragraph writing
+Say: "Now let's write something real. Here are a few topics that work well for figurative language — pick whichever one speaks to you:"
+- A place that means something to you (a room, a street, somewhere you return to in your mind)
+- A feeling you find hard to put into words
+- A memory that has stayed with you
+
+Once I choose, ask me to write a short descriptive paragraph of 6–8 sentences on that topic, using at least three different figurative devices deliberately — not just dropped in, but chosen because they add meaning or feeling.
+
+After I write the paragraph, give me detailed feedback:
+- Identify each figurative device I used and comment on whether it works
+- Flag any clichés (e.g. "as cold as ice", "heart of gold") and suggest fresher alternatives
+- Point out two or three moments where my language is particularly strong
+- Ask me to revise one sentence to make the figurative language more original
+
+Close by asking: which of the four devices do you find most natural to use, and which feels hardest? Why do you think that is?
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Writing 2 — Paragraphing -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                                <span class="phase-pill">Multi-paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Paragraphing</h3>
+                            <p class="prompt-description">Writing paragraphs that are focused, coherent, and well-connected — in both creative and analytical writing.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging writing tutor. I want to improve my paragraphing — specifically how to write focused, coherent paragraphs and connect them smoothly. We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know about paragraphing. Use my answers to decide how much explanation I need.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation covering:
+
+What makes a strong paragraph:
+- A clear focus — one main idea per paragraph
+- A strong opening sentence that signals what the paragraph is about
+- Development — sentences that expand, explain, or evidence the main idea
+- No padding — every sentence should be doing a job
+
+Coherence within a paragraph:
+- How sentences connect to each other logically
+- Using pronouns, synonyms, and repeated key words to avoid repetition while maintaining flow
+- Sentence variety — mixing short and longer sentences for rhythm
+
+Connecting paragraphs:
+- Linking words and phrases that signal relationships (contrast, addition, consequence, sequence)
+- How the end of one paragraph can lead into the next
+- When to start a new paragraph (new idea, new time, new speaker, new place)
+
+Show one weak paragraph and one strong version of the same content — and explain specifically what changed and why it works better.
+
+Stage 3 — Single paragraph writing
+Give me three paragraph prompts and ask me to choose one. Make the options genuinely different in tone and purpose:
+- An analytical paragraph about a theme or character from any story, film, or text I know
+- A descriptive paragraph about a place or moment
+- An opinion paragraph about something I care about
+
+Once I choose, ask me to write a focused paragraph of 6–8 sentences. Remind me: one main idea, strong opening, every sentence earns its place.
+
+After I write, give me detailed feedback:
+- Is the paragraph focused on one idea throughout?
+- Is the opening sentence strong — does it tell me what's coming?
+- Are there any sentences that feel like padding or go off-topic?
+- How well do the sentences connect to each other?
+- Point out two or three things that work well
+Ask me to revise before moving on.
+
+Stage 4 — Multi-paragraph writing
+Say: "Now let's write something longer. What do you feel like writing about today?" and suggest 2–3 options:
+- A short opinion piece on something you feel strongly about
+- A description of a person or place that has changed over time
+- A response to a text, film, or story you know well
+
+Once I choose, ask me to write three connected paragraphs on that topic. Each paragraph should have a clear focus, and the three paragraphs should feel like they belong together — not three separate pieces.
+
+After I write, give me detailed feedback on the whole piece:
+- Does each paragraph have a clear, distinct focus?
+- How smoothly do the paragraphs connect to each other?
+- Are there any moments where the writing loses focus or repeats itself?
+- What is the strongest paragraph and why?
+Ask me to revise one paragraph — the one with the most room to improve.
+
+Close by asking: what is the hardest thing about paragraphing for you right now — starting, staying focused, or connecting ideas? What will you watch out for next time?
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Writing 3 — Academic writing style -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Level check</span>
+                                <span class="phase-pill">Explanation</span>
+                                <span class="phase-pill">Sentence rewriting</span>
+                                <span class="phase-pill">Paragraph writing</span>
+                            </div>
+                            <h3 class="prompt-title">Academic writing style</h3>
+                            <p class="prompt-description">Moving between formal and informal register, and writing analytically without personal pronouns.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a patient, encouraging writing tutor. I want to develop my academic writing style — specifically understanding formal versus informal register, and learning to write analytically without relying on personal pronouns like "I think" or "I believe". We'll work through four stages together.
+
+Stage 1 — Level check
+Start by asking me one or two short questions to find out what I already know about formal writing and register. Use my answers to decide how much explanation I need.
+
+Stage 2 — Explanation and examples
+Give me a clear, focused explanation covering:
+
+Formal vs informal register:
+- What register means — the level of formality in language, chosen for a specific audience and purpose
+- Features of informal writing: contractions, colloquial expressions, slang, casual sentence structure, emotional language
+- Features of formal writing: full word forms, precise vocabulary, controlled tone, more complex sentence structures
+- Show three pairs of sentences — the same idea written informally and then formally — and explain what changed
+
+Avoiding personal pronouns in analytical writing:
+- Why academic writing avoids "I think", "I believe", "In my opinion" — it's not about hiding your voice, it's about making claims through evidence and argument rather than personal assertion
+- Strategies to replace personal pronouns:
+  * Making the text or evidence the subject ("The text suggests...", "This implies...")
+  * Using impersonal constructions ("It could be argued that...", "There is evidence to suggest...")
+  * Nominalisation — turning verbs or adjectives into nouns to create a more formal tone (e.g. "analyse" → "analysis", "significant" → "significance")
+- Show before/after examples of informal analytical sentences rewritten in formal academic style
+
+Stage 3 — Sentence rewriting
+Give me six informal or personal sentences and ask me to rewrite each one in formal academic style, removing personal pronouns where they appear:
+- Two sentences that start with "I think" or "I feel"
+- Two sentences with contractions or colloquial language
+- Two sentences that are grammatically fine but too casual in tone for academic writing
+
+After I rewrite all six, give me specific feedback on each:
+- Have I successfully removed personal pronouns?
+- Is the register genuinely formal, or just slightly less informal?
+- Is the meaning still clear and accurate after rewriting?
+- Suggest improvements where needed
+Ask me to revise any that still feel too casual or awkward.
+
+Stage 4 — Paragraph writing
+Say: "Now let's write something in a proper academic style. Here are a few topics — pick whichever interests you most:"
+- An analytical paragraph about a theme in a story, film, or text you know
+- A short argument about why something in society matters
+- A paragraph explaining the significance of something you've studied or read about
+
+Once I choose, ask me to write a focused analytical paragraph of 6–8 sentences in formal academic style — no personal pronouns, no contractions, no colloquial language. The argument should be driven by the ideas and evidence, not by personal assertion.
+
+After I write the paragraph, give me detailed feedback:
+- Flag any personal pronouns or informal language that crept in
+- Comment on whether the register is consistently formal throughout
+- Is the argument clear and well-supported — or does it rely on assertion?
+- Point out two or three moments where the writing is particularly strong
+Ask me to revise before we finish.
+
+Close by asking: what was the hardest part of writing without personal pronouns? Did removing "I" make the writing feel stronger or weaker — and why do you think that is?
+
+I'm an English Language and Literature student.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================
+             Section 3 — Reading
+             ================================ -->
+        <section class="section" id="reading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="summer-section-number">Section 03</div>
+                    <h2 class="section-title">Reading</h2>
+                    <p class="section-subtitle">One universal prompt that works with any short story — find a text below, then paste the URL or the full text into your AI chat.</p>
+                    <p class="reading-intro">Browse one of the story libraries below and pick a short story that interests you. Then open your AI chat, paste the prompt, and add the story URL or text at the end.</p>
+                </div>
+
+                <!-- Source links -->
+                <div class="source-grid">
+                    <a href="https://www.gutenberg.org" target="_blank" rel="noopener" class="source-link">
+                        Project Gutenberg
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M8 2h4v4M12 2L6 8M5 3H2v9h9V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.eastoftheweb.com/short-stories" target="_blank" rel="noopener" class="source-link">
+                        East of the Web
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M8 2h4v4M12 2L6 8M5 3H2v9h9V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="https://americanliterature.com/short-story-library" target="_blank" rel="noopener" class="source-link">
+                        American Literature
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M8 2h4v4M12 2L6 8M5 3H2v9h9V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.loc.gov/collections/" target="_blank" rel="noopener" class="source-link">
+                        Library of Congress
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M8 2h4v4M12 2L6 8M5 3H2v9h9V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="prompt-grid">
+
+                    <!-- Reading — Short story study guide -->
+                    <article class="prompt-card">
+                        <div class="prompt-header">
+                            <div class="phase-pills">
+                                <span class="phase-pill">Author context</span>
+                                <span class="phase-pill">Key vocabulary</span>
+                                <span class="phase-pill">Comprehension</span>
+                                <span class="phase-pill">Analysis</span>
+                                <span class="phase-pill">Writing prompt</span>
+                            </div>
+                            <h3 class="prompt-title">Short story study guide</h3>
+                            <p class="prompt-description">Paste in a URL or the full text of any short story and the AI will build you a personalised study guide.</p>
+                        </div>
+                        <div class="prompt-body">
+                            <div class="prompt-text">You are a knowledgeable and encouraging English Literature tutor. I am going to give you a short story, and I want you to build me a personalised study guide for it.
+
+I will provide the story in one of two ways:
+- A URL linking directly to the story text
+- The full text of the story pasted below this prompt
+
+If I give you a URL: try to access and read the full story at that link. If you cannot access it, tell me clearly and ask me to paste the text instead.
+
+Once you have read the story, produce a study guide with the following five sections:
+
+1. Author and context
+Give me a short paragraph (4–6 sentences) on the author — who they were, when and where they lived, and what they are known for. Then explain briefly when the story was written and any historical or cultural context that helps a reader understand it better. Keep this accessible, not academic.
+
+2. Key vocabulary
+Identify 8–12 words or phrases from the story that a reader might find difficult or that are important to understanding the text. For each one, give:
+- The word or phrase as it appears in the story
+- A clear, simple definition
+- A note on why this word matters in context (e.g. it signals tone, reveals character, carries thematic weight)
+
+3. Comprehension questions
+Write five questions that test whether I understood what happened in the story — the plot, the characters, the sequence of events. These should have clear, findable answers in the text. After I answer them, give me feedback and correct any misunderstandings.
+
+4. Analysis questions
+Write four questions that ask me to think more deeply about the story — theme, character, the author's craft, language choices, or the story's meaning. These should not have single "right" answers; they should invite me to form and defend an interpretation. After I answer them, respond to each one: affirm what works in my thinking, push back where my reasoning is thin, and suggest what else I might consider.
+
+5. Writing prompt
+Give me one writing task connected to the story. It should ask me to write 2–3 paragraphs in response — either an analytical response (e.g. exploring a theme or technique) or a creative response (e.g. writing a missing scene, continuing the story, or writing from another character's perspective). Make the task specific to this story, not generic.
+
+After I complete the writing task, give me detailed feedback:
+- Is my argument or creative choice clear and well-developed?
+- Is my writing style appropriate for the task (analytical or creative)?
+- Point out two or three specific strengths
+- Suggest one or two things to improve
+
+Tone throughout: friendly and encouraging, but intellectually demanding. I am an English Language and Literature student who wants to be challenged, not just reassured.</div>
+                            <button class="copy-btn" onclick="copyPrompt(this)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                    <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                                </svg>
+                                Copy prompt
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">&copy; 2025 Teacher Colin | IB MYP English Language &amp; Literature</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Copy prompt to clipboard
+        function copyPrompt(button) {
+            const promptText = button.closest('.prompt-body').querySelector('.prompt-text');
+            const text = promptText.textContent.trim();
+
+            navigator.clipboard.writeText(text).then(() => {
+                button.classList.add('copied');
+                button.innerHTML = `
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M2 7l4 4 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                    </svg>
+                    Copied!
+                `;
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.innerHTML = `
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <rect x="4" y="4" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M1 10V2a1 1 0 011-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                        </svg>
+                        Copy prompt
+                    `;
+                }, 2500);
+            }).catch(() => {
+                // Fallback for browsers without clipboard API
+                const range = document.createRange();
+                range.selectNodeContents(promptText);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+
+                button.classList.add('copied');
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.textContent = 'Copy prompt';
+                }, 2500);
+            });
+        }
+    </script>
+
+</body>
+</html>
