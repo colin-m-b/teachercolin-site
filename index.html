@@ -187,4 +187,14 @@
             });
 
             navLinks.forEach(link => {
-     
+                const href = link.getAttribute('href');
+                if (href === `#${current}`) {
+                    link.classList.add('active');
+                } else if (!href.startsWith('summer')) {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
