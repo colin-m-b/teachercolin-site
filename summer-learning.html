@@ -228,6 +228,80 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* How-to box */
+        .how-to-box {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg) var(--space-xl);
+            background-color: #f0ede7;
+            border-left: 3px solid var(--color-accent);
+            max-width: 640px;
+        }
+
+        .how-to-box p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+        }
+
+        .how-to-box strong {
+            color: var(--color-navy);
+        }
+
+        /* Section navigation buttons */
+        .section-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+
+        .section-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-lg);
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+            color: var(--color-navy);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all var(--transition-base);
+            border-bottom: 3px solid transparent;
+        }
+
+        .section-nav-btn:hover {
+            box-shadow: var(--shadow-lg);
+            border-bottom-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .section-nav-num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .section-nav-btn:hover .section-nav-num {
+            color: var(--color-accent);
+        }
+
+        @media (max-width: 480px) {
+            .section-nav {
+                flex-direction: column;
+            }
+
+            .section-nav-btn {
+                justify-content: space-between;
+            }
+
+            .how-to-box {
+                padding: var(--space-md) var(--space-lg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -258,6 +332,25 @@
             <div class="page-header-label">IB MYP English Language &amp; Literature</div>
             <h1 class="page-header-title">Summer <span class="accent">Learning</span></h1>
             <p class="page-header-description">AI study prompts to keep your English skills sharp over the summer. Each prompt guides you through a structured session — from checking what you already know to producing your own writing.</p>
+
+            <div class="how-to-box">
+                <p><strong>How to use these prompts:</strong> Pick a topic below, hit <strong>Copy prompt</strong>, then paste it into any AI chat — Claude, ChatGPT, Gemini, or whichever you prefer. The AI will guide you through each stage; just respond to what it asks. You don't need to prepare anything in advance.</p>
+            </div>
+
+            <nav class="section-nav" aria-label="Jump to section">
+                <a href="#grammar" class="section-nav-btn">
+                    <span class="section-nav-num">01</span>
+                    Grammar
+                </a>
+                <a href="#writing" class="section-nav-btn">
+                    <span class="section-nav-num">02</span>
+                    Writing
+                </a>
+                <a href="#reading" class="section-nav-btn">
+                    <span class="section-nav-num">03</span>
+                    Reading
+                </a>
+            </nav>
         </div>
     </header>
 
