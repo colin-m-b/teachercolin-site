@@ -1,0 +1,567 @@
+/* teachercolin.com — 2026 redesign
+   Shared stylesheet for: index.html, 8-athens.html, 9-zurich.html, 10-edmonton.html
+   Summer Learning and Portfolio keep their own stylesheets. */
+
+:root {
+  --ink: #1F2421;
+  --ink-secondary: #3B443E;
+  --ink-muted: #6B736C;
+  --hairline: #E4E0D8;
+  --page: #FFFFFF;
+  --canvas: #F3F1EC;
+  --footer-ground: #152B46;
+  --footer-ink: #E8EEF5;
+  --footer-muted: #9DB0C4;
+  --footer-links: #CBD8E4;
+
+  /* Overridden per page via body[data-theme] */
+  --accent: #1D3A5F;
+  --accent-ink: #F4F8FC;
+  --accent-tint: #EDF6F3;
+  --accent-nav-muted: #D6E0EB;
+}
+
+body[data-theme="athens"] {
+  --accent: #1F6F5C;
+  --accent-ink: #F2FAF7;
+  --accent-tint: #EDF6F3;
+  --accent-nav-muted: #D3EAE2;
+}
+
+body[data-theme="zurich"] {
+  --accent: #C8452C;
+  --accent-ink: #FFF7F2;
+  --accent-tint: #FDF0EC;
+  --accent-nav-muted: #FBE3DB;
+}
+
+body[data-theme="edmonton"] {
+  --accent: #6B3E86;
+  --accent-ink: #F9F5FB;
+  --accent-tint: #F5EFF8;
+  --accent-nav-muted: #E5D6EC;
+}
+
+* { box-sizing: border-box; }
+
+/* ---------- EN/VI content toggle ---------- */
+/* Default (no JS, or before it runs): show English only, so the page
+   is still fully readable with scripts blocked. */
+html:not([data-lang="vi"]) .i18n-vi { display: none; }
+html[data-lang="vi"] .i18n-en { display: none; }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  background: var(--page);
+  box-shadow: 0 24px 60px -40px rgba(31, 36, 33, 0.35);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.site-header .brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-header .brand-name {
+  font-family: 'Newsreader', serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+}
+
+.site-header .brand-sub {
+  font-size: 14px;
+  color: var(--accent-nav-muted);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 16px;
+  flex-wrap: wrap;
+  color: var(--accent-nav-muted);
+}
+
+.site-nav a {
+  color: var(--accent-nav-muted);
+  padding-bottom: 3px;
+  border-bottom: 3px solid transparent;
+}
+
+.site-nav a:hover {
+  color: #FFFFFF;
+}
+
+.site-nav a.active {
+  font-weight: 700;
+  color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+}
+
+.lang-toggle {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.lang-toggle .lang-btn {
+  all: unset;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.lang-toggle .lang-btn:hover {
+  color: #FFFFFF;
+}
+
+.lang-toggle .lang-btn.is-active {
+  background: #FFFFFF;
+  color: var(--accent);
+}
+
+.lang-toggle .lang-btn.is-active:hover {
+  color: var(--accent);
+}
+
+.lang-toggle .lang-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: -2px;
+}
+
+/* ---------- Home hero ---------- */
+
+.home-hero {
+  padding: 44px 24px 36px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.home-hero h1 {
+  font-family: 'Newsreader', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin: 0 0 16px;
+  max-width: 34ch;
+}
+
+.home-hero p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  margin: 0;
+  max-width: 60ch;
+}
+
+.home-hero p.vi {
+  color: var(--ink-muted);
+}
+
+/* ---------- Class picker grid (home) ---------- */
+
+.class-picker {
+  padding: 36px 24px 44px;
+}
+
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.class-pick-card {
+  border: 1px solid var(--hairline);
+  border-top: 8px solid var(--card-accent, var(--accent));
+  padding: 24px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: inherit;
+  transition: box-shadow 0.15s ease;
+}
+
+.class-pick-card:hover {
+  box-shadow: 0 10px 24px -14px rgba(31, 36, 33, 0.4);
+}
+
+.class-pick-card .eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--accent));
+  font-weight: 700;
+}
+
+.class-pick-card .name {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.class-pick-card .subject {
+  font-size: 17px;
+  color: var(--ink-secondary);
+}
+
+.class-pick-card .subject.vi {
+  font-size: 16px;
+  color: var(--ink-muted);
+}
+
+.class-pick-card .unit {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-secondary);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+}
+
+.class-pick-card .go-btn {
+  margin-top: 14px;
+  align-self: flex-start;
+  background: var(--card-accent, var(--accent));
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 16px;
+}
+
+/* ---------- Summer learning teaser (home) ---------- */
+
+.summer-teaser-wrap {
+  padding: 0 24px 44px;
+}
+
+.summer-teaser {
+  border: 1px solid var(--hairline);
+  border-left: 8px solid var(--accent);
+  padding: 22px 26px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  color: inherit;
+}
+
+.summer-teaser:hover {
+  border-left-width: 10px;
+}
+
+.summer-teaser .title {
+  font-family: 'Newsreader', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.summer-teaser .desc {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-secondary);
+  margin-top: 4px;
+  max-width: 58ch;
+}
+
+.summer-teaser .desc .vi {
+  color: var(--ink-muted);
+}
+
+.summer-teaser .cta {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ---------- Class page hero ---------- */
+
+.class-hero {
+  padding: 36px 24px 30px;
+  border-bottom: 1px solid var(--hairline);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.class-hero .eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.class-hero h1 {
+  font-family: 'Newsreader', serif;
+  font-weight: 500;
+  font-size: clamp(36px, 7vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 10px 0 8px;
+  color: var(--ink);
+}
+
+.class-hero .subject-line {
+  font-size: 19px;
+  color: var(--ink-secondary);
+}
+
+.deadline-card {
+  background: var(--accent-tint);
+  border-left: 8px solid var(--accent);
+  padding: 16px 20px 18px;
+  max-width: 380px;
+}
+
+.deadline-card .eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.deadline-card .task {
+  font-family: 'Newsreader', serif;
+  font-size: 24px;
+  color: var(--ink);
+  margin-top: 6px;
+}
+
+.deadline-card .due {
+  font-size: 17px;
+  color: var(--ink-secondary);
+  margin-top: 2px;
+}
+
+/* ---------- Resource cards (Archive / Files) ---------- */
+
+.resource-grid {
+  padding: 32px 24px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.resource-card {
+  border: 1px solid var(--hairline);
+  border-top: 8px solid var(--card-accent, var(--accent));
+  padding: 22px 24px 26px;
+}
+
+.resource-card .title {
+  font-family: 'Newsreader', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.resource-card .title-vi {
+  font-size: 16px;
+  color: var(--ink-muted);
+}
+
+.resource-card .desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  margin-top: 10px;
+}
+
+.resource-card .btn {
+  margin-top: 16px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 16px;
+}
+
+.resource-card .btn.primary {
+  background: var(--card-accent, var(--accent));
+  color: #FFFFFF;
+}
+
+.resource-card .btn.secondary {
+  border: 2px solid var(--site-blue, #1D3A5F);
+  color: var(--site-blue, #1D3A5F);
+}
+
+/* ---------- Unit section ---------- */
+
+.unit-section {
+  padding: 36px 24px 44px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+}
+
+.unit-section .eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 700;
+}
+
+.unit-section h2 {
+  font-family: 'Newsreader', serif;
+  font-weight: 500;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.15;
+  margin: 10px 0 4px;
+  color: var(--ink);
+}
+
+.unit-section .unit-title-vi {
+  font-size: 18px;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+}
+
+.unit-section p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink-secondary);
+  margin: 0 0 12px;
+  max-width: 60ch;
+}
+
+.unit-section p.vi {
+  font-size: 17px;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+}
+
+.unit-section .concepts {
+  font-size: 16px;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--hairline);
+  padding-top: 12px;
+}
+
+.ask-home {
+  background: var(--accent-tint);
+  border-top: 8px solid var(--accent);
+  padding: 22px 24px 26px;
+  align-self: flex-start;
+}
+
+.ask-home .eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.ask-home .question {
+  font-family: 'Newsreader', serif;
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-top: 10px;
+}
+
+.ask-home .question-vi {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  margin-top: 8px;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--footer-ground);
+  color: var(--footer-ink);
+  padding: 28px 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.site-footer .name {
+  font-family: 'Newsreader', serif;
+  font-size: 20px;
+}
+
+.site-footer .meta {
+  font-size: 15px;
+  color: var(--footer-muted);
+  margin-top: 5px;
+}
+
+.site-footer .contact {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.site-footer nav {
+  display: flex;
+  gap: 24px;
+  font-size: 16px;
+  color: var(--footer-links);
+  flex-wrap: wrap;
+}
+
+.site-footer nav a:hover {
+  color: #FFFFFF;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .class-grid { grid-template-columns: 1fr; }
+  .resource-grid { grid-template-columns: 1fr; }
+  .unit-section { grid-template-columns: 1fr; }
+  .class-hero { align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .site-header, .home-hero, .class-picker, .summer-teaser-wrap,
+  .class-hero, .resource-grid, .unit-section, .site-footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .site-nav { gap: 12px; font-size: 15px; }
+  .home-hero h1 { font-size: 26px; }
+  .class-hero h1 { font-size: 34px; }
+}
