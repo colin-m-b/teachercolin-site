@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="assets/lang.js"></script>
 </head>
 <body data-theme="zurich">
 
@@ -22,78 +23,99 @@
       <span class="brand-sub">Dewey Schools &middot; IB MYP</span>
     </div>
     <nav class="site-nav">
-      <a href="index.html">Home</a>
+      <a href="index.html"><span class="i18n-en">Home</span><span class="i18n-vi" lang="vi">Trang ch&#7911;</span></a>
       <a href="8-athens.html">8 Athens</a>
       <a href="9-zurich.html" class="active">9 Zurich</a>
       <a href="10-edmonton.html">10 Edmonton</a>
-      <a href="summer-learning.html">Summer Learning</a>
-      <span class="lang-toggle" title="Vietnamese pages coming soon">
-        <span class="lang-en">EN</span>
-        <span class="lang-vi">VI</span>
+      <a href="summer-learning.html"><span class="i18n-en">Summer Learning</span><span class="i18n-vi" lang="vi">H&#7885;c t&#7853;p m&ugrave;a h&egrave;</span></a>
+      <span class="lang-toggle" role="group" aria-label="Language / Ng&ocirc;n ng&#7919;">
+        <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false">VI</button>
       </span>
     </nav>
   </header>
 
   <section class="class-hero">
     <div>
-      <div class="eyebrow">MYP 4 &middot; Grade 9 &middot; Language and Literature</div>
+      <div class="eyebrow">
+        <span class="i18n-en">MYP 4 &middot; Grade 9</span><span class="i18n-vi" lang="vi">MYP 4 &middot; L&#7899;p 9</span>
+      </div>
       <h1>9 Zurich</h1>
-      <div class="subject-vi" lang="vi">Ng&ocirc;n ngữ v&agrave; Văn học</div>
+      <div class="subject-line">
+        <span class="i18n-en">Language and Literature</span><span class="i18n-vi" lang="vi">Ng&ocirc;n ng&#7919; v&agrave; V&#259;n h&#7885;c</span>
+      </div>
     </div>
-    <!-- Set showDeadline to false (or delete this block) once there is nothing due -->
+    <!-- Delete this block once there is nothing due -->
     <!-- TODO: confirm the real deadline date/description below -->
     <div class="deadline-card">
-      <div class="eyebrow">Next deadline &middot; Hạn nộp tiếp theo</div>
-      <div class="task">Rhetorical analysis, final draft</div>
-      <div class="due">Friday 26 September &middot; B&agrave;i ph&acirc;n t&iacute;ch tu từ, bản cuối</div>
+      <div class="eyebrow">
+        <span class="i18n-en">Next deadline</span><span class="i18n-vi" lang="vi">H&#7841;n n&#7897;p ti&#7871;p theo</span>
+      </div>
+      <div class="task i18n-en">Rhetorical analysis, final draft</div>
+      <div class="task i18n-vi" lang="vi">B&agrave;i ph&acirc;n t&iacute;ch tu t&#7915;, b&#7843;n cu&#7889;i</div>
+      <div class="due i18n-en">Friday 26 September</div>
+      <div class="due i18n-vi" lang="vi">Th&#7913; S&aacute;u, 26 th&aacute;ng 9</div>
     </div>
   </section>
 
   <section class="resource-grid">
     <div class="resource-card" style="--card-accent:#C8452C">
-      <div class="title">Lesson Archive</div>
-      <div class="title-vi" lang="vi">Lưu trữ b&agrave;i học</div>
-      <div class="desc">Every lesson this term, summarised in English and Vietnamese, newest first.</div>
+      <div class="title i18n-en">Lesson Archive</div>
+      <div class="title i18n-vi" lang="vi">L&#432;u tr&#7919; b&agrave;i h&#7885;c</div>
+      <div class="desc i18n-en">Every lesson this term, summarised in English and Vietnamese, newest first.</div>
+      <div class="desc i18n-vi" lang="vi">M&#7895;i b&agrave;i h&#7885;c trong h&#7885;c k&#7923; n&agrave;y, &#273;&#432;&#7907;c t&oacute;m t&#7855;t b&#7857;ng ti&#7871;ng Anh v&agrave; ti&#7871;ng Vi&#7879;t, m&#7899;i nh&#7845;t l&ecirc;n &#273;&#7847;u.</div>
       <!-- TODO: replace # with the published 9 Zurich Lesson Archive Google Doc URL -->
-      <a class="btn primary" href="#">Open in Google Docs &rarr;</a>
+      <a class="btn primary" href="#">
+        <span class="i18n-en">Open in Google Docs &rarr;</span><span class="i18n-vi" lang="vi">M&#7903; trong Google Docs &rarr;</span>
+      </a>
     </div>
     <div class="resource-card" style="--card-accent:#1D3A5F">
-      <div class="title">Lesson Files</div>
-      <div class="title-vi" lang="vi">T&agrave;i liệu b&agrave;i học</div>
-      <div class="desc">The slides and handouts from each lesson, as PDFs you can read on a phone.</div>
+      <div class="title i18n-en">Lesson Files</div>
+      <div class="title i18n-vi" lang="vi">T&agrave;i li&#7879;u b&agrave;i h&#7885;c</div>
+      <div class="desc i18n-en">The slides and handouts from each lesson, as PDFs you can read on a phone.</div>
+      <div class="desc i18n-vi" lang="vi">Slide v&agrave; t&agrave;i li&#7879;u ph&aacute;t tay c&#7911;a t&#7915;ng b&agrave;i h&#7885;c, d&#7841;ng PDF &#273;&#7875; xem tr&ecirc;n &#273;i&#7879;n tho&#7841;i.</div>
       <!-- TODO: replace # with the shared 9 Zurich Lessons/ Google Drive folder URL -->
-      <a class="btn secondary" href="#">Open in Google Drive &rarr;</a>
+      <a class="btn secondary" href="#">
+        <span class="i18n-en">Open in Google Drive &rarr;</span><span class="i18n-vi" lang="vi">M&#7903; trong Google Drive &rarr;</span>
+      </a>
     </div>
   </section>
 
   <section class="unit-section">
     <div>
-      <div class="eyebrow">This term &middot; Học kỳ n&agrave;y</div>
-      <h2>Unit 1 &mdash; Readers, Writers, and Texts</h2>
-      <div class="unit-title-vi" lang="vi">Người đọc, người viết v&agrave; văn bản</div>
-      <p>We study how writers and speakers persuade an audience &mdash; the word choice, style and structure behind a convincing argument &mdash; and debate whether using them is fair.</p>
-      <p class="vi" lang="vi">Ch&uacute;ng ta t&igrave;m hiểu c&aacute;ch người viết v&agrave; người n&oacute;i thuyết phục người đọc &mdash; c&aacute;ch chọn từ, văn phong v&agrave; cấu tr&uacute;c tạo n&ecirc;n một lập luận thuyết phục &mdash; v&agrave; tranh luận xem việc sử dụng ch&uacute;ng c&oacute; c&ocirc;ng bằng hay kh&ocirc;ng.</p>
-      <div class="concepts">Key concept: Communication &middot; Global context: Personal and cultural expression</div>
+      <div class="eyebrow">
+        <span class="i18n-en">This term</span><span class="i18n-vi" lang="vi">H&#7885;c k&#7923; n&agrave;y</span>
+      </div>
+      <h2 class="i18n-en">Unit 1 &mdash; Readers, Writers, and Texts</h2>
+      <h2 class="i18n-vi" lang="vi">Unit 1 &mdash; Ng&#432;&#7901;i &#273;&#7885;c, ng&#432;&#7901;i vi&#7871;t v&agrave; v&#259;n b&#7843;n</h2>
+      <p class="i18n-en">We study how writers and speakers persuade an audience &mdash; the word choice, style and structure behind a convincing argument &mdash; and debate whether using them is fair.</p>
+      <p class="vi i18n-vi" lang="vi">Ch&uacute;ng ta t&igrave;m hi&#7875;u c&aacute;ch ng&#432;&#7901;i vi&#7871;t v&agrave; ng&#432;&#7901;i n&oacute;i thuy&#7871;t ph&#7909;c ng&#432;&#7901;i &#273;&#7885;c &mdash; c&aacute;ch ch&#7885;n t&#7915;, v&#259;n phong v&agrave; c&#7845;u tr&uacute;c t&#7841;o n&ecirc;n m&#7897;t l&#7853;p lu&#7853;n thuy&#7871;t ph&#7909;c &mdash; v&agrave; tranh lu&#7853;n xem vi&#7879;c s&#7917; d&#7909;ng ch&uacute;ng c&oacute; c&ocirc;ng b&#7857;ng hay kh&ocirc;ng.</p>
+      <div class="concepts i18n-en">Key concept: Communication &middot; Global context: Personal and cultural expression</div>
+      <div class="concepts i18n-vi" lang="vi">Kh&aacute;i ni&#7879;m ch&iacute;nh: Giao ti&#7871;p &middot; B&#7889;i c&#7843;nh to&agrave;n c&#7847;u: Th&#7875; hi&#7879;n b&#7843;n th&acirc;n v&agrave; v&#259;n h&oacute;a</div>
     </div>
     <div class="ask-home">
-      <div class="eyebrow">Ask them at home &middot; Hỏi con ở nh&agrave;</div>
-      <div class="question">&ldquo;Is it ethical to use structure and rhetoric to convince someone to think something?&rdquo;</div>
-      <div class="question-vi" lang="vi">&ldquo;Việc d&ugrave;ng cấu tr&uacute;c v&agrave; c&aacute;c biện ph&aacute;p tu từ để thuyết phục người kh&aacute;c c&oacute; hợp lẽ kh&ocirc;ng?&rdquo;</div>
+      <div class="eyebrow">
+        <span class="i18n-en">Ask them at home</span><span class="i18n-vi" lang="vi">H&#7887;i con &#7903; nh&agrave;</span>
+      </div>
+      <div class="question i18n-en">&ldquo;Is it ethical to use structure and rhetoric to convince someone to think something?&rdquo;</div>
+      <div class="question i18n-vi" lang="vi">&ldquo;Vi&#7879;c d&ugrave;ng c&#7845;u tr&uacute;c v&agrave; c&aacute;c bi&#7879;n ph&aacute;p tu t&#7915; &#273;&#7875; thuy&#7871;t ph&#7909;c ng&#432;&#7901;i kh&aacute;c c&oacute; h&#7907;p l&#7869; kh&ocirc;ng?&rdquo;</div>
     </div>
   </section>
 
   <footer class="site-footer">
     <div>
-      <div class="name">Mr. Colin Brownlie</div>
+      <div class="name i18n-en">Mr. Colin Brownlie</div>
+      <div class="name i18n-vi" lang="vi">Th&#7847;y Colin Brownlie</div>
       <div class="meta">teachercolin.com &middot; Dewey Schools, Hanoi</div>
-      <div class="contact">Contact: Parents &mdash; Edufit App &middot; Students &mdash; Email</div>
+      <div class="contact i18n-en">Contact: Parents &mdash; Edufit App &middot; Students &mdash; Email</div>
+      <div class="contact i18n-vi" lang="vi">Li&ecirc;n h&#7879;: Ph&#7909; huynh &mdash; &#7912;ng d&#7909;ng Edufit &middot; H&#7885;c sinh &mdash; Email</div>
     </div>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html"><span class="i18n-en">Home</span><span class="i18n-vi" lang="vi">Trang ch&#7911;</span></a>
       <a href="8-athens.html">8 Athens</a>
       <a href="9-zurich.html">9 Zurich</a>
       <a href="10-edmonton.html">10 Edmonton</a>
-      <a href="summer-learning.html">Summer Learning</a>
+      <a href="summer-learning.html"><span class="i18n-en">Summer Learning</span><span class="i18n-vi" lang="vi">H&#7885;c t&#7853;p m&ugrave;a h&egrave;</span></a>
     </nav>
   </footer>
 

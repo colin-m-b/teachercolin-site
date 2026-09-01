@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="assets/lang.js"></script>
 </head>
 <body data-theme="home">
 
@@ -22,51 +23,70 @@
       <span class="brand-sub">Dewey Schools &middot; IB MYP</span>
     </div>
     <nav class="site-nav">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html" class="active">
+        <span class="i18n-en">Home</span><span class="i18n-vi" lang="vi">Trang ch&#7911;</span>
+      </a>
       <a href="8-athens.html">8 Athens</a>
       <a href="9-zurich.html">9 Zurich</a>
       <a href="10-edmonton.html">10 Edmonton</a>
-      <a href="summer-learning.html">Summer Learning</a>
-      <span class="lang-toggle" title="Vietnamese pages coming soon">
-        <span class="lang-en">EN</span>
-        <span class="lang-vi">VI</span>
+      <a href="summer-learning.html">
+        <span class="i18n-en">Summer Learning</span><span class="i18n-vi" lang="vi">H&#7885;c t&#7853;p m&ugrave;a h&egrave;</span>
+      </a>
+      <span class="lang-toggle" role="group" aria-label="Language / Ng&ocirc;n ng&#7919;">
+        <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false">VI</button>
       </span>
     </nav>
   </header>
 
   <section class="home-hero">
-    <h1>Hello parents and students! If you've missed class time, forgot something, or you're just curious, you can find information about lessons and assignments by choosing your class below.</h1>
-    <p class="vi" lang="vi">Xin ch&agrave;o qu&yacute; phụ huynh v&agrave; c&aacute;c em học sinh! Nếu em nghỉ học, qu&ecirc;n b&agrave;i, hoặc chỉ đơn giản l&agrave; muốn xem lại, h&atilde;y chọn lớp của m&igrave;nh b&ecirc;n dưới để t&igrave;m th&ocirc;ng tin về b&agrave;i học v&agrave; b&agrave;i tập.</p>
+    <h1 class="i18n-en">Hello parents and students! If you've missed class time, forgot something, or you're just curious, you can find information about lessons and assignments by choosing your class below.</h1>
+    <h1 class="i18n-vi" lang="vi">Xin ch&agrave;o qu&yacute; ph&#7909; huynh v&agrave; c&aacute;c em h&#7885;c sinh! N&#7871;u em ngh&#7881; h&#7885;c, qu&ecirc;n b&agrave;i, ho&#7863;c ch&#7881; &#273;&#417;n gi&#7843;n l&agrave; mu&#7889;n xem l&#7841;i, h&atilde;y ch&#7885;n l&#7899;p c&#7911;a m&igrave;nh b&ecirc;n d&#432;&#7899;i &#273;&#7875; t&igrave;m th&ocirc;ng tin v&#7873; b&agrave;i h&#7885;c v&agrave; b&agrave;i t&#7853;p.</h1>
   </section>
 
   <section class="class-picker">
     <div class="class-grid">
 
       <a class="class-pick-card" style="--card-accent:#1F6F5C" href="8-athens.html">
-        <div class="eyebrow">MYP 3 &middot; Grade 8</div>
+        <div class="eyebrow">
+          <span class="i18n-en">MYP 3 &middot; Grade 8</span><span class="i18n-vi" lang="vi">MYP 3 &middot; L&#7899;p 8</span>
+        </div>
         <div class="name">8 Athens</div>
-        <div class="subject">Language and Literature</div>
-        <div class="subject vi" lang="vi">Ng&ocirc;n ngữ v&agrave; Văn học</div>
-        <div class="unit">Unit 1 &mdash; Readers, Writers, and Texts</div>
-        <span class="go-btn">Go to 8 Athens &rarr;</span>
+        <div class="subject i18n-en">Language and Literature</div>
+        <div class="subject i18n-vi" lang="vi">Ng&ocirc;n ng&#7919; v&agrave; V&#259;n h&#7885;c</div>
+        <div class="unit i18n-en">Unit 1 &mdash; Readers, Writers, and Texts</div>
+        <div class="unit i18n-vi" lang="vi">&#272;&#417;n v&#7883; 1 &mdash; Ng&#432;&#7901;i &#273;&#7885;c, ng&#432;&#7901;i vi&#7871;t v&agrave; v&#259;n b&#7843;n</div>
+        <span class="go-btn">
+          <span class="i18n-en">Go to 8 Athens &rarr;</span><span class="i18n-vi" lang="vi">Xem l&#7899;p 8 Athens &rarr;</span>
+        </span>
       </a>
 
       <a class="class-pick-card" style="--card-accent:#C8452C" href="9-zurich.html">
-        <div class="eyebrow">MYP 4 &middot; Grade 9</div>
+        <div class="eyebrow">
+          <span class="i18n-en">MYP 4 &middot; Grade 9</span><span class="i18n-vi" lang="vi">MYP 4 &middot; L&#7899;p 9</span>
+        </div>
         <div class="name">9 Zurich</div>
-        <div class="subject">Language and Literature</div>
-        <div class="subject vi" lang="vi">Ng&ocirc;n ngữ v&agrave; Văn học</div>
-        <div class="unit">Unit 1 &mdash; Readers, Writers, and Texts</div>
-        <span class="go-btn">Go to 9 Zurich &rarr;</span>
+        <div class="subject i18n-en">Language and Literature</div>
+        <div class="subject i18n-vi" lang="vi">Ng&ocirc;n ng&#7919; v&agrave; V&#259;n h&#7885;c</div>
+        <div class="unit i18n-en">Unit 1 &mdash; Readers, Writers, and Texts</div>
+        <div class="unit i18n-vi" lang="vi">&#272;&#417;n v&#7883; 1 &mdash; Ng&#432;&#7901;i &#273;&#7885;c, ng&#432;&#7901;i vi&#7871;t v&agrave; v&#259;n b&#7843;n</div>
+        <span class="go-btn">
+          <span class="i18n-en">Go to 9 Zurich &rarr;</span><span class="i18n-vi" lang="vi">Xem l&#7899;p 9 Zurich &rarr;</span>
+        </span>
       </a>
 
       <a class="class-pick-card" style="--card-accent:#6B3E86" href="10-edmonton.html">
-        <div class="eyebrow">MYP 5 &middot; Grade 10</div>
+        <div class="eyebrow">
+          <span class="i18n-en">MYP 5 &middot; Grade 10</span><span class="i18n-vi" lang="vi">MYP 5 &middot; L&#7899;p 10</span>
+        </div>
         <div class="name">10 Edmonton</div>
-        <div class="subject">Individuals and Societies</div>
-        <div class="subject vi" lang="vi">C&aacute; nh&acirc;n v&agrave; X&atilde; hội</div>
-        <div class="unit">Unit 1 &mdash; Stuck in the Middle</div>
-        <span class="go-btn">Go to 10 Edmonton &rarr;</span>
+        <div class="subject i18n-en">Individuals and Societies</div>
+        <div class="subject i18n-vi" lang="vi">C&aacute; nh&acirc;n v&agrave; X&atilde; h&#7897;i</div>
+        <div class="unit i18n-en">Unit 1 &mdash; Stuck in the Middle</div>
+        <div class="unit i18n-vi" lang="vi">&#272;&#417;n v&#7883; 1 &mdash; K&#7865;t &#7903; gi&#7919;a</div>
+        <span class="go-btn">
+          <span class="i18n-en">Go to 10 Edmonton &rarr;</span><span class="i18n-vi" lang="vi">Xem l&#7899;p 10 Edmonton &rarr;</span>
+        </span>
       </a>
 
     </div>
@@ -75,25 +95,31 @@
   <section class="summer-teaser-wrap">
     <a class="summer-teaser" href="summer-learning.html">
       <div>
-        <div class="title">Summer Learning</div>
-        <div class="desc">Reading lists and writing ideas for the holidays &mdash; for students who want to keep going. <span class="vi" lang="vi">Danh s&aacute;ch s&aacute;ch đọc v&agrave; &yacute; tưởng viết cho kỳ nghỉ.</span></div>
+        <div class="title i18n-en">Summer Learning</div>
+        <div class="title i18n-vi" lang="vi">H&#7885;c t&#7853;p m&ugrave;a h&egrave;</div>
+        <div class="desc i18n-en">Reading lists and writing ideas for the holidays &mdash; for students who want to keep going.</div>
+        <div class="desc i18n-vi" lang="vi">Danh s&aacute;ch s&aacute;ch &#273;&#7885;c v&agrave; &yacute; t&#432;&#7903;ng vi&#7871;t cho k&#7923; ngh&#7881; &mdash; d&agrave;nh cho h&#7885;c sinh mu&#7889;n ti&#7871;p t&#7909;c h&#7885;c t&#7853;p.</div>
       </div>
-      <div class="cta">Open Summer Learning &rarr;</div>
+      <div class="cta">
+        <span class="i18n-en">Open Summer Learning &rarr;</span><span class="i18n-vi" lang="vi">Xem H&#7885;c t&#7853;p m&ugrave;a h&egrave; &rarr;</span>
+      </div>
     </a>
   </section>
 
   <footer class="site-footer">
     <div>
-      <div class="name">Mr. Colin Brownlie</div>
+      <div class="name i18n-en">Mr. Colin Brownlie</div>
+      <div class="name i18n-vi" lang="vi">Th&#7847;y Colin Brownlie</div>
       <div class="meta">teachercolin.com &middot; Dewey Schools, Hanoi</div>
-      <div class="contact">Contact: Parents &mdash; Edufit App &middot; Students &mdash; Email</div>
+      <div class="contact i18n-en">Contact: Parents &mdash; Edufit App &middot; Students &mdash; Email</div>
+      <div class="contact i18n-vi" lang="vi">Li&ecirc;n h&#7879;: Ph&#7909; huynh &mdash; &#7912;ng d&#7909;ng Edufit &middot; H&#7885;c sinh &mdash; Email</div>
     </div>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html"><span class="i18n-en">Home</span><span class="i18n-vi" lang="vi">Trang ch&#7911;</span></a>
       <a href="8-athens.html">8 Athens</a>
       <a href="9-zurich.html">9 Zurich</a>
       <a href="10-edmonton.html">10 Edmonton</a>
-      <a href="summer-learning.html">Summer Learning</a>
+      <a href="summer-learning.html"><span class="i18n-en">Summer Learning</span><span class="i18n-vi" lang="vi">H&#7885;c t&#7853;p m&ugrave;a h&egrave;</span></a>
     </nav>
   </footer>
 
