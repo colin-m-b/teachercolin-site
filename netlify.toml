@@ -3,3 +3,23 @@
   [headers.values]
     Content-Type = "image/x-icon"
     Cache-Control = "public, max-age=604800"
+
+[[redirects]]
+  from = "/"
+  to = "/classes"
+  status = 301
+
+[[redirects]]
+  from = "/6-manchester"
+  to = "/classes"
+  status = 301
+
+[[redirects]]
+  from = "/7-ghent"
+  to = "/classes"
+  status = 301
+
+[[redirects]]
+  from = "/9-zurich"
+  to = "/classes/9-zurich"
+  status = 301
