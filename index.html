@@ -3,198 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Teacher Colin - IB MYP English Language & Literature resources for students and parents">
-    <meta name="theme-color" content="#1a2332">
-    <title>Teacher Colin | IB MYP English Language & Literature</title>
+    <meta name="description" content="Teacher Colin — IB MYP English Language & Literature and Individuals & Societies resources for students and parents">
+    <meta name="theme-color" content="#1D3A5F">
+    <title>Teacher Colin | IB MYP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <span class="brand-initial">T</span>
-                <span class="brand-text">Teacher Colin</span>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="classes.html" class="nav-link">Classes</a></li>
-                <li><a href="summer-learning.html" class="nav-link">Summer Learning</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<body class="accent-site">
 
-    <!-- Hero Section -->
-    <header class="hero" id="home">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <div class="hero-label">IB MYP English Language & Literature</div>
-                <h1 class="hero-title">
-                    Welcome to<br>
-                    <span class="hero-title-accent">Teacher Colin's</span><br>
-                    Classroom
-                </h1>
-                <p class="hero-description">Resources and information for students and parents across Grade 8, 9, and 10</p>
+    <header class="site-header">
+        <div class="wrap">
+            <div class="site-header__brand">
+                <span class="site-header__name">Teacher Colin</span>
+                <span class="site-header__tagline" data-en="Dewey Schools · IB MYP" data-vi="Trường Dewey · Chương trình IB MYP">Dewey Schools · IB MYP</span>
             </div>
-            <div class="hero-visual">
-                <div class="visual-block visual-block-1"></div>
-                <div class="visual-block visual-block-2"></div>
-            </div>
+            <nav class="site-header__nav" aria-label="Main">
+                <a href="index.html" class="is-current" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="8-athens.html">8 Athens</a>
+                <a href="9-zurich.html">9 Zurich</a>
+                <a href="10-edmonton.html">10 Edmonton</a>
+                <a href="summer-learning.html" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+                <span class="lang-toggle">
+                    <button type="button" class="is-active" data-lang="en">EN</button>
+                    <button type="button" data-lang="vi">VI</button>
+                </span>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Classes Section -->
-        <section class="section" id="classes">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">My Classes</h2>
-                    <p class="section-subtitle">Select your class to view current assignments, units, and resources</p>
-                </div>
-                
-                <div class="class-grid">
-                    <!-- Grade 8 Athens -->
-                    <article class="class-card" data-grade="8">
-                        <div class="class-number">08</div>
-                        <div class="class-content">
-                            <div class="class-meta">
-                                <span class="class-grade">MYP 3</span>
-                                <span class="class-name">8 Athens</span>
-                            </div>
-                            <h3 class="class-unit">Language and Literature</h3>
-                            <p class="class-description">Class page, lesson archive, and materials for 8 Athens</p>
-                            <a href="8-athens.html" class="class-link">
-                                <span>View Class</span>
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
+    <main class="wrap">
+        <div class="page-lede">
+            <h1 data-en="Hello parents and students! If you've missed class time, forgot something, or you're just curious, you can find information about lessons and assignments by choosing your class below." data-vi="Xin chào quý phụ huynh và các em học sinh! Nếu em nghỉ học, quên bài, hoặc chỉ đơn giản là muốn xem lại, hãy chọn lớp của mình bên dưới để tìm thông tin về bài học và bài tập.">Hello parents and students! If you've missed class time, forgot something, or you're just curious, you can find information about lessons and assignments by choosing your class below.</h1>
+        </div>
 
-                    <!-- Grade 9 Zurich -->
-                    <article class="class-card" data-grade="9">
-                        <div class="class-number">09</div>
-                        <div class="class-content">
-                            <div class="class-meta">
-                                <span class="class-grade">MYP 4</span>
-                                <span class="class-name">9 Zurich</span>
-                            </div>
-                            <h3 class="class-unit">Growing and Learning in Short Stories</h3>
-                            <p class="class-description">Analyzing character growth through short stories including <em>Through the Tunnel</em> and <em>Split Cherry Tree</em></p>
-                            <a href="9-zurich.html" class="class-link">
-                                <span>View Class</span>
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
+        <div class="card-grid">
+            <a href="8-athens.html" class="class-card" style="--card-accent:#1F6F5C">
+                <div class="class-card__eyebrow" data-en="MYP 3 · Grade 8" data-vi="MYP 3 · Khối 8">MYP 3 · Grade 8</div>
+                <div class="class-card__name">8 Athens</div>
+                <div class="class-card__subject" data-en="Language and Literature" data-vi="Ngôn ngữ và Văn học">Language and Literature</div>
+                <div class="class-card__unit" data-en="Unit 1 — Readers, Writers, and Texts" data-vi="Đơn vị 1 — Người đọc, Người viết và Văn bản">Unit 1 — Readers, Writers, and Texts</div>
+                <span class="btn btn--fill" data-en="Go to 8 Athens →" data-vi="Đến trang 8 Athens →">Go to 8 Athens →</span>
+            </a>
+            <a href="9-zurich.html" class="class-card" style="--card-accent:#C8452C">
+                <div class="class-card__eyebrow" data-en="MYP 4 · Grade 9" data-vi="MYP 4 · Khối 9">MYP 4 · Grade 9</div>
+                <div class="class-card__name">9 Zurich</div>
+                <div class="class-card__subject" data-en="Language and Literature" data-vi="Ngôn ngữ và Văn học">Language and Literature</div>
+                <div class="class-card__unit" data-en="Unit 1 — Readers, Writers, and Texts" data-vi="Đơn vị 1 — Người đọc, Người viết và Văn bản">Unit 1 — Readers, Writers, and Texts</div>
+                <span class="btn btn--fill" data-en="Go to 9 Zurich →" data-vi="Đến trang 9 Zurich →">Go to 9 Zurich →</span>
+            </a>
+            <a href="10-edmonton.html" class="class-card" style="--card-accent:#6B3E86">
+                <div class="class-card__eyebrow" data-en="MYP 5 · Grade 10" data-vi="MYP 5 · Khối 10">MYP 5 · Grade 10</div>
+                <div class="class-card__name">10 Edmonton</div>
+                <div class="class-card__subject" data-en="Individuals and Societies" data-vi="Cá nhân và Xã hội">Individuals and Societies</div>
+                <div class="class-card__unit" data-en="Unit 1 — Stuck in the Middle" data-vi="Đơn vị 1 — Kẹt ở giữa">Unit 1 — Stuck in the Middle</div>
+                <span class="btn btn--fill" data-en="Go to 10 Edmonton →" data-vi="Đến trang 10 Edmonton →">Go to 10 Edmonton →</span>
+            </a>
+        </div>
 
-                    <!-- Grade 10 Edmonton -->
-                    <article class="class-card" data-grade="10">
-                        <div class="class-number">10</div>
-                        <div class="class-content">
-                            <div class="class-meta">
-                                <span class="class-grade">MYP 5</span>
-                                <span class="class-name">10 Edmonton</span>
-                            </div>
-                            <h3 class="class-unit">Individuals and Societies</h3>
-                            <p class="class-description">Class page, lesson archive, and materials for 10 Edmonton</p>
-                            <a href="10-edmonton.html" class="class-link">
-                                <span>View Class</span>
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-                </div>
+        <a href="summer-learning.html" class="callout">
+            <div>
+                <div class="callout__title" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</div>
+                <div class="callout__text" data-en="Reading lists and writing ideas for the holidays — for students who want to keep going." data-vi="Danh sách sách đọc và ý tưởng viết cho kỳ nghỉ — dành cho học sinh muốn tiếp tục học tập.">Reading lists and writing ideas for the holidays — for students who want to keep going.</div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section section-contact" id="contact">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-header">
-                        <h2 class="section-title">Get in Touch</h2>
-                        <p class="contact-intro">Questions about assignments or need to schedule a meeting? Students can email me, and parents are asked to use the SSM app.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <div class="callout__cta" data-en="Open Summer Learning →" data-vi="Mở Học tập mùa hè →">Open Summer Learning →</div>
+        </a>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-text">&copy; 2026 Teacher Colin | IB MYP English Language & Literature</p>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <div class="site-footer__name">Mr. Colin Brownlie</div>
+                <div class="site-footer__meta" data-en="teachercolin.com · Dewey Schools, Hanoi" data-vi="teachercolin.com · Trường Dewey, Hà Nội">teachercolin.com · Dewey Schools, Hanoi</div>
+                <div class="site-footer__contact" data-en="Contact: Parents — Edufit App · Students — Email" data-vi="Liên hệ: Phụ huynh — Ứng dụng Edufit · Học sinh — Email">Contact: Parents — Edufit App · Students — Email</div>
             </div>
+            <nav class="site-footer__links" aria-label="Footer">
+                <a href="index.html" class="is-current" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="8-athens.html">8 Athens</a>
+                <a href="9-zurich.html">9 Zurich</a>
+                <a href="10-edmonton.html">10 Edmonton</a>
+                <a href="summer-learning.html" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+            </nav>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    navMenu.classList.remove('active');
-                    navToggle.classList.remove('active');
-                }
-            });
-        });
-
-        // Update active nav link on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === `#${current}`) {
-                    link.classList.add('active');
-                } else if (!href.startsWith('summer')) {
-                    link.classList.remove('active');
-                }
-            });
-        });
-    </script>
+    <script src="assets/lang-toggle.js"></script>
 </body>
 </html>

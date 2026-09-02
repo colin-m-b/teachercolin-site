@@ -4,20 +4,20 @@
    ================================ */
 
 :root {
-    /* Color Palette - Warm & Intentional */
-    --color-navy: #2c2420;
-    --color-navy-light: #3d3530;
-    --color-text: #3d3530;
-    --color-text-secondary: #7c6f64;
-    --color-accent: #e07a2f;
+    /* Color Palette — matches assets/site.css (teachercolin.com redesign) */
+    --color-navy: #1D3A5F;
+    --color-navy-light: #2A4E7A;
+    --color-text: #1F2421;
+    --color-text-secondary: #6B736C;
+    --color-accent: #1D3A5F;
     --color-background: #faf8f5;
     --color-white: #fffef9;
-    --color-border: #e8e3db;
-    
-    /* Typography Scale - Mathematical Progression */
-    --font-display: 'Albert Sans', -apple-system, sans-serif;
-    --font-body: 'Albert Sans', -apple-system, sans-serif;
-    --font-accent: 'Instrument Serif', Georgia, serif;
+    --color-border: #E4E0D8;
+
+    /* Typography Scale — matches assets/site.css */
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-accent: 'Newsreader', Georgia, serif;
     
     /* Spacing - 8px Baseline Grid */
     --space-xs: 8px;

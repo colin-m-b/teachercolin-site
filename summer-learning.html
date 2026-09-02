@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AI study prompts for IB MYP English Language &amp; Literature — summer self-study">
-    <meta name="theme-color" content="#2c2420">
+    <meta name="theme-color" content="#1D3A5F">
     <title>Summer Learning | Teacher Colin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <style>
@@ -17,7 +18,7 @@
            ================================ */
 
         .page-header {
-            padding-top: calc(72px + var(--space-3xl));
+            padding-top: var(--space-3xl);
             padding-bottom: var(--space-3xl);
             background-color: var(--color-white);
         }
@@ -306,25 +307,25 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-brand">
-                <span class="brand-initial">T</span>
-                <span class="brand-text">Teacher Colin</span>
-            </a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="index.html#classes" class="nav-link">Classes</a></li>
-                <li><a href="summer-learning.html" class="nav-link active">Summer Learning</a></li>
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-            </ul>
+    <header class="site-header accent-site">
+        <div class="wrap">
+            <div class="site-header__brand">
+                <span class="site-header__name">Teacher Colin</span>
+                <span class="site-header__tagline" data-en="Dewey Schools · IB MYP" data-vi="Trường Dewey · Chương trình IB MYP">Dewey Schools · IB MYP</span>
+            </div>
+            <nav class="site-header__nav" aria-label="Main">
+                <a href="index.html" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="8-athens.html">8 Athens</a>
+                <a href="9-zurich.html">9 Zurich</a>
+                <a href="10-edmonton.html">10 Edmonton</a>
+                <a href="summer-learning.html" class="is-current" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+                <span class="lang-toggle">
+                    <button type="button" class="is-active" data-lang="en">EN</button>
+                    <button type="button" data-lang="vi">VI</button>
+                </span>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Page Header -->
     <header class="page-header">
@@ -1026,25 +1027,25 @@ Tone throughout: friendly and encouraging, but intellectually demanding. I am an
 
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-text">&copy; 2025 Teacher Colin | IB MYP English Language &amp; Literature</p>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <div class="site-footer__name">Mr. Colin Brownlie</div>
+                <div class="site-footer__meta" data-en="teachercolin.com · Dewey Schools, Hanoi" data-vi="teachercolin.com · Trường Dewey, Hà Nội">teachercolin.com · Dewey Schools, Hanoi</div>
+                <div class="site-footer__contact" data-en="Contact: Parents — Edufit App · Students — Email" data-vi="Liên hệ: Phụ huynh — Ứng dụng Edufit · Học sinh — Email">Contact: Parents — Edufit App · Students — Email</div>
             </div>
+            <nav class="site-footer__links" aria-label="Footer">
+                <a href="index.html" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="8-athens.html">8 Athens</a>
+                <a href="9-zurich.html">9 Zurich</a>
+                <a href="10-edmonton.html">10 Edmonton</a>
+                <a href="summer-learning.html" class="is-current" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+            </nav>
         </div>
     </footer>
 
+    <script src="assets/lang-toggle.js"></script>
     <script>
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-
         // Copy prompt to clipboard
         function copyPrompt(button) {
             const promptText = button.closest('.prompt-body').querySelector('.prompt-text');

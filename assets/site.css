@@ -1,0 +1,434 @@
+/* ================================
+   teachercolin.com — site design system
+   Newsreader (headings) + IBM Plex Sans (body)
+   ================================ */
+
+:root {
+    --ink: #1F2421;
+    --ink-secondary: #3B443E;
+    --muted: #6B736C;
+    --hairline: #E4E0D8;
+    --page: #FFFFFF;
+    --site-blue: #1D3A5F;
+    --site-blue-dark: #142943;
+    --footer-ground: #152B46;
+
+    --font-heading: 'Newsreader', Georgia, serif;
+    --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+}
+
+/* Per-class accent tokens */
+.accent-athens   { --accent: #1F6F5C; --accent-tint: #A9D2C6; --accent-pale: #EDF6F3; --accent-band: #D3EAE2; }
+.accent-zurich   { --accent: #C8452C; --accent-tint: #F6C9BC; --accent-pale: #FDF0EC; --accent-band: #FBE3DB; }
+.accent-edmonton { --accent: #6B3E86; --accent-tint: #CFB4DC; --accent-pale: #F5EFF8; --accent-band: #E5D6EC; }
+.accent-site     { --accent: #1D3A5F; --accent-tint: #A8BED6; --accent-pale: #EEF3F8; --accent-band: #D6E0EB; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--page);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-left: 56px;
+    padding-right: 56px;
+}
+
+/* ========== HEADER ========== */
+.site-header {
+    background: var(--accent);
+    color: #FFFFFF;
+}
+
+.site-header .wrap {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.site-header__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.site-header__name {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.site-header__tagline {
+    font-size: 1rem;
+    color: var(--accent-tint);
+}
+
+.site-header__nav {
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    font-size: 1.0625rem;
+    color: var(--accent-band);
+    flex-wrap: wrap;
+}
+
+.site-header__nav a {
+    white-space: nowrap;
+    padding-bottom: 3px;
+    border-bottom: 3px solid transparent;
+}
+
+.site-header__nav a:hover { color: #FFFFFF; }
+
+.site-header__nav a.is-current {
+    font-weight: 700;
+    color: #FFFFFF;
+    border-bottom-color: #FFFFFF;
+}
+
+.lang-toggle {
+    display: flex;
+    border: 1px solid rgba(255,255,255,0.55);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.lang-toggle button {
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: #FFFFFF;
+    padding: 5px 11px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.lang-toggle button.is-active {
+    background: #FFFFFF;
+    color: var(--accent);
+}
+
+/* ========== HERO / PAGE HEADER ========== */
+.page-lede {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.page-lede h1 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: clamp(2rem, 4.5vw, 2.625rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    max-width: 34ch;
+    margin-bottom: 16px;
+    text-wrap: pretty;
+}
+
+.page-lede p {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: #57605A;
+    max-width: 60ch;
+    text-wrap: pretty;
+}
+
+/* ========== HOME: CLASS CARD GRID ========== */
+.card-grid {
+    padding: 44px 0 56px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.class-card {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    border: 1px solid var(--hairline);
+    border-top: 8px solid var(--card-accent);
+    padding: 28px 30px 32px;
+}
+
+.class-card__eyebrow {
+    font-size: 0.9375rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--card-accent);
+    font-weight: 700;
+}
+
+.class-card__name {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.05;
+    color: var(--ink);
+}
+
+.class-card__subject { font-size: 1.125rem; color: var(--ink-secondary); }
+
+.class-card__unit {
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+}
+
+.btn {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 11px 18px;
+}
+
+.btn--fill { background: var(--card-accent, var(--accent)); color: #FFFFFF; }
+
+.btn--outline {
+    border: 2px solid var(--site-blue);
+    color: var(--site-blue);
+    padding: 9px 16px;
+}
+
+.class-card .btn { margin-top: 16px; align-self: flex-start; }
+
+/* ========== HOME: SUMMER LEARNING CALLOUT ========== */
+.callout {
+    margin-bottom: 56px;
+    border: 1px solid var(--hairline);
+    border-left: 8px solid var(--site-blue);
+    padding: 26px 32px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.callout__title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.callout__text {
+    font-size: 1.125rem;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+    margin-top: 4px;
+    max-width: 58ch;
+}
+
+.callout__text span { color: var(--muted); }
+
+.callout__cta {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--site-blue);
+    white-space: nowrap;
+}
+
+/* ========== CLASS PAGE HERO ========== */
+.class-hero {
+    padding: 44px 0 36px;
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.class-hero__eyebrow {
+    font-size: 0.9375rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.class-hero h1 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: clamp(2.5rem, 6vw, 3.625rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 12px 0 8px;
+    color: var(--ink);
+}
+
+.deadline-box {
+    background: var(--accent-pale);
+    border-left: 8px solid var(--accent);
+    padding: 18px 24px 20px;
+    max-width: 360px;
+}
+
+.deadline-box__eyebrow {
+    font-size: 0.9375rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.deadline-box__title {
+    font-family: var(--font-heading);
+    font-size: 1.6875rem;
+    color: var(--ink);
+    margin-top: 6px;
+}
+
+.deadline-box__meta { font-size: 1.125rem; color: var(--ink-secondary); margin-top: 2px; }
+
+/* ========== CLASS PAGE: ACTION CARDS ========== */
+.action-grid {
+    padding: 40px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.action-card {
+    border: 1px solid var(--hairline);
+    border-top: 8px solid var(--action-accent);
+    padding: 26px 30px 30px;
+}
+
+.action-card__title { font-family: var(--font-heading); font-size: 1.8125rem; font-weight: 500; color: var(--ink); }
+.action-card__body { font-size: 1.125rem; line-height: 1.6; color: var(--ink-secondary); margin-top: 12px; }
+.action-card .btn { margin-top: 18px; display: inline-block; }
+
+/* ========== CLASS PAGE: UNIT + ASK AT HOME ========== */
+.unit-section {
+    padding: 44px 0 56px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 56px;
+}
+
+.unit-section__eyebrow {
+    font-size: 0.9375rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.unit-section h2 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    line-height: 1.15;
+    margin: 12px 0 4px;
+    color: var(--ink);
+}
+
+.unit-section p {
+    font-size: 1.1875rem;
+    line-height: 1.7;
+    color: var(--ink-secondary);
+    margin: 0 0 12px;
+    max-width: 60ch;
+    text-wrap: pretty;
+}
+
+.unit-section__meta {
+    font-size: 1.0625rem;
+    color: var(--muted);
+    border-top: 1px solid var(--hairline);
+    padding-top: 14px;
+}
+
+.ask-home {
+    background: var(--accent-pale);
+    border-top: 8px solid var(--accent);
+    padding: 26px 28px 30px;
+    align-self: flex-start;
+}
+
+.ask-home__eyebrow {
+    font-size: 0.9375rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.ask-home__q {
+    font-family: var(--font-heading);
+    font-size: 1.5625rem;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-top: 12px;
+}
+
+/* ========== FOOTER ========== */
+.site-footer {
+    background: var(--footer-ground);
+    color: #E8EEF5;
+}
+
+.site-footer .wrap {
+    padding-top: 32px;
+    padding-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.site-footer__name { font-family: var(--font-heading); font-size: 1.3125rem; }
+.site-footer__meta { font-size: 1rem; color: #9DB0C4; margin-top: 5px; }
+.site-footer__contact { font-size: 1rem; color: #E8EEF5; margin-top: 12px; }
+
+.site-footer__links {
+    display: flex;
+    gap: 32px;
+    font-size: 1.0625rem;
+    color: #CBD8E4;
+    flex-wrap: wrap;
+}
+
+.site-footer__links a:hover { color: #FFFFFF; }
+.site-footer__links a.is-current { color: #FFFFFF; font-weight: 700; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 860px) {
+    .wrap { padding-left: 24px; padding-right: 24px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .action-grid { grid-template-columns: 1fr; }
+    .unit-section { grid-template-columns: 1fr; gap: 32px; }
+    .class-hero { flex-direction: column; align-items: flex-start; }
+    .deadline-box { max-width: none; }
+}
+
+@media (max-width: 640px) {
+    .site-header .wrap { padding-top: 16px; padding-bottom: 16px; }
+    .site-header__nav { gap: 14px; font-size: 1rem; }
+    .page-lede, .class-hero, .card-grid, .action-grid, .unit-section, .callout { padding-left: 0; padding-right: 0; }
+    .page-lede { padding-top: 36px; padding-bottom: 32px; }
+    .class-card { padding: 22px 20px 26px; }
+    .callout { flex-direction: column; align-items: flex-start; gap: 16px; }
+}

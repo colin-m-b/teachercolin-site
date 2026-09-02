@@ -3,684 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8 Athens | MYP 3 English Language & Literature</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="description" content="8 Athens — MYP 3 Language and Literature — lessons, archive, and materials">
+    <meta name="theme-color" content="#1F6F5C">
+    <title>8 Athens | MYP 3 Language & Literature</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --coral: #2f7a72;
-            --coral-dark: #235a54;
-            --coral-pale: #eaf5f3;
-            --cream: #faf8f5;
-            --dark: #1a2a32;
-            --text: #2d3e4a;
-            --text-secondary: #5a6e7a;
-            --white: #ffffff;
-            --border: #e4e0d8;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--cream);
-            color: var(--text);
-            line-height: 1.65;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ========== TOP BAR ========== */
-        .top-bar {
-            background: var(--dark);
-            padding: 0.65rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .top-bar a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.03em;
-            transition: color 0.2s;
-        }
-
-        .top-bar a:hover { color: #fff; }
-
-        .top-bar-grade {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-
-        /* ========== HEADER ========== */
-        .header {
-            background: var(--white);
-            border-bottom: 3px solid var(--coral);
-            padding: 3.5rem 2rem 3rem;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(3rem, 8vw, 4.5rem);
-            font-weight: 400;
-            color: var(--dark);
-            letter-spacing: -0.02em;
-            line-height: 1;
-        }
-
-        /* ========== LESSON ARCHIVE ACTIONS ========== */
-        .lesson-actions {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.85rem;
-        }
-
-        .lesson-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.9rem 1.1rem;
-            text-decoration: none;
-            color: inherit;
-            min-height: 44px;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-
-        .lesson-btn:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-1px); }
-
-        .lesson-btn-primary { background: var(--coral); border-color: var(--coral); color: #fff; }
-
-        .lesson-btn-icon { font-size: 1.3rem; line-height: 1; }
-
-        .lesson-btn-label { display: block; font-weight: 600; font-size: 0.95rem; }
-
-        .lesson-btn-sub { display: block; font-size: 0.72rem; opacity: 0.75; margin-top: 0.1rem; }
-
-        .lang-toggle {
-            max-width: 900px;
-            margin: 0.85rem auto 0;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 0.4rem;
-        }
-
-        .lang-btn {
-            font-family: inherit;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            padding: 0.4rem 1rem;
-            min-height: 36px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: var(--white);
-            color: var(--text-secondary);
-            cursor: pointer;
-        }
-
-        .lang-btn.active { background: var(--coral); border-color: var(--coral); color: #fff; }
-
-        .class-blurb, .class-contact-line {
-            max-width: 900px;
-            margin: 1.25rem auto 0;
-            padding: 0 2rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            text-align: center;
-        }
-
-        .class-contact-line { font-size: 0.85rem; padding-bottom: 0.5rem; }
-
-        @media (max-width: 640px) {
-            .lesson-actions { grid-template-columns: 1fr; padding: 1.25rem 1.25rem 0; }
-            .lang-toggle { padding: 0 1.25rem; }
-            .class-blurb, .class-contact-line { padding: 0 1.25rem; }
-        }
-
-        /* ========== NAV TABS ========== */
-        .nav-tabs {
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-tabs-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            gap: 0;
-        }
-
-        .nav-tab {
-            padding: 1rem 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .nav-tab:hover { color: var(--coral); }
-
-        .nav-tab.active {
-            color: var(--coral-dark);
-            border-bottom-color: var(--coral);
-            font-weight: 600;
-        }
-
-        /* ========== MAIN CONTENT ========== */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2.5rem 2rem 4rem;
-        }
-
-        .section {
-            display: none;
-            animation: fadeIn 0.25s ease;
-        }
-
-        .section.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ========== UNIT SECTION ========== */
-        .unit-hero {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .unit-hero-top {
-            padding: 2rem 2.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .unit-meta {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--coral);
-            margin-bottom: 0.75rem;
-        }
-
-        .unit-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.75rem;
-            font-weight: 400;
-            color: var(--dark);
-            line-height: 1.25;
-        }
-
-        .unit-hero-body {
-            padding: 2rem 2.5rem;
-        }
-
-        /* Essential Question */
-        .eq-block {
-            background: var(--coral-pale);
-            border-left: 3px solid var(--coral);
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 6px 6px 0;
-            margin-bottom: 2rem;
-        }
-
-        .eq-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--coral-dark);
-            margin-bottom: 0.3rem;
-        }
-
-        .eq-text {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.2rem;
-            color: var(--dark);
-            font-style: italic;
-            line-height: 1.4;
-        }
-
-        /* Texts Grid */
-        .texts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .text-card {
-            padding: 1rem 1.25rem;
-            background: var(--cream);
-            border-radius: 6px;
-        }
-
-        .text-card-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--coral-dark);
-            margin-bottom: 0.15rem;
-        }
-
-        .text-card-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem;
-            color: var(--dark);
-            font-style: italic;
-        }
-
-        .text-card-author {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* MYP Details Grid */
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .detail-cell {
-            background: var(--white);
-            padding: 1rem 1.25rem;
-        }
-
-        .detail-label {
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--coral-dark);
-            margin-bottom: 0.2rem;
-        }
-
-        .detail-value {
-            font-size: 0.95rem;
-            color: var(--dark);
-            font-weight: 500;
-        }
-
-        /* Unit Description */
-        .unit-description h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.15rem;
-            color: var(--dark);
-            margin-bottom: 0.75rem;
-        }
-
-        .unit-description p {
-            color: var(--text-secondary);
-            margin-bottom: 0.85rem;
-            font-size: 0.95rem;
-        }
-
-        .unit-description ul {
-            margin-left: 1.25rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .unit-description li { margin-bottom: 0.4rem; }
-
-        /* ========== ASSIGNMENTS ========== */
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--coral);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 0.4rem;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .empty-state {
-            background: var(--white);
-            border: 1px dashed var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .assignment-card {
-            display: block;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--coral);
-            border-radius: 6px;
-            padding: 1.5rem 1.75rem;
-            text-decoration: none;
-            color: inherit;
-            transition: box-shadow 0.2s, transform 0.2s;
-            margin-bottom: 1rem;
-        }
-
-        .assignment-card:hover {
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-
-        .assignment-meta {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 0.6rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .assignment-tag {
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.2rem 0.6rem;
-            border-radius: 3px;
-            background: var(--coral-pale);
-            color: var(--coral-dark);
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-        }
-
-        .assignment-due {
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .assignment-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem;
-            color: var(--dark);
-            margin-bottom: 0.35rem;
-        }
-
-        .assignment-description {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.55;
-        }
-
-        .assignment-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            margin-top: 0.75rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--coral);
-        }
-
-        /* ========== PARENT CORNER ========== */
-        .parent-intro {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .parent-intro h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem;
-            color: var(--dark);
-            margin-bottom: 0.4rem;
-        }
-
-        .parent-intro p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .contact-box {
-            background: var(--coral-pale);
-            border-radius: 8px;
-            padding: 1.5rem 2rem;
-        }
-
-        .contact-box h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--coral-dark);
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-box p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-        }
-
-        /* ========== FOOTER ========== */
-        .footer {
-            background: var(--dark);
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            padding: 1.5rem 2rem;
-            font-size: 0.85rem;
-            margin-top: 3rem;
-        }
-
-        .footer a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-        }
-
-        .footer a:hover { color: #fff; }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 768px) {
-            .header { padding: 2.5rem 1.5rem 2rem; }
-            .header h1 { font-size: 2.75rem; }
-            .main-content { padding: 2rem 1.5rem 3rem; }
-
-            .nav-tabs-inner {
-                padding: 0 1rem;
-                overflow-x: auto;
-            }
-
-            .nav-tab {
-                padding: 0.85rem 1rem;
-                white-space: nowrap;
-                font-size: 0.85rem;
-            }
-
-            .unit-hero-top,
-            .unit-hero-body { padding: 1.5rem; }
-
-            .details-grid { grid-template-columns: 1fr; }
-            .texts-grid { grid-template-columns: 1fr; }
-            .parent-intro { padding: 1.5rem; }
-        }
-
-        @media (max-width: 480px) {
-            .top-bar { padding: 0.5rem 1rem; }
-            .header { padding: 2rem 1rem 1.5rem; }
-            .main-content { padding: 1.5rem 1rem 3rem; }
-            .unit-hero-top, .unit-hero-body { padding: 1.25rem; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
-<body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <a href="index.html">← teachercolin.com</a>
-        <span class="top-bar-grade">MYP 3 • Grade 8</span>
-    </div>
+<body class="accent-athens">
 
-    <!-- Header -->
-    <header class="header">
-        <h1>8 Athens</h1>
+    <header class="site-header">
+        <div class="wrap">
+            <div class="site-header__brand">
+                <span class="site-header__name">Teacher Colin</span>
+                <span class="site-header__tagline" data-en="Dewey Schools · IB MYP" data-vi="Trường Dewey · Chương trình IB MYP">Dewey Schools · IB MYP</span>
+            </div>
+            <nav class="site-header__nav" aria-label="Main">
+                <a href="index.html" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="8-athens.html" class="is-current">8 Athens</a>
+                <a href="9-zurich.html">9 Zurich</a>
+                <a href="10-edmonton.html">10 Edmonton</a>
+                <a href="summer-learning.html" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+                <span class="lang-toggle">
+                    <button type="button" class="is-active" data-lang="en">EN</button>
+                    <button type="button" data-lang="vi">VI</button>
+                </span>
+            </nav>
+        </div>
     </header>
 
-    <!-- Lesson Archive Actions -->
-    <div class="lesson-actions">
-        <a href="https://docs.google.com/document/d/PLACEHOLDER_ATHENS_ARCHIVE_DOC_ID/pub" target="_blank" rel="noopener" class="lesson-btn lesson-btn-primary">
-            <span class="lesson-btn-icon">📖</span>
-            <span>
-                <span class="lesson-btn-label" data-en="Lesson Archive" data-vi="Lưu trữ bài học">Lesson Archive</span>
-                <span class="lesson-btn-sub">Opens Google Doc</span>
-            </span>
-        </a>
-        <a href="https://drive.google.com/drive/folders/PLACEHOLDER_ATHENS_LESSONS_FOLDER_ID" target="_blank" rel="noopener" class="lesson-btn lesson-btn-secondary">
-            <span class="lesson-btn-icon">📁</span>
-            <span>
-                <span class="lesson-btn-label" data-en="Lesson Files" data-vi="Tệp bài học">Lesson Files</span>
-                <span class="lesson-btn-sub">Opens Google Drive</span>
-            </span>
-        </a>
-    </div>
-
-    <div class="lang-toggle" role="group" aria-label="Language / Ngôn ngữ">
-        <button type="button" class="lang-btn active" data-lang="en">EN</button>
-        <button type="button" class="lang-btn" data-lang="vi">VI</button>
-    </div>
-
-    <p class="class-blurb" data-en="8 Athens is an MYP 3 Language and Literature class building close reading and analytical writing skills." data-vi="8 Athens là lớp Ngôn ngữ và Văn học MYP 3, phát triển kỹ năng đọc hiểu sâu và viết phân tích.">8 Athens is an MYP 3 Language and Literature class building close reading and analytical writing skills.</p>
-    <p class="class-contact-line" data-en="Questions? Message me on the Edufit Parents app." data-vi="Có câu hỏi? Nhắn tin cho tôi qua ứng dụng Edufit Parents.">Questions? Message me on the Edufit Parents app.</p>
-
-    <!-- Navigation Tabs -->
-    <nav class="nav-tabs">
-        <div class="nav-tabs-inner">
-            <a class="nav-tab active" data-tab="unit">Current Unit</a>
-            <a class="nav-tab" data-tab="assignments">Assignments</a>
-            <a class="nav-tab" data-tab="parents">Parent Corner</a>
+    <main class="wrap">
+        <div class="class-hero">
+            <div>
+                <div class="class-hero__eyebrow" data-en="MYP 3 · Grade 8 · Language and Literature" data-vi="MYP 3 · Khối 8 · Ngôn ngữ và Văn học">MYP 3 · Grade 8 · Language and Literature</div>
+                <h1>8 Athens</h1>
+            </div>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-
-        <!-- Current Unit Section -->
-        <section class="section active" id="unit">
-            <div class="unit-hero">
-                <div class="unit-hero-top">
-                    <div class="unit-meta">Unit details to come</div>
-                    <h2 class="unit-title">Current unit information will appear here</h2>
-                </div>
-                <div class="unit-hero-body">
-                    <!-- TODO(Colin): replace with the current unit's essential question, texts, MYP details, and description. -->
-                    <p style="color: var(--text-secondary); font-size: 0.95rem;">This section will show the current unit's essential question, texts, and key details once the unit is set up — same layout as the 9 Zurich page.</p>
-                </div>
+        <div class="action-grid">
+            <div class="action-card" style="--action-accent:#1F6F5C">
+                <div class="action-card__title" data-en="Lesson Archive" data-vi="Lưu trữ bài học">Lesson Archive</div>
+                <div class="action-card__body" data-en="Every lesson this term, summarised in English and Vietnamese, newest first." data-vi="Mọi bài học trong học kỳ này, được tóm tắt bằng tiếng Anh và tiếng Việt, mới nhất lên đầu.">Every lesson this term, summarised in English and Vietnamese, newest first.</div>
+                <a href="https://docs.google.com/document/d/PLACEHOLDER_ATHENS_ARCHIVE_DOC_ID/pub" target="_blank" rel="noopener" class="btn btn--fill" style="--card-accent:#1F6F5C" data-en="Open in Google Docs →" data-vi="Mở trong Google Docs →">Open in Google Docs →</a>
             </div>
-        </section>
-
-        <!-- Assignments Section -->
-        <section class="section" id="assignments">
-            <div class="section-label">Assignments</div>
-            <h2 class="section-title">Current Assignments</h2>
-            <p class="section-subtitle">Click on any assignment for full details and instructions</p>
-
-            <!-- TODO(Colin): add assignment-card entries here, matching the 9 Zurich page's markup. -->
-            <div class="empty-state">No assignments posted yet.</div>
-        </section>
-
-        <!-- Parent Corner Section -->
-        <section class="section" id="parents">
-            <div class="section-label">For Parents</div>
-            <h2 class="section-title">Parent Corner</h2>
-            <p class="section-subtitle">How you can support your student in 8 Athens</p>
-
-            <div class="parent-intro">
-                <h3>Supporting Your Grade 8 Reader &amp; Writer</h3>
-                <p>This section will be updated with guidance specific to each unit and assessment as the year progresses.</p>
+            <div class="action-card" style="--action-accent:#1D3A5F">
+                <div class="action-card__title" data-en="Lesson Files" data-vi="Tài liệu bài học">Lesson Files</div>
+                <div class="action-card__body" data-en="The slides and handouts from each lesson, as PDFs you can read on a phone." data-vi="Slide và tài liệu phát tay của từng bài học, dạng PDF có thể đọc trên điện thoại.">The slides and handouts from each lesson, as PDFs you can read on a phone.</div>
+                <a href="https://drive.google.com/drive/folders/PLACEHOLDER_ATHENS_LESSONS_FOLDER_ID" target="_blank" rel="noopener" class="btn btn--outline" data-en="Open in Google Drive →" data-vi="Mở trong Google Drive →">Open in Google Drive →</a>
             </div>
+        </div>
 
-            <div class="contact-box">
-                <h4>Getting in Touch</h4>
-                <p>If your student needs support or you have a question, the best step is to reach out to me directly via the <strong>Edufit Parents app</strong>. I check messages daily and respond within 24 hours on school days.</p>
+        <div class="unit-section">
+            <div>
+                <div class="unit-section__eyebrow" data-en="This term" data-vi="Học kỳ này">This term</div>
+                <h2 data-en="Unit 1 — Readers, Writers, and Texts" data-vi="Đơn vị 1 — Người đọc, người viết và văn bản">Unit 1 — Readers, Writers, and Texts</h2>
+                <p data-en="We read closely and write often, looking at how a writer's choices shape the way a reader feels and thinks — and practising those same choices in our own writing." data-vi="Chúng ta đọc kỹ và viết thường xuyên, tìm hiểu cách lựa chọn của người viết tác động đến cảm nhận và suy nghĩ của người đọc — rồi vận dụng chính những lựa chọn đó vào bài viết của mình.">We read closely and write often, looking at how a writer's choices shape the way a reader feels and thinks — and practising those same choices in our own writing.</p>
+                <div class="unit-section__meta" data-en="Key concept: Communication · Global context: Personal and cultural expression" data-vi="Khái niệm chính: Giao tiếp · Bối cảnh toàn cầu: Biểu đạt cá nhân và văn hóa">Key concept: Communication · Global context: Personal and cultural expression</div>
             </div>
-        </section>
-
+            <div class="ask-home">
+                <div class="ask-home__eyebrow" data-en="Ask them at home" data-vi="Hỏi con ở nhà">Ask them at home</div>
+                <div class="ask-home__q" data-en="&quot;What did the writer do to make you feel that way?&quot;" data-vi="&quot;Người viết đã làm gì khiến con cảm thấy như vậy?&quot;">"What did the writer do to make you feel that way?"</div>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Mr. Colin Brownlie · Dewey Schools IB Program · <a href="index.html">teachercolin.com</a></p>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <div class="site-footer__name">Mr. Colin Brownlie</div>
+                <div class="site-footer__meta" data-en="teachercolin.com · Dewey Schools, Hanoi" data-vi="teachercolin.com · Trường Dewey, Hà Nội">teachercolin.com · Dewey Schools, Hanoi</div>
+                <div class="site-footer__contact" data-en="Contact: Parents — Edufit App · Students — Email" data-vi="Liên hệ: Phụ huynh — Ứng dụng Edufit · Học sinh — Email">Contact: Parents — Edufit App · Students — Email</div>
+            </div>
+            <nav class="site-footer__links" aria-label="Footer">
+                <a href="index.html" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="8-athens.html" class="is-current">8 Athens</a>
+                <a href="9-zurich.html">9 Zurich</a>
+                <a href="10-edmonton.html">10 Edmonton</a>
+                <a href="summer-learning.html" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+            </nav>
+        </div>
     </footer>
 
-    <!-- Language Toggle Script -->
-    <script>
-        (function() {
-            var STORAGE_KEY = 'teachercolin-lang';
-            function applyLang(lang) {
-                document.querySelectorAll('[data-en][data-vi]').forEach(function(el) {
-                    el.textContent = el.getAttribute('data-' + lang);
-                });
-                document.querySelectorAll('.lang-btn').forEach(function(btn) {
-                    btn.classList.toggle('active', btn.dataset.lang === lang);
-                });
-            }
-            var saved = 'en';
-            try { saved = localStorage.getItem(STORAGE_KEY) || 'en'; } catch (e) {}
-            applyLang(saved);
-            document.querySelectorAll('.lang-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    var lang = btn.dataset.lang;
-                    applyLang(lang);
-                    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
-                });
-            });
-        })();
-    </script>
-
-    <!-- Tab Navigation Script -->
-    <script>
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById(this.dataset.tab).classList.add('active');
-            });
-        });
-    </script>
+    <script src="assets/lang-toggle.js"></script>
 </body>
 </html>
