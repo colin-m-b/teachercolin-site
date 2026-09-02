@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Ghent | MYP 2 English Language & Literature</title>
+    <title>10 Edmonton | MYP 5 Individuals & Societies</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --teal: #2E8B8E;
-            --teal-dark: #1f6d70;
-            --teal-pale: #e8f4f4;
+            --coral: #b8862e;
+            --coral-dark: #8f6821;
+            --coral-pale: #faf1e0;
             --cream: #faf8f5;
             --dark: #1a2a32;
             --text: #2d3e4a;
@@ -62,7 +62,7 @@
         /* ========== HEADER ========== */
         .header {
             background: var(--white);
-            border-bottom: 3px solid var(--teal);
+            border-bottom: 3px solid var(--coral);
             padding: 3.5rem 2rem 3rem;
             text-align: center;
         }
@@ -74,7 +74,82 @@
             color: var(--dark);
             letter-spacing: -0.02em;
             line-height: 1;
-            margin-bottom: 0.4rem;
+        }
+
+        /* ========== LESSON ARCHIVE ACTIONS ========== */
+        .lesson-actions {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+        }
+
+        .lesson-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            text-decoration: none;
+            color: inherit;
+            min-height: 44px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .lesson-btn:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+        .lesson-btn-primary { background: var(--coral); border-color: var(--coral); color: #fff; }
+
+        .lesson-btn-icon { font-size: 1.3rem; line-height: 1; }
+
+        .lesson-btn-label { display: block; font-weight: 600; font-size: 0.95rem; }
+
+        .lesson-btn-sub { display: block; font-size: 0.72rem; opacity: 0.75; margin-top: 0.1rem; }
+
+        .lang-toggle {
+            max-width: 900px;
+            margin: 0.85rem auto 0;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .lang-btn {
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            padding: 0.4rem 1rem;
+            min-height: 36px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .lang-btn.active { background: var(--coral); border-color: var(--coral); color: #fff; }
+
+        .class-blurb, .class-contact-line {
+            max-width: 900px;
+            margin: 1.25rem auto 0;
+            padding: 0 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .class-contact-line { font-size: 0.85rem; padding-bottom: 0.5rem; }
+
+        @media (max-width: 640px) {
+            .lesson-actions { grid-template-columns: 1fr; padding: 1.25rem 1.25rem 0; }
+            .lang-toggle { padding: 0 1.25rem; }
+            .class-blurb, .class-contact-line { padding: 0 1.25rem; }
         }
 
         /* ========== NAV TABS ========== */
@@ -105,13 +180,11 @@
             cursor: pointer;
         }
 
-        .nav-tab:hover {
-            color: var(--teal);
-        }
+        .nav-tab:hover { color: var(--coral); }
 
         .nav-tab.active {
-            color: var(--teal-dark);
-            border-bottom-color: var(--teal);
+            color: var(--coral-dark);
+            border-bottom-color: var(--coral);
             font-weight: 600;
         }
 
@@ -140,7 +213,6 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             overflow: hidden;
-            margin-bottom: 2rem;
         }
 
         .unit-hero-top {
@@ -153,7 +225,7 @@
             font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--teal);
+            color: var(--coral);
             margin-bottom: 0.75rem;
         }
 
@@ -171,8 +243,8 @@
 
         /* Essential Question */
         .eq-block {
-            background: var(--teal-pale);
-            border-left: 3px solid var(--teal);
+            background: var(--coral-pale);
+            border-left: 3px solid var(--coral);
             padding: 1.25rem 1.5rem;
             border-radius: 0 6px 6px 0;
             margin-bottom: 2rem;
@@ -183,7 +255,7 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--teal-dark);
+            color: var(--coral-dark);
             margin-bottom: 0.3rem;
         }
 
@@ -195,36 +267,37 @@
             line-height: 1.4;
         }
 
-        /* Central Text */
-        .central-text-block {
-            display: flex;
-            align-items: center;
+        /* Texts Grid */
+        .texts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
-            padding: 1rem 1.25rem;
-            background: var(--cream);
-            border-radius: 6px;
             margin-bottom: 2rem;
         }
 
-        .central-text-icon { font-size: 1.5rem; }
+        .text-card {
+            padding: 1rem 1.25rem;
+            background: var(--cream);
+            border-radius: 6px;
+        }
 
-        .ct-label {
+        .text-card-label {
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--teal-dark);
+            color: var(--coral-dark);
             margin-bottom: 0.15rem;
         }
 
-        .ct-title {
+        .text-card-title {
             font-family: 'DM Serif Display', serif;
             font-size: 1.05rem;
             color: var(--dark);
             font-style: italic;
         }
 
-        .ct-author {
+        .text-card-author {
             font-size: 0.85rem;
             color: var(--text-secondary);
         }
@@ -251,7 +324,7 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--teal-dark);
+            color: var(--coral-dark);
             margin-bottom: 0.2rem;
         }
 
@@ -281,9 +354,7 @@
             font-size: 0.95rem;
         }
 
-        .unit-description li {
-            margin-bottom: 0.4rem;
-        }
+        .unit-description li { margin-bottom: 0.4rem; }
 
         /* ========== ASSIGNMENTS ========== */
         .section-label {
@@ -291,7 +362,7 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--teal);
+            color: var(--coral);
             margin-bottom: 0.5rem;
         }
 
@@ -308,11 +379,21 @@
             margin-bottom: 2rem;
         }
 
+        .empty-state {
+            background: var(--white);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
         .assignment-card {
             display: block;
             background: var(--white);
             border: 1px solid var(--border);
-            border-left: 4px solid var(--teal);
+            border-left: 4px solid var(--coral);
             border-radius: 6px;
             padding: 1.5rem 1.75rem;
             text-decoration: none;
@@ -339,8 +420,8 @@
             font-weight: 700;
             padding: 0.2rem 0.6rem;
             border-radius: 3px;
-            background: var(--teal-pale);
-            color: var(--teal-dark);
+            background: var(--coral-pale);
+            color: var(--coral-dark);
             letter-spacing: 0.03em;
             text-transform: uppercase;
         }
@@ -374,7 +455,7 @@
             margin-top: 0.75rem;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--teal);
+            color: var(--coral);
         }
 
         /* ========== PARENT CORNER ========== */
@@ -398,47 +479,8 @@
             font-size: 0.95rem;
         }
 
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tip-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .tip-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--teal-pale);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .tip-card h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 0.35rem;
-        }
-
-        .tip-card p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.55;
-        }
-
         .contact-box {
-            background: var(--teal-pale);
+            background: var(--coral-pale);
             border-radius: 8px;
             padding: 1.5rem 2rem;
         }
@@ -446,7 +488,7 @@
         .contact-box h4 {
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--teal-dark);
+            color: var(--coral-dark);
             margin-bottom: 0.3rem;
         }
 
@@ -493,14 +535,7 @@
             .unit-hero-body { padding: 1.5rem; }
 
             .details-grid { grid-template-columns: 1fr; }
-
-            .central-text-block {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-
-            .tips-grid { grid-template-columns: 1fr; }
+            .texts-grid { grid-template-columns: 1fr; }
             .parent-intro { padding: 1.5rem; }
         }
 
@@ -516,13 +551,39 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <a href="index.html">← teachercolin.com</a>
-        <span class="top-bar-grade">MYP 2 • Grade 7</span>
+        <span class="top-bar-grade">MYP 5 • Grade 10</span>
     </div>
 
     <!-- Header -->
     <header class="header">
-        <h1>7 Ghent</h1>
+        <h1>10 Edmonton</h1>
     </header>
+
+    <!-- Lesson Archive Actions -->
+    <div class="lesson-actions">
+        <a href="https://docs.google.com/document/d/PLACEHOLDER_EDMONTON_ARCHIVE_DOC_ID/pub" target="_blank" rel="noopener" class="lesson-btn lesson-btn-primary">
+            <span class="lesson-btn-icon">📖</span>
+            <span>
+                <span class="lesson-btn-label" data-en="Lesson Archive" data-vi="Lưu trữ bài học">Lesson Archive</span>
+                <span class="lesson-btn-sub">Opens Google Doc</span>
+            </span>
+        </a>
+        <a href="https://drive.google.com/drive/folders/PLACEHOLDER_EDMONTON_LESSONS_FOLDER_ID" target="_blank" rel="noopener" class="lesson-btn lesson-btn-secondary">
+            <span class="lesson-btn-icon">📁</span>
+            <span>
+                <span class="lesson-btn-label" data-en="Lesson Files" data-vi="Tệp bài học">Lesson Files</span>
+                <span class="lesson-btn-sub">Opens Google Drive</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="lang-toggle" role="group" aria-label="Language / Ngôn ngữ">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="vi">VI</button>
+    </div>
+
+    <p class="class-blurb" data-en="10 Edmonton is an MYP 5 Individuals and Societies class examining how power, causation, and perspective shape history." data-vi="10 Edmonton là lớp Cá nhân và Xã hội MYP 5, tìm hiểu cách quyền lực, nguyên nhân và góc nhìn định hình lịch sử.">10 Edmonton is an MYP 5 Individuals and Societies class examining how power, causation, and perspective shape history.</p>
+    <p class="class-contact-line" data-en="Questions? Message me on the Edufit Parents app." data-vi="Có câu hỏi? Nhắn tin cho tôi qua ứng dụng Edufit Parents.">Questions? Message me on the Edufit Parents app.</p>
 
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
@@ -540,56 +601,12 @@
         <section class="section active" id="unit">
             <div class="unit-hero">
                 <div class="unit-hero-top">
-                    <div class="unit-meta">Unit 2 • Weeks 1–10 • Started January</div>
-                    <h2 class="unit-title">How can we separate fact from fiction?</h2>
+                    <div class="unit-meta">Unit details to come</div>
+                    <h2 class="unit-title">Current unit information will appear here</h2>
                 </div>
                 <div class="unit-hero-body">
-                    <div class="eq-block">
-                        <div class="eq-label">Essential Question</div>
-                        <div class="eq-text">How can we separate fact from fiction?</div>
-                    </div>
-
-                    <div class="central-text-block">
-                        <span class="central-text-icon">📖</span>
-                        <div>
-                            <div class="ct-label">Central Text</div>
-                            <div class="ct-title">The Ruby in the Smoke</div>
-                            <div class="ct-author">by Philip Pullman</div>
-                        </div>
-                    </div>
-
-                    <div class="details-grid">
-                        <div class="detail-cell">
-                            <div class="detail-label">Key Concept</div>
-                            <div class="detail-value">Creativity</div>
-                        </div>
-                        <div class="detail-cell">
-                            <div class="detail-label">Related Concepts</div>
-                            <div class="detail-value">Genres, Point of View, Setting</div>
-                        </div>
-                        <div class="detail-cell">
-                            <div class="detail-label">Global Context</div>
-                            <div class="detail-value">Orientation in Space and Time</div>
-                        </div>
-                        <div class="detail-cell">
-                            <div class="detail-label">Assessment Criteria</div>
-                            <div class="detail-value">Criteria A, C & D</div>
-                        </div>
-                    </div>
-
-                    <div class="unit-description">
-                        <h3>What We're Exploring</h3>
-                        <p>Using Philip Pullman's <em>The Ruby in the Smoke</em> as a central text, this unit guides students through a structured inquiry into how creative works can illuminate our understanding of the past and its profound connection to the present.</p>
-                        <p>By exploring the conventions of the genre, the historical context of Victorian London, and enduring social issues, students will develop critical analytical and communication skills.</p>
-                        <p><strong>Statement of Inquiry:</strong> Writers of the genre of historical fiction can shed light on our orientation in space and time by using setting creatively to help us better understand and learn from the events which have shaped history.</p>
-                        <p>Students will learn to:</p>
-                        <ul>
-                            <li>Identify and analyze conventions of historical fiction as a genre</li>
-                            <li>Understand how setting shapes narrative and character</li>
-                            <li>Explore how historical fiction balances fact and imagination</li>
-                            <li>Create original historical fiction concepts that blend genres thoughtfully</li>
-                        </ul>
-                    </div>
+                    <!-- TODO(Colin): replace with the current unit's essential question, texts, MYP details, and description. -->
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">This section will show the current unit's essential question, texts, and key details once the unit is set up — same layout as the 9 Zurich page.</p>
                 </div>
             </div>
         </section>
@@ -600,62 +617,24 @@
             <h2 class="section-title">Current Assignments</h2>
             <p class="section-subtitle">Click on any assignment for full details and instructions</p>
 
-           <a href="assignments/7-ghent-trilogy-pitch.html" class="assignment-card">
-    <div class="assignment-meta">
-        <span class="assignment-tag">Criteria A, C & D</span>
-        <span class="assignment-due">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            Presentations: March 12-13
-        </span>
-    </div>
-    <h3 class="assignment-title">Historical Fiction: Trilogy Pitch</h3>
-    <p class="assignment-description">Pitch your historical fiction trilogy to studio executives. Present your protagonist, genre blend, and setting in a 5-7 minute persuasive presentation. Convince them to invest $1 million in your story.</p>
-    <span class="assignment-cta">View full instructions →</span>
-</a>
+            <!-- TODO(Colin): add assignment-card entries here, matching the 9 Zurich page's markup. -->
+            <div class="empty-state">No assignments posted yet.</div>
         </section>
 
         <!-- Parent Corner Section -->
         <section class="section" id="parents">
             <div class="section-label">For Parents</div>
             <h2 class="section-title">Parent Corner</h2>
-            <p class="section-subtitle">How you can support your student's learning at home</p>
+            <p class="section-subtitle">How you can support your student in 10 Edmonton</p>
 
             <div class="parent-intro">
-                <h3>Supporting Your Grade 7 Reader & Writer</h3>
-                <p>Partnership between home and school helps students thrive. Here are some ways you can engage with what we're learning.</p>
-            </div>
-
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <div class="tip-icon">📚</div>
-                    <h4>Discuss Historical Fiction</h4>
-                    <p>We're reading <em>The Ruby in the Smoke</em> by Philip Pullman, set in Victorian London. Ask your child what they're discovering about the era and how the author blends fact with fiction. What surprises them about life in the 1870s?</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">🎬</div>
-                    <h4>Explore Genre Together</h4>
-                    <p>Historical fiction is everywhere—films, TV shows, and books. When watching or reading together, talk about what's historically accurate versus what's invented for the story. This builds the critical thinking skills we're developing in class.</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">🔍</div>
-                    <h4>Support Research, Don't Do It</h4>
-                    <p>The summative assignment requires historical research. Help your child access resources (library databases, reliable websites) but let them do the searching. Ask guiding questions: "How do you know that source is reliable?" rather than finding answers for them.</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">💡</div>
-                    <h4>Value Creativity Over Perfection</h4>
-                    <p>The goal of our current assignment is genuine thinking and creativity—a "perfect" packet with shallow analysis will score lower than a thoughtful packet with minor polish issues. Encourage risk-taking and original ideas.</p>
-                </div>
+                <h3>Supporting Your Grade 10 Historian</h3>
+                <p>This section will be updated with guidance specific to each unit and assessment as the year progresses.</p>
             </div>
 
             <div class="contact-box">
-                <h4>Questions or Concerns?</h4>
-                <p>Please reach out via the <strong>Edufit Parents app</strong>. I check messages daily and will respond within 24 hours on school days. I'm here to support both you and your student!</p>
+                <h4>Getting in Touch</h4>
+                <p>If your student needs support or you have a question, the best step is to reach out to me directly via the <strong>Edufit Parents app</strong>. I check messages daily and respond within 24 hours on school days.</p>
             </div>
         </section>
 
@@ -665,6 +644,31 @@
     <footer class="footer">
         <p>Mr. Colin Brownlie · Dewey Schools IB Program · <a href="index.html">teachercolin.com</a></p>
     </footer>
+
+    <!-- Language Toggle Script -->
+    <script>
+        (function() {
+            var STORAGE_KEY = 'teachercolin-lang';
+            function applyLang(lang) {
+                document.querySelectorAll('[data-en][data-vi]').forEach(function(el) {
+                    el.textContent = el.getAttribute('data-' + lang);
+                });
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            }
+            var saved = 'en';
+            try { saved = localStorage.getItem(STORAGE_KEY) || 'en'; } catch (e) {}
+            applyLang(saved);
+            document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var lang = btn.dataset.lang;
+                    applyLang(lang);
+                    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+                });
+            });
+        })();
+    </script>
 
     <!-- Tab Navigation Script -->
     <script>

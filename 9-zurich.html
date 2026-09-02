@@ -76,6 +76,82 @@
             line-height: 1;
         }
 
+        /* ========== LESSON ARCHIVE ACTIONS ========== */
+        .lesson-actions {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+        }
+
+        .lesson-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            text-decoration: none;
+            color: inherit;
+            min-height: 44px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .lesson-btn:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+        .lesson-btn-primary { background: var(--coral); border-color: var(--coral); color: #fff; }
+
+        .lesson-btn-icon { font-size: 1.3rem; line-height: 1; }
+
+        .lesson-btn-label { display: block; font-weight: 600; font-size: 0.95rem; }
+
+        .lesson-btn-sub { display: block; font-size: 0.72rem; opacity: 0.75; margin-top: 0.1rem; }
+
+        .lang-toggle {
+            max-width: 900px;
+            margin: 0.85rem auto 0;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .lang-btn {
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            padding: 0.4rem 1rem;
+            min-height: 36px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .lang-btn.active { background: var(--coral); border-color: var(--coral); color: #fff; }
+
+        .class-blurb, .class-contact-line {
+            max-width: 900px;
+            margin: 1.25rem auto 0;
+            padding: 0 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .class-contact-line { font-size: 0.85rem; padding-bottom: 0.5rem; }
+
+        @media (max-width: 640px) {
+            .lesson-actions { grid-template-columns: 1fr; padding: 1.25rem 1.25rem 0; }
+            .lang-toggle { padding: 0 1.25rem; }
+            .class-blurb, .class-contact-line { padding: 0 1.25rem; }
+        }
+
         /* ========== NAV TABS ========== */
         .nav-tabs {
             background: var(--white);
@@ -513,6 +589,32 @@
         <h1>9 Zurich</h1>
     </header>
 
+    <!-- Lesson Archive Actions -->
+    <div class="lesson-actions">
+        <a href="https://docs.google.com/document/d/PLACEHOLDER_ZURICH_ARCHIVE_DOC_ID/pub" target="_blank" rel="noopener" class="lesson-btn lesson-btn-primary">
+            <span class="lesson-btn-icon">📖</span>
+            <span>
+                <span class="lesson-btn-label" data-en="Lesson Archive" data-vi="Lưu trữ bài học">Lesson Archive</span>
+                <span class="lesson-btn-sub">Opens Google Doc</span>
+            </span>
+        </a>
+        <a href="https://drive.google.com/drive/folders/PLACEHOLDER_ZURICH_LESSONS_FOLDER_ID" target="_blank" rel="noopener" class="lesson-btn lesson-btn-secondary">
+            <span class="lesson-btn-icon">📁</span>
+            <span>
+                <span class="lesson-btn-label" data-en="Lesson Files" data-vi="Tệp bài học">Lesson Files</span>
+                <span class="lesson-btn-sub">Opens Google Drive</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="lang-toggle" role="group" aria-label="Language / Ngôn ngữ">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="vi">VI</button>
+    </div>
+
+    <p class="class-blurb" data-en="9 Zurich is an MYP 4 Language and Literature class exploring how stories shape identity and meaning." data-vi="9 Zurich là lớp Ngôn ngữ và Văn học MYP 4, tìm hiểu cách các câu chuyện định hình bản sắc và ý nghĩa.">9 Zurich is an MYP 4 Language and Literature class exploring how stories shape identity and meaning.</p>
+    <p class="class-contact-line" data-en="Questions? Message me on the Edufit Parents app." data-vi="Có câu hỏi? Nhắn tin cho tôi qua ứng dụng Edufit Parents.">Questions? Message me on the Edufit Parents app.</p>
+
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
         <div class="nav-tabs-inner">
@@ -659,6 +761,31 @@
     <footer class="footer">
         <p>Mr. Colin Brownlie · Dewey Schools IB Program · <a href="index.html">teachercolin.com</a></p>
     </footer>
+
+    <!-- Language Toggle Script -->
+    <script>
+        (function() {
+            var STORAGE_KEY = 'teachercolin-lang';
+            function applyLang(lang) {
+                document.querySelectorAll('[data-en][data-vi]').forEach(function(el) {
+                    el.textContent = el.getAttribute('data-' + lang);
+                });
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            }
+            var saved = 'en';
+            try { saved = localStorage.getItem(STORAGE_KEY) || 'en'; } catch (e) {}
+            applyLang(saved);
+            document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var lang = btn.dataset.lang;
+                    applyLang(lang);
+                    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+                });
+            });
+        })();
+    </script>
 
     <!-- Tab Navigation Script -->
     <script>

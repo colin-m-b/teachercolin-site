@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6 Manchester | MYP 1 English Language & Literature</title>
+    <title>8 Athens | MYP 3 English Language & Literature</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --lime: #6d9a2a;
-            --lime-dark: #547a1e;
-            --lime-pale: #edf5dc;
+            --coral: #2f7a72;
+            --coral-dark: #235a54;
+            --coral-pale: #eaf5f3;
             --cream: #faf8f5;
-            --dark: #1e2e38;
+            --dark: #1a2a32;
             --text: #2d3e4a;
             --text-secondary: #5a6e7a;
             --white: #ffffff;
@@ -62,17 +62,94 @@
         /* ========== HEADER ========== */
         .header {
             background: var(--white);
-            border-bottom: 3px solid var(--lime);
-            padding: 3rem 2rem 2.5rem;
+            border-bottom: 3px solid var(--coral);
+            padding: 3.5rem 2rem 3rem;
             text-align: center;
         }
 
         .header h1 {
-            font-family: 'Architects Daughter', cursive;
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 8vw, 4.5rem);
             font-weight: 400;
             color: var(--dark);
+            letter-spacing: -0.02em;
             line-height: 1;
+        }
+
+        /* ========== LESSON ARCHIVE ACTIONS ========== */
+        .lesson-actions {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+        }
+
+        .lesson-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            text-decoration: none;
+            color: inherit;
+            min-height: 44px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .lesson-btn:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+        .lesson-btn-primary { background: var(--coral); border-color: var(--coral); color: #fff; }
+
+        .lesson-btn-icon { font-size: 1.3rem; line-height: 1; }
+
+        .lesson-btn-label { display: block; font-weight: 600; font-size: 0.95rem; }
+
+        .lesson-btn-sub { display: block; font-size: 0.72rem; opacity: 0.75; margin-top: 0.1rem; }
+
+        .lang-toggle {
+            max-width: 900px;
+            margin: 0.85rem auto 0;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .lang-btn {
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            padding: 0.4rem 1rem;
+            min-height: 36px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .lang-btn.active { background: var(--coral); border-color: var(--coral); color: #fff; }
+
+        .class-blurb, .class-contact-line {
+            max-width: 900px;
+            margin: 1.25rem auto 0;
+            padding: 0 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .class-contact-line { font-size: 0.85rem; padding-bottom: 0.5rem; }
+
+        @media (max-width: 640px) {
+            .lesson-actions { grid-template-columns: 1fr; padding: 1.25rem 1.25rem 0; }
+            .lang-toggle { padding: 0 1.25rem; }
+            .class-blurb, .class-contact-line { padding: 0 1.25rem; }
         }
 
         /* ========== NAV TABS ========== */
@@ -103,11 +180,11 @@
             cursor: pointer;
         }
 
-        .nav-tab:hover { color: var(--lime); }
+        .nav-tab:hover { color: var(--coral); }
 
         .nav-tab.active {
-            color: var(--lime-dark);
-            border-bottom-color: var(--lime);
+            color: var(--coral-dark);
+            border-bottom-color: var(--coral);
             font-weight: 600;
         }
 
@@ -144,15 +221,18 @@
         }
 
         .unit-meta {
-            font-family: 'Architects Daughter', cursive;
-            font-size: 0.85rem;
-            color: var(--lime);
-            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: 0.75rem;
         }
 
         .unit-title {
-            font-family: 'Architects Daughter', cursive;
+            font-family: 'DM Serif Display', serif;
             font-size: 1.75rem;
+            font-weight: 400;
             color: var(--dark);
             line-height: 1.25;
         }
@@ -163,54 +243,61 @@
 
         /* Essential Question */
         .eq-block {
-            background: var(--lime-pale);
-            border-left: 3px solid var(--lime);
+            background: var(--coral-pale);
+            border-left: 3px solid var(--coral);
             padding: 1.25rem 1.5rem;
             border-radius: 0 6px 6px 0;
             margin-bottom: 2rem;
         }
 
         .eq-label {
-            font-family: 'Architects Daughter', cursive;
-            font-size: 0.8rem;
-            color: var(--lime-dark);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--coral-dark);
             margin-bottom: 0.3rem;
         }
 
         .eq-text {
-            font-family: 'Architects Daughter', cursive;
+            font-family: 'DM Serif Display', serif;
             font-size: 1.2rem;
             color: var(--dark);
+            font-style: italic;
             line-height: 1.4;
         }
 
-        /* Central Text */
-        .central-text-block {
-            display: flex;
-            align-items: center;
+        /* Texts Grid */
+        .texts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
-            padding: 1rem 1.25rem;
-            background: var(--cream);
-            border-radius: 6px;
             margin-bottom: 2rem;
         }
 
-        .central-text-icon { font-size: 1.5rem; }
+        .text-card {
+            padding: 1rem 1.25rem;
+            background: var(--cream);
+            border-radius: 6px;
+        }
 
-        .ct-label {
-            font-family: 'Architects Daughter', cursive;
-            font-size: 0.8rem;
-            color: var(--lime-dark);
+        .text-card-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--coral-dark);
             margin-bottom: 0.15rem;
         }
 
-        .ct-title {
-            font-family: 'Architects Daughter', cursive;
+        .text-card-title {
+            font-family: 'DM Serif Display', serif;
             font-size: 1.05rem;
             color: var(--dark);
+            font-style: italic;
         }
 
-        .ct-author {
+        .text-card-author {
             font-size: 0.85rem;
             color: var(--text-secondary);
         }
@@ -233,9 +320,11 @@
         }
 
         .detail-label {
-            font-family: 'Architects Daughter', cursive;
-            font-size: 0.75rem;
-            color: var(--lime-dark);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--coral-dark);
             margin-bottom: 0.2rem;
         }
 
@@ -247,7 +336,7 @@
 
         /* Unit Description */
         .unit-description h3 {
-            font-family: 'Architects Daughter', cursive;
+            font-family: 'DM Serif Display', serif;
             font-size: 1.15rem;
             color: var(--dark);
             margin-bottom: 0.75rem;
@@ -269,14 +358,16 @@
 
         /* ========== ASSIGNMENTS ========== */
         .section-label {
-            font-family: 'Architects Daughter', cursive;
-            font-size: 0.85rem;
-            color: var(--lime);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--coral);
             margin-bottom: 0.5rem;
         }
 
         .section-title {
-            font-family: 'Architects Daughter', cursive;
+            font-family: 'DM Serif Display', serif;
             font-size: 1.5rem;
             color: var(--dark);
             margin-bottom: 0.4rem;
@@ -288,11 +379,21 @@
             margin-bottom: 2rem;
         }
 
+        .empty-state {
+            background: var(--white);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
         .assignment-card {
             display: block;
             background: var(--white);
             border: 1px solid var(--border);
-            border-left: 4px solid var(--lime);
+            border-left: 4px solid var(--coral);
             border-radius: 6px;
             padding: 1.5rem 1.75rem;
             text-decoration: none;
@@ -319,8 +420,8 @@
             font-weight: 700;
             padding: 0.2rem 0.6rem;
             border-radius: 3px;
-            background: var(--lime-pale);
-            color: var(--lime-dark);
+            background: var(--coral-pale);
+            color: var(--coral-dark);
             letter-spacing: 0.03em;
             text-transform: uppercase;
         }
@@ -335,7 +436,7 @@
         }
 
         .assignment-title {
-            font-family: 'Architects Daughter', cursive;
+            font-family: 'DM Serif Display', serif;
             font-size: 1.25rem;
             color: var(--dark);
             margin-bottom: 0.35rem;
@@ -354,7 +455,7 @@
             margin-top: 0.75rem;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--lime);
+            color: var(--coral);
         }
 
         /* ========== PARENT CORNER ========== */
@@ -367,7 +468,7 @@
         }
 
         .parent-intro h3 {
-            font-family: 'Architects Daughter', cursive;
+            font-family: 'DM Serif Display', serif;
             font-size: 1.25rem;
             color: var(--dark);
             margin-bottom: 0.4rem;
@@ -378,55 +479,16 @@
             font-size: 0.95rem;
         }
 
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tip-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .tip-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--lime-pale);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .tip-card h4 {
-            font-family: 'Architects Daughter', cursive;
-            font-size: 1rem;
-            color: var(--dark);
-            margin-bottom: 0.35rem;
-        }
-
-        .tip-card p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.55;
-        }
-
         .contact-box {
-            background: var(--lime-pale);
+            background: var(--coral-pale);
             border-radius: 8px;
             padding: 1.5rem 2rem;
         }
 
         .contact-box h4 {
-            font-family: 'Architects Daughter', cursive;
-            font-size: 1rem;
-            color: var(--lime-dark);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--coral-dark);
             margin-bottom: 0.3rem;
         }
 
@@ -455,7 +517,7 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             .header { padding: 2.5rem 1.5rem 2rem; }
-            .header h1 { font-size: 2.5rem; }
+            .header h1 { font-size: 2.75rem; }
             .main-content { padding: 2rem 1.5rem 3rem; }
 
             .nav-tabs-inner {
@@ -473,14 +535,7 @@
             .unit-hero-body { padding: 1.5rem; }
 
             .details-grid { grid-template-columns: 1fr; }
-
-            .central-text-block {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-
-            .tips-grid { grid-template-columns: 1fr; }
+            .texts-grid { grid-template-columns: 1fr; }
             .parent-intro { padding: 1.5rem; }
         }
 
@@ -496,13 +551,39 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <a href="index.html">← teachercolin.com</a>
-        <span class="top-bar-grade">MYP 1 • Grade 6</span>
+        <span class="top-bar-grade">MYP 3 • Grade 8</span>
     </div>
 
     <!-- Header -->
     <header class="header">
-        <h1>6 Manchester</h1>
+        <h1>8 Athens</h1>
     </header>
+
+    <!-- Lesson Archive Actions -->
+    <div class="lesson-actions">
+        <a href="https://docs.google.com/document/d/PLACEHOLDER_ATHENS_ARCHIVE_DOC_ID/pub" target="_blank" rel="noopener" class="lesson-btn lesson-btn-primary">
+            <span class="lesson-btn-icon">📖</span>
+            <span>
+                <span class="lesson-btn-label" data-en="Lesson Archive" data-vi="Lưu trữ bài học">Lesson Archive</span>
+                <span class="lesson-btn-sub">Opens Google Doc</span>
+            </span>
+        </a>
+        <a href="https://drive.google.com/drive/folders/PLACEHOLDER_ATHENS_LESSONS_FOLDER_ID" target="_blank" rel="noopener" class="lesson-btn lesson-btn-secondary">
+            <span class="lesson-btn-icon">📁</span>
+            <span>
+                <span class="lesson-btn-label" data-en="Lesson Files" data-vi="Tệp bài học">Lesson Files</span>
+                <span class="lesson-btn-sub">Opens Google Drive</span>
+            </span>
+        </a>
+    </div>
+
+    <div class="lang-toggle" role="group" aria-label="Language / Ngôn ngữ">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="vi">VI</button>
+    </div>
+
+    <p class="class-blurb" data-en="8 Athens is an MYP 3 Language and Literature class building close reading and analytical writing skills." data-vi="8 Athens là lớp Ngôn ngữ và Văn học MYP 3, phát triển kỹ năng đọc hiểu sâu và viết phân tích.">8 Athens is an MYP 3 Language and Literature class building close reading and analytical writing skills.</p>
+    <p class="class-contact-line" data-en="Questions? Message me on the Edufit Parents app." data-vi="Có câu hỏi? Nhắn tin cho tôi qua ứng dụng Edufit Parents.">Questions? Message me on the Edufit Parents app.</p>
 
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
@@ -520,56 +601,12 @@
         <section class="section active" id="unit">
             <div class="unit-hero">
                 <div class="unit-hero-top">
-                    <div class="unit-meta">Unit 3 • Weeks 1–10 • Started January</div>
-                    <h2 class="unit-title">Do You Believe in Magic?</h2>
+                    <div class="unit-meta">Unit details to come</div>
+                    <h2 class="unit-title">Current unit information will appear here</h2>
                 </div>
                 <div class="unit-hero-body">
-                    <div class="eq-block">
-                        <div class="eq-label">Essential Question</div>
-                        <div class="eq-text">How do writers use creativity to explore familiar themes in unfamiliar settings?</div>
-                    </div>
-
-                    <div class="central-text-block">
-                        <span class="central-text-icon">📚</span>
-                        <div>
-                            <div class="ct-label">Central Text</div>
-                            <div class="ct-title">The Lion, the Witch and the Wardrobe</div>
-                            <div class="ct-author">by C.S. Lewis</div>
-                        </div>
-                    </div>
-
-                    <div class="details-grid">
-                        <div class="detail-cell">
-                            <div class="detail-label">Key Concept</div>
-                            <div class="detail-value">Creativity</div>
-                        </div>
-                        <div class="detail-cell">
-                            <div class="detail-label">Related Concepts</div>
-                            <div class="detail-value">Character, Genres, Setting, Theme</div>
-                        </div>
-                        <div class="detail-cell">
-                            <div class="detail-label">Global Context</div>
-                            <div class="detail-value">Personal and Cultural Expression</div>
-                        </div>
-                        <div class="detail-cell">
-                            <div class="detail-label">Assessment Criteria</div>
-                            <div class="detail-value">Criteria A, C & D</div>
-                        </div>
-                    </div>
-
-                    <div class="unit-description">
-                        <h3>What We're Exploring</h3>
-                        <p><strong>Statement of Inquiry:</strong> In some genres, writers are able to use their creativity to transgress the bounds of space and time through exploring familiar themes in unfamiliar settings.</p>
-                        <p>Through reading <em>The Lion, the Witch and the Wardrobe</em>, students explore how fantasy literature uses magical worlds to examine universal human experiences. We're also making connections to <em>The Lightning Thief</em>, which we read earlier this year.</p>
-                        <p>Students will learn to:</p>
-                        <ul>
-                            <li>Identify and analyze conventions of the fantasy genre</li>
-                            <li>Explore how setting shapes narrative and theme</li>
-                            <li>Understand connections to Christian symbolism and allegory</li>
-                            <li>Analyze character development, especially Edmund's arc</li>
-                            <li>Compare how different authors use mythology and belief systems</li>
-                        </ul>
-                    </div>
+                    <!-- TODO(Colin): replace with the current unit's essential question, texts, MYP details, and description. -->
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">This section will show the current unit's essential question, texts, and key details once the unit is set up — same layout as the 9 Zurich page.</p>
                 </div>
             </div>
         </section>
@@ -580,62 +617,24 @@
             <h2 class="section-title">Current Assignments</h2>
             <p class="section-subtitle">Click on any assignment for full details and instructions</p>
 
-            <a href="assignments/fantasy_choice_board.html" class="assignment-card">
-                <div class="assignment-meta">
-                    <span class="assignment-tag">Criteria A, C & D</span>
-                    <span class="assignment-due">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                        Due: End of Unit
-                    </span>
-                </div>
-                <h3 class="assignment-title">Fantasy Unit Choice Board</h3>
-                <p class="assignment-description">Choose your quest! Pick from 6 creative options to show what you've learned about <em>The Lion, the Witch and the Wardrobe</em> and <em>The Lightning Thief</em>. Design a board game, put Edmund on trial, analyze fantasy conventions, compare characters, and more.</p>
-                <span class="assignment-cta">View full instructions →</span>
-            </a>
+            <!-- TODO(Colin): add assignment-card entries here, matching the 9 Zurich page's markup. -->
+            <div class="empty-state">No assignments posted yet.</div>
         </section>
 
         <!-- Parent Corner Section -->
         <section class="section" id="parents">
             <div class="section-label">For Parents</div>
             <h2 class="section-title">Parent Corner</h2>
-            <p class="section-subtitle">How you can support your student's learning at home</p>
+            <p class="section-subtitle">How you can support your student in 8 Athens</p>
 
             <div class="parent-intro">
-                <h3>Supporting Your Grade 6 Reader</h3>
-                <p>Partnership between home and school helps students thrive. Here are some ways you can engage with what we're learning.</p>
-            </div>
-
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <div class="tip-icon">📖</div>
-                    <h4>Talk About the Book</h4>
-                    <p>We're reading <em>The Lion, the Witch and the Wardrobe</em>. Ask your child about the characters—especially Edmund—and what they think about his choices. What would they do in his situation?</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">🎬</div>
-                    <h4>Explore Fantasy Together</h4>
-                    <p>Watch fantasy films or discuss other fantasy books. Ask: "What makes this a fantasy story? What's real and what's magical?" This builds genre awareness.</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">🔗</div>
-                    <h4>Make Connections</h4>
-                    <p>We're connecting <em>Narnia</em> to <em>The Lightning Thief</em> from earlier this year. Ask your child: "How are these books similar? How are they different?" Both use mythology creatively.</p>
-                </div>
-                <div class="tip-card">
-                    <div class="tip-icon">✏️</div>
-                    <h4>Support Their Analysis</h4>
-                    <p>The summative is a choice board with analytical options. Help by listening to their ideas, but let them form their own arguments. Ask "Why do you think that?" to encourage deeper thinking.</p>
-                </div>
+                <h3>Supporting Your Grade 8 Reader &amp; Writer</h3>
+                <p>This section will be updated with guidance specific to each unit and assessment as the year progresses.</p>
             </div>
 
             <div class="contact-box">
-                <h4>Questions or Concerns?</h4>
-                <p>Please reach out via the <strong>Edufit Parents app</strong>. I check messages daily and will respond within 24 hours on school days. I'm here to support both you and your student!</p>
+                <h4>Getting in Touch</h4>
+                <p>If your student needs support or you have a question, the best step is to reach out to me directly via the <strong>Edufit Parents app</strong>. I check messages daily and respond within 24 hours on school days.</p>
             </div>
         </section>
 
@@ -645,6 +644,31 @@
     <footer class="footer">
         <p>Mr. Colin Brownlie · Dewey Schools IB Program · <a href="index.html">teachercolin.com</a></p>
     </footer>
+
+    <!-- Language Toggle Script -->
+    <script>
+        (function() {
+            var STORAGE_KEY = 'teachercolin-lang';
+            function applyLang(lang) {
+                document.querySelectorAll('[data-en][data-vi]').forEach(function(el) {
+                    el.textContent = el.getAttribute('data-' + lang);
+                });
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            }
+            var saved = 'en';
+            try { saved = localStorage.getItem(STORAGE_KEY) || 'en'; } catch (e) {}
+            applyLang(saved);
+            document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var lang = btn.dataset.lang;
+                    applyLang(lang);
+                    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+                });
+            });
+        })();
+    </script>
 
     <!-- Tab Navigation Script -->
     <script>
