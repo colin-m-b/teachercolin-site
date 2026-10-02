@@ -432,8 +432,3 @@ a { color: inherit; text-decoration: none; }
     .class-card { padding: 22px 20px 26px; }
     .callout { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
-
-/* Three action cards on a class page */
-@media (min-width: 861px) {
-    .action-grid--3 { grid-template-columns: repeat(3, 1fr); }
-}
