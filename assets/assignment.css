@@ -131,6 +131,15 @@
 .step__title { display: block; font-size: 1.1875rem; margin-bottom: 6px; }
 .step__body { display: block; }
 
+/* Tips for parents */
+.parents {
+    background: var(--accent-pale);
+    border-left: 8px solid var(--accent);
+    padding: 4px 32px 20px;
+}
+
+.parents h2 { border-bottom-color: var(--accent-tint); }
+
 /* Desk: allowed / not allowed */
 .desk {
     display: grid;
@@ -196,6 +205,7 @@
 @media (max-width: 640px) {
     .assignment-hero { padding-top: 32px; }
     .question { padding: 22px 20px 26px; }
+    .parents { padding: 4px 20px 16px; }
     .block { margin-top: 40px; }
     .criterion th,
     .criterion td { padding: 10px 12px; font-size: 1rem; }
@@ -211,7 +221,9 @@
     .wrap { max-width: none; padding-left: 0; padding-right: 0; }
     .assignment { padding-bottom: 0; }
     .question,
+    .parents,
     .desk__col--no { background: #fff; }
+    .parents { border: 1px solid #000; border-left-width: 8px; break-inside: avoid; }
     .question { border: 2px solid #000; border-left-width: 8px; }
     .question__eyebrow,
     .step::before { color: #000; }
