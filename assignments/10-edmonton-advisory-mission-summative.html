@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="10 Edmonton · MYP 5 Individuals and Societies · Unit 1 Summative Assessment · Criteria B, C">
+    <meta name="theme-color" content="#12403C">
+    <title>The Advisory Mission | 10 Edmonton</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/site.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+/* ================================
+   The Advisory Mission — page styles (extends site.css)
+   10 Edmonton teal palette, this page only
+   ================================ */
+.accent-mission {
+    --deep: #12403C;
+    --accent: #1F7A72;
+    --light: #6FB2AB;
+    --wash: #E4F1EF;
+    --paper: #FBFAF6;
+    --desk: #F1EFE8;
+    --ink-2: #47514F;
+    /* site.css header tokens */
+    --accent-tint: #A9D3CE;
+    --accent-pale: #E4F1EF;
+    --accent-band: #D3E9E6;
+    --m-serif: "Source Serif 4", Georgia, serif;
+    --m-sans: "Source Sans 3", system-ui, sans-serif;
+    --m-type: "Special Elite", "IBM Plex Mono", "Courier New", monospace;
+    background: var(--desk);
+}
+/* Special Elite has no Vietnamese glyphs */
+html[lang="vi"] .accent-mission { --m-type: "IBM Plex Mono", "Courier New", monospace; }
+
+/* Language switching for rich content (header/footer use data-en/data-vi) */
+html[lang="vi"] .en,
+html:not([lang="vi"]) .vi { display: none !important; }
+
+.m-wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Cover ---------- */
+.cover { background: var(--deep); color: #fff; position: relative; overflow: hidden; }
+.cover::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(135deg, rgba(255,255,255,.025) 0 2px, transparent 2px 9px);
+}
+.cover .m-wrap { position: relative; z-index: 1; padding-top: 40px; padding-bottom: 84px; }
+.fileref {
+    font-family: var(--m-type); font-size: 14px; letter-spacing: .04em; color: var(--light);
+    display: flex; gap: 6px 22px; flex-wrap: wrap; margin-bottom: 22px;
+}
+.stamp {
+    display: inline-block; font-family: var(--m-type); text-transform: uppercase; letter-spacing: .12em;
+    border: 3px double currentColor; border-radius: 4px; padding: 4px 12px; transform: rotate(-3deg);
+}
+.cover__kicker { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; margin-bottom: 18px; }
+.cover .stamp { color: var(--light); font-size: 1.05rem; }
+.cover__class { font-family: var(--m-type); font-size: 15px; color: var(--wash); }
+.cover h1 {
+    font-family: var(--m-serif); font-weight: 700; color: #fff;
+    font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1.08; letter-spacing: -.01em;
+}
+.cover__sub { font-family: var(--m-serif); font-style: italic; font-size: 1.3rem; line-height: 1.45; color: var(--wash); margin-top: 12px; max-width: 36ch; }
+.cover__small { font-family: var(--m-sans); font-size: 16px; color: var(--light); margin-top: 18px; }
+
+/* ---------- Folder tabs ---------- */
+.tabs-shell { position: sticky; top: 0; z-index: 20; margin-top: -50px; transition: background .2s; }
+.tabs-shell.is-stuck { background: var(--deep); box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.tabs {
+    display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+    max-width: 1040px; margin: 0 auto; padding: 10px 20px 0;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+    flex: 0 0 auto; white-space: nowrap; cursor: pointer;
+    font: 600 15px/1 var(--m-sans); color: var(--deep);
+    background: var(--wash); border: 1px solid var(--light); border-bottom: 0;
+    border-radius: 10px 10px 0 0; padding: 12px 12px;
+    transform: translateY(4px); transition: transform .15s, background .15s;
+}
+.tab:hover { transform: translateY(1px); background: #fff; }
+.tab[aria-selected="true"] { background: var(--paper); transform: translateY(1px); box-shadow: inset 0 3px 0 var(--accent); }
+.tab:focus-visible { outline: 3px solid var(--light); outline-offset: 2px; }
+.tab__num { font-family: var(--m-type); font-weight: 400; color: var(--accent); margin-right: 6px; }
+html[lang="vi"] .tab { font-size: 14.5px; padding: 12px 10px; }
+html[lang="vi"] .tab__num { margin-right: 4px; }
+
+/* ---------- Paper ---------- */
+.paper {
+    display: block; max-width: 1000px; margin: 0 auto 64px;
+    background: var(--paper); border: 1px solid var(--light); border-radius: 0 0 6px 6px;
+    box-shadow: 0 10px 30px rgba(18,64,60,.10);
+    padding: 44px clamp(18px, 5vw, 56px) 56px; min-height: 60vh;
+    font-family: var(--m-sans); font-size: 18px; line-height: 1.6; color: var(--ink);
+}
+.paper h2, .paper h3 { font-family: var(--m-serif); color: var(--deep); line-height: 1.25; }
+.paper h2 { font-size: 1.65rem; font-weight: 700; margin-bottom: 12px; }
+.paper h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
+.paper a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.paper a:hover { color: var(--deep); }
+.paper ul, .paper ol { padding-left: 1.3em; }
+.paper li { margin: 6px 0; }
+.paper p + p { margin-top: 10px; }
+.panel { outline: none; }
+.panel[hidden] { display: none; }
+.panel.is-entering { animation: m-fade .35s ease both; }
+@keyframes m-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.block { margin-top: 48px; }
+.block:first-child { margin-top: 0; }
+.label {
+    display: block; font-family: var(--m-type); font-size: 14px; color: var(--accent);
+    text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px;
+}
+.prose { max-width: 68ch; }
+.note { font-size: 16px; color: var(--ink-2); margin-top: 18px; }
+
+/* Placeholders for Mr. Colin */
+.tbd {
+    display: inline-block; font-family: var(--m-type); font-size: 14px; line-height: 1.4; white-space: nowrap;
+    color: var(--deep); background: var(--wash); border: 2px dashed var(--accent); border-radius: 999px; padding: 1px 12px;
+}
+.tbd-box {
+    margin-top: 18px; padding: 14px 18px; border-radius: 8px;
+    border: 2px dashed var(--accent); background: var(--wash);
+    font-family: var(--m-type); font-size: 15px; color: var(--deep);
+}
+
+/* ---------- Tab 1: Mission ---------- */
+.memo {
+    background: #fff; border: 1px solid #D9D6CC; border-left: 6px solid var(--accent);
+    padding: 22px 26px; margin-top: 14px; max-width: 68ch;
+}
+.memo__head { font-family: var(--m-type); font-size: 14px; color: var(--ink-2); border-bottom: 1px dashed #CFCABC; padding-bottom: 10px; margin-bottom: 14px; }
+.memo__qs { margin-top: 12px; font-family: var(--m-serif); font-size: 1.3rem; font-weight: 600; color: var(--deep); }
+.after-memo { margin-top: 18px; }
+
+.ladder-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: center; margin-top: 14px; }
+.vn-callout { background: var(--wash); border-radius: 8px; padding: 18px 20px; margin-top: 18px; }
+.fig { font-family: var(--m-type); color: var(--deep); font-size: 1.1em; }
+.ladder { position: relative; display: flex; flex-direction: column; gap: 8px; padding-right: 100px; }
+.tier {
+    display: flex; flex-direction: column; gap: 2px;
+    background: #fff; border: 2px solid var(--light); border-radius: 6px; padding: 10px 16px;
+    opacity: 0; transform: translateX(-16px); transition: opacity .5s ease, transform .5s ease;
+}
+.tier:nth-child(1) { width: 100%; }
+.tier:nth-child(2) { width: 94%; }
+.tier:nth-child(3) { width: 88%; }
+.tier:nth-child(4) { width: 82%; }
+.ladder.is-in .tier { opacity: 1; transform: none; }
+.ladder.is-in .tier:nth-child(4) { transition-delay: .05s; }
+.ladder.is-in .tier:nth-child(3) { transition-delay: .2s; }
+.ladder.is-in .tier:nth-child(2) { transition-delay: .35s; }
+.ladder.is-in .tier:nth-child(1) { transition-delay: .5s; }
+.tier__name { font-weight: 700; color: var(--deep); line-height: 1.3; }
+.tier__range { font-family: var(--m-type); font-size: 15px; color: var(--ink-2); }
+.tier--target { border-style: dashed; border-color: var(--accent); background: var(--wash); }
+.tier--here { background: var(--deep); border-color: var(--deep); }
+.tier--here .tier__name, .tier--here .tier__range { color: #fff; }
+.pin, .goal {
+    position: absolute; right: 0; width: 90px; font-family: var(--m-type); font-size: 13px; line-height: 1.25;
+    text-transform: uppercase; letter-spacing: .05em; opacity: 0; transition: opacity .4s ease .9s;
+}
+.pin { color: var(--deep); }
+.goal { color: var(--accent); }
+.ladder.is-in .pin, .ladder.is-in .goal { opacity: 1; }
+.arrow {
+    position: absolute; right: 100px; width: 0; margin-right: -14px; border-left: 3px dashed var(--accent);
+    transform-origin: bottom; transform: scaleY(0); transition: transform .6s ease .8s;
+}
+.ladder.is-in .arrow { transform: scaleY(1); }
+.arrow::before {
+    content: ""; position: absolute; top: -6px; left: -8.5px;
+    border: 7px solid transparent; border-bottom: 10px solid var(--accent); border-top: 0;
+}
+.source { font-size: 14px; color: var(--ink-2); margin-top: 12px; line-height: 1.5; }
+
+.glance { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 10px; }
+.badge { position: relative; background: #fff; border: 1px solid var(--light); border-top: 8px solid var(--accent); border-radius: 6px; padding: 22px 16px 18px; }
+.badge::before {
+    content: ""; position: absolute; top: 6px; left: 50%; width: 34px; height: 6px; margin-left: -17px;
+    background: var(--desk); border: 1px solid var(--light); border-radius: 4px;
+}
+.badge p { font-size: 16px; }
+
+.timeline { list-style: none; padding-left: 0 !important; margin-top: 18px; position: relative; max-width: 780px; }
+.timeline::before { content: ""; position: absolute; left: 19px; top: 14px; bottom: 14px; width: 2px; background: var(--light); }
+.timeline li { display: grid; grid-template-columns: 40px 1fr auto; gap: 16px; align-items: start; margin: 0; padding: 8px 0; }
+.step {
+    position: relative; z-index: 1; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--paper); border: 2px solid var(--accent); font-family: var(--m-type); color: var(--deep);
+}
+.timeline li.is-key .step { background: var(--deep); border-color: var(--deep); color: #fff; }
+.timeline .what, .timeline .when { padding-top: 6px; }
+.dash { font-family: var(--m-type); color: var(--ink-2); }
+
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px; }
+.call { border-radius: 8px; padding: 22px 24px; }
+.call .stamp { font-size: 15px; margin-bottom: 14px; }
+.call--practice { background: #fff; border: 2px dashed var(--accent); }
+.call--practice .stamp { color: var(--accent); }
+.call--final { background: var(--deep); color: #fff; }
+.call--final .stamp { color: var(--light); }
+.paper .call--final h3 { color: #fff; }
+
+/* ---------- Tab 2: Your Section ---------- */
+.challenge { background: var(--wash); border-left: 6px solid var(--deep); padding: 18px 22px; margin-top: 12px; max-width: 70ch; }
+.challenge ul { margin-top: 6px; }
+.files3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
+.filecard { position: relative; background: #fff; border: 1px solid var(--light); border-radius: 0 10px 6px 6px; padding: 22px 20px 20px; margin-top: 14px; }
+.filecard__tab {
+    position: absolute; top: -27px; left: -1px; height: 27px; padding: 4px 14px 0;
+    background: var(--wash); border: 1px solid var(--light); border-bottom: 0; border-radius: 8px 8px 0 0;
+    font-family: var(--m-type); font-size: 13px; color: var(--deep); text-transform: uppercase; letter-spacing: .06em;
+}
+.filecard .time { display: block; font-family: var(--m-type); font-size: 14px; color: var(--accent); margin-bottom: 8px; }
+.filecard p { font-size: 17px; }
+.clipnote {
+    position: relative; margin-top: 22px; max-width: 640px; background: #fff;
+    border: 1px solid var(--light); border-left: 6px solid var(--light); padding: 18px 22px 14px;
+    transform: rotate(-.4deg); box-shadow: 0 4px 12px rgba(18,64,60,.08);
+}
+.clipnote::before {
+    content: ""; position: absolute; top: -10px; right: 28px; width: 14px; height: 34px;
+    border: 3px solid var(--light); border-radius: 8px; background: transparent;
+}
+.stamp--small { font-size: 14px; color: var(--accent); margin-bottom: 10px; }
+.total { margin-top: 16px; }
+
+.examples { display: grid; gap: 10px; margin-top: 16px; max-width: 760px; }
+.example { display: flex; gap: 14px; align-items: flex-start; padding: 14px 18px; border-radius: 8px; background: #fff; border: 1px solid var(--light); }
+.example--bad { background: transparent; border-style: dashed; }
+.example__mark { font-size: 1.2rem; line-height: 1.5; }
+.example__kind { display: block; font-family: var(--m-type); font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+.example__q { font-family: var(--m-serif); font-size: 1.15rem; color: var(--deep); }
+.example--bad .example__q { color: var(--ink-2); text-decoration: line-through; text-decoration-color: rgba(18,64,60,.35); }
+.example__gloss { font-size: 16px; color: var(--ink-2); margin-top: 2px !important; }
+
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; align-items: start; }
+.twocol--tight { margin-top: 12px; }
+.why { background: var(--wash); border-radius: 8px; padding: 18px 20px; }
+.checks { list-style: none; padding-left: 0 !important; }
+.checks li { position: relative; padding-left: 30px; }
+.checks li::before {
+    content: ""; position: absolute; left: 0; top: .3em; width: 18px; height: 18px;
+    border: 2px solid var(--accent); border-radius: 3px; background: #fff;
+}
+
+.verdicts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; max-width: 760px; }
+.verdict { border-radius: 8px; padding: 18px 20px; background: #fff; border: 1px solid var(--light); }
+.verdict .stamp { font-size: 15px; margin-bottom: 10px; }
+.verdict--yes .stamp { color: var(--deep); }
+.verdict--revise .stamp { color: var(--accent); }
+
+.clipboard { position: relative; background: #fff; border: 1px solid var(--light); border-radius: 8px; padding: 30px 22px 18px; }
+.clipboard::before {
+    content: ""; position: absolute; top: -9px; left: 50%; width: 76px; height: 18px; margin-left: -38px;
+    background: var(--light); border-radius: 5px;
+}
+
+.notes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; padding: 24px; border-radius: 8px; background: #fff; border: 1px solid #D9D6CC;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 31px, #E7ECEA 31px 32px); }
+.numbered { counter-reset: n; list-style: none; padding-left: 0 !important; }
+.numbered li { counter-increment: n; position: relative; padding-left: 40px; }
+.numbered li::before {
+    content: counter(n); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--deep); color: #fff; font-family: var(--m-type); font-size: 14px; display: grid; place-items: center;
+}
+.slides-list { max-width: 72ch; margin-top: 6px; }
+
+/* ---------- Tab 3: Country files ---------- */
+.cards { list-style: none; padding: 0 !important; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 22px; }
+.idx {
+    margin: 0 !important; min-height: 124px; padding: 10px 14px 16px; border: 1px solid #D6D2C4; border-radius: 3px;
+    display: flex; flex-direction: column;
+    background-color: #fff;
+    background-image: linear-gradient(to bottom, transparent 38px, var(--light) 38px, var(--light) 40px, transparent 40px),
+                      repeating-linear-gradient(to bottom, transparent 0 27px, #E7ECEA 27px 28px);
+    background-position: 0 0, 0 40px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.06);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.idx:hover { transform: translateY(-4px) rotate(-.4deg); box-shadow: 0 10px 18px rgba(18,64,60,.15); }
+.idx__no { font-family: var(--m-type); font-size: 13px; color: var(--accent); }
+.idx__name { font-family: var(--m-type); font-size: 1.3rem; color: var(--deep); margin-top: 22px; line-height: 1.2; }
+.idx__vi { font-size: 15px; color: var(--ink-2); margin-top: 4px; }
+
+/* ---------- Tab 4: Research ---------- */
+.srcbox { background: #fff; border: 1px solid var(--light); border-radius: 8px; padding: 16px 18px; }
+.kind {
+    display: inline-block; font-family: var(--m-type); font-size: 12.5px; text-transform: uppercase; letter-spacing: .08em;
+    padding: 2px 9px; border-radius: 4px; margin-bottom: 6px; white-space: nowrap;
+}
+.kind--data { background: var(--deep); color: #fff; }
+.kind--text { background: var(--wash); color: var(--deep); border: 1px solid var(--light); }
+.trust { background: var(--wash); border-radius: 8px; padding: 20px 22px; max-width: 640px; }
+.table-scroll { overflow-x: auto; margin-top: 10px; }
+.src-table, .evidence { border-collapse: collapse; font-size: 16px; }
+.src-table { width: 100%; min-width: 560px; background: #fff; }
+.src-table th, .src-table td, .evidence th, .evidence td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--light); }
+.src-table th, .evidence th { font-family: var(--m-type); font-weight: 400; font-size: 13.5px; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; background: var(--wash); }
+.src-table td:nth-child(2) { white-space: nowrap; }
+.callout-line { margin-top: 18px; border-left: 6px solid var(--accent); padding: 10px 16px; background: #fff; max-width: 70ch; }
+
+/* ---------- Tab 5: AI rules ---------- */
+.ai { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 14px; }
+.ai__col { border-radius: 8px; padding: 22px 24px; }
+.ai__col--yes { background: var(--wash); border: 2px solid var(--light); }
+.ai__col--no { background: #fff; border: 2px solid var(--deep); }
+.ai__col ul { list-style: none; padding-left: 0 !important; margin-top: 8px; }
+.ai__col li { margin: 0; padding: 12px 0; border-top: 1px dashed var(--light); font-size: 17px; }
+.ask {
+    margin-top: 18px; padding: 14px; text-align: center; border: 2px dashed var(--accent); border-radius: 8px;
+    font-family: var(--m-type); font-size: 1.1rem; color: var(--deep);
+}
+
+/* ---------- Tab 6: Rubric ---------- */
+.rubric-top { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; margin-top: 20px; }
+.small-h { font-size: 1.05rem !important; }
+.evidence { background: #fff; }
+.level0 { font-size: 16px; color: var(--ink-2); background: #fff; border: 1px dashed var(--light); border-radius: 8px; padding: 16px 18px; }
+.expand-all {
+    margin-top: 12px; font: 600 15px var(--m-sans); color: var(--deep); background: var(--wash);
+    border: 1px solid var(--light); border-radius: 6px; padding: 7px 14px; cursor: pointer;
+}
+.expand-all:hover { background: #fff; }
+.crit { margin-top: 32px; }
+details.strand { margin-top: 10px; background: #fff; border: 1px solid var(--light); border-radius: 8px; overflow: hidden; }
+details.strand summary {
+    list-style: none; cursor: pointer; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    font-weight: 700; color: var(--deep);
+}
+details.strand summary::-webkit-details-marker { display: none; }
+details.strand summary::after { content: "+"; font-family: var(--m-type); font-size: 1.4rem; line-height: 1; color: var(--accent); transition: transform .2s; }
+details.strand[open] summary { background: var(--wash); }
+details.strand[open] summary::after { transform: rotate(45deg); }
+details.strand summary:focus-visible { outline: 3px solid var(--light); outline-offset: -3px; }
+.levels { display: grid; grid-template-columns: repeat(4, 1fr); }
+.lvl { padding: 14px 16px 16px; border-left: 1px solid var(--wash); font-size: 16px; }
+.lvl:first-child { border-left: 0; }
+.lvl__band { display: block; font-family: var(--m-type); color: var(--accent); margin-bottom: 4px; }
+
+/* ---------- Tab 7: Parents ---------- */
+.parents { max-width: 660px; }
+.parents .intro { font-size: 1.15rem; line-height: 1.6; }
+.p-block { margin-top: 30px; }
+.qs { list-style: none; padding-left: 0 !important; }
+.qs li { background: var(--wash); border-radius: 8px; padding: 12px 16px; font-family: var(--m-serif); font-size: 1.1rem; color: var(--deep); }
+.help li { margin: 10px 0; }
+.avoid { border: 2px solid var(--deep); border-radius: 8px; padding: 18px 22px; }
+.remember { background: var(--deep); color: #fff; border-radius: 8px; padding: 20px 22px; }
+.paper .remember h3 { color: #fff; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .glance { grid-template-columns: 1fr 1fr; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .files3, .duo, .ai, .ladder-wrap, .twocol, .notes, .verdicts, .rubric-top { grid-template-columns: 1fr; }
+    .levels { grid-template-columns: 1fr; }
+    .lvl { border-left: 0; border-top: 1px solid var(--wash); }
+    .timeline li { grid-template-columns: 40px 1fr; }
+    .timeline .when { grid-column: 2; padding-top: 0; }
+    .filecard { margin-top: 30px; }
+}
+@media (max-width: 520px) {
+    .m-wrap { padding: 0 16px; }
+    .tabs { padding: 10px 12px 0; }
+    .paper { font-size: 17px; border-left: 0; border-right: 0; border-radius: 0; padding: 32px 16px 44px; }
+    .glance { grid-template-columns: 1fr; }
+    .memo { padding: 18px; }
+    .memo__qs { font-size: 1.15rem; }
+    .ladder { padding-right: 92px; }
+    .idx__name { font-size: 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .accent-mission *, .accent-mission *::before, .accent-mission *::after { animation: none !important; transition: none !important; }
+    .tier, .pin, .goal { opacity: 1 !important; transform: none !important; }
+    .arrow { transform: none !important; }
+}
+@media print {
+    .accent-mission { background: #fff; }
+    .tabs-shell, .lang-toggle, .expand-all { display: none !important; }
+    .cover .m-wrap { padding-bottom: 32px; }
+    .paper { box-shadow: none; border: 0; padding: 24px 0; max-width: none; }
+    .panel[hidden] { display: block !important; }
+    .panel + .panel { break-before: page; }
+    .tier, .pin, .goal { opacity: 1 !important; transform: none !important; }
+    .arrow { transform: none !important; }
+    .idx:hover { transform: none; }
+    .cover, .call--final, .remember, .tier--here, .kind--data, .numbered li::before, .timeline li.is-key .step {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    details.strand, .filecard, .badge, .call, .idx, .example { break-inside: avoid; }
+}
+
+    </style>
+</head>
+<body class="accent-mission">
+
+    <header class="site-header">
+        <div class="wrap">
+            <div class="site-header__brand">
+                <span class="site-header__name">Teacher Colin</span>
+                <span class="site-header__tagline" data-en="Dewey Schools · IB MYP" data-vi="Trường Dewey · Chương trình IB MYP">Dewey Schools · IB MYP</span>
+            </div>
+            <nav class="site-header__nav" aria-label="Main">
+                <a href="../index.html" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="../8-athens.html">8 Athens</a><a href="../9-zurich.html">9 Zurich</a><a href="../10-edmonton.html" class="is-current">10 Edmonton</a>
+                <a href="../summer-learning.html" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+                <span class="lang-toggle">
+                    <button type="button" class="is-active" data-lang="en">EN</button>
+                    <button type="button" data-lang="vi">VI</button>
+                </span>
+            </nav>
+        </div>
+    </header>
+
+    <div class="cover">
+        <div class="m-wrap">
+            <div class="fileref"><span><span class="en">FILE REF: WB-ADV-10E</span><span class="vi" lang="vi">SỐ HỒ SƠ: WB-ADV-10E</span></span><span><span class="en">CLASSIFICATION: FOR MINISTERIAL BRIEFING</span><span class="vi" lang="vi">PHÂN LOẠI: DÀNH CHO BUỔI BÁO CÁO CẤP BỘ TRƯỞNG</span></span></div>
+            <div class="cover__kicker"><span class="stamp"><span class="en">Mission Brief</span><span class="vi" lang="vi">Hồ sơ nhiệm vụ</span></span><span class="cover__class"><span class="en">10 Edmonton · MYP 5 Individuals &amp; Societies</span><span class="vi" lang="vi">10 Edmonton · MYP 5 Cá nhân và Xã hội</span></span></div>
+            <h1><span class="en">The Advisory Mission</span><span class="vi" lang="vi">Nhiệm vụ Cố vấn</span></h1>
+            <p class="cover__sub"><span class="en">A World Bank team. One country. A path to a higher GNI per capita.</span><span class="vi" lang="vi">Một nhóm cố vấn Ngân hàng Thế giới. Một quốc gia. Một con đường để nâng GNI bình quân đầu người.</span></p>
+            <p class="cover__small"><span class="en">Unit 1: Stuck in the Middle · Summative assessment</span><span class="vi" lang="vi">Đơn vị 1: Kẹt ở giữa · Bài đánh giá tổng kết</span></p>
+        </div>
+    </div>
+
+    <div class="tabs-shell" id="tabs-shell">
+        <div class="tabs" role="tablist" aria-label="Mission dossier">
+<button type="button" class="tab" role="tab" id="tab-mission" aria-controls="mission" data-tab="mission"><span class="tab__num">01</span><span class="en">The Mission</span><span class="vi" lang="vi">Nhiệm vụ</span></button>
+<button type="button" class="tab" role="tab" id="tab-section" aria-controls="section" data-tab="section"><span class="tab__num">02</span><span class="en">Your Section</span><span class="vi" lang="vi">Phần của em</span></button>
+<button type="button" class="tab" role="tab" id="tab-countries" aria-controls="countries" data-tab="countries"><span class="tab__num">03</span><span class="en">Country Files</span><span class="vi" lang="vi">Hồ sơ quốc gia</span></button>
+<button type="button" class="tab" role="tab" id="tab-research" aria-controls="research" data-tab="research"><span class="tab__num">04</span><span class="en">Research &amp; Sources</span><span class="vi" lang="vi">Nguồn tư liệu</span></button>
+<button type="button" class="tab" role="tab" id="tab-ai" aria-controls="ai" data-tab="ai"><span class="tab__num">05</span><span class="en">AI Rules</span><span class="vi" lang="vi">Quy định AI</span></button>
+<button type="button" class="tab" role="tab" id="tab-rubric" aria-controls="rubric" data-tab="rubric"><span class="tab__num">06</span><span class="en">Rubric</span><span class="vi" lang="vi">Thang đánh giá</span></button>
+<button type="button" class="tab" role="tab" id="tab-parents" aria-controls="parents" data-tab="parents"><span class="tab__num">07</span><span class="en">For Parents</span><span class="vi" lang="vi">Phụ huynh</span></button>
+        </div>
+    </div>
+
+    <main class="paper" id="dossier">
+
+<section class="panel" id="mission" role="tabpanel" aria-labelledby="tab-mission" tabindex="0">
+  <div class="block">
+    <span class="label"><span class="en">The situation</span><span class="vi" lang="vi">Tình huống</span></span>
+    <h2><span class="en">A request for advice</span><span class="vi" lang="vi">Một yêu cầu tư vấn</span></h2>
+    <div class="memo">
+      <div class="memo__head"><span class="en">TO: World Bank Advisory Team &nbsp;·&nbsp; FROM: Government of a lower-middle-income country</span><span class="vi" lang="vi">GỬI: Nhóm Cố vấn Ngân hàng Thế giới &nbsp;·&nbsp; TỪ: Chính phủ một quốc gia có thu nhập trung bình thấp</span></div>
+      <p class="en">A lower-middle-income country has asked the World Bank for advice. Its leaders want answers to three questions:</p>
+<p class="vi" lang="vi">Một quốc gia có thu nhập trung bình thấp đã nhờ Ngân hàng Thế giới tư vấn. Các nhà lãnh đạo của nước này muốn có câu trả lời cho ba câu hỏi:</p>
+      <ol class="memo__qs">
+        <li><span class="en">How did we get here?</span><span class="vi" lang="vi">Chúng tôi đã đi đến đây như thế nào?</span></li>
+<li><span class="en">Where are we now?</span><span class="vi" lang="vi">Hiện nay chúng tôi đang ở đâu?</span></li>
+<li><span class="en">How do we move up?</span><span class="vi" lang="vi">Làm thế nào để chúng tôi tiến lên?</span></li>
+      </ol>
+    </div>
+    <p class="en prose after-memo">You are a team of World Bank advisors. Your job is to brief the country's leaders and show them a path towards a higher GNI per capita.</p>
+<p class="vi prose after-memo" lang="vi">Các em là một nhóm cố vấn của Ngân hàng Thế giới. Nhiệm vụ của các em là báo cáo cho các nhà lãnh đạo của quốc gia đó và chỉ ra cho họ con đường để đạt GNI bình quân đầu người cao hơn.</p>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Why the line matters</span><span class="vi" lang="vi">Vì sao ranh giới này quan trọng</span></span>
+    <h2><span class="en">The income ladder</span><span class="vi" lang="vi">Bậc thang thu nhập</span></h2>
+    <div class="ladder-wrap">
+      <div>
+        <p class="en prose">The World Bank sorts every economy into four income groups based on GNI per capita: the average income of the country's people.</p>
+<p class="vi prose" lang="vi">Ngân hàng Thế giới xếp mọi nền kinh tế vào bốn nhóm thu nhập dựa trên GNI bình quân đầu người: thu nhập trung bình của người dân trong nước.</p>
+        <div class="vn-callout">
+          <p class="en">In July 2026, Vietnam crossed the line. Its GNI per capita rose from <span class="fig">$4,490</span> to <span class="fig">$4,970</span>, moving it from lower-middle to upper-middle income.</p>
+<p class="vi" lang="vi">Vào tháng 7 năm 2026, Việt Nam đã vượt qua ranh giới này. GNI bình quân đầu người của Việt Nam tăng từ <span class="fig">$4,490</span> lên <span class="fig">$4,970</span>, đưa Việt Nam từ nhóm thu nhập trung bình thấp lên nhóm thu nhập trung bình cao.</p>
+          <p class="en">Your country hasn't made that jump yet. Your mission is to help it get there.</p>
+<p class="vi" lang="vi">Quốc gia của các em chưa làm được bước nhảy đó. Nhiệm vụ của các em là giúp quốc gia ấy đạt được điều này.</p>
+        </div>
+      </div>
+      <figure class="ladder-fig">
+        <div class="ladder" id="ladder">
+          <div class="tier"><span class="tier__name"><span class="en">High income</span><span class="vi" lang="vi">Thu nhập cao</span></span><span class="tier__range"><span class="en">more than</span><span class="vi" lang="vi">trên</span> $14,375</span></div>
+          <div class="tier tier--target"><span class="tier__name"><span class="en">Upper-middle income</span><span class="vi" lang="vi">Thu nhập trung bình cao</span></span><span class="tier__range">$4,636 – $14,375</span></div>
+          <div class="tier tier--here"><span class="tier__name"><span class="en">Lower-middle income</span><span class="vi" lang="vi">Thu nhập trung bình thấp</span></span><span class="tier__range">$1,176 – $4,635</span></div>
+          <div class="tier"><span class="tier__name"><span class="en">Low income</span><span class="vi" lang="vi">Thu nhập thấp</span></span><span class="tier__range">$1,175 <span class="en">or less</span><span class="vi" lang="vi">trở xuống</span></span></div>
+          <span class="goal" id="ladder-goal">▲ <span class="en">Your mission</span><span class="vi" lang="vi">Nhiệm vụ của em</span></span>
+          <span class="pin" id="ladder-pin">● <span class="en">Your country is here</span><span class="vi" lang="vi">Quốc gia của em ở đây</span></span>
+          <span class="arrow" id="ladder-arrow" aria-hidden="true"></span>
+        </div>
+        <figcaption class="source"><span class="en"><em>Source: World Bank, classifications effective 1 July 2026 (based on 2025 GNI per capita, Atlas method).</em></span><span class="vi" lang="vi"><em>Nguồn: Ngân hàng Thế giới, phân loại có hiệu lực từ ngày 1 tháng 7 năm 2026 (dựa trên GNI bình quân đầu người năm 2025, phương pháp Atlas).</em></span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Mission at a glance</span><span class="vi" lang="vi">Tóm tắt nhiệm vụ</span></span>
+    <div class="glance">
+      <div class="badge"><span class="label"><span class="en">Your team</span><span class="vi" lang="vi">Nhóm của em</span></span><p class="en">3 advisors (one team has 4). Mr. Colin assigns teams.</p>
+<p class="vi" lang="vi">3 cố vấn (một nhóm có 4 người). Thầy Colin phân nhóm.</p></div>
+      <div class="badge"><span class="label"><span class="en">Your country</span><span class="vi" lang="vi">Quốc gia của em</span></span><p class="en">One per team, chosen from the Country Files.</p>
+<p class="vi" lang="vi">Mỗi nhóm một quốc gia, chọn từ Hồ sơ quốc gia.</p></div>
+      <div class="badge"><span class="label"><span class="en">Your section</span><span class="vi" lang="vi">Phần của em</span></span><p class="en">Each advisor presents one section, 2–4 minutes.</p>
+<p class="vi" lang="vi">Mỗi cố vấn trình bày một phần, 2–4 phút.</p></div>
+      <div class="badge"><span class="label"><span class="en">Assessed</span><span class="vi" lang="vi">Được đánh giá</span></span><p class="en">Criterion B (Investigating) and Criterion C (Communicating). Each advisor receives their own levels.</p>
+<p class="vi" lang="vi">Tiêu chí B (Điều tra) và Tiêu chí C (Giao tiếp). Mỗi cố vấn nhận mức điểm riêng.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Mission schedule</span><span class="vi" lang="vi">Lịch trình nhiệm vụ</span></span>
+    <h2><span class="en">Nine steps to briefing day</span><span class="vi" lang="vi">Chín bước đến ngày báo cáo</span></h2>
+    <ol class="timeline">
+      <li><span class="step">1</span><span class="what"><span class="en">Get your team. Mr. Colin assigns teams.</span><span class="vi" lang="vi">Nhận nhóm. Thầy Colin phân nhóm.</span></span><span class="when"><span class="tbd"><span class="en">TBD: date</span><span class="vi" lang="vi">Chưa có: ngày</span></span></span></li><li><span class="step">2</span><span class="what"><span class="en">Claim your country. First come, first served: once a team claims a country, it's taken.</span><span class="vi" lang="vi">Chọn quốc gia. Ai đăng ký trước được trước: khi một nhóm đã chọn một quốc gia, các nhóm khác không thể chọn quốc gia đó nữa.</span></span><span class="when"><span class="tbd"><span class="en">TBD: date</span><span class="vi" lang="vi">Chưa có: ngày</span></span></span></li><li><span class="step">3</span><span class="what"><span class="en">Agree on your main challenge (whole team).</span><span class="vi" lang="vi">Thống nhất thách thức chính (cả nhóm).</span></span><span class="when"><span class="tbd"><span class="en">TBD: date</span><span class="vi" lang="vi">Chưa có: ngày</span></span></span></li><li><span class="step">4</span><span class="what"><span class="en">Write your research question and research plan, then submit them for approval.</span><span class="vi" lang="vi">Viết câu hỏi nghiên cứu và kế hoạch nghiên cứu, sau đó nộp để được duyệt.</span></span><span class="when"><span class="tbd"><span class="en">TBD: date</span><span class="vi" lang="vi">Chưa có: ngày</span></span></span></li><li><span class="step">5</span><span class="what"><span class="en">Research and keep your research log.</span><span class="vi" lang="vi">Nghiên cứu và ghi nhật ký nghiên cứu.</span></span><span class="when"><span class="dash">—</span></span></li><li class="is-key"><span class="step">6</span><span class="what"><span class="en"><strong>Progress check</strong> (formative): Mr. Colin reviews your plan and log and gives feedback.</span><span class="vi" lang="vi"><strong>Kiểm tra tiến độ</strong> (đánh giá quá trình): Thầy Colin xem kế hoạch và nhật ký của em và góp ý.</span></span><span class="when"><span class="tbd"><span class="en">TBD: date</span><span class="vi" lang="vi">Chưa có: ngày</span></span></span></li><li><span class="step">7</span><span class="what"><span class="en">Build your team's shared slides.</span><span class="vi" lang="vi">Làm bộ slide chung của nhóm.</span></span><span class="when"><span class="tbd"><span class="en">TBD: due date</span><span class="vi" lang="vi">Chưa có: hạn nộp</span></span></span></li><li class="is-key"><span class="step">8</span><span class="what"><span class="en"><strong>Briefing day:</strong> present to the ministers.</span><span class="vi" lang="vi"><strong>Ngày báo cáo:</strong> trình bày trước các bộ trưởng.</span></span><span class="when"><span class="tbd"><span class="en">TBD: date</span><span class="vi" lang="vi">Chưa có: ngày</span></span></span></li><li><span class="step">9</span><span class="what"><span class="en">Reflection: written in class, after all presentations.</span><span class="vi" lang="vi">Bài suy ngẫm: viết trên lớp, sau khi tất cả các nhóm đã trình bày.</span></span><span class="when"><span class="tbd"><span class="en">TBD: date</span><span class="vi" lang="vi">Chưa có: ngày</span></span></span></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Formative vs. summative</span><span class="vi" lang="vi">Đánh giá quá trình và đánh giá tổng kết</span></span>
+    <div class="duo">
+      <div class="call call--practice">
+        <span class="stamp"><span class="en">Practice</span><span class="vi" lang="vi">Luyện tập</span></span>
+        <h3><span class="en">Progress check</span><span class="vi" lang="vi">Kiểm tra tiến độ</span></h3>
+        <p class="en">Mr. Colin checks your research plan and log and gives you feedback. This is practice work and will not be graded.</p>
+<p class="vi" lang="vi">Thầy Colin kiểm tra kế hoạch nghiên cứu và nhật ký của em và góp ý. Đây là bài luyện tập và sẽ không được chấm điểm.</p>
+      </div>
+      <div class="call call--final">
+        <span class="stamp"><span class="en">Final</span><span class="vi" lang="vi">Chính thức</span></span>
+        <h3><span class="en">Briefing and reflection</span><span class="vi" lang="vi">Buổi báo cáo và bài suy ngẫm</span></h3>
+        <p class="en">Your research plan, research log, presentation, slides, and reflection are your final submission and will be assessed.</p>
+<p class="vi" lang="vi">Kế hoạch nghiên cứu, nhật ký nghiên cứu, bài trình bày, slide và bài suy ngẫm của em là bài nộp cuối cùng và sẽ được đánh giá.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="panel" id="section" role="tabpanel" aria-labelledby="tab-section" tabindex="0">
+  <div class="block">
+    <span class="label"><span class="en">Step one</span><span class="vi" lang="vi">Bước một</span></span>
+    <h2><span class="en">Agree on your main challenge</span><span class="vi" lang="vi">Thống nhất thách thức chính</span></h2>
+    <div class="challenge">
+      <p class="en">Before you split up, agree as a team on the <strong>one main challenge</strong> holding your country back. Write it in one sentence in your research plan.</p>
+<p class="vi" lang="vi">Trước khi chia việc, cả nhóm hãy thống nhất <strong>một thách thức chính</strong> đang kìm hãm quốc gia của các em. Viết thách thức đó thành một câu trong kế hoạch nghiên cứu.</p>
+      <p class="en">Every section connects back to it:</p>
+<p class="vi" lang="vi">Mọi phần đều phải liên kết với thách thức này:</p>
+      <ul>
+        <li><span class="en"><strong>The Past</strong> explains where the challenge came from.</span><span class="vi" lang="vi"><strong>Quá khứ</strong> giải thích thách thức này bắt nguồn từ đâu.</span></li>
+<li><span class="en"><strong>The Present</strong> shows what it looks like today.</span><span class="vi" lang="vi"><strong>Hiện tại</strong> cho thấy thách thức này ngày nay như thế nào.</span></li>
+<li><span class="en"><strong>The Path Forward</strong> tackles it.</span><span class="vi" lang="vi"><strong>Con đường phía trước</strong> giải quyết thách thức này.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">The three sections</span><span class="vi" lang="vi">Ba phần</span></span>
+    <div class="files3"><div class="filecard"><span class="filecard__tab"><span class="en">Section 1</span><span class="vi" lang="vi">Phần 1</span></span><h3><span class="en">The Past</span><span class="vi" lang="vi">Quá khứ</span></h3><span class="time"><span class="en">2–4 minutes</span><span class="vi" lang="vi">2–4 phút</span></span><p class="en">How did your country's history shape its economy today? Focus on key events, decisions, or changes, and end by linking them to the present.</p>
+<p class="vi" lang="vi">Lịch sử của quốc gia đã định hình nền kinh tế ngày nay như thế nào? Tập trung vào các sự kiện, quyết định hoặc thay đổi quan trọng, và kết thúc bằng việc liên hệ chúng với hiện tại.</p></div><div class="filecard"><span class="filecard__tab"><span class="en">Section 2</span><span class="vi" lang="vi">Phần 2</span></span><h3><span class="en">The Present</span><span class="vi" lang="vi">Hiện tại</span></h3><span class="time"><span class="en">2–4 minutes</span><span class="vi" lang="vi">2–4 phút</span></span><p class="en">Where does the economy stand now? Include GNI per capita and how far the country is from the upper-middle line, its main resources and exports, and its biggest challenges.</p>
+<p class="vi" lang="vi">Nền kinh tế hiện nay đang ở đâu? Nêu GNI bình quân đầu người và khoảng cách của quốc gia đến ngưỡng thu nhập trung bình cao, các tài nguyên và mặt hàng xuất khẩu chính, và những thách thức lớn nhất.</p></div><div class="filecard"><span class="filecard__tab"><span class="en">Section 3</span><span class="vi" lang="vi">Phần 3</span></span><h3><span class="en">The Path Forward</span><span class="vi" lang="vi">Con đường phía trước</span></h3><span class="time"><span class="en">2–4 minutes</span><span class="vi" lang="vi">2–4 phút</span></span><p class="en">What should the government do to raise GNI per capita? Your advice must tackle your team's main challenge, with evidence that it could work.</p>
+<p class="vi" lang="vi">Chính phủ nên làm gì để nâng GNI bình quân đầu người? Lời khuyên của em phải giải quyết thách thức chính của nhóm, kèm bằng chứng cho thấy giải pháp đó có thể hiệu quả.</p></div></div>
+    <div class="clipnote">
+      <span class="stamp stamp--small"><span class="en">Team of four</span><span class="vi" lang="vi">Nhóm bốn người</span></span>
+      <p class="en">Section 2 splits in two:</p>
+<p class="vi" lang="vi">Phần 2 được chia làm hai:</p>
+      <ul>
+        <li><span class="en"><strong>2A · The Economy:</strong> GNI per capita and the gap to the upper-middle line, resources, exports, trade.</span><span class="vi" lang="vi"><strong>2A · Kinh tế:</strong> GNI bình quân đầu người và khoảng cách đến ngưỡng thu nhập trung bình cao, tài nguyên, xuất khẩu, thương mại.</span></li>
+<li><span class="en"><strong>2B · The People:</strong> jobs, wages, living standards.</span><span class="vi" lang="vi"><strong>2B · Con người:</strong> việc làm, tiền lương, mức sống.</span></li>
+      </ul>
+    </div>
+    <p class="en prose total"><strong>Total time:</strong> teams of 3 present for 6–12 minutes; the team of 4 presents for 8–16 minutes.</p>
+<p class="vi prose total" lang="vi"><strong>Tổng thời gian:</strong> nhóm 3 người trình bày 6–12 phút; nhóm 4 người trình bày 8–16 phút.</p>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Your research question</span><span class="vi" lang="vi">Câu hỏi nghiên cứu của em</span></span>
+    <h2><span class="en">Make it specific</span><span class="vi" lang="vi">Câu hỏi phải cụ thể</span></h2>
+    <p class="en prose">Your research question is the question your section answers. It must be specific.</p>
+<p class="vi prose" lang="vi">Câu hỏi nghiên cứu là câu hỏi mà phần của em trả lời. Câu hỏi phải cụ thể.</p>
+    <div class="examples">
+      <div class="example example--bad"><span class="example__mark" aria-hidden="true">❌</span><div><span class="example__kind"><span class="en">Too broad</span><span class="vi" lang="vi">Quá rộng</span></span><p class="example__q">"What happened in [Country]'s past?"</p><p class="vi example__gloss" lang="vi">(Điều gì đã xảy ra trong quá khứ của [Quốc gia]?)</p></div></div>
+      <div class="example example--good"><span class="example__mark" aria-hidden="true">✅</span><div><span class="example__kind"><span class="en">Specific</span><span class="vi" lang="vi">Cụ thể</span></span><p class="example__q">"How did [a historical event] affect [Country]'s economy?"</p><p class="vi example__gloss" lang="vi">([Một sự kiện lịch sử] đã ảnh hưởng đến nền kinh tế của [Quốc gia] như thế nào?)</p></div></div>
+      <div class="example example--good"><span class="example__mark" aria-hidden="true">✅</span><div><span class="example__kind"><span class="en">Specific</span><span class="vi" lang="vi">Cụ thể</span></span><p class="example__q">"How has the shift from [X] to [Y] affected average people in [Country]?"</p><p class="vi example__gloss" lang="vi">(Sự chuyển đổi từ [X] sang [Y] đã ảnh hưởng đến người dân bình thường ở [Quốc gia] như thế nào?)</p></div></div>
+    </div>
+    <div class="tbd-box"><span class="en">TBD: Mr. Colin's example research questions for each section</span><span class="vi" lang="vi">Chưa có: Câu hỏi nghiên cứu mẫu của thầy Colin cho từng phần</span></div>
+    <div class="twocol">
+      <div>
+        <h3><span class="en">A strong research question:</span><span class="vi" lang="vi">Một câu hỏi nghiên cứu tốt:</span></h3>
+        <ul class="checks">
+          <li><span class="en">names something specific: an event, a change, or a policy</span><span class="vi" lang="vi">nêu một điều cụ thể: một sự kiện, một thay đổi hoặc một chính sách</span></li>
+<li><span class="en">is about the economy or people's economic lives</span><span class="vi" lang="vi">nói về nền kinh tế hoặc đời sống kinh tế của người dân</span></li>
+<li><span class="en">can be answered with research in 2–4 minutes of presenting</span><span class="vi" lang="vi">có thể trả lời bằng nghiên cứu trong 2–4 phút trình bày</span></li>
+<li><span class="en">connects to your team's main challenge</span><span class="vi" lang="vi">liên kết với thách thức chính của nhóm</span></li>
+        </ul>
+      </div>
+      <div class="why">
+        <p class="en">You must also explain <strong>why your question matters</strong>: how does answering it help the country's leaders raise GNI per capita?</p>
+<p class="vi" lang="vi">Em cũng phải giải thích <strong>vì sao câu hỏi của em quan trọng</strong>: việc trả lời câu hỏi đó giúp các nhà lãnh đạo nâng GNI bình quân đầu người như thế nào?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Getting approved</span><span class="vi" lang="vi">Được duyệt</span></span>
+    <p class="en prose">Submit your research question and research plan to Mr. Colin. You'll get one of two answers:</p>
+<p class="vi prose" lang="vi">Nộp câu hỏi nghiên cứu và kế hoạch nghiên cứu cho thầy Colin. Em sẽ nhận được một trong hai câu trả lời:</p>
+    <div class="verdicts">
+      <div class="verdict verdict--yes"><span class="stamp"><span class="en">Approved</span><span class="vi" lang="vi">Được duyệt</span> ✅</span><p class="en">Start researching.</p>
+<p class="vi" lang="vi">Bắt đầu nghiên cứu.</p></div>
+      <div class="verdict verdict--revise"><span class="stamp"><span class="en">Revise</span><span class="vi" lang="vi">Sửa lại</span> 🔁</span><p class="en">With a short reason. Mr. Colin will tell you what the problem is, not how to fix it.</p>
+<p class="vi" lang="vi">Kèm một lý do ngắn. Thầy Colin sẽ cho em biết vấn đề là gì, nhưng không nói cách sửa.</p></div>
+    </div>
+  </div>
+
+  <div class="block twocol">
+    <div class="clipboard">
+      <h3><span class="en">Your research plan must include:</span><span class="vi" lang="vi">Kế hoạch nghiên cứu phải có:</span></h3>
+      <ul class="checks">
+        <li><span class="en">your team's main challenge (one sentence, the same for the whole team)</span><span class="vi" lang="vi">thách thức chính của nhóm (một câu, giống nhau cho cả nhóm)</span></li>
+<li><span class="en">your section</span><span class="vi" lang="vi">phần của em</span></li>
+<li><span class="en">your research question and why it matters</span><span class="vi" lang="vi">câu hỏi nghiên cứu và lý do câu hỏi đó quan trọng</span></li>
+<li><span class="en">the steps you'll take</span><span class="vi" lang="vi">các bước em sẽ làm</span></li>
+<li><span class="en">the sources you'll search</span><span class="vi" lang="vi">các nguồn em sẽ tìm</span></li>
+<li><span class="en">your deadlines</span><span class="vi" lang="vi">các hạn chót của em</span></li>
+      </ul>
+    </div>
+    <div class="clipboard">
+      <h3><span class="en">Your research log</span><span class="vi" lang="vi">Nhật ký nghiên cứu</span></h3>
+      <p class="en">One entry for every source you use:</p>
+<p class="vi" lang="vi">Mỗi nguồn em dùng là một mục:</p>
+      <ul class="checks">
+        <li><span class="en">full source details: author or organization, title, website, date, URL, date you accessed it</span><span class="vi" lang="vi">thông tin đầy đủ của nguồn: tác giả hoặc tổ chức, tiêu đề, trang web, ngày đăng, URL, ngày em truy cập</span></li>
+<li><span class="en">type: data or text</span><span class="vi" lang="vi">loại: dữ liệu hoặc văn bản</span></li>
+<li><span class="en">the key information, in your own words</span><span class="vi" lang="vi">thông tin chính, viết bằng lời của em</span></li>
+<li><span class="en">how it helps answer your research question</span><span class="vi" lang="vi">nguồn đó giúp trả lời câu hỏi nghiên cứu như thế nào</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tbd-box"><span class="en">TBD: where students keep their plan and log, e.g., a Google Doc shared with Mr. Colin</span><span class="vi" lang="vi">Chưa có: nơi học sinh lưu kế hoạch và nhật ký, ví dụ một Google Doc chia sẻ với thầy Colin</span></div>
+
+  <div class="block">
+    <span class="label"><span class="en">Giving your briefing</span><span class="vi" lang="vi">Trình bày phần báo cáo</span></span>
+    <div class="notes">
+      <div>
+        <h3><span class="en">Structure your section like this:</span><span class="vi" lang="vi">Sắp xếp phần của em như sau:</span></h3>
+        <ol class="numbered">
+          <li><span class="en">State your research question.</span><span class="vi" lang="vi">Nêu câu hỏi nghiên cứu.</span></li>
+<li><span class="en">Give your answer.</span><span class="vi" lang="vi">Đưa ra câu trả lời.</span></li>
+<li><span class="en">Show the evidence.</span><span class="vi" lang="vi">Trình bày bằng chứng.</span></li>
+<li><span class="en">Explain what it means for the government.</span><span class="vi" lang="vi">Giải thích điều đó có ý nghĩa gì với chính phủ.</span></li>
+<li><span class="en">Hand off to the next advisor.</span><span class="vi" lang="vi">Chuyển lời cho cố vấn tiếp theo.</span></li>
+        </ol>
+      </div>
+      <div>
+        <h3><span class="en">Speak like an advisor:</span><span class="vi" lang="vi">Nói như một cố vấn:</span></h3>
+        <ul>
+          <li><span class="en">Speak to the ministers directly. Don't read from your slides.</span><span class="vi" lang="vi">Nói trực tiếp với các bộ trưởng. Không đọc từ slide.</span></li>
+<li><span class="en">Be formal and diplomatic. Say "challenge," not "failure."</span><span class="vi" lang="vi">Trang trọng và khéo léo. Nói "challenge" (thách thức), không nói "failure" (thất bại).</span></li>
+<li><span class="en">Give your answer first, then the evidence.</span><span class="vi" lang="vi">Nêu câu trả lời trước, sau đó là bằng chứng.</span></li>
+<li><span class="en">Put numbers on your slides, not paragraphs.</span><span class="vi" lang="vi">Đưa số liệu lên slide, không đưa cả đoạn văn.</span></li>
+<li><span class="en">Stay within 2–4 minutes.</span><span class="vi" lang="vi">Giữ trong khoảng 2–4 phút.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Your slides</span><span class="vi" lang="vi">Slide của em</span></span>
+    <ul class="slides-list">
+      <li><span class="en">One shared deck per team: Google Slides, PowerPoint, or Canva.</span><span class="vi" lang="vi">Mỗi nhóm một bộ slide chung: Google Slides, PowerPoint hoặc Canva.</span></li>
+<li><span class="en">Title slide: your country, your team's names, "World Bank Advisory Mission".</span><span class="vi" lang="vi">Slide tiêu đề: tên quốc gia, tên các thành viên trong nhóm, và dòng chữ "World Bank Advisory Mission".</span></li>
+<li><span class="en">The heading of your first slide is your research question.</span><span class="vi" lang="vi">Tiêu đề slide đầu tiên của em là câu hỏi nghiên cứu.</span></li>
+<li><span class="en">Cite sources on the slide where you use them (MLA 9 in-text citations).</span><span class="vi" lang="vi">Trích dẫn nguồn ngay trên slide có dùng thông tin đó (trích dẫn trong bài theo MLA 9).</span></li>
+<li><span class="en">Final slide: one <strong>Works Cited</strong> page for the whole team in MLA 9, including every advisor's sources.</span><span class="vi" lang="vi">Slide cuối: một trang <strong>Works Cited</strong> (Danh mục tài liệu trích dẫn) chung cho cả nhóm theo MLA 9, gồm nguồn của tất cả các cố vấn.</span></li>
+<li><span class="en">If you used AI images: an <strong>Appendix</strong> slide after Works Cited listing every image prompt (see AI Rules).</span><span class="vi" lang="vi">Nếu em dùng hình ảnh do AI tạo: thêm một slide <strong>Appendix</strong> (Phụ lục) sau Works Cited, liệt kê mọi câu lệnh (prompt) tạo hình (xem Quy định về AI).</span></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">After briefing day: your reflection</span><span class="vi" lang="vi">Sau ngày báo cáo: bài suy ngẫm</span></span>
+    <p class="en prose">You'll write a reflection in class after all presentations. Be ready to answer:</p>
+<p class="vi prose" lang="vi">Em sẽ viết bài suy ngẫm trên lớp sau khi tất cả các nhóm trình bày xong. Hãy sẵn sàng trả lời:</p>
+    <ol class="numbered">
+      <li><span class="en">How well did your research answer your question? What is still unanswered?</span><span class="vi" lang="vi">Nghiên cứu của em trả lời câu hỏi tốt đến mức nào? Điều gì vẫn chưa được trả lời?</span></li>
+<li><span class="en">Which source was most useful, and which was least useful? Why?</span><span class="vi" lang="vi">Nguồn nào hữu ích nhất, nguồn nào ít hữu ích nhất? Vì sao?</span></li>
+<li><span class="en">What would you do differently next time?</span><span class="vi" lang="vi">Lần sau em sẽ làm gì khác đi?</span></li>
+<li><span class="en">How well did your section connect to your team's main challenge and the other sections?</span><span class="vi" lang="vi">Phần của em liên kết với thách thức chính của nhóm và với các phần khác tốt đến mức nào?</span></li>
+    </ol>
+  </div>
+</section>
+
+
+<section class="panel" id="countries" role="tabpanel" aria-labelledby="tab-countries" tabindex="0">
+  <span class="label"><span class="en">Country files</span><span class="vi" lang="vi">Hồ sơ quốc gia</span></span>
+  <h2><span class="en">Choose one country</span><span class="vi" lang="vi">Chọn một quốc gia</span></h2>
+  <p class="en prose">Choose one country. Research it yourself to find out its history, situation, and challenges. First come, first served: no two teams may present the same country.</p>
+<p class="vi prose" lang="vi">Chọn một quốc gia. Tự nghiên cứu để tìm hiểu lịch sử, tình hình và các thách thức của quốc gia đó. Ai đăng ký trước được trước: không có hai nhóm nào trình bày cùng một quốc gia.</p>
+  <ol class="cards"><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 01</span><span class="idx__name">Angola</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 02</span><span class="idx__name">Bangladesh</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 03</span><span class="idx__name">Bolivia</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 04</span><span class="idx__name">Cambodia</span><span class="idx__vi vi" lang="vi">Campuchia</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 05</span><span class="idx__name">Côte d&#x27;Ivoire</span><span class="idx__vi vi" lang="vi">Bờ Biển Ngà</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 06</span><span class="idx__name">Egypt</span><span class="idx__vi vi" lang="vi">Ai Cập</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 07</span><span class="idx__name">Honduras</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 08</span><span class="idx__name">India</span><span class="idx__vi vi" lang="vi">Ấn Độ</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 09</span><span class="idx__name">Kenya</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 10</span><span class="idx__name">Laos</span><span class="idx__vi vi" lang="vi">Lào</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 11</span><span class="idx__name">Morocco</span><span class="idx__vi vi" lang="vi">Ma-rốc</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 12</span><span class="idx__name">Pakistan</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 13</span><span class="idx__name">Senegal</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 14</span><span class="idx__name">Tunisia</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 15</span><span class="idx__name">Uzbekistan</span></li><li class="idx"><span class="idx__no"><span class="en">FILE</span><span class="vi" lang="vi">HỒ SƠ</span> 16</span><span class="idx__name">Zimbabwe</span></li></ol>
+  <p class="en note">All 16 are classified as lower-middle income by the World Bank (July 2026).</p>
+<p class="vi note" lang="vi">Cả 16 quốc gia đều được Ngân hàng Thế giới xếp vào nhóm thu nhập trung bình thấp (tháng 7 năm 2026).</p>
+</section>
+
+
+<section class="panel" id="research" role="tabpanel" aria-labelledby="tab-research" tabindex="0">
+  <div class="block">
+    <span class="label"><span class="en">Your sources</span><span class="vi" lang="vi">Nguồn của em</span></span>
+    <h2><span class="en">At least two trusted sources</span><span class="vi" lang="vi">Ít nhất hai nguồn đáng tin cậy</span></h2>
+    <p class="en prose">Every advisor uses <strong>at least two trusted sources</strong>:</p>
+<p class="vi prose" lang="vi">Mỗi cố vấn dùng <strong>ít nhất hai nguồn đáng tin cậy</strong>:</p>
+    <div class="twocol twocol--tight">
+      <div class="srcbox srcbox--data"><span class="kind kind--data"><span class="en">Data</span><span class="vi" lang="vi">Dữ liệu</span></span><p class="en">at least <strong>one data source</strong> (numbers, charts, statistics), and</p>
+<p class="vi" lang="vi">ít nhất <strong>một nguồn dữ liệu</strong> (số liệu, biểu đồ, thống kê), và</p></div>
+      <div class="srcbox srcbox--text"><span class="kind kind--text"><span class="en">Text</span><span class="vi" lang="vi">Văn bản</span></span><p class="en">at least <strong>one text source</strong> (articles, reports, profiles).</p>
+<p class="vi" lang="vi">ít nhất <strong>một nguồn văn bản</strong> (bài báo, báo cáo, hồ sơ giới thiệu).</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="trust">
+      <h3><span class="en">Is it trustworthy? Ask:</span><span class="vi" lang="vi">Nguồn có đáng tin không? Hãy hỏi:</span></h3>
+      <ul>
+        <li><span class="en">Who made it? Do they have expertise?</span><span class="vi" lang="vi">Ai tạo ra nguồn này? Họ có chuyên môn không?</span></li>
+<li><span class="en">Is there a date?</span><span class="vi" lang="vi">Có ghi ngày không?</span></li>
+<li><span class="en">Could you find the same fact somewhere else?</span><span class="vi" lang="vi">Em có tìm thấy thông tin đó ở nơi khác không?</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Good places to start</span><span class="vi" lang="vi">Nơi nên bắt đầu</span></span>
+    <div class="table-scroll">
+      <table class="src-table">
+        <thead><tr><th scope="col"><span class="en">Source</span><span class="vi" lang="vi">Nguồn</span></th><th scope="col"><span class="en">Type</span><span class="vi" lang="vi">Loại</span></th><th scope="col"><span class="en">Good for</span><span class="vi" lang="vi">Phù hợp để tìm</span></th></tr></thead>
+        <tbody><tr><td>World Bank Open Data — <a href="https://data.worldbank.org" target="_blank" rel="noopener">data.worldbank.org</a></td><td><span class="kind kind--data"><span class="en">Data</span><span class="vi" lang="vi">Dữ liệu</span></span></td><td><span class="en">GNI per capita, growth, trade</span><span class="vi" lang="vi">GNI bình quân đầu người, tăng trưởng, thương mại</span></td></tr><tr><td>World Bank country pages — <a href="https://www.worldbank.org" target="_blank" rel="noopener">worldbank.org</a></td><td><span class="kind kind--text"><span class="en">Text</span><span class="vi" lang="vi">Văn bản</span></span></td><td><span class="en">Overview of each country's economy</span><span class="vi" lang="vi">Tổng quan nền kinh tế của từng quốc gia</span></td></tr><tr><td>OEC — <a href="https://oec.world" target="_blank" rel="noopener">oec.world</a></td><td><span class="kind kind--data"><span class="en">Data</span><span class="vi" lang="vi">Dữ liệu</span></span></td><td><span class="en">What a country exports and to whom</span><span class="vi" lang="vi">Quốc gia xuất khẩu gì và xuất khẩu sang đâu</span></td></tr><tr><td>Our World in Data — <a href="https://ourworldindata.org" target="_blank" rel="noopener">ourworldindata.org</a></td><td><span class="kind kind--data"><span class="en">Data</span><span class="vi" lang="vi">Dữ liệu</span></span></td><td><span class="en">Charts on income, jobs, living standards</span><span class="vi" lang="vi">Biểu đồ về thu nhập, việc làm, mức sống</span></td></tr><tr><td>BBC News country profiles and timelines</td><td><span class="kind kind--text"><span class="en">Text</span><span class="vi" lang="vi">Văn bản</span></span></td><td><span class="en">History and recent events</span><span class="vi" lang="vi">Lịch sử và các sự kiện gần đây</span></td></tr><tr><td>Britannica — <a href="https://www.britannica.com" target="_blank" rel="noopener">britannica.com</a></td><td><span class="kind kind--text"><span class="en">Text</span><span class="vi" lang="vi">Văn bản</span></span></td><td><span class="en">History and background</span><span class="vi" lang="vi">Lịch sử và bối cảnh</span></td></tr></tbody>
+      </table>
+    </div>
+    <div class="callout-line">
+      <p class="en"><strong>Wikipedia:</strong> you may use it to get started, but never cite it. Follow its references to the original sources instead.</p>
+<p class="vi" lang="vi"><strong>Wikipedia:</strong> em có thể dùng để bắt đầu tìm hiểu, nhưng không bao giờ được trích dẫn Wikipedia. Thay vào đó, hãy theo các tài liệu tham khảo của bài viết để tìm đến nguồn gốc.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Citing your sources (MLA 9)</span><span class="vi" lang="vi">Trích dẫn nguồn (MLA 9)</span></span>
+    <ul class="prose">
+      <li><span class="en"><strong>In-text:</strong> a short citation in parentheses on the slide where you use the information.</span><span class="vi" lang="vi"><strong>Trong bài (in-text):</strong> một trích dẫn ngắn trong ngoặc đơn trên slide có dùng thông tin đó.</span></li>
+<li><span class="en"><strong>Works Cited:</strong> a full entry for every source on your team's final slide.</span><span class="vi" lang="vi"><strong>Works Cited:</strong> thông tin đầy đủ của mọi nguồn trên slide cuối của nhóm.</span></li>
+<li><span class="en">Guide: Purdue OWL, <em>MLA Formatting and Style Guide</em> — <a href="https://owl.purdue.edu" target="_blank" rel="noopener">owl.purdue.edu</a></span><span class="vi" lang="vi">Hướng dẫn: Purdue OWL, <em>MLA Formatting and Style Guide</em> — <a href="https://owl.purdue.edu" target="_blank" rel="noopener">owl.purdue.edu</a></span></li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="panel" id="ai" role="tabpanel" aria-labelledby="tab-ai" tabindex="0">
+  <span class="label"><span class="en">AI rules</span><span class="vi" lang="vi">Quy định về AI</span></span>
+  <h2><span class="en">What AI can and cannot do</span><span class="vi" lang="vi">AI được và không được dùng vào việc gì</span></h2>
+  <div class="ai">
+    <div class="ai__col ai__col--yes">
+      <h3>✅ <span class="en">You may use AI to:</span><span class="vi" lang="vi">Em được dùng AI để:</span></h3>
+      <ul>
+        <li><span class="en"><strong>Find possible sources.</strong> Then open every source yourself and check that it is real and trustworthy. AI sometimes invents sources that don't exist.</span><span class="vi" lang="vi"><strong>Tìm các nguồn có thể dùng.</strong> Sau đó tự mở từng nguồn và kiểm tra xem nguồn đó có thật và đáng tin không. AI đôi khi bịa ra những nguồn không tồn tại.</span></li>
+<li><span class="en"><strong>Understand your sources.</strong> Ask AI to explain unfamiliar words, terms, or references you find in your research.</span><span class="vi" lang="vi"><strong>Hiểu nguồn của em.</strong> Nhờ AI giải thích những từ, thuật ngữ hoặc chi tiết lạ mà em gặp khi nghiên cứu.</span></li>
+<li><span class="en"><strong>Generate images for your slides.</strong> Every image prompt you used goes in an <strong>Appendix</strong> slide at the end of your deck, after Works Cited. List each prompt and the tool you used.</span><span class="vi" lang="vi"><strong>Tạo hình ảnh cho slide.</strong> Mọi câu lệnh (prompt) tạo hình em đã dùng phải được ghi vào slide <strong>Appendix</strong> (Phụ lục) ở cuối bộ slide, sau Works Cited. Ghi từng câu lệnh và công cụ em đã dùng.</span></li>
+      </ul>
+    </div>
+    <div class="ai__col ai__col--no">
+      <h3>❌ <span class="en">You may not use AI to:</span><span class="vi" lang="vi">Em không được dùng AI để:</span></h3>
+      <ul>
+        <li><span class="en"><strong>produce any language you use.</strong> Every word must be yours: your research question, plan, and log; the words on your slides; what you say in your briefing, including speaking notes or scripts; and your reflection. This includes translating your own writing into English and rewording or polishing your English.</span><span class="vi" lang="vi"><strong>tạo ra bất kỳ ngôn từ nào em dùng.</strong> Mọi chữ phải là của em: câu hỏi nghiên cứu, kế hoạch và nhật ký; chữ trên slide; những gì em nói trong buổi báo cáo, kể cả ghi chú hoặc kịch bản nói; và bài suy ngẫm. Điều này bao gồm cả việc dịch bài viết của em sang tiếng Anh và việc diễn đạt lại hoặc trau chuốt tiếng Anh của em.</span></li>
+<li><span class="en"><strong>produce any part of your slideshow</strong> except images. This includes AI writing and design features built into Canva, Google Slides, and PowerPoint.</span><span class="vi" lang="vi"><strong>tạo bất kỳ phần nào của bộ slide</strong>, trừ hình ảnh. Điều này bao gồm các tính năng viết và thiết kế bằng AI có sẵn trong Canva, Google Slides và PowerPoint.</span></li>
+<li><span class="en"><strong>structure your presentation</strong>: deciding the order, the sections, or what goes on each slide</span><span class="vi" lang="vi"><strong>sắp xếp cấu trúc bài trình bày</strong>: quyết định thứ tự, các phần, hoặc nội dung trên từng slide</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="ask"><span class="en"><strong>Not sure?</strong> Ask Mr. Colin before you use it.</span><span class="vi" lang="vi"><strong>Chưa chắc chắn?</strong> Hãy hỏi thầy Colin trước khi dùng.</span></p>
+</section>
+
+
+<section class="panel" id="rubric" role="tabpanel" aria-labelledby="tab-rubric" tabindex="0">
+  <span class="label"><span class="en">Rubric</span><span class="vi" lang="vi">Thang đánh giá</span></span>
+  <h2><span class="en">How your work is assessed</span><span class="vi" lang="vi">Bài làm của em được đánh giá như thế nào</span></h2>
+  <p class="en prose">You receive your own levels for each criterion, even though you present as a team. Some descriptors include how your section works with your team. Mr. Colin chooses the level that best fits your work across all the strands of each criterion.</p>
+<p class="vi prose" lang="vi">Em nhận mức điểm riêng cho từng tiêu chí, dù em trình bày theo nhóm. Một số mô tả có nói đến cách phần của em phối hợp với nhóm. Thầy Colin chọn mức phù hợp nhất với bài làm của em khi xét tất cả các tiêu chí nhỏ (strand) của mỗi tiêu chí.</p>
+  <div class="rubric-top">
+    <div>
+      <h3 class="small-h"><span class="en">Evidence</span><span class="vi" lang="vi">Minh chứng</span></h3>
+      <table class="evidence">
+        <thead><tr><th scope="col"><span class="en">What Mr. Colin looks at</span><span class="vi" lang="vi">Thầy Colin xem gì</span></th><th scope="col"><span class="en">Strands</span><span class="vi" lang="vi">Tiêu chí nhỏ</span></th></tr></thead>
+        <tbody>
+          <tr><td><span class="en">Research plan</span><span class="vi" lang="vi">Kế hoạch nghiên cứu</span></td><td>B i, B ii</td></tr>
+          <tr><td><span class="en">Research log</span><span class="vi" lang="vi">Nhật ký nghiên cứu</span></td><td>B iii</td></tr>
+          <tr><td><span class="en">Reflection</span><span class="vi" lang="vi">Bài suy ngẫm</span></td><td>B iv</td></tr>
+          <tr><td><span class="en">Presentation, slides, Works Cited</span><span class="vi" lang="vi">Bài trình bày, slide, Works Cited</span></td><td>C i, C ii, C iii</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="level0">
+      <p class="en"><strong>Level 0</strong> (both criteria): The work does not reach a standard described by any of the descriptors below.</p>
+<p class="vi" lang="vi"><strong>Mức 0</strong> (cả hai tiêu chí): Bài làm không đạt chuẩn được nêu trong bất kỳ mô tả nào dưới đây.</p>
+      <button type="button" class="expand-all" id="expand-all" aria-pressed="false"><span class="en">Open all strands</span><span class="vi" lang="vi">Mở tất cả</span></button>
+    </div>
+  </div>
+  <div class="crit">
+    <h3><span class="en">Criterion B: Investigating</span><span class="vi" lang="vi">Tiêu chí B: Điều tra</span></h3>
+    <details class="strand"><summary><span class="en">i. Research question</span><span class="vi" lang="vi">i. Câu hỏi nghiên cứu</span></summary><div class="levels"><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 1–2</span><span class="en">Question is broad or unclear; little explanation of why it matters</span><span class="vi" lang="vi">Câu hỏi rộng hoặc không rõ ràng; ít giải thích vì sao câu hỏi quan trọng</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 3–4</span><span class="en">Question is clear <em>or</em> focused, not both; describes why it matters</span><span class="vi" lang="vi">Câu hỏi rõ ràng <em>hoặc</em> tập trung, nhưng chưa có cả hai; mô tả vì sao câu hỏi quan trọng</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 5–6</span><span class="en">Question is clear and focused (a specific event, change, or policy and its effect); explains how it connects to the group's main challenge</span><span class="vi" lang="vi">Câu hỏi rõ ràng và tập trung (một sự kiện, thay đổi hoặc chính sách cụ thể và tác động của nó); giải thích câu hỏi liên kết với thách thức chính của nhóm như thế nào</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 7–8</span><span class="en">Clear and focused; justifies why answering it matters for raising GNI per capita and for the group's advice</span><span class="vi" lang="vi">Rõ ràng và tập trung; lập luận vì sao việc trả lời câu hỏi quan trọng đối với việc nâng GNI bình quân đầu người và đối với lời khuyên của nhóm</span></div></div></details>
+<details class="strand"><summary><span class="en">ii. Action plan</span><span class="vi" lang="vi">ii. Kế hoạch hành động</span></summary><div class="levels"><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 1–2</span><span class="en">Plan is missing, very limited, or not followed</span><span class="vi" lang="vi">Kế hoạch bị thiếu, rất hạn chế, hoặc không được thực hiện</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 3–4</span><span class="en">Partial plan (some sources or deadlines); followed in part</span><span class="vi" lang="vi">Kế hoạch chưa đầy đủ (có một số nguồn hoặc hạn chót); được thực hiện một phần</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 5–6</span><span class="en">Plan lists steps, sources to search, and deadlines; mostly followed</span><span class="vi" lang="vi">Kế hoạch liệt kê các bước, các nguồn cần tìm và các hạn chót; phần lớn được thực hiện</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 7–8</span><span class="en">Detailed plan, followed effectively; any changes are made for clear reasons</span><span class="vi" lang="vi">Kế hoạch chi tiết, được thực hiện hiệu quả; mọi thay đổi đều có lý do rõ ràng</span></div></div></details>
+<details class="strand"><summary><span class="en">iii. Collecting and recording</span><span class="vi" lang="vi">iii. Thu thập và ghi chép</span></summary><div class="levels"><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 1–2</span><span class="en">Fewer than two usable sources; little recorded</span><span class="vi" lang="vi">Ít hơn hai nguồn dùng được; ghi chép ít</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 3–4</span><span class="en">Two sources, mostly relevant; log is missing details</span><span class="vi" lang="vi">Hai nguồn, phần lớn có liên quan; nhật ký còn thiếu thông tin</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 5–6</span><span class="en">At least two trusted, relevant sources, including one data and one text source; log records what each says and where it came from</span><span class="vi" lang="vi">Ít nhất hai nguồn đáng tin cậy và có liên quan, gồm một nguồn dữ liệu và một nguồn văn bản; nhật ký ghi lại nội dung của từng nguồn và nguồn đó lấy từ đâu</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 7–8</span><span class="en">Varied, trusted, relevant sources; log records key information with full source details and shows how each source helps answer the question</span><span class="vi" lang="vi">Nguồn đa dạng, đáng tin cậy và có liên quan; nhật ký ghi lại thông tin chính với đầy đủ thông tin nguồn và cho thấy mỗi nguồn giúp trả lời câu hỏi như thế nào</span></div></div></details>
+<details class="strand"><summary><span class="en">iv. Evaluation</span><span class="vi" lang="vi">iv. Đánh giá</span></summary><div class="levels"><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 1–2</span><span class="en">Lists what was done; little evaluation</span><span class="vi" lang="vi">Liệt kê những gì đã làm; ít đánh giá</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 3–4</span><span class="en">Evaluates some parts of the process or results</span><span class="vi" lang="vi">Đánh giá một số phần của quá trình hoặc kết quả</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 5–6</span><span class="en">Evaluates the process and results: what worked, what didn't, how well the question was answered</span><span class="vi" lang="vi">Đánh giá quá trình và kết quả: điều gì hiệu quả, điều gì không, câu hỏi đã được trả lời tốt đến mức nào</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 7–8</span><span class="en">Evaluates in detail, including the limits of their sources, what they'd do differently, and how their section worked within the group</span><span class="vi" lang="vi">Đánh giá chi tiết, bao gồm hạn chế của các nguồn, những gì sẽ làm khác đi, và phần của mình đã phối hợp với nhóm như thế nào</span></div></div></details>
+  </div>
+  <div class="crit">
+    <h3><span class="en">Criterion C: Communicating</span><span class="vi" lang="vi">Tiêu chí C: Giao tiếp</span></h3>
+    <details class="strand"><summary><span class="en">i. Style for audience and purpose</span><span class="vi" lang="vi">i. Phong cách phù hợp với người nghe và mục đích</span></summary><div class="levels"><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 1–2</span><span class="en">Rarely suits a meeting with government leaders: casual, or read from the slides</span><span class="vi" lang="vi">Hiếm khi phù hợp với một cuộc họp với lãnh đạo chính phủ: thiếu trang trọng, hoặc đọc từ slide</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 3–4</span><span class="en">Somewhat formal; reads from notes much of the time; vocabulary sometimes inaccurate</span><span class="vi" lang="vi">Tương đối trang trọng; đọc từ ghi chú trong phần lớn thời gian; đôi khi dùng từ chưa chính xác</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 5–6</span><span class="en">Mostly formal and diplomatic; speaks to the ministers; states the answer before the evidence; vocabulary mostly accurate</span><span class="vi" lang="vi">Phần lớn trang trọng và khéo léo; nói với các bộ trưởng; nêu câu trả lời trước bằng chứng; dùng từ phần lớn chính xác</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 7–8</span><span class="en">Formal, diplomatic, and confident throughout; speaks to the ministers rather than reading; vocabulary and data used accurately</span><span class="vi" lang="vi">Trang trọng, khéo léo và tự tin xuyên suốt; nói với các bộ trưởng thay vì đọc; dùng từ và số liệu chính xác</span></div></div></details>
+<details class="strand"><summary><span class="en">ii. Structure</span><span class="vi" lang="vi">ii. Cấu trúc</span></summary><div class="levels"><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 1–2</span><span class="en">Little logical order; well outside the time limit</span><span class="vi" lang="vi">Ít trình tự logic; nằm xa ngoài giới hạn thời gian</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 3–4</span><span class="en">Some order, with gaps; timing somewhat off; weak link to the rest of the group</span><span class="vi" lang="vi">Có trình tự nhưng còn thiếu sót; thời gian hơi lệch; liên kết yếu với phần còn lại của nhóm</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 5–6</span><span class="en">Logical order: question, answer, evidence, what it means for the government; within 2–4 minutes; hands off to the next speaker</span><span class="vi" lang="vi">Trình tự logic: câu hỏi, câu trả lời, bằng chứng, ý nghĩa đối với chính phủ; trong khoảng 2–4 phút; chuyển lời cho người nói tiếp theo</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 7–8</span><span class="en">Clear order throughout; slides support the talk (one idea per slide, numbers shown visually); builds on the previous speaker and sets up the next</span><span class="vi" lang="vi">Trình tự rõ ràng xuyên suốt; slide hỗ trợ bài nói (mỗi slide một ý, số liệu được thể hiện trực quan); tiếp nối người nói trước và dẫn dắt cho người nói sau</span></div></div></details>
+<details class="strand"><summary><span class="en">iii. Documenting sources</span><span class="vi" lang="vi">iii. Ghi nguồn</span></summary><div class="levels"><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 1–2</span><span class="en">Few sources documented; no recognizable convention</span><span class="vi" lang="vi">Ghi được ít nguồn; không theo quy chuẩn nào có thể nhận ra</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 3–4</span><span class="en">Some sources documented; citations incomplete or inconsistent</span><span class="vi" lang="vi">Ghi được một số nguồn; trích dẫn chưa đầy đủ hoặc không nhất quán</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 5–6</span><span class="en">Most sources cited in text on slides and listed in MLA format on the works cited page</span><span class="vi" lang="vi">Phần lớn nguồn được trích dẫn trong bài trên slide và được liệt kê theo định dạng MLA trên trang works cited</span></div><div class="lvl"><span class="lvl__band"><span class="en">Level</span><span class="vi" lang="vi">Mức</span> 7–8</span><span class="en">Every source cited in text on slides and listed in full MLA format on the group works cited page</span><span class="vi" lang="vi">Mọi nguồn đều được trích dẫn trong bài trên slide và được liệt kê đầy đủ theo định dạng MLA trên trang works cited của nhóm</span></div></div></details>
+  </div>
+</section>
+
+
+<section class="panel parents" id="parents" role="tabpanel" aria-labelledby="tab-parents" tabindex="0">
+  <span class="label"><span class="en">For parents</span><span class="vi" lang="vi">Dành cho phụ huynh</span></span>
+  <h2><span class="en">How you can help</span><span class="vi" lang="vi">Quý phụ huynh có thể hỗ trợ như thế nào</span></h2>
+  <p class="en intro">Your child is working with a small team to research one country and present advice to its "leaders" as World Bank advisors. Here is how you can help, without doing the work for them.</p>
+<p class="vi intro" lang="vi">Con của quý phụ huynh đang làm việc với một nhóm nhỏ để nghiên cứu một quốc gia và trình bày lời khuyên cho các "nhà lãnh đạo" của quốc gia đó, trong vai cố vấn của Ngân hàng Thế giới. Dưới đây là cách quý phụ huynh có thể hỗ trợ mà không làm bài thay con.</p>
+
+  <div class="p-block">
+    <h3><span class="en">Questions to ask</span><span class="vi" lang="vi">Những câu nên hỏi con</span></h3>
+    <ul class="qs">
+      <li><span class="en">"What is your research question? Why does it matter for your country?"</span><span class="vi" lang="vi">"Câu hỏi nghiên cứu của con là gì? Vì sao câu hỏi đó quan trọng với quốc gia của con?"</span></li>
+<li><span class="en">"Where did that fact come from? Who published it?"</span><span class="vi" lang="vi">"Thông tin đó lấy từ đâu? Ai đăng thông tin đó?"</span></li>
+<li><span class="en">"What is your team's main challenge, and how does your section connect to it?"</span><span class="vi" lang="vi">"Thách thức chính của nhóm con là gì, và phần của con liên kết với thách thức đó như thế nào?"</span></li>
+    </ul>
+  </div>
+
+  <div class="p-block">
+    <h3><span class="en">How to help</span><span class="vi" lang="vi">Cách hỗ trợ</span></h3>
+    <ul class="help">
+      <li><span class="en"><strong>Talk about it in Vietnamese if that's easier.</strong> Explaining an idea in any language helps your child understand it before presenting it in English.</span><span class="vi" lang="vi"><strong>Trò chuyện bằng tiếng Việt nếu dễ hơn.</strong> Giải thích một ý tưởng bằng bất kỳ ngôn ngữ nào cũng giúp con hiểu ý đó trước khi trình bày bằng tiếng Anh.</span></li>
+<li><span class="en"><strong>Be the audience.</strong> Listen to a rehearsal and time it: each section should be 2–4 minutes. Ask: "Are you speaking to the ministers, or reading from the slide?"</span><span class="vi" lang="vi"><strong>Làm khán giả.</strong> Nghe con tập trình bày và bấm giờ: mỗi phần nên dài 2–4 phút. Hãy hỏi: "Con đang nói với các bộ trưởng, hay đang đọc từ slide?"</span></li>
+<li><span class="en"><strong>Help with the calendar.</strong> Put the approval, progress check, and briefing dates somewhere visible.</span><span class="vi" lang="vi"><strong>Hỗ trợ theo dõi lịch.</strong> Ghi ngày duyệt kế hoạch, ngày kiểm tra tiến độ và ngày báo cáo ở nơi dễ thấy.</span></li>
+<li><span class="en"><strong>Check sources together.</strong> Ask "Is there a date? Could you find this fact somewhere else?" rather than choosing sources for them.</span><span class="vi" lang="vi"><strong>Cùng con kiểm tra nguồn.</strong> Hãy hỏi "Nguồn này có ghi ngày không? Con có tìm thấy thông tin này ở nơi khác không?" thay vì chọn nguồn giúp con.</span></li>
+    </ul>
+  </div>
+
+  <div class="p-block avoid">
+    <h3><span class="en">Please avoid</span><span class="vi" lang="vi">Xin quý phụ huynh tránh</span></h3>
+    <ul>
+      <li><span class="en">Researching, writing, or designing slides for your child. Their levels reflect their own work.</span><span class="vi" lang="vi">Nghiên cứu, viết bài hoặc thiết kế slide thay cho con. Mức điểm của con phản ánh bài làm của chính con.</span></li>
+<li><span class="en">Using AI to write, translate, or polish any of your child's words, or to plan the structure of their presentation. AI may only be used to find possible sources, explain unfamiliar words in their research, and make images (with every prompt listed). See the AI Rules tab.</span><span class="vi" lang="vi">Dùng AI để viết, dịch hoặc trau chuốt bất kỳ lời nào của con, hoặc để lên cấu trúc bài trình bày của con. AI chỉ được dùng để tìm các nguồn có thể dùng, giải thích từ lạ trong tài liệu nghiên cứu, và tạo hình ảnh (có ghi lại mọi câu lệnh). Xem mục Quy định về AI.</span></li>
+    </ul>
+  </div>
+
+  <div class="p-block remember">
+    <h3><span class="en">Remember</span><span class="vi" lang="vi">Hãy nhớ</span></h3>
+    <p class="en">Research takes wrong turns. A source that doesn't help is part of the process, and something your child can write about in their reflection.</p>
+<p class="vi" lang="vi">Nghiên cứu thường có những lúc đi sai hướng. Một nguồn không hữu ích cũng là một phần của quá trình, và là điều con có thể viết trong bài suy ngẫm.</p>
+  </div>
+</section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <div class="site-footer__name">Mr. Colin Brownlie</div>
+                <div class="site-footer__meta" data-en="teachercolin.com · Dewey Schools, Hanoi" data-vi="teachercolin.com · Trường Dewey, Hà Nội">teachercolin.com · Dewey Schools, Hanoi</div>
+                <div class="site-footer__contact" data-en="Contact: Parents — Edufit App · Students — Email" data-vi="Liên hệ: Phụ huynh — Ứng dụng Edufit · Học sinh — Email">Contact: Parents — Edufit App · Students — Email</div>
+            </div>
+            <nav class="site-footer__links" aria-label="Footer">
+                <a href="../index.html" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="../8-athens.html">8 Athens</a><a href="../9-zurich.html">9 Zurich</a><a href="../10-edmonton.html" class="is-current">10 Edmonton</a>
+                <a href="../summer-learning.html" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="../assets/lang-toggle.js"></script>
+    <script>
+(function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    var shell = document.getElementById('tabs-shell');
+    var ladder = document.getElementById('ladder');
+
+    // Income ladder: line up the pin, goal label and arrow with their tiers
+    function placeLadder() {
+        if (!ladder || !ladder.offsetParent) return;
+        var tiers = ladder.querySelectorAll('.tier');
+        var target = tiers[1], here = tiers[2];
+        var pin = document.getElementById('ladder-pin');
+        var goal = document.getElementById('ladder-goal');
+        var arrow = document.getElementById('ladder-arrow');
+        var targetMid = target.offsetTop + target.offsetHeight / 2;
+        var hereMid = here.offsetTop + here.offsetHeight / 2;
+        pin.style.top = (hereMid - pin.offsetHeight / 2) + 'px';
+        goal.style.top = (targetMid - goal.offsetHeight / 2) + 'px';
+        arrow.style.top = (targetMid + goal.offsetHeight / 2 + 6) + 'px';
+        arrow.style.height = Math.max(0, hereMid - pin.offsetHeight / 2 - 6 - (targetMid + goal.offsetHeight / 2 + 6)) + 'px';
+    }
+    function playLadder() {
+        if (!ladder) return;
+        ladder.classList.remove('is-in');
+        placeLadder();
+        void ladder.offsetWidth;
+        requestAnimationFrame(function () { ladder.classList.add('is-in'); });
+    }
+    if (window.ResizeObserver && ladder) new ResizeObserver(placeLadder).observe(ladder);
+    window.addEventListener('resize', placeLadder);
+
+    // Folder tabs
+    function select(id, scroll) {
+        if (!document.getElementById(id) || !document.getElementById('tab-' + id)) id = 'mission';
+        tabs.forEach(function (t) {
+            var on = t.dataset.tab === id;
+            var panel = document.getElementById(t.dataset.tab);
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+            t.tabIndex = on ? 0 : -1;
+            panel.hidden = !on;
+            if (on) {
+                panel.classList.remove('is-entering');
+                void panel.offsetWidth;
+                panel.classList.add('is-entering');
+                var strip = t.parentNode;
+                strip.scrollTo({ left: t.offsetLeft - (strip.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
+            }
+        });
+        if (id === 'mission') playLadder();
+        if (scroll) {
+            var top = document.getElementById('dossier').getBoundingClientRect().top + window.scrollY - shell.offsetHeight;
+            if (window.scrollY > top) window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+    }
+    tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () {
+            if (location.hash !== '#' + t.dataset.tab) history.replaceState(null, '', '#' + t.dataset.tab);
+            select(t.dataset.tab, true);
+        });
+        t.addEventListener('keydown', function (e) {
+            var next = null;
+            if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+            else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+            else if (e.key === 'Home') next = tabs[0];
+            else if (e.key === 'End') next = tabs[tabs.length - 1];
+            if (!next) return;
+            e.preventDefault();
+            next.focus();
+            next.click();
+        });
+    });
+    window.addEventListener('hashchange', function () { select(location.hash.slice(1), true); });
+    select(location.hash.slice(1), false);
+    // A link to a tab (e.g. #parents) opens with the tab strip at the top of the screen
+    if (location.hash) {
+        window.addEventListener('load', function () {
+            var top = document.getElementById('dossier').getBoundingClientRect().top + window.scrollY - shell.offsetHeight;
+            window.scrollTo(0, Math.max(0, top));
+        });
+    }
+
+    // Darken the tab strip once it sticks to the top
+    if (window.IntersectionObserver) {
+        new IntersectionObserver(function (entries) {
+            shell.classList.toggle('is-stuck', entries[0].intersectionRatio < 1);
+        }, { threshold: [1], rootMargin: '-1px 0px 0px 0px' }).observe(shell);
+    }
+
+    // Rubric: open / close all strands
+    var strands = Array.prototype.slice.call(document.querySelectorAll('details.strand'));
+    var expand = document.getElementById('expand-all');
+    function syncExpand() {
+        var allOpen = strands.every(function (d) { return d.open; });
+        expand.setAttribute('aria-pressed', allOpen ? 'true' : 'false');
+        expand.querySelector('.en').textContent = allOpen ? 'Close all strands' : 'Open all strands';
+        expand.querySelector('.vi').textContent = allOpen ? 'Đóng tất cả' : 'Mở tất cả';
+    }
+    expand.addEventListener('click', function () {
+        var open = !strands.every(function (d) { return d.open; });
+        strands.forEach(function (d) { d.open = open; });
+        syncExpand();
+    });
+    strands.forEach(function (d) { d.addEventListener('toggle', syncExpand); });
+
+    // Print: every tab, every strand open
+    var printState = null;
+    window.addEventListener('beforeprint', function () {
+        printState = strands.map(function (d) { return d.open; });
+        strands.forEach(function (d) { d.open = true; });
+        if (ladder) ladder.classList.add('is-in');
+    });
+    window.addEventListener('afterprint', function () {
+        if (printState) strands.forEach(function (d, i) { d.open = printState[i]; });
+        printState = null;
+        syncExpand();
+    });
+})();
+
+    </script>
+</body>
+</html>
