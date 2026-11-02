@@ -302,6 +302,8 @@ a { color: inherit; text-decoration: none; }
 .deadline-box__meta { font-size: 1.125rem; color: var(--ink-secondary); margin-top: 2px; }
 
 /* ========== CLASS PAGE: ACTION CARDS ========== */
+[hidden] { display: none !important; }
+
 .action-grid {
     padding: 40px 0 0;
     display: grid;
