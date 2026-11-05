@@ -1,0 +1,1210 @@
+{
+ "generated": "tests/july1914/make-variants.mjs",
+ "count": 52,
+ "variants": {
+  "1.AH:war,coerce,probe": {
+   "code": "R1-AH-A",
+   "round": 1,
+   "team": "AH",
+   "options": [
+    {
+     "id": "war",
+     "label": "Side with General Conrad: use the crisis to crush Serbia by force",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "coerce",
+     "label": "Humiliate Serbia with tough demands, but avoid war if Serbia gives in",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "probe",
+     "label": "Side with Hungary's Prime Minister Tisza: investigate first, no war without proof",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "1.DE:full,limited,none": {
+   "code": "R1-DE-A",
+   "round": 1,
+   "team": "DE",
+   "options": [
+    {
+     "id": "full",
+     "label": "Promise full support, whatever Austria decides (the \"blank cheque\")",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "limited",
+     "label": "Support only a quick, limited action against Serbia",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "none",
+     "label": "Refuse support: urge Austria to settle this by diplomacy",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "1.FR:solid,calm,postpone": {
+   "code": "R1-FR-A",
+   "round": 1,
+   "team": "FR",
+   "options": [
+    {
+     "id": "solid",
+     "label": "Visit Russia as planned and show the alliance is rock solid",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "calm",
+     "label": "Visit Russia, but quietly urge calm in the Balkans",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "postpone",
+     "label": "Postpone the visit: France has problems at home",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "1.GB:ireland,restrain,entente": {
+   "code": "R1-GB-A",
+   "round": 1,
+   "team": "GB",
+   "options": [
+    {
+     "id": "ireland",
+     "label": "Focus on the crisis in Ireland: the Balkans are far away",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "restrain",
+     "label": "Quietly ask Germany to hold Austria back",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "entente",
+     "label": "Secretly promise France and Russia that Britain will stand with them",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "1.RS:deny,crackdown,appeal": {
+   "code": "R1-RS-A",
+   "round": 1,
+   "team": "RS",
+   "options": [
+    {
+     "id": "deny",
+     "label": "Deny everything: Serbia's government did not order the attack",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "crackdown",
+     "label": "Arrest the nationalist officers linked to the plot",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "appeal",
+     "label": "Ask Russia publicly for protection right away",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "1.RU:warn,wait,restrain": {
+   "code": "R1-RU-A",
+   "round": 1,
+   "team": "RU",
+   "options": [
+    {
+     "id": "warn",
+     "label": "Warn Austria privately: Russia will protect Serbia",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "wait",
+     "label": "Wait and watch: this is between Austria and Serbia",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "restrain",
+     "label": "Advise Serbia to cooperate with a fair investigation",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.AH:firm,none": {
+   "code": "R2-AH-A",
+   "round": 2,
+   "team": "AH",
+   "options": [
+    {
+     "id": "firm",
+     "label": "Send firm demands Serbia could accept: punish the plotters and stop anti-Austrian propaganda",
+     "def": true,
+     "hist": false
+    },
+    {
+     "id": "none",
+     "label": "Send no ultimatum: ask the great powers to judge the evidence",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.AH:harsh,firm": {
+   "code": "R2-AH-B",
+   "round": 2,
+   "team": "AH",
+   "options": [
+    {
+     "id": "harsh",
+     "label": "Send a 48-hour ultimatum Serbia will probably reject, with Austrian officials investigating inside Serbia",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "firm",
+     "label": "Send firm demands Serbia could accept: punish the plotters and stop anti-Austrian propaganda",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.AH:harsh,firm,none": {
+   "code": "R2-AH-C",
+   "round": 2,
+   "team": "AH",
+   "options": [
+    {
+     "id": "harsh",
+     "label": "Send a 48-hour ultimatum Serbia will probably reject, with Austrian officials investigating inside Serbia",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "firm",
+     "label": "Send firm demands Serbia could accept: punish the plotters and stop anti-Austrian propaganda",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "none",
+     "label": "Send no ultimatum: ask the great powers to judge the evidence",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.DE:hurry,soften,cheque": {
+   "code": "R2-DE-A",
+   "round": 2,
+   "team": "DE",
+   "options": [
+    {
+     "id": "hurry",
+     "label": "Urge Austria to act fast, while Europe still sympathizes",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "soften",
+     "label": "Ask to see the ultimatum and push Austria to soften it",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "cheque",
+     "label": "Now promise Austria full support, whatever it decides (a \"blank cheque\")",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.DE:hurry,soften,prepare": {
+   "code": "R2-DE-B",
+   "round": 2,
+   "team": "DE",
+   "options": [
+    {
+     "id": "hurry",
+     "label": "Urge Austria to act fast, while Europe still sympathizes",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "soften",
+     "label": "Ask to see the ultimatum and push Austria to soften it",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "prepare",
+     "label": "Quietly prepare the German army, just in case",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.FR:pledge,restrain,vague": {
+   "code": "R2-FR-A",
+   "round": 2,
+   "team": "FR",
+   "options": [
+    {
+     "id": "pledge",
+     "label": "Promise Russia full support if Austria threatens Serbia",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "restrain",
+     "label": "Urge Russia not to provoke Austria or Germany",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "vague",
+     "label": "Say nothing specific: keep France's options open",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.GB:aloof,talks,warnG": {
+   "code": "R2-GB-A",
+   "round": 2,
+   "team": "GB",
+   "options": [
+    {
+     "id": "aloof",
+     "label": "Stay out of it: Ireland and politics at home come first",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "talks",
+     "label": "Tell Vienna and St Petersburg that Britain will mediate if asked",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "warnG",
+     "label": "Warn Germany privately that Britain may not stay neutral",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.RS:campaign,guarantee,calm": {
+   "code": "R2-RS-A",
+   "round": 2,
+   "team": "RS",
+   "options": [
+    {
+     "id": "campaign",
+     "label": "Carry on as normal: the election campaign comes first",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "guarantee",
+     "label": "Ask Russia for a firm promise of protection",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "calm",
+     "label": "Calm the Serbian press so Serbia looks reasonable to Europe",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "2.RU:pledge,peace,prep": {
+   "code": "R2-RU-A",
+   "round": 2,
+   "team": "RU",
+   "options": [
+    {
+     "id": "pledge",
+     "label": "Agree with France: firm support for each other if Austria threatens Serbia",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "peace",
+     "label": "Agree with France to push for a peaceful solution",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "prep",
+     "label": "Begin secret military preparations",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "3.AH:total,most,goodwill": {
+   "code": "R3-AH-A",
+   "round": 3,
+   "team": "AH",
+   "options": [
+    {
+     "id": "total",
+     "label": "Anything less than total acceptance: break off relations",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "most",
+     "label": "Accept a reply that agrees to most of our demands",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "goodwill",
+     "label": "Accept any reply that shows good will, and negotiate the rest",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "3.DE:back,pass,warnRU": {
+   "code": "R3-DE-A",
+   "round": 3,
+   "team": "DE",
+   "options": [
+    {
+     "id": "back",
+     "label": "Back Austria fully and reject outside interference",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "pass",
+     "label": "Urge Vienna to accept mediation, and mean it",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "warnRU",
+     "label": "Warn Russia: if you mobilize, Germany will mobilize too",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "3.FR:assure,wait": {
+   "code": "R3-FR-A",
+   "round": 3,
+   "team": "FR",
+   "options": [
+    {
+     "id": "assure",
+     "label": "Your ambassador in St Petersburg assures Russia of French support",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "wait",
+     "label": "Wait for the President to return before promising anything",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "3.FR:assure,wait,talks": {
+   "code": "R3-FR-B",
+   "round": 3,
+   "team": "FR",
+   "options": [
+    {
+     "id": "assure",
+     "label": "Your ambassador in St Petersburg assures Russia of French support",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "wait",
+     "label": "Wait for the President to return before promising anything",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "talks",
+     "label": "Join Britain in calling for talks",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "3.GB:extend,conference,fleet": {
+   "code": "R3-GB-A",
+   "round": 3,
+   "team": "GB",
+   "options": [
+    {
+     "id": "extend",
+     "label": "Ask Austria to give Serbia more time to reply",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "conference",
+     "label": "Propose a conference of the four powers not directly involved",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "fleet",
+     "label": "Keep the fleet together after its summer exercises, ready for action",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "3.RS:most,all,reject": {
+   "code": "R3-RS-A",
+   "round": 3,
+   "team": "RS",
+   "options": [
+    {
+     "id": "most",
+     "label": "Accept most demands, refuse Austrian officials inside Serbia, and mobilize the army",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "all",
+     "label": "Accept every demand, even Austrian officials inside Serbia",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "reject",
+     "label": "Reject the ultimatum and mobilize the army",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "3.RU:support,advise,aloof": {
+   "code": "R3-RU-A",
+   "round": 3,
+   "team": "RU",
+   "options": [
+    {
+     "id": "support",
+     "label": "Tell Serbia Russia will support it, and begin secret war preparations",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "advise",
+     "label": "Advise Serbia to accept as much as possible, and propose talks",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "aloof",
+     "label": "Stay out: Serbia must decide alone",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "4.AH:declare,mobilize,accept": {
+   "code": "R4-AH-A",
+   "round": 4,
+   "team": "AH",
+   "options": [
+    {
+     "id": "declare",
+     "label": "Attack anyway: declare war on Serbia, although it gave in",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "mobilize",
+     "label": "Keep the army ready and wait",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "accept",
+     "label": "Accept Serbia's surrender: the crisis is over",
+     "def": true,
+     "hist": false
+    }
+   ]
+  },
+  "4.AH:declare,mobilize,talks": {
+   "code": "R4-AH-B",
+   "round": 4,
+   "team": "AH",
+   "options": [
+    {
+     "id": "declare",
+     "label": "Declare war on Serbia now",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "mobilize",
+     "label": "Mobilize against Serbia, but hold off declaring war",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "talks",
+     "label": "Accept talks with the other great powers",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "4.AH:mobilize,accept": {
+   "code": "R4-AH-C",
+   "round": 4,
+   "team": "AH",
+   "options": [
+    {
+     "id": "mobilize",
+     "label": "Keep the army ready and wait",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "accept",
+     "label": "Accept Serbia's surrender: the crisis is over",
+     "def": true,
+     "hist": false
+    }
+   ]
+  },
+  "4.AH:mobilize,talks": {
+   "code": "R4-AH-D",
+   "round": 4,
+   "team": "AH",
+   "options": [
+    {
+     "id": "mobilize",
+     "label": "Mobilize against Serbia, but hold off declaring war",
+     "def": true,
+     "hist": false
+    },
+    {
+     "id": "talks",
+     "label": "Accept talks with the other great powers",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "4.DE:backWar,halt,press": {
+   "code": "R4-DE-A",
+   "round": 4,
+   "team": "DE",
+   "options": [
+    {
+     "id": "backWar",
+     "label": "Support Austria and reject a conference",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "halt",
+     "label": "Propose a \"Halt in Belgrade\": Austria takes Belgrade, then negotiates",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "press",
+     "label": "Press Austria to accept talks, or lose German support",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "4.FR:back,caution,conference": {
+   "code": "R4-FR-A",
+   "round": 4,
+   "team": "FR",
+   "options": [
+    {
+     "id": "back",
+     "label": "Tell Russia France will honour the alliance",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "caution",
+     "label": "Urge Russia to avoid any step that gives Germany an excuse",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "conference",
+     "label": "Support Britain's idea of a conference",
+     "def": true,
+     "hist": true
+    }
+   ]
+  },
+  "4.GB:conference,warnG,silent": {
+   "code": "R4-GB-A",
+   "round": 4,
+   "team": "GB",
+   "options": [
+    {
+     "id": "conference",
+     "label": "Propose a conference of ambassadors in London",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "warnG",
+     "label": "Warn Germany clearly: Britain will not stay out of a general war",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "silent",
+     "label": "Say nothing: the Cabinet is divided",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "4.RS:defend,hague,tsar": {
+   "code": "R4-RS-A",
+   "round": 4,
+   "team": "RS",
+   "options": [
+    {
+     "id": "defend",
+     "label": "Move the government to Niš and prepare the army to defend Serbia",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "hague",
+     "label": "Offer to let the Hague Tribunal or the great powers judge the dispute",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "tsar",
+     "label": "Appeal directly to the Tsar for protection",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "4.RU:partial,talks,conference": {
+   "code": "R4-RU-A",
+   "round": 4,
+   "team": "RU",
+   "options": [
+    {
+     "id": "partial",
+     "label": "Prepare a partial mobilization against Austria only",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "talks",
+     "label": "Offer Austria direct talks",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "conference",
+     "label": "Accept Britain's idea of a conference",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "5.AH:invade,halt,stop": {
+   "code": "R5-AH-A",
+   "round": 5,
+   "team": "AH",
+   "options": [
+    {
+     "id": "invade",
+     "label": "Declare war and invade Serbia with full force",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "halt",
+     "label": "Declare war, take Belgrade, then stop and negotiate",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "stop",
+     "label": "No war: keep negotiating",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "5.AH:invade,stop": {
+   "code": "R5-AH-B",
+   "round": 5,
+   "team": "AH",
+   "options": [
+    {
+     "id": "invade",
+     "label": "Shell Belgrade and invade Serbia with full force",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "stop",
+     "label": "Stop: offer Serbia a ceasefire and negotiate",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "5.AH:stop,ready": {
+   "code": "R5-AH-C",
+   "round": 5,
+   "team": "AH",
+   "options": [
+    {
+     "id": "stop",
+     "label": "Keep negotiating: Vienna will not fight without Berlin",
+     "def": true,
+     "hist": false
+    },
+    {
+     "id": "ready",
+     "label": "Keep the army on the Serbian border",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "5.DE:ultimatum,negotiate,mobilize": {
+   "code": "R5-DE-A",
+   "round": 5,
+   "team": "DE",
+   "options": [
+    {
+     "id": "ultimatum",
+     "label": "If Russia mobilizes at all: demand it stops within 12 hours, or face war",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "negotiate",
+     "label": "Keep negotiating: the Kaiser telegraphs the Tsar personally",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "mobilize",
+     "label": "Mobilize the German army now",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "5.FR:support,caution,withdraw": {
+   "code": "R5-FR-A",
+   "round": 5,
+   "team": "FR",
+   "options": [
+    {
+     "id": "support",
+     "label": "Confirm full support for Russia and prepare the French army",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "caution",
+     "label": "Urge Russia to avoid steps that give Germany an excuse",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "withdraw",
+     "label": "Pull French troops 10 km back from the border to show peaceful intent",
+     "def": true,
+     "hist": true
+    }
+   ]
+  },
+  "5.GB:warnG,noPromise,naval": {
+   "code": "R5-GB-A",
+   "round": 5,
+   "team": "GB",
+   "options": [
+    {
+     "id": "warnG",
+     "label": "Warn Germany privately: if France is attacked, Britain cannot stand aside",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "noPromise",
+     "label": "Promise nothing to anyone: the Cabinet is divided",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "naval",
+     "label": "Promise France the Royal Navy will protect its Channel coast",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "5.RS:mobilize,quiet,ask": {
+   "code": "R5-RS-A",
+   "round": 5,
+   "team": "RS",
+   "options": [
+    {
+     "id": "mobilize",
+     "label": "BELGIUM: Mobilize the army to defend Belgian neutrality",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "quiet",
+     "label": "BELGIUM: Stay quiet, and do nothing that might provoke Germany",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "ask",
+     "label": "BELGIUM: Ask Britain and France to confirm they will defend Belgium",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "5.RU:general,partial,none": {
+   "code": "R5-RU-A",
+   "round": 5,
+   "team": "RU",
+   "options": [
+    {
+     "id": "general",
+     "label": "General mobilization against Austria and Germany",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "partial",
+     "label": "Partial mobilization against Austria only",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "none",
+     "label": "No mobilization yet: keep negotiating",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "5.RU:partial,none": {
+   "code": "R5-RU-B",
+   "round": 5,
+   "team": "RU",
+   "options": [
+    {
+     "id": "partial",
+     "label": "Partial mobilization against Austria only",
+     "def": true,
+     "hist": false
+    },
+    {
+     "id": "none",
+     "label": "No mobilization yet: keep negotiating",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.AH:declareRU,serbiaOnly": {
+   "code": "R6-AH-A",
+   "round": 6,
+   "team": "AH",
+   "options": [
+    {
+     "id": "declareRU",
+     "label": "If Russia is mobilizing against us, declare war on Russia",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "serbiaOnly",
+     "label": "Stay out of any war unless Austria is attacked",
+     "def": true,
+     "hist": false
+    }
+   ]
+  },
+  "6.AH:declareRU,serbiaOnly,ceasefire": {
+   "code": "R6-AH-B",
+   "round": 6,
+   "team": "AH",
+   "options": [
+    {
+     "id": "declareRU",
+     "label": "If Russia is mobilizing against us, declare war on Russia too",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "serbiaOnly",
+     "label": "Fight Serbia only; do not declare war on Russia",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "ceasefire",
+     "label": "Offer Serbia a ceasefire and peace talks",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.DE:schlieffen,standDown": {
+   "code": "R6-DE-A",
+   "round": 6,
+   "team": "DE",
+   "options": [
+    {
+     "id": "schlieffen",
+     "label": "If Russia mobilizes or attacks Austria: declare war on Russia and France, and attack France through Belgium",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "standDown",
+     "label": "Declare no war and keep negotiating, even if Russia attacks Austria (this breaks the alliance)",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.FR:honor,neutral,waitGB": {
+   "code": "R6-FR-A",
+   "round": 6,
+   "team": "FR",
+   "options": [
+    {
+     "id": "honor",
+     "label": "Mobilize and stand by Russia: France will act in her own interests",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "neutral",
+     "label": "Declare that France will stay neutral, breaking its promises to Russia",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "waitGB",
+     "label": "Mobilize, but do not fight unless France is attacked",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.GB:belgium,neutral": {
+   "code": "R6-GB-A",
+   "round": 6,
+   "team": "GB",
+   "options": [
+    {
+     "id": "belgium",
+     "label": "Go to war only if Germany invades Belgium and Belgium resists",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "neutral",
+     "label": "Stay neutral, whatever happens",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.GB:franceOrBelgium,belgium,neutral": {
+   "code": "R6-GB-B",
+   "round": 6,
+   "team": "GB",
+   "options": [
+    {
+     "id": "franceOrBelgium",
+     "label": "Go to war if Germany attacks France or invades Belgium",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "belgium",
+     "label": "Go to war only if Germany invades Belgium and Belgium resists",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "neutral",
+     "label": "Stay neutral, whatever happens",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.RS:allow,resistUnready": {
+   "code": "R6-RS-A",
+   "round": 6,
+   "team": "RS",
+   "options": [
+    {
+     "id": "allow",
+     "label": "BELGIUM: if Germany demands to march through, protest but let them pass",
+     "def": true,
+     "hist": false
+    },
+    {
+     "id": "resistUnready",
+     "label": "BELGIUM: if Germany demands to march through, fight anyway with an unready army",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.RS:resist,allow": {
+   "code": "R6-RS-B",
+   "round": 6,
+   "team": "RS",
+   "options": [
+    {
+     "id": "resist",
+     "label": "BELGIUM: if Germany demands to march through, refuse and fight",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "allow",
+     "label": "BELGIUM: if Germany demands to march through, protest but let them pass",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.RU:standFirm,talks": {
+   "code": "R6-RU-A",
+   "round": 6,
+   "team": "RU",
+   "options": [
+    {
+     "id": "standFirm",
+     "label": "Mobilize fully now, and fight Austria if it keeps attacking Serbia",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "talks",
+     "label": "Keep negotiating; no mobilization",
+     "def": true,
+     "hist": false
+    }
+   ]
+  },
+  "6.RU:standFirm,talks,standDown": {
+   "code": "R6-RU-B",
+   "round": 6,
+   "team": "RU",
+   "options": [
+    {
+     "id": "standFirm",
+     "label": "Stand firm: keep mobilizing, and fight Austria if it keeps attacking Serbia",
+     "def": true,
+     "hist": true
+    },
+    {
+     "id": "talks",
+     "label": "Keep the army mobilized, but offer talks",
+     "def": false,
+     "hist": false
+    },
+    {
+     "id": "standDown",
+     "label": "Stand down: halt mobilization",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.RU:talks,standDown": {
+   "code": "R6-RU-C",
+   "round": 6,
+   "team": "RU",
+   "options": [
+    {
+     "id": "talks",
+     "label": "Keep the partial mobilization, and keep talking",
+     "def": true,
+     "hist": false
+    },
+    {
+     "id": "standDown",
+     "label": "Stand down: halt mobilization",
+     "def": false,
+     "hist": false
+    }
+   ]
+  },
+  "6.RU:talks,warnAH": {
+   "code": "R6-RU-D",
+   "round": 6,
+   "team": "RU",
+   "options": [
+    {
+     "id": "talks",
+     "label": "Keep negotiating; no mobilization",
+     "def": true,
+     "hist": false
+    },
+    {
+     "id": "warnAH",
+     "label": "Warn Austria: Russia will mobilize if Serbia is attacked",
+     "def": false,
+     "hist": false
+    }
+   ]
+  }
+ }
+}
