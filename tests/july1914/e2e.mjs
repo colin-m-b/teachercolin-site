@@ -133,7 +133,7 @@ try {
   const voteAll = async stage => {
     let i = 0;
     for (const [name, p] of Object.entries(students)) {
-      await p.waitForSelector('#vf', { timeout: 8000 });
+      await p.waitForFunction(st => document.querySelector('#vf') && document.querySelector('[data-s=vote] .eyebrow')?.textContent.includes(`Vote ${st + 1} of 4`), stage, { timeout: 8000 });
       const pick = [[1, 1, 1, 0, 2], [1, 0, 1, 0, 3], [0, 0, 1, 2, 0], [2, 0, 3, 1, 5]][stage][i++ % 5];
       await p.click(`#vf .opt >> nth=${pick}`);
       await p.fill('#vr', `${name} thinks so`);
