@@ -1,0 +1,4 @@
+node_modules/
+.netlify/
+tests/july1914/.dev-store/
+tests/july1914/shots/
