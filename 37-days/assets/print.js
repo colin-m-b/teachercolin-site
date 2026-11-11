@@ -26,7 +26,8 @@
       html += `<div class="rc"><div class="bandc" style="background:${X.TEAM[p].colour}"></div><div>
         <div class="eyebrow">37 Days · ${esc(X.TEAM[p].capital)}</div><h2>${esc(X.TEAM[p].name)}</h2><h3>${esc(X.ROLE[r].name)}${pw.envoy && r !== 'envoy' ? ' and Envoy' : ''}</h3>
         <p class="small">${esc(X.ROLE[r].job)}</p>${p === 'RS' ? '<p class="small"><b>From round 5 your team plays Belgium.</b></p>' : ''}
-        <p class="small muted">Leaders: ${esc(X.TEAM[p].leaders)}</p></div><div class="qr">${qr(url)}<div class="small muted" style="text-align:center">Game ${esc(v.gid)}</div></div></div>`;
+        <p class="small muted">Leaders: ${esc(X.TEAM[p].leaders)}</p></div><div class="qr">${qr(url)}<div class="small muted" style="text-align:center">Game ${esc(v.gid)}</div></div>
+        ${v.keys.join ? `<div class="small" style="grid-column:1/-1;border-top:1px solid #999;padding-top:6px">Can’t scan? Go to <b>${esc(location.host)}/37-days/join</b> · Game <b style="font-family:var(--font-mono)">${esc(v.gid)}</b> · Your code <b style="font-family:var(--font-mono)">${esc(v.keys.join[`${p}.${r}`])}</b></div>` : ''}</div>`;
     }
     main.innerHTML = html + '</div>';
     return;

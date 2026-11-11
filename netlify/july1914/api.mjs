@@ -52,8 +52,11 @@ const PAR = Object.fromEntries(P.map(p => [p, HISTORY.result.score[p].total]));
 const REPLAY = HISTORY.state.log.filter(e => e.vis === 'public').map(e => ({ r: e.r, text: eventText(e) }));
 
 function newState(gid, sizes) {
-  const keys = { teacher: rid(16), roles: {} };
+  const keys = { teacher: rid(16), roles: {}, join: {} };
   for (const p of P) for (const role of ROLES) keys.roles[`${p}.${role}`] = rid(10);
+  // Short join codes for students who cannot scan the QR code (typed in at /37-days/join/), unique within the game.
+  const used = new Set();
+  for (const p of P) for (const role of ROLES) { let c; do { c = rid(5); } while (used.has(c)); used.add(c); keys.join[`${p}.${role}`] = c; }
   const teams = {};
   for (const p of P) teams[p] = { size: sizes?.[p] ?? (p === 'DE' ? 3 : 2), computer: false };
   return {
@@ -427,6 +430,7 @@ export async function handle(store, body, env = {}) {
     switch (a) {
       case 'projector': return ok(await projectorView(store, s));
       case 'team': { const pw = asRole(s, body.t, body.role, body.k); return ok(await teamView(store, s, body.t, body.role, pw)); }
+      case 'join': return ok(join(s, body.code));
       case 'hello': { asRole(s, body.t, body.role, body.k); await store.setJSON(K.presence(s.gid, body.t, body.role), { at: Date.now() }); return ok({ ok: true }); }
       case 'submit': return ok(await submit(store, s, body));
       case 'promise': return ok(await promise(store, s, body));
@@ -458,6 +462,17 @@ async function create(store, body, env) {
     if (!res || res.modified !== false) return { gid, teacherKey: s.keys.teacher };
   }
   fail(500, 'Could not create a game code. Try again.');
+}
+
+// Join by typed code: returns the same role link the QR code carries.
+const normCode = c => String(c || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+function join(s, code) {
+  const c = normCode(code);
+  const hit = c.length === 5 && Object.entries(s.keys.join || {}).find(([, v]) => v === c);
+  if (!hit) fail(403, 'That code does not match this game. Check both codes on your role card.');
+  const [t, role] = hit[0].split('.');
+  if (!X.powers(s.teams[t].size, role)) fail(403, `That role is not in use today. Ask your teacher.`);
+  return { t, role, k: s.keys.roles[hit[0]] };
 }
 
 async function submit(store, s, b) {
