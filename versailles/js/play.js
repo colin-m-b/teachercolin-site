@@ -50,6 +50,8 @@ async function act(type, data) {
     toast(err.message);
     if (err instanceof ApiError && err.status === 403) leave();
     return false;
+  } finally {
+    setTimeout(pollOnce, 1200); // show the result of what you just did without waiting for the next check-in
   }
 }
 function memberWith(job) {
@@ -132,10 +134,17 @@ function startPolling() {
   document.body.className = "ppc";
   renderShell();
   pollOnce();
+  // Check in every 3 seconds while negotiating or voting, every 6 seconds
+  // otherwise, and every 18 when the tab is hidden. Fewer requests keeps the
+  // site inside Netlify's monthly function allowance.
+  let ticks = 0;
   pollHandle = setInterval(() => {
-    if (document.hidden && Math.random() < 0.66) return; // poll less when the tab is hidden
-    pollOnce();
-  }, 2500);
+    ticks++;
+    const st = S && S.stage;
+    const live = st && ((st.kind === "round" && ["negotiate", "vote"].includes(st.phase)) || st.kind === "finale" || st.kind === "lobby");
+    const every = document.hidden ? 6 : live ? 1 : 2;
+    if (ticks % every === 0) pollOnce();
+  }, 3000);
 }
 function stopPolling() {
   clearInterval(pollHandle);
@@ -473,18 +482,19 @@ function pressBlock(round) {
 function germanyBlock(round) {
   const decisions = round.decisions.filter((d) => d.soften);
   const cur = D && D.germany;
-  local.germany = local.germany || {};
-  const objection = local.germany.objection ?? (cur ? cur.objection : decisions[0] ? decisions[0].id : null);
-  const stance = local.germany.stance ?? (cur ? cur.stance : null);
+  local.germanyByRound = local.germanyByRound || {};
+  const mine = (local.germanyByRound[round.id] = local.germanyByRound[round.id] || {});
+  const objection = mine.objection ?? (cur ? cur.objection : decisions[0] ? decisions[0].id : null);
+  const stance = mine.stance ?? (cur ? cur.stance : null);
   return el("div.card.card--navy",
     el("div.eyebrow", "Germany's written reply"),
     el("p.small", "You are not at the table, but you can protest. Choose the term you object to most this round. In the finale, the Conference will vote on your objections."),
     decisions.length ? el("div", { style: { marginTop: "10px" } },
       el("p", el("strong", "Our formal objection")),
-      decisions.map((d) => el("button.opt", { type: "button", "aria-pressed": String(objection === d.id), onclick: () => { local.germany.objection = d.id; render(); } }, el("span.opt__label", d.title), el("span.opt__detail", `We will ask: ${d.soften.label.toLowerCase()}.`))),
+      decisions.map((d) => el("button.opt", { type: "button", "aria-pressed": String(objection === d.id), onclick: () => { mine.objection = d.id; render(); } }, el("span.opt__label", d.title), el("span.opt__detail", `We will ask: ${d.soften.label.toLowerCase()}.`))),
     ) : el("p.muted", "Nothing this round touches Germany directly. Choose your message to the German people."),
     el("p", { style: { marginTop: "12px" } }, el("strong", "Our message to the German people")),
-    GERMAN_STANCES.map((s) => el("button.opt", { type: "button", "aria-pressed": String(stance === s.id), onclick: () => { local.germany.stance = s.id; render(); } }, el("span.opt__label", s.label), el("span.opt__detail", s.detail))),
+    GERMAN_STANCES.map((s) => el("button.opt", { type: "button", "aria-pressed": String(stance === s.id), onclick: () => { mine.stance = s.id; render(); } }, el("span.opt__label", s.label), el("span.opt__detail", s.detail))),
     el("button.btn.btn--primary.btn--block", { type: "button", style: { marginTop: "14px" }, disabled: stance ? null : true, onclick: async () => { if (await act("germany", { round: round.id, objection, stance })) toast("Reply lodged."); } }, cur ? "Update our reply" : "Lodge our reply"),
     cur ? el("p.small.muted", { style: { marginTop: "6px" } }, "Lodged. Anyone in your delegation can change it until the vote closes.") : null,
   );

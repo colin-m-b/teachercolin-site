@@ -148,11 +148,15 @@ async function hostPoll(store, body) {
   const problem = await requireHost(store, body);
   if (problem) return fail(problem, 403);
   const prefix = `g/${body.code}/a/`;
-  const cursor = typeof body.cursor === "string" ? body.cursor : "";
+  // Keys are time-ordered, but two actions written at almost the same moment
+  // can become visible out of order. So the teacher re-reads a window of
+  // recent keys ("since") and names the ones already handled ("seen").
+  const since = typeof body.since === "string" ? body.since : "";
+  const seen = new Set(Array.isArray(body.seen) ? body.seen : []);
   const { blobs } = await store.list({ prefix });
   const fresh = blobs
     .map((b) => b.key.slice(prefix.length))
-    .filter((k) => k > cursor)
+    .filter((k) => k > since && !seen.has(k))
     .sort()
     .slice(0, 150);
   const actions = await Promise.all(

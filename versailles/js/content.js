@@ -159,14 +159,14 @@ export const PERSONAS = {
   africa: {
     name: "Africa & the African diaspora",
     leader: "W. E. B. Du Bois and Blaise Diagne (Pan-African Congress)",
-    who: "In February 1919 you organized the first Pan-African Congress in Paris. Diagne is the first Black African elected to the French parliament; he recruited tens of thousands of West African soldiers for France in 1918, on the promise of rights in return. About 200,000 West Africans fought for France, and up to a million porters died in the East African campaign. Germany's African colonies (Togo, Cameroon, South West Africa, East Africa) are up for grabs.",
+    who: "In February 1919 you organized the first Pan-African Congress in Paris. Diagne is the first Black African elected to the French parliament; he recruited tens of thousands of West African soldiers for France in 1918, on the promise of rights in return. About 200,000 West Africans fought for France. In the East African campaign, around a million Africans were made to serve as porters, and roughly 100,000 of them died. Germany's African colonies (Togo, Cameroon, South West Africa, East Africa) are up for grabs.",
     wants: [
       "German colonies placed under international protection, not handed to new rulers",
       "African peoples given a growing share in their own government",
       "Land held in trust for Africans",
       "Recognition of what African soldiers sacrificed",
     ],
-    facts: ["About 200,000 West Africans fought for France", "Many porters died in East Africa", "First Pan-African Congress, Paris, February 1919"],
+    facts: ["About 200,000 West Africans fought for France", "Around 100,000 African porters died in East Africa", "First Pan-African Congress, Paris, February 1919"],
   },
   arab: {
     name: "The Arab delegation",
@@ -487,7 +487,7 @@ export const ROUNDS = [
     },
     intel: {
       fr: "Your generals report the Americans and British will offer a treaty promising to defend France if Germany attacks. But the US Senate has not agreed to anything yet. Can you trust a promise from Washington?",
-      gb: "Your diplomats warn that if the Rhineland is cut off, German nationalists will have a cause for decades. Lloyd George said privately: “I cannot conceive of any greater cause of future war.”",
+      gb: "Your diplomats warn that if the Rhineland is cut off, German nationalists will have a cause for decades. Lloyd George has written that he “cannot conceive any greater cause of future war” than leaving millions of Germans under foreign rule.",
       us: "Your experts report the Danzig area is about 90% German. A corridor will cut East Prussia off from Germany. Self-determination and Polish access to the sea cannot both be fully honoured.",
       it: "A German–Austrian union would put a large German state right on Italy's northern border. Make sure it stays forbidden.",
       de: "Polish forces are already fighting German volunteers in Posen and Silesia. Whatever is decided on paper, there will be violence on the ground.",
@@ -583,6 +583,7 @@ export const ROUNDS = [
       },
     ],
     actions: [
+      { id: "fourteenPoints", who: "de", label: "Print the Fourteen Points beside the draft treaty", announce: "BERLIN: German newspapers print Wilson's Fourteen Points side by side with the terms being drafted in Paris, and invite readers to compare them.", fx: { resentment: 2, league: -2 }, text: "Wilson's critics in Britain and America take up the comparison." },
       { id: "backEquality", who: "persona", persona: ["vietnam", "africa", "arab"], label: "Publicly back Japan's equality clause", announce: "STATEMENT: Delegates of colonized peoples publicly support Japan's call for racial equality.", fx: { awakening: 5 }, text: "Colonized peoples across the world take note of who voted against equality." },
     ],
     goals: {
@@ -686,6 +687,7 @@ export const ROUNDS = [
       },
     ],
     actions: [
+      { id: "colonialProtest", who: "de", label: "Protest the loss of the colonies and ask to govern them as League mandates", announce: "BERLIN: Germany protests the loss of all its colonies and asks to administer them itself as mandates of the League of Nations.", fx: { resentment: 2 }, text: "The Allies reply that Germany's record as a colonial ruler disqualifies it." },
       { id: "panAfrican", who: "persona", persona: ["africa", "vietnam", "arab", "china"], label: "Publish the Pan-African Congress resolutions", announce: "PARIS: The Pan-African Congress publishes its resolutions: African land held in trust for Africans, and African peoples given a growing role in their own government.", fx: { awakening: 8 }, text: "Newspapers in Paris, New York and Lagos print the resolutions." },
     ],
     goals: {

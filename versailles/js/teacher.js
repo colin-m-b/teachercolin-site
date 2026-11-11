@@ -24,6 +24,7 @@ let drawerOpen = false;
 let drawerTab = "delegations";
 let netProblem = null;
 let lastWireCount = 0;
+let showKey = false;
 
 const app = document.getElementById("app");
 
@@ -177,25 +178,40 @@ function startHost() {
   render();
 }
 
+const WINDOW_MS = 30000;
+let polling = false;
+
 async function pollOnce() {
+  if (polling) return;
+  polling = true;
   try {
-    const res = await call("hostpoll", { code, hostKey, cursor: H.cursor }, { retries: 0 });
+    // Re-read the last 30 seconds of actions every time and skip the ones
+    // already applied, so a vote that lands out of order is never lost.
+    const since = H.cursor ? String(Math.max(0, Number(H.cursor.slice(0, 14)) - WINDOW_MS)).padStart(14, "0") : "";
+    H.seen = (H.seen || []).filter((k) => k > since);
+    const res = await call("hostpoll", { code, hostKey, since, seen: H.seen }, { retries: 0 });
     skew = res.now - Date.now();
     let changed = false;
     for (const a of res.actions) {
+      if (H.seen.includes(a.key)) continue;
       if (E.applyAction(H, a)) changed = true;
-      H.cursor = a.key;
+      H.seen.push(a.key);
+      if (a.key > H.cursor) H.cursor = a.key;
     }
     if (res.actions.length) dirty = true;
     if (netProblem) {
       netProblem = null;
       changed = true;
     }
-    if (changed) render();
+    // Don't rebuild the console while the teacher has a menu open in it.
+    const busy = document.activeElement && document.activeElement.matches(".drawer select, .drawer input");
+    if (changed && !busy) render();
     if (dirty) await sync();
   } catch (err) {
     netProblem = err.message;
     renderNet();
+  } finally {
+    polling = false;
   }
 }
 
@@ -317,9 +333,19 @@ function startLesson() {
 
 function movePlayer(pid, del) {
   change(() => {
-    if (del === "__remove") H.players[pid].removed = true;
+    if (del === "__remove") {
+      H.players[pid].removed = true;
+      H.players[pid].d = null;
+    }
     else H.players[pid].d = del;
     E.refreshRoles(H);
+  });
+}
+
+function restorePlayer(pid) {
+  change(() => {
+    H.players[pid].removed = false;
+    if (H.delegations.length) E.placeLateJoiner(H, pid);
   });
 }
 
@@ -498,7 +524,7 @@ function viewCliff() {
     el("p.p-q.p-section", teaser),
     el("div.p-section.card",
       el("p.p-body", "Everything is saved. Next lesson, open this page again (it remembers the conference) and press ", el("strong", `Start lesson ${H.lesson + 1}`), ". Jobs will rotate."),
-      el("p.p-body.muted", { style: { marginTop: "8px" } }, `Conference code: ${code} · Teacher key: ${hostKey}`),
+      el("p.p-body.muted", { style: { marginTop: "8px" } }, `Conference code: ${code}. To resume on a different computer you also need the teacher key: Console → Settings.`),
     ),
   );
 }
@@ -772,6 +798,7 @@ function renderDrawer(stage) {
   const tabs = [["delegations", "Delegations"], ["submissions", "This round"], ["notes", `Notes (${H.notes.length})`], ["settings", "Settings"]];
   let body;
   if (drawerTab === "delegations") {
+    const removed = Object.entries(H.players).filter(([, p]) => p.removed);
     const rows = E.activePlayers(H).sort((a, b) => (a[1].d || "").localeCompare(b[1].d || "") || a[1].name.localeCompare(b[1].name));
     body = el("div",
       H.delegations.length ? el("p.small.muted", "Move a student by choosing a new delegation. Jobs are recalculated automatically.") : el("p.small.muted", "Students appear here as they join. Press “Assign delegations” when everyone is in."),
@@ -788,6 +815,9 @@ function renderDrawer(stage) {
         )),
       ),
       H.delegations.length && stage.kind === "lobby" ? el("button.btn.btn--small", { type: "button", style: { marginTop: "12px" }, onclick: reshuffle }, "Reshuffle everyone") : null,
+      removed.length ? el("div", { style: { marginTop: "16px" } },
+        el("p.small.muted", "Removed from the game (for example, absent today):"),
+        removed.map(([pid, p]) => el("div.row", { style: { marginTop: "6px" } }, el("span", p.name), el("button.btn.btn--small", { type: "button", onclick: () => restorePlayer(pid) }, "Add back")))) : null,
     );
   } else if (drawerTab === "submissions") {
     if (stage.kind !== "round") body = el("p.small.muted", "Shows ballots and threats during a round.");
@@ -818,7 +848,10 @@ function renderDrawer(stage) {
   } else {
     body = el("div.stack",
       el("p", el("strong", "Conference code: "), code),
-      el("p", el("strong", "Teacher key: "), el("span.mono", hostKey), el("br"), el("span.small.muted", "You need this only to resume on a different computer.")),
+      el("p", el("strong", "Teacher key: "),
+        showKey ? el("span.mono", hostKey) : el("button.btn.btn--small", { type: "button", onclick: () => { showKey = true; render(); } }, "Show"),
+        showKey ? el("button.btn.btn--small.btn--ghost", { type: "button", onclick: () => { showKey = false; render(); } }, "Hide") : null,
+        el("br"), el("span.small.muted", "Needed only to resume on a different computer. Anyone with it can run the conference, so don't show it on the projector.")),
       el("label.field", el("span.label", "Negotiation time per round (minutes)"),
         el("input.input", { type: "number", min: "2", max: "30", value: String(H.negotiateMin), style: { maxWidth: "120px" }, onchange: (e) => change(() => (H.negotiateMin = Math.max(2, Math.min(30, Number(e.target.value) || 10)))) })),
       el("p.small.muted", `Length: ${PRESETS[H.preset].label} (${H.roundIds.length} rounds).`),
