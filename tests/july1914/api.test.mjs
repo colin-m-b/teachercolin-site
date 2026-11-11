@@ -297,6 +297,19 @@ const ctx = await newGame(store);
   check('Join codes never appear in projector or student views', !Object.values(codes).some(x => pv.includes(`"${x}"`)));
 }
 
+// ------------------------------------------------------------------ older games get join codes
+{
+  const st = memoryStore();
+  const c = await newGame(st);
+  const key = `g/${c.g}/state`;
+  const old = JSON.parse(st.map.get(key).body); delete old.keys.join;
+  await st.setJSON(key, old);
+  const T = await c.call({ action: 'teacher', g: c.g, k: c.k });
+  const T2 = await c.call({ action: 'teacher', g: c.g, k: c.k });
+  const j = await c.call({ action: 'join', g: c.g, code: T.keys.join?.['GB.leader'] });
+  check('A game made before join codes gets them when the teacher panel opens, and keeps them', Object.keys(T.keys.join || {}).length === 18 && JSON.stringify(T.keys.join) === JSON.stringify(T2.keys.join) && j.t === 'GB');
+}
+
 // ------------------------------------------------------------------ teacher code and concurrency
 {
   const st = memoryStore();

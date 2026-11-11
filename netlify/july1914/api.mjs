@@ -55,8 +55,7 @@ function newState(gid, sizes) {
   const keys = { teacher: rid(16), roles: {}, join: {} };
   for (const p of P) for (const role of ROLES) keys.roles[`${p}.${role}`] = rid(10);
   // Short join codes for students who cannot scan the QR code (typed in at /37-days/join/), unique within the game.
-  const used = new Set();
-  for (const p of P) for (const role of ROLES) { let c; do { c = rid(5); } while (used.has(c)); used.add(c); keys.join[`${p}.${role}`] = c; }
+  addJoinCodes(keys);
   const teams = {};
   for (const p of P) teams[p] = { size: sizes?.[p] ?? (p === 'DE' ? 3 : 2), computer: false };
   return {
@@ -66,6 +65,12 @@ function newState(gid, sizes) {
     engine: G.newGame(), snapshots: {}, resolved: {}, overrides: {}, epoch: {},
     promises: {}, colour: {}, tallies: {}, practice: null, endedAt: null,
   };
+}
+
+function addJoinCodes(keys) {
+  keys.join = {};
+  const used = new Set();
+  for (const p of P) for (const role of ROLES) { let c; do { c = rid(5); } while (used.has(c)); used.add(c); keys.join[`${p}.${role}`] = c; }
 }
 
 // ------------------------------------------------------------------ store wrappers
@@ -436,7 +441,12 @@ export async function handle(store, body, env = {}) {
       case 'promise': return ok(await promise(store, s, body));
       case 'colour': return ok(await colour(store, s, body));
       case 'vote': return ok(await vote(store, s, body));
-      case 'teacher': asTeacher(s, body.k); return ok(await teacherView(store, s));
+      case 'teacher': {
+        asTeacher(s, body.k);
+        // Games created before join codes existed get them the first time the teacher panel opens.
+        if (!s.keys.join) { addJoinCodes(s.keys); await saveState(store, s, etag); }
+        return ok(await teacherView(store, s));
+      }
       case 'export': asTeacher(s, body.k); return ok(await exportAll(store, s));
       case 'do': asTeacher(s, body.k); await teacherAction(store, s, body); await saveState(store, s, etag); return ok(await teacherView(store, s));
       default: fail(400, 'Unknown action.');
