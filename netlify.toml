@@ -3,3 +3,29 @@
   [headers.values]
     Content-Type = "image/x-icon"
     Cache-Control = "public, max-age=604800"
+
+# The Paris Peace Conference, 1919 (versailles/) runs one Netlify Function
+# (netlify/functions/versailles). Keep server source and dependencies off the
+# public site, since the site is published from the repository root.
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/versailles/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

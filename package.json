@@ -1,0 +1,8 @@
+{
+  "name": "teachercolin-site",
+  "private": true,
+  "description": "teachercolin.com. Static pages plus the Netlify Function behind The Paris Peace Conference, 1919 (versailles/).",
+  "dependencies": {
+    "@netlify/blobs": "11.1.6"
+  }
+}
