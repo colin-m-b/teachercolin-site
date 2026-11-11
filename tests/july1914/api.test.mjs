@@ -276,6 +276,27 @@ const ctx = await newGame(store);
   check('Justifications are capped at 400 characters', lim.ok && v2.submission.justification.length === 400);
 }
 
+// ------------------------------------------------------------------ join by typed code
+{
+  const st = memoryStore();
+  const c = await newGame(st);
+  const codes = c.keys.join || {};
+  check('Every role has a 5-character join code, all different', Object.keys(codes).length === 18 && new Set(Object.values(codes)).size === 18 && Object.values(codes).every(x => /^[a-z0-9]{5}$/.test(x)));
+  const j = await c.call({ action: 'join', g: c.g, code: codes['RU.general'] });
+  check('Join code returns that role’s own link key', j.t === 'RU' && j.role === 'general' && j.k === c.keys.roles['RU.general']);
+  const j2 = await c.call({ action: 'join', g: c.g, code: ` ${codes['FR.leader'].toUpperCase().replace(/(..)/, '$1-')} ` });
+  check('Join code ignores capitals, spaces and dashes', j2.t === 'FR' && j2.role === 'leader');
+  const bad = await c.call({ action: 'join', g: c.g, code: 'zzzzz' });
+  check('A wrong join code is refused', bad._status === 403);
+  const unused = await c.call({ action: 'join', g: c.g, code: codes['AH.envoy'] });
+  check('A join code for a role not in use today is refused', unused._status === 403);
+  const other = await newGame(st);
+  const cross = await c.call({ action: 'join', g: other.g, code: codes['RU.general'] });
+  check('A join code only works with its own game code', cross._status === 403 || cross.k !== c.keys.roles['RU.general']);
+  const pv = JSON.stringify(await c.call({ action: 'projector', g: c.g })) + JSON.stringify(await c.call({ action: 'team', ...dev(c, 'RU', 'leader') }));
+  check('Join codes never appear in projector or student views', !Object.values(codes).some(x => pv.includes(`"${x}"`)));
+}
+
 // ------------------------------------------------------------------ teacher code and concurrency
 {
   const st = memoryStore();

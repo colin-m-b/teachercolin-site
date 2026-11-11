@@ -12,7 +12,7 @@ const browser = await chromium.launch();
 const errors = [];
 let pass = 0, fail = 0;
 const check = (n, ok, d = '') => { ok ? pass++ : fail++; console.log(`${ok ? 'PASS' : 'FAIL'}  ${n}${d ? '  — ' + d : ''}`); };
-const watch = (page, name) => { page.on('pageerror', e => errors.push(`${name}: ${e.message}`)); page.on('console', m => { if (m.type() === 'error' && !/fonts\.g|ERR_INTERNET_DISCONNECTED|ERR_EMPTY_RESPONSE/.test(m.text())) errors.push(`${name}: ${m.text()}`); }); page.on('dialog', d => d.accept()); };
+const watch = (page, name) => { page.on('pageerror', e => errors.push(`${name}: ${e.message}`)); page.on('console', m => { if (m.type() === 'error' && !/fonts\.g|ERR_INTERNET_DISCONNECTED|ERR_EMPTY_RESPONSE/.test(m.text()) && !(name === 'GB.general' && /403/.test(m.text()))) errors.push(`${name}: ${m.text()}`); }); page.on('dialog', d => d.accept()); };
 const api = body => fetch(`http://localhost:${PORT}/api/july1914`, { method: 'POST', body: JSON.stringify(body) }).then(r => r.json());
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -38,7 +38,16 @@ try {
   const students = {};
   for (const t of ['AH', 'DE', 'RU', 'FR', 'GB', 'RS']) for (const r of (t === 'DE' ? ['leader', 'general', 'envoy'] : ['leader', 'general'])) {
     const p = await sctx.newPage(); watch(p, `${t}.${r}`);
-    await p.goto(`${BASE}play.html#g=${g}&t=${t}&r=${r}&k=${T0.keys.roles[`${t}.${r}`]}`);
+    if (t === 'GB' && r === 'general') {
+      // this student cannot scan: joins by typing the codes from the role card
+      await p.goto(`${BASE}join/`);
+      await p.fill('#g', g.toUpperCase()); await p.fill('#c', 'wrong');
+      await p.click('#jf button[type=submit]'); await p.waitForSelector('#st .status--err');
+      await p.fill('#c', T0.keys.join['GB.general']);
+      await p.click('#jf button[type=submit]'); await p.waitForURL(/play\.html#/);
+      await p.waitForFunction(() => document.querySelector('#team')?.textContent.includes('Britain · General'));
+      check('A student can join by typing the game code and their code', true);
+    } else await p.goto(`${BASE}play.html#g=${g}&t=${t}&r=${r}&k=${T0.keys.roles[`${t}.${r}`]}`);
     students[`${t}.${r}`] = p;
   }
   await sleep(2500);
@@ -160,6 +169,8 @@ try {
   const pr = await tctx.newPage(); watch(pr, 'print');
   await pr.goto(`${BASE}print.html#doc=cards&g=${g}&k=${k}`); await pr.waitForSelector('.rc svg');
   check('Role cards print with 13 QR codes', (await pr.locator('.rc').count()) === 13);
+  const cardText = await pr.innerText('main');
+  check('Each role card shows the join page, game code and its own code', cardText.includes('/37-days/join') && (cardText.match(/Your code/g) || []).length === 13 && cardText.includes(T0.keys.join['RU.leader']));
   await pr.setViewportSize({ width: 900, height: 1200 }); await pr.screenshot({ path: `${SHOTS}/14-role-cards.png` });
   await pr.goto(`${BASE}print.html#doc=slips`); await pr.waitForSelector('.slip');
   check('Decision slip pack lists every menu variant', (await pr.locator('.slip').count()) === 52);

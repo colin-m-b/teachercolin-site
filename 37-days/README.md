@@ -11,6 +11,7 @@ The plan is the Claude Doc "July 1914 Simulation — Build & Test Plan".
 | `teacher.html#g=…&k=…` | Teacher, on a phone | One button per step, team status, overrides, undo, export, printables. **Never on the projector.** |
 | `projector.html#g=…` | Classroom screen | Date, timer, decided lights, public telegrams, ending, map, scores, vote charts. No secrets. |
 | `play.html#g=…&t=…&r=…&k=…` | Each student | Opened from the QR code on a role card |
+| `join/` | A student who cannot scan | Types the game code and the 5-character code printed on the role card |
 | `print.html#doc=…` | Teacher | `cards` (QR role cards), `slips`, `runsheet`, `exit`, `record` |
 | `offline.html` | Teacher | Wi-fi backup: the engine runs in the browser; choices typed in from paper slips |
 
