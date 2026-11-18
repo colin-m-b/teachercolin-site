@@ -75,27 +75,6 @@
 }
 .wash h2 { border-bottom-color: var(--berry-light) !important; }
 
-/* Quiz link */
-.check {
-    margin-top: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 6px 16px;
-    border: 1px solid var(--berry-light);
-    border-left: 8px solid var(--berry);
-    padding: 16px 22px;
-    background: #FFFFFF;
-}
-.check__label {
-    font-size: 0.9375rem;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--berry-deep);
-}
-.check .ph { font-size: 1.125rem; }
-
 /* ---------- Overview comparison table ---------- */
 .compare {
     width: 100%;
@@ -278,11 +257,9 @@
     .theme-berry .block h4,
     .theme-berry .block h5,
     .opt-label,
-    .check__label,
     .card dt { color: #000 !important; }
 
     .wash, .harder { background: #fff; border: 1px solid #000; border-left-width: 6px; }
-    .check { border-color: #000; }
     .ph { background: #FFE45C; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .theme-berry .block a:not(.btn) { color: #000; }
 
