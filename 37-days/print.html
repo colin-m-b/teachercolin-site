@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2421">
+<title>37 Days · Printables</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/37days.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+body { background: #fff; }
+.sheet { max-width: 900px; margin: 0 auto; padding: 16px; }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.rc { border: 2px solid var(--ink); border-radius: 4px; padding: 14px; display: grid; grid-template-columns: 1fr 140px; gap: 12px; break-inside: avoid; min-height: 230px; }
+.rc .bandc { height: 10px; margin: -14px -14px 8px; grid-column: 1 / -1; }
+.rc h2 { font-size: 1.5rem; margin: 0; }
+.rc .qr svg, .rc .qr img { width: 140px; height: 140px; }
+.slip { border: 1px dashed #777; padding: 10px 12px; margin: 8px 0; break-inside: avoid; }
+.slip .code { font-family: var(--font-mono); font-weight: 700; float: right; }
+.slip ol { margin: 6px 0 6px 22px; }
+.slip .fill { border-bottom: 1px solid #999; height: 26px; margin-top: 4px; }
+.pb { break-after: page; }
+@media print { .sheet { padding: 0; } .cards { gap: 8px; } }
+</style>
+</head>
+<body>
+<div class="noprint bar"><div class="wrap"><div class="bar__team">37 Days · Printables</div><div class="bar__right"><button class="btn btn--small" onclick="print()">Print</button></div></div></div>
+<main class="sheet" id="main"><p>Loading…</p></main>
+<script src="assets/common.js"></script>
+<script src="assets/qrcode.js"></script>
+<script src="assets/print.js"></script>
+</body>
+</html>

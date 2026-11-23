@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2421">
+<title>37 Days · Offline mode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/37days.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" href="assets/projector.css">
+<style>
+.teamrow { display: grid; grid-template-columns: 170px 1fr; gap: 10px; padding: 10px 0; border-top: 1px solid var(--rule); }
+.teamrow:first-child { border-top: 0; }
+.optbtn { text-align: left; width: 100%; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 4px; background: #fff; cursor: pointer; margin-bottom: 6px; }
+.optbtn.is-on { border-color: var(--accent); background: var(--accent-pale); box-shadow: inset 0 0 0 1px var(--accent); }
+.overlay { position: fixed; inset: 0; background: var(--paper); z-index: 40; overflow: auto; padding: 20px; }
+@media (max-width: 600px) { .teamrow { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap"><div class="bar__team">37 Days · Offline mode</div><div class="bar__right bar__meta" id="meta"></div></div></header>
+<main class="wrap" id="main"><p class="card">Loading the game engine…</p></main>
+<script src="assets/common.js"></script>
+<script src="assets/map.js"></script>
+<script src="assets/offline.js"></script>
+</body>
+</html>

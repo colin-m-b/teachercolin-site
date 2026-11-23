@@ -1,0 +1,165 @@
+PASS  Historical path ends in general war
+      general
+PASS  Historical path produces the real sequence of events
+PASS  Historical path: no Austria–Russia war inside the 1–4 Aug window (it came on 6 Aug)
+      AH-RS DE-RU DE-FR BE-DE DE-GB
+PASS  Scores on the historical path ("par" to beat)
+      {"AH":3,"DE":1,"RU":5,"FR":5,"GB":4,"RS":5}
+PASS  Nobody gets a perfect score in 1914, so every team can try to beat history
+      {"AH":3,"DE":1,"RU":5,"FR":5,"GB":4,"RS":5}
+PASS  Every menu is well formed (2–3 options, one default = the historical option)
+PASS  Every event has text and valid visibility
+PASS  Every power sees a consequence of its own choice every round
+PASS  No orphan text (every written event can actually happen)
+PASS  All five endings are reachable
+      peace, local, continental, general, eastern
+PASS  Every ending modifier is reachable
+PASS  Menu variants seen
+      52 distinct menus; longest label 17 words
+PASS  Ending mix — class players
+      peace 79.1%, general 15.9%, local 2.5%, continental 1.7%, eastern 0.8%
+PASS  Ending mix — random players
+      peace 54.0%, eastern 13.3%, local 13.2%, continental 10.0%, general 9.6%
+PASS  Ending mix — history60 players
+      peace 28.5%, general 28.1%, continental 19.0%, local 16.6%, eastern 7.8%
+PASS  Ending mix — hawk players
+      general 100.0%
+PASS  Ending mix — dove players
+      peace 100.0%
+PASS  Ending mix — mixed players
+      peace 50.1%, continental 14.9%, general 14.6%, local 11.7%, eastern 8.8%
+PASS  Even a cautious class sometimes slides into a great-power war (≥ 10%)
+      18.4%
+PASS  Cautious classes keep the peace or a local war (≥ 80%)
+      peace 100.0%
+PASS  Aggressive classes reach general war (≥ 80%)
+      general 100.0%
+PASS  Every secret objective can be both met and missed
+PASS  Average scores (class players) vs 1914 par
+      AH 2.80 (par 3), DE 3.91 (par 1), RU 3.53 (par 5), FR 4.42 (par 5), GB 6.35 (par 4), RS 6.58 (par 5)
+PASS  Average scores (mixed players) vs 1914 par
+      AH 2.78 (par 3), DE 3.68 (par 1), RU 3.54 (par 5), FR 4.63 (par 5), GB 5.08 (par 4), RS 5.73 (par 5)
+PASS  Average scores, random players (for information)
+      AH 2.65, DE 3.65, RU 3.30, FR 4.83, GB 5.38, RS 6.15
+PASS  Average points per objective, responsive classes (diagnostic)
+      AH: 0.56 / 1.63 / 0.97 | prestige -0.36; DE: 0.84 / 1.68 / 1.57 | prestige -0.18; RU: 2.75 / 0.73 / 0.79 | prestige -0.73; FR: 1.44 / 1.97 / 1.65 | prestige -0.63; GB: 1.97 / 1.97 / 2.45 | prestige -0.03; RS: 2.97 / 1.72 / 0.97 / 0.92 | prestige -0.00
+PASS  Every team can reach the maximum of 7
+      {"AH":7,"DE":7,"RU":7,"FR":7,"GB":7,"RS":7}
+PASS  Ending mix — strategic teams
+      peace 28.0%, general 25.3%, eastern 24.3%, local 11.3%, continental 11.0%
+PASS  Ending mix — half strategic, half responsive
+      peace 67.3%, general 10.0%, continental 8.3%, eastern 7.3%, local 7.0%
+PASS  Strategic teams: the incentives usually lead to a great-power war (45–80%)
+      60.6%
+PASS  Strategic teams: the full 1914 war is a common outcome (≥ 15%)
+      25.3%
+PASS  Strategic teams: peace is possible but not the norm (10–45%)
+      28.0%
+PASS  Mixed classes: war remains a real risk (great-power war ≥ 25%)
+      25.6%
+PASS  Every team can beat its 1914 score (≥ 20% of games, strategic and mixed)
+      AH 28.7%/35.3%, DE 74.7%/87.3%, RU 62.3%/33.7%, FR 63.7%/59.0%, GB 39.3%/74.3%, RS 62.0%/81.7%
+PASS  25% of decisions missing (timeouts): game always completes
+      {"eastern":2054,"peace":9408,"local":3094,"general":2688,"continental":2756}
+PASS  Any one country run by the computer (absent group): game always completes
+PASS  Two countries run by the computer: game always completes
+PASS  Every combination of choices resolves, from varied starting states
+      147,501 rounds resolved; 
+PASS  Exhaustive run found no missing text or bad visibility
+PASS  No dead decisions: every decision changes the ending, own score or own later options in ≥ 3% of situations
+FAIL  Most decisions matter a lot: ≥ 30 of 36 matter in ≥ 15% of situations
+      29 of 36; lower: R1.RS 10.3%, R2.GB 10.6%, R2.RS 6.0%, R3.GB 9.5%, R4.GB 10.9%, R5.DE 6.1%, R6.RS 13.4%
+PASS  No option is a no-brainer (best for you in ≥ 95% of situations)
+PASS  Cascade: rounds 1–4 change the ending (average ≥ 5%; best decision in each of rounds 2–4 ≥ 10%) [responsive classes]
+      average 9.4%; best in R2/R3/R4: 27.3% / 47.1% / 44.1%
+PASS  History is not locked in: some single decisions avoid a general war
+      9 pivot choices
+PASS  History is not fragile: most single changes still end in general war
+      9 of 72 possible single changes avoid it
+PASS  Gate 2: without a French promise, Russia cannot order general mobilization
+      partial,none
+PASS  Gate 2: on the 1914 path, general mobilization is available
+PASS  Gate 2: if Austria has not declared war, no general mobilization
+PASS  Gate 0: without German backing, Austria cannot declare war
+      mobilize,talks
+PASS  Gate 0: once Germany withdraws backing, Austria cannot start a war in round 5
+      stop,ready
+PASS  Gate 3: Germany has no "east only" option (Moltke, 1 August 1914)
+PASS  Gate 0: without a full blank cheque, a harsh ultimatum is toned down to firm demands
+      firm
+PASS  Gate 0: a blank cheque given in round 2 still allows the harsh ultimatum
+      harsh
+PASS  Gate 4a: neutrality after promising Russia costs France 2 prestige
+      -2
+PASS  Gate 4a: a France that kept its options open can stay neutral without losing prestige
+      0
+PASS  Gate 8: once general mobilization starts, Russia cannot stand down
+PASS  Gate 4b: Britain cannot fight "for France" without a promise, a ready fleet or the French 10 km gesture
+PASS  Gate 7: Belgium can only resist properly if it mobilized
+PASS  Gate 5: "Halt in Belgrade" exists only if Germany proposed it
+PASS  Gate 1: talks open when Austria agrees and someone proposed them
+PASS  Gate 1: German pressure can push a hesitating Austria into talks
+PASS  Gate 1: no proposal, no conference
+PASS  Backing down with no earlier promise costs nothing
+      {"commits":0,"broken":0}
+PASS  Backing down after a promise costs prestige
+      {"commits":1,"broken":1}
+PASS  Serbia's public appeal puts Russia's prestige on the line
+      {"commits":1,"broken":1}
+PASS  Prestige penalty is capped at −2
+      -2
+PASS  Peak words a group reads per round (events + options, before briefings)
+      R1 36, R2 133, R3 161, R4 112, R5 128, R6 178
+PASS  Event + option reading fits in 2 minutes at 100 wpm (≤ 200 words), leaving room for briefings
+      {"R1":36,"R2":133,"R3":161,"R4":112,"R5":128,"R6":178}
+
+Relevance (share of situations where the decision changes the ending / your score):
+R1.AH  ending   6.5%  own score  34.6%  own options 100.0%  others  38.6%
+R1.DE  ending  40.0%  own score  72.8%  own options 100.0%  others  87.5%
+R1.RU  ending   0.0%  own score  33.6%  own options   0.0%  others  13.0%
+R1.FR  ending   0.3%  own score  21.5%  own options 100.0%  others   0.9%
+R1.GB  ending   1.9%  own score  45.3%  own options   8.9%  others   3.0%
+R1.RS  ending   0.1%  own score  10.3%  own options   0.0%  others  33.8%
+R2.AH  ending   4.9%  own score  39.5%  own options   6.5%  others  42.5%
+R2.DE  ending  27.3%  own score  52.5%  own options   0.0%  others  62.6%
+R2.RU  ending   0.4%  own score  47.9%  own options   4.9%  others  18.9%
+R2.FR  ending  10.0%  own score  37.9%  own options   0.0%  others  30.1%
+R2.GB  ending   0.5%  own score   0.4%  own options  10.1%  others   0.9%
+R2.RS  ending   0.1%  own score   6.0%  own options   0.0%  others  33.6%
+R3.AH  ending  12.3%  own score  69.3%  own options  18.5%  others  27.0%
+R3.DE  ending   7.9%  own score  44.8%  own options   0.0%  others  58.5%
+R3.RU  ending   1.0%  own score  72.1%  own options   8.3%  others  24.4%
+R3.FR  ending   5.5%  own score  34.4%  own options   0.0%  others  16.1%
+R3.GB  ending   0.4%  own score   0.4%  own options   9.1%  others   0.8%
+R3.RS  ending  47.1%  own score  46.1%  own options  15.9%  others 100.0%
+R4.AH  ending  44.1%  own score  64.9%  own options  56.5%  others  67.8%
+R4.DE  ending  12.0%  own score  44.8%  own options   0.0%  others 100.0%
+R4.RU  ending   1.1%  own score  35.3%  own options  10.0%  others  14.4%
+R4.FR  ending   2.1%  own score  23.4%  own options   0.0%  others   6.3%
+R4.GB  ending   1.1%  own score   1.3%  own options   9.9%  others   2.4%
+R4.RS  ending   0.0%  own score  19.5%  own options   0.0%  others  25.0%
+R5.AH  ending  21.0%  own score  45.0%  own options  53.6%  others  53.4%
+R5.DE  ending   5.9%  own score   5.0%  own options   0.0%  others  80.9%
+R5.RU  ending  16.3%  own score  58.5%  own options 100.0%  others  50.9%
+R5.FR  ending   1.1%  own score  22.4%  own options   0.0%  others  24.5%
+R5.GB  ending   1.0%  own score  46.3%  own options  27.6%  others   1.0%
+R5.RS  ending   3.1%  own score  18.9%  own options 100.0%  others  48.3%
+R6.AH  ending   7.2%  own score  20.6%  own options   0.0%  others  22.5%
+R6.DE  ending  20.5%  own score   8.8%  own options   0.0%  others  20.6%
+R6.RU  ending  14.2%  own score  16.1%  own options   0.0%  others  15.6%
+R6.FR  ending   0.0%  own score 100.0%  own options   0.0%  others 100.0%
+R6.GB  ending  19.9%  own score  27.0%  own options   0.0%  others  19.9%
+R6.RS  ending   7.8%  own score   9.8%  own options   0.0%  others   7.8%
+
+Pivot points from the historical path:
+R3 Serbia: "Accept every demand, even Austrian officials inside Serbia" → peace
+R4 Austria-Hungary: "Mobilize against Serbia, but hold off declaring war" → local
+R4 Austria-Hungary: "Accept talks with the other great powers" → peace
+R5 Russia: "No mobilization yet: keep negotiating" → local
+R5 Serbia: "BELGIUM: Stay quiet, and do nothing that might provoke Germany" → continental
+R5 Serbia: "BELGIUM: Ask Britain and France to confirm they will defend Belgium" → continental
+R6 Germany: "Declare no war and keep negotiating, even if Russia attacks Austria (this breaks the alliance)" → eastern
+R6 Britain: "Stay neutral, whatever happens" → continental
+R6 Serbia: "BELGIUM: if Germany demands to march through, protest but let them pass" → continental
+
+1 failed, 0 warnings, 67 passed

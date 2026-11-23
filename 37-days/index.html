@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2421">
+<title>37 Days · Teacher start</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/37days.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<header class="bar"><div class="wrap"><div class="bar__team">37 Days · The July Crisis</div><div class="bar__right bar__meta">Teacher start page</div></div></header>
+<main class="wrap">
+  <div class="card card--accent" style="margin-top:20px">
+    <div class="eyebrow">Unit 2 · What is History?</div>
+    <h1>37 Days: 28 June – 4 August 1914</h1>
+    <p>A six-round live simulation. Six teams make the decisions that turned one assassination into a general war. Next lesson, their own game record becomes the evidence for a debate about responsibility.</p>
+    <p class="small muted">Students do not start here: they scan the QR code on their role card.</p>
+  </div>
+
+  <form class="card" id="create">
+    <h2>Start a game</h2>
+    <label class="field" for="code">Teacher code</label>
+    <input type="password" id="code" autocomplete="current-password" placeholder="Set in Netlify as JULY1914_TEACHER_CODE">
+    <label class="field">Students per team today (absent team? tick “computer” in the panel later)</label>
+    <div class="row" id="sizes"></div>
+    <div class="row" style="margin-top:14px"><button class="btn" type="submit">Create the class game</button></div>
+    <details style="margin-top:14px"><summary class="small">Backups for the archive lesson</summary>
+      <p class="small" style="margin-top:8px">Game data lost? Start a ready-made game that follows exactly what happened in 1914, from the ending onwards.</p>
+      <button class="btn btn--ghost btn--small" type="button" id="replay">Create a “1914 replay” game</button>
+      <p class="small" style="margin-top:12px">Played the game in offline mode? Load its export file to run the archive lesson on students’ devices.</p>
+      <input type="file" id="imp" accept="application/json,.json">
+    </details>
+    <div class="status" id="st"></div>
+  </form>
+
+  <div class="card" id="recent-card"><h2>Your recent games on this device</h2><div id="recent" class="small"></div></div>
+
+  <div class="card"><h2>Before the lesson</h2>
+    <ul style="padding-left:20px">
+      <li>Print the <a href="print.html#doc=runsheet">run sheet</a>, the <a href="print.html#doc=slips">decision slips</a> (Wi-fi backup) and the <a href="print.html#doc=exit">exit ticket</a>. Role cards print from the teacher panel.</li>
+      <li>Teacher panel on your phone. Projector page on the classroom computer. Never show the panel on the projector.</li>
+      <li>Open <a href="offline.html">offline mode</a> once on your phone while the Wi-fi works, so it is ready if the network drops.</li>
+    </ul>
+  </div>
+</main>
+<script src="assets/common.js"></script>
+<script>
+(async () => {
+  const { api, esc } = D37;
+  const { extras: X } = await D37.loadEngine(['extras']);
+  const sizes = document.getElementById('sizes');
+  sizes.innerHTML = Object.entries(X.TEAM).map(([p, t]) => `<label class="small" style="width:150px">${esc(t.name)}<select data-p="${p}">${[1,2,3].map(n => `<option ${n === (p === 'DE' ? 3 : 2) ? 'selected' : ''}>${n}</option>`).join('')}</select></label>`).join('');
+  const st = document.getElementById('st');
+  const code = document.getElementById('code');
+  try { code.value = sessionStorage.getItem('d37code') || ''; } catch {}
+  const recentKey = 'd37:recent';
+  const recent = () => { try { return JSON.parse(localStorage.getItem(recentKey)) || []; } catch { return []; } };
+  function showRecent() {
+    const r = recent();
+    document.getElementById('recent').innerHTML = r.length ? r.map(x => `<p><a href="teacher.html#g=${esc(x.g)}&k=${esc(x.k)}">Game ${esc(x.g)}</a> · ${esc(x.kind)} · ${new Date(x.at).toLocaleString()}</p>`).join('') : '<p class="muted">None yet.</p>';
+  }
+  showRecent();
+  async function create(extra, kind) {
+    st.textContent = 'Creating…';
+    try { sessionStorage.setItem('d37code', code.value); } catch {}
+    try {
+      const s = {}; sizes.querySelectorAll('select').forEach(x => { s[x.dataset.p] = Number(x.value); });
+      const r = await api({ action: 'create', code: code.value, sizes: s, ...extra });
+      try { localStorage.setItem(recentKey, JSON.stringify([{ g: r.gid, k: r.teacherKey, kind, at: Date.now() }, ...recent()].slice(0, 8))); } catch {}
+      location.href = `teacher.html#g=${r.gid}&k=${r.teacherKey}`;
+    } catch (e) { st.innerHTML = `<span class="status--err">${esc(e.message)}</span>`; }
+  }
+  document.getElementById('create').addEventListener('submit', e => { e.preventDefault(); create({}, 'class game'); });
+  document.getElementById('replay').addEventListener('click', () => create({ replay1914: true }, '1914 replay'));
+  document.getElementById('imp').addEventListener('change', async e => {
+    const f = e.target.files[0]; if (!f) return;
+    try {
+      const data = JSON.parse(await f.text());
+      if (!data.choices) throw new Error('This file is not a 37 Days export.');
+      await create({ importChoices: { ...data.choices, justifications: data.justifications || {} } }, 'imported offline game');
+    } catch (err) { st.innerHTML = `<span class="status--err">${esc(err.message)}</span>`; }
+  });
+})();
+</script>
+</body>
+</html>

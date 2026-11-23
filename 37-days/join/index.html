@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2421">
+<title>37 Days · Join</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/37days.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<header class="bar"><div class="wrap"><div class="bar__team">37 Days · Join the game</div></div></header>
+<main class="wrap">
+  <form class="card card--accent" id="jf" style="margin-top:20px" autocomplete="off">
+    <h1>Join with a code</h1>
+    <p>Use this if you cannot scan the QR code. Both codes are printed at the bottom of your role card.</p>
+    <label class="field" for="g">Game code</label>
+    <input type="text" id="g" inputmode="text" autocapitalize="none" spellcheck="false" maxlength="12" placeholder="e.g. m9hacc" style="font-family:var(--font-mono);font-size:1.3rem;letter-spacing:.1em">
+    <label class="field" for="c">Your code</label>
+    <input type="text" id="c" inputmode="text" autocapitalize="none" spellcheck="false" maxlength="12" placeholder="e.g. 7kq4p" style="font-family:var(--font-mono);font-size:1.3rem;letter-spacing:.1em">
+    <button class="btn btn--big" type="submit" style="margin-top:16px">Join</button>
+    <div class="status" id="st"></div>
+  </form>
+</main>
+<script src="../assets/common.js"></script>
+<script>
+(() => {
+  const f = document.getElementById('jf'), st = document.getElementById('st');
+  const q = D37.params(); if (q.g) f.g.value = q.g;
+  f.addEventListener('submit', async e => {
+    e.preventDefault();
+    const g = f.g.value.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+    st.textContent = 'Joining…';
+    try {
+      const r = await D37.api({ action: 'join', g, code: f.c.value });
+      location.href = `../play.html#g=${g}&t=${r.t}&r=${r.role}&k=${r.k}`;
+    } catch (err) { st.innerHTML = `<span class="status--err">${D37.esc(err.message)}</span>`; }
+  });
+})();
+</script>
+</body>
+</html>
