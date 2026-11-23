@@ -7,6 +7,8 @@
     if (!groups.length) return;
 
     var LABELS = { a: 'Option A: Analyze', b: 'Option B: Create' };
+    var LABELS_VI = { a: 'Lựa chọn A: Phân tích', b: 'Lựa chọn B: Sáng tạo' };
+    var isVi = document.documentElement.lang === 'vi';
     var allTabs = [];
 
     groups.forEach(function (group, gi) {
@@ -31,7 +33,10 @@
             tab.setAttribute('role', 'tab');
             tab.setAttribute('aria-controls', panel.id);
             tab.setAttribute('data-opt', key);
-            tab.textContent = LABELS[key] || key;
+            // data-en / data-vi let lang-toggle.js switch the label with the rest of the page.
+            tab.setAttribute('data-en', LABELS[key] || key);
+            tab.setAttribute('data-vi', LABELS_VI[key] || LABELS[key] || key);
+            tab.textContent = isVi ? tab.getAttribute('data-vi') : tab.getAttribute('data-en');
             list.appendChild(tab);
             allTabs.push(tab);
         });

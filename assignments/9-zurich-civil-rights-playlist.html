@@ -15,6 +15,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body class="accent-zurich">
+<!-- Bilingual: plain text uses data-en / data-vi; rich blocks come in data-lang-only="en" / "vi" pairs (see assets/lang-toggle.js). -->
 
     <header class="site-header">
         <div class="wrap">
@@ -40,8 +41,8 @@
         <div class="poster">
             <div class="poster__main">
                 <span class="eyebrow" data-en="9 Zurich · Unit 2 Summative" data-vi="9 Zurich · Bài đánh giá tổng kết Đơn vị 2">9 Zurich · Unit 2 Summative</span>
-                <p class="poster__shout">Sing it <em>for</em> change.</p>
-                <h1 class="poster__title">Civil Rights Protest Song Playlist</h1>
+                <p class="poster__shout" lang="en">A Change <em>Was</em> Gonna Come</p>
+                <h1 class="poster__title" data-en="Civil Rights Protest Song Playlist" data-vi="Danh sách bài hát phản kháng thời kỳ Dân quyền">Civil Rights Protest Song Playlist</h1>
                 <p class="poster__sub" data-en="Grade 9 Zurich · MYP 4 · Language &amp; Literature · Unit 2: Protest Songs and Poetry" data-vi="Khối 9 Zurich · MYP 4 · Ngôn ngữ và Văn học · Đơn vị 2: Bài hát phản kháng và thơ ca">Grade 9 Zurich · MYP 4 · Language &amp; Literature · Unit 2: Protest Songs and Poetry</p>
             </div>
             <div class="due">
@@ -60,6 +61,7 @@
                 <li><a href="#songs" data-en="Songs" data-vi="Bài hát">Songs</a></li>
                 <li><a href="#rubric" data-en="Rubric" data-vi="Thang đánh giá">Rubric</a></li>
                 <li><a href="#checklist" data-en="Checklist" data-vi="Danh sách kiểm tra">Checklist</a></li>
+                <li><a href="#parents" data-en="Tips for parents" data-vi="Gợi ý cho phụ huynh">Tips for parents</a></li>
             </ul>
         </nav>
 
@@ -71,50 +73,76 @@
             <div class="numbers">
                 <div class="number">
                     <div class="number__n">3</div>
-                    <div class="number__label">protest songs</div>
-                    <p>From the Civil Rights Movement, chosen from the song list below.</p>
+                    <div class="number__label" data-en="protest songs" data-vi="bài hát phản kháng">protest songs</div>
+                    <p data-en="From the Civil Rights Movement, chosen from the song list below." data-vi="Thuộc phong trào Dân quyền, chọn từ danh sách bài hát bên dưới.">From the Civil Rights Movement, chosen from the song list below.</p>
                 </div>
                 <div class="number">
                     <div class="number__n">~300</div>
-                    <div class="number__label">words per song</div>
-                    <p>One analytical annotation for each song.</p>
+                    <div class="number__label" data-en="words per song" data-vi="từ cho mỗi bài hát">words per song</div>
+                    <p data-en="One analytical annotation for each song." data-vi="Một đoạn chú giải phân tích cho mỗi bài hát.">One analytical annotation for each song.</p>
                 </div>
                 <div class="number">
                     <div class="number__n">1</div>
                     <div class="number__label">Google Doc</div>
-                    <p>Shared with Mr. Colin, linked in the spreadsheet, and submitted in ManageBac.</p>
+                    <p data-en="Shared with Mr. Colin, linked in the spreadsheet, and submitted in ManageBac." data-vi="Chia sẻ với thầy Colin, dán đường dẫn vào bảng tính và nộp trên ManageBac.">Shared with Mr. Colin, linked in the spreadsheet, and submitted in ManageBac.</p>
                 </div>
             </div>
 
-            <p>Your task is to create a <strong>curated playlist</strong> of <strong>three</strong> protest songs that address the struggles, hopes, and demands of the Civil Rights Movement. You can find a list of songs below.</p>
-            <p>You must create this as a Google Doc, and you must give Mr. Colin edit access to your document. You will add your link at the <a href="https://docs.google.com/spreadsheets/d/1g49rEctesSWxlVzoLuV4iTf-F9mwpcG5VPdqTnjIJaw/edit?usp=sharing" target="_blank" rel="noopener">spreadsheet here</a>, and you will also submit this in ManageBac.</p>
-            <p>For each song, you will write a <strong>~300 word analytical annotation</strong> that explores how the creator uses <strong>language, style, and structure</strong> to express resistance, identity, or change.</p>
-
-            <div class="note note--fill">
-                <p>If you use any material that comes from research, you must cite it appropriately using in-text citations and a works cited page.</p>
+            <div data-lang-only="en">
+                <p>Your task is to create a <strong>curated playlist</strong> of <strong>three</strong> protest songs that address the struggles, hopes, and demands of the Civil Rights Movement. You can find a list of songs below.</p>
+                <p>You must create this as a Google Doc, and you must give Mr. Colin edit access to your document. You will add your link at the <a href="https://docs.google.com/spreadsheets/d/1g49rEctesSWxlVzoLuV4iTf-F9mwpcG5VPdqTnjIJaw/edit?usp=sharing" target="_blank" rel="noopener">spreadsheet here</a>, and you will also submit this in ManageBac.</p>
+                <p>For each song, you will write a <strong>~300 word analytical annotation</strong> that explores how the creator uses <strong>language, style, and structure</strong> to express resistance, identity, or change.</p>
+                <div class="note note--fill">
+                    <p>If you use any material that comes from research, you must cite it appropriately using in-text citations and a works cited page.</p>
+                </div>
+                <ul class="badges" aria-label="Criteria assessed">
+                    <li>Criterion A · Analysing (Summative)</li>
+                    <li>Criterion C · Producing Text, strand iii (Summative)</li>
+                </ul>
             </div>
-
-            <ul class="badges" aria-label="Criteria assessed">
-                <li>Criterion A · Analysing (Summative)</li>
-                <li>Criterion C · Producing Text, strand iii (Summative)</li>
-            </ul>
+            <div data-lang-only="vi" lang="vi" hidden>
+                <p>Nhiệm vụ của em là tạo một <strong>danh sách phát được tuyển chọn</strong> gồm <strong>ba</strong> bài hát phản kháng nói về những khó khăn, hy vọng và yêu cầu của phong trào Dân quyền. Danh sách bài hát ở bên dưới.</p>
+                <p>Em phải làm bài trên Google Doc và cấp quyền chỉnh sửa cho thầy Colin. Em dán đường dẫn tài liệu của mình vào <a href="https://docs.google.com/spreadsheets/d/1g49rEctesSWxlVzoLuV4iTf-F9mwpcG5VPdqTnjIJaw/edit?usp=sharing" target="_blank" rel="noopener">bảng tính này</a>, đồng thời nộp bài trên ManageBac.</p>
+                <p>Với mỗi bài hát, em viết một <strong>đoạn chú giải phân tích khoảng 300 từ</strong>, tìm hiểu cách người sáng tác dùng <strong>ngôn ngữ, văn phong và cấu trúc</strong> để thể hiện sự phản kháng, bản sắc hoặc khát vọng thay đổi.</p>
+                <div class="note note--fill">
+                    <p>Nếu em dùng bất kỳ tư liệu nào có được từ việc tìm hiểu, em phải trích dẫn đúng cách, gồm trích dẫn trong bài và danh mục tài liệu tham khảo (works cited).</p>
+                </div>
+                <ul class="badges" aria-label="Các tiêu chí đánh giá">
+                    <li>Tiêu chí A · Phân tích (Tổng kết)</li>
+                    <li>Tiêu chí C · Tạo lập văn bản, mục iii (Tổng kết)</li>
+                </ul>
+            </div>
         </section>
 
         <!-- Each entry -->
         <section class="block" id="entry" aria-labelledby="h-entry">
             <span class="eyebrow" data-en="What to write" data-vi="Cần viết gì">What to write</span>
-            <h2 id="h-entry" data-en="Each Entry" data-vi="Mỗi bài">Each Entry</h2>
-            <p>Each annotation should be about 300 words, divided into at least 2 paragraphs. Each entry should include the following:</p>
-            <ol class="entry-list">
-                <li><strong>Title &amp; Creator</strong></li>
-                <li><strong>Key Techniques &amp; Style Choices</strong> Analyze at least <strong>two literary/musical techniques</strong> (e.g., metaphor, tone, rhythm, repetition, imagery, symbolism).</li>
-                <li><strong>Effect on the Audience</strong> How do these choices make the message more powerful or emotional? What does it make people feel or think? Think about the language and also the music.</li>
-                <li><strong>Your Interpretation</strong> What do <em>you</em> think this text is saying about protest or justice? Why did you choose it?</li>
-                <li><strong>Connection to Other Texts</strong> How does this song <strong>connect to another text</strong>, such as a book, poem or song, either one we’ve looked at in class or one you already know?</li>
-            </ol>
-
-            <div class="note">
-                <p><strong>NOTE: write paragraphs.</strong> The sections above are to guide you. Here is the <a href="https://docs.google.com/document/d/1xjuR4Gr0d2cD9Auyu3Eb13oMS6kvIxyDrZPXPeVXGhQ/edit?usp=sharing" target="_blank" rel="noopener">example in paragraph form</a>.</p>
+            <h2 id="h-entry" data-en="Each Entry" data-vi="Mỗi bài viết">Each Entry</h2>
+            <div data-lang-only="en">
+                <p>Each annotation should be about 300 words, divided into at least 2 paragraphs. Each entry should include the following:</p>
+                <ol class="entry-list">
+                    <li><strong>Title &amp; Creator</strong></li>
+                    <li><strong>Key Techniques &amp; Style Choices</strong> Analyze at least <strong>two literary/musical techniques</strong> (e.g., metaphor, tone, rhythm, repetition, imagery, symbolism).</li>
+                    <li><strong>Effect on the Audience</strong> How do these choices make the message more powerful or emotional? What does it make people feel or think? Think about the language and also the music.</li>
+                    <li><strong>Your Interpretation</strong> What do <em>you</em> think this text is saying about protest or justice? Why did you choose it?</li>
+                    <li><strong>Connection to Other Texts</strong> How does this song <strong>connect to another text</strong>, such as a book, poem or song, either one we’ve looked at in class or one you already know?</li>
+                </ol>
+                <div class="note">
+                    <p><strong>NOTE: write paragraphs.</strong> The sections above are to guide you. Here is the <a href="https://docs.google.com/document/d/1xjuR4Gr0d2cD9Auyu3Eb13oMS6kvIxyDrZPXPeVXGhQ/edit?usp=sharing" target="_blank" rel="noopener">example in paragraph form</a>.</p>
+                </div>
+            </div>
+            <div data-lang-only="vi" lang="vi" hidden>
+                <p>Mỗi đoạn chú giải dài khoảng 300 từ, chia thành ít nhất 2 đoạn văn. Mỗi bài viết cần có những nội dung sau:</p>
+                <ol class="entry-list">
+                    <li><strong>Tên bài hát và tác giả</strong></li>
+                    <li><strong>Kỹ thuật và lựa chọn văn phong chính</strong> Phân tích ít nhất <strong>hai kỹ thuật văn học/âm nhạc</strong> (ví dụ: ẩn dụ, giọng điệu, nhịp điệu, phép lặp, hình ảnh, biểu tượng).</li>
+                    <li><strong>Tác động đến người nghe</strong> Những lựa chọn này khiến thông điệp mạnh mẽ hoặc giàu cảm xúc hơn như thế nào? Bài hát khiến người nghe cảm thấy hoặc suy nghĩ điều gì? Hãy nghĩ về cả ngôn từ lẫn âm nhạc.</li>
+                    <li><strong>Cách hiểu của em</strong> Theo <em>em</em>, bài hát này nói gì về sự phản kháng hoặc công lý? Vì sao em chọn bài hát này?</li>
+                    <li><strong>Liên hệ với văn bản khác</strong> Bài hát này <strong>liên hệ với một văn bản khác</strong> như thế nào, chẳng hạn một cuốn sách, bài thơ hay bài hát, có thể là văn bản chúng ta đã học trên lớp hoặc văn bản em đã biết?</li>
+                </ol>
+                <div class="note">
+                    <p><strong>LƯU Ý: hãy viết thành đoạn văn.</strong> Các mục trên chỉ để định hướng cho em. Đây là <a href="https://docs.google.com/document/d/1xjuR4Gr0d2cD9Auyu3Eb13oMS6kvIxyDrZPXPeVXGhQ/edit?usp=sharing" target="_blank" rel="noopener">bài mẫu viết thành đoạn văn</a> (bằng tiếng Anh).</p>
+                </div>
             </div>
         </section>
 
@@ -123,11 +151,11 @@
             <span class="eyebrow" data-en="Formatting" data-vi="Định dạng">Formatting</span>
             <h2 id="h-format" data-en="Formatting &amp; Submission" data-vi="Định dạng và nộp bài">Formatting &amp; Submission</h2>
             <ul>
-                <li>Submit as a Google Doc with edit access given to Mr. Colin</li>
-                <li>Add your link to the spreadsheet and submit in ManageBac</li>
-                <li>Times New Roman 12pt font</li>
-                <li>1 inch margins on all sides</li>
-                <li>Double spaced</li>
+                <li data-en="Submit as a Google Doc with edit access given to Mr. Colin" data-vi="Nộp bài dưới dạng Google Doc, cấp quyền chỉnh sửa cho thầy Colin">Submit as a Google Doc with edit access given to Mr. Colin</li>
+                <li data-en="Add your link to the spreadsheet and submit in ManageBac" data-vi="Dán đường dẫn vào bảng tính và nộp bài trên ManageBac">Add your link to the spreadsheet and submit in ManageBac</li>
+                <li data-en="Times New Roman 12pt font" data-vi="Phông chữ Times New Roman, cỡ 12">Times New Roman 12pt font</li>
+                <li data-en="1 inch margins on all sides" data-vi="Lề 1 inch (2,54 cm) ở tất cả các cạnh">1 inch margins on all sides</li>
+                <li data-en="Double spaced" data-vi="Giãn dòng đôi">Double spaced</li>
             </ul>
         </section>
 
@@ -135,103 +163,104 @@
         <section class="block" id="songs" aria-labelledby="h-songs">
             <span class="eyebrow" data-en="Songs" data-vi="Bài hát">Songs</span>
             <h2 id="h-songs" data-en="Song Options" data-vi="Danh sách bài hát">Song Options</h2>
-            <p>Choose your three songs from this list. All of them come from the Civil Rights Era (1950–1974).</p>
+            <p data-en="Choose your three songs from this list. All of them come from the Civil Rights Era (1950–1974)." data-vi="Em chọn ba bài hát từ danh sách này. Tất cả đều thuộc thời kỳ Dân quyền (1950–1974).">Choose your three songs from this list. All of them come from the Civil Rights Era (1950–1974).</p>
 
             <ul class="placards">
                 <li><article class="placard">
                     <div class="placard__top"><span class="placard__year">1964</span><span class="placard__artist">Sam Cooke</span></div>
-                    <h3>A Change Is Gonna Come</h3>
-                    <p>Sam Cooke wrote this song after experiencing racial discrimination, including being denied service at a whites-only motel. Released in 1964, it quickly became connected to the Civil Rights Movement because it spoke to ongoing struggles for legal and social equality. It arrived during a moment of national attention on segregation, voting rights, and racial violence.</p>
+                    <h3 lang="en">A Change Is Gonna Come</h3>
+                    <p data-en="Sam Cooke wrote this song after experiencing racial discrimination, including being denied service at a whites-only motel. Released in 1964, it quickly became connected to the Civil Rights Movement because it spoke to ongoing struggles for legal and social equality. It arrived during a moment of national attention on segregation, voting rights, and racial violence." data-vi="Sam Cooke viết bài hát này sau khi trải qua sự phân biệt chủng tộc, trong đó có lần bị từ chối phục vụ tại một nhà nghỉ chỉ dành cho người da trắng. Phát hành năm 1964, bài hát nhanh chóng gắn liền với phong trào Dân quyền vì nó nói lên cuộc đấu tranh không ngừng cho sự bình đẳng về pháp lý và xã hội. Bài hát ra đời vào lúc cả nước đang chú ý đến nạn phân biệt chủng tộc, quyền bầu cử và bạo lực chủng tộc.">Sam Cooke wrote this song after experiencing racial discrimination, including being denied service at a whites-only motel. Released in 1964, it quickly became connected to the Civil Rights Movement because it spoke to ongoing struggles for legal and social equality. It arrived during a moment of national attention on segregation, voting rights, and racial violence.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=4ZPJWfkjwM0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://www.last.fm/music/Sam+Cooke/_/A+Change+Is+Gonna+Come/+lyrics" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=4ZPJWfkjwM0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://www.last.fm/music/Sam+Cooke/_/A+Change+Is+Gonna+Come/+lyrics" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
                     <div class="placard__top"><span class="placard__year">1950s–60s</span><span class="placard__artist">Odetta</span></div>
-                    <h3>Oh, Freedom</h3>
-                    <p>Originally a spiritual sung by formerly enslaved people after the Civil War, “Oh, Freedom” was revived during the Civil Rights era. Odetta’s performances helped it become widely associated with mid-20th-century Black activism. It linked the earlier struggle for emancipation with the ongoing fight for civil rights.</p>
-                    <p class="placard__src">Traditional; popularized 1950s–60s. Recording: “Spiritual Trilogy,” 1956.</p>
+                    <h3 lang="en">Oh, Freedom</h3>
+                    <p data-en="Originally a spiritual sung by formerly enslaved people after the Civil War, “Oh, Freedom” was revived during the Civil Rights era. Odetta’s performances helped it become widely associated with mid-20th-century Black activism. It linked the earlier struggle for emancipation with the ongoing fight for civil rights." data-vi="Ban đầu là một bài thánh ca (spiritual) do những người từng bị nô lệ hát sau Nội chiến Mỹ, “Oh, Freedom” được hồi sinh trong thời kỳ Dân quyền. Những buổi biểu diễn của Odetta giúp bài hát gắn liền với phong trào đấu tranh của người da đen giữa thế kỷ 20. Bài hát nối cuộc đấu tranh giải phóng nô lệ trước đây với cuộc đấu tranh cho quyền công dân đang diễn ra.">Originally a spiritual sung by formerly enslaved people after the Civil War, “Oh, Freedom” was revived during the Civil Rights era. Odetta’s performances helped it become widely associated with mid-20th-century Black activism. It linked the earlier struggle for emancipation with the ongoing fight for civil rights.</p>
+                    <p class="placard__src" data-en="Traditional; popularized 1950s–60s. Recording: “Spiritual Trilogy,” 1956." data-vi="Bài hát dân gian; phổ biến những năm 1950–60. Bản thu: “Spiritual Trilogy,” 1956.">Traditional; popularized 1950s–60s. Recording: “Spiritual Trilogy,” 1956.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=crODEaMpJQY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://crmmusic.netlify.app/ohfreedom" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=crODEaMpJQY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://crmmusic.netlify.app/ohfreedom" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
-                    <div class="placard__top"><span class="placard__year">1961</span><span class="placard__artist">Various</span></div>
-                    <h3>Woke Up This Morning (With My Mind Stayed on Freedom)</h3>
-                    <p>This song was adapted in 1961 by Freedom Rider Robert Wesby while he was jailed in Jackson, Mississippi. It became closely tied to the Freedom Rides, in which civil rights activists from the north would take buses down to southern states to organize voter-registration drives and other civil rights campaigns across the Deep South.</p>
-                    <p class="placard__src">Recording: Brown Chapel congregation, Selma.</p>
+                    <div class="placard__top"><span class="placard__year">1961</span><span class="placard__artist" data-en="Various" data-vi="Nhiều nghệ sĩ">Various</span></div>
+                    <h3 lang="en">Woke Up This Morning (With My Mind Stayed on Freedom)</h3>
+                    <p data-en="This song was adapted in 1961 by Freedom Rider Robert Wesby while he was jailed in Jackson, Mississippi. It became closely tied to the Freedom Rides, in which civil rights activists from the north would take buses down to southern states to organize voter-registration drives and other civil rights campaigns across the Deep South." data-vi="Bài hát này được Robert Wesby, một thành viên Freedom Rider, phỏng theo vào năm 1961 khi ông bị giam ở Jackson, Mississippi. Bài hát gắn liền với các chuyến Freedom Rides, khi những nhà hoạt động dân quyền từ miền Bắc đi xe buýt xuống các bang miền Nam để tổ chức các đợt vận động đăng ký cử tri và những chiến dịch dân quyền khác khắp vùng Deep South.">This song was adapted in 1961 by Freedom Rider Robert Wesby while he was jailed in Jackson, Mississippi. It became closely tied to the Freedom Rides, in which civil rights activists from the north would take buses down to southern states to organize voter-registration drives and other civil rights campaigns across the Deep South.</p>
+                    <p class="placard__src" data-en="Recording: Brown Chapel congregation, Selma." data-vi="Bản thu: giáo đoàn nhà thờ Brown Chapel, Selma.">Recording: Brown Chapel congregation, Selma.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=mNr8KYc4w5o" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://hymnary.org/hymn/SLT1993/153?media=text" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=mNr8KYc4w5o" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://hymnary.org/hymn/SLT1993/153?media=text" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
-                    <div class="placard__top"><span class="placard__year">1930s–1960s</span><span class="placard__artist">Various</span></div>
-                    <h3>We Shall Not Be Moved</h3>
-                    <p>Originally used in labor-union organizing in the early 20th century, the song was later adopted by civil-rights activists. It became connected to sit-ins, marches, and school-integration efforts throughout the 1950s and 1960s. Its chorus, and therefore title, comes from the Bible, showing its origins as a gospel song.</p>
-                    <p class="placard__src">Recording: Freedom Singers, March on Washington, 1963. Lyrics: <em>Songs of the Southern Freedom Movement</em>, song 1.</p>
+                    <div class="placard__top"><span class="placard__year">1930s–1960s</span><span class="placard__artist" data-en="Various" data-vi="Nhiều nghệ sĩ">Various</span></div>
+                    <h3 lang="en">We Shall Not Be Moved</h3>
+                    <p data-en="Originally used in labor-union organizing in the early 20th century, the song was later adopted by civil-rights activists. It became connected to sit-ins, marches, and school-integration efforts throughout the 1950s and 1960s. Its chorus, and therefore title, comes from the Bible, showing its origins as a gospel song." data-vi="Ban đầu được dùng trong các hoạt động công đoàn đầu thế kỷ 20, bài hát sau đó được các nhà hoạt động dân quyền sử dụng. Bài hát gắn liền với các cuộc ngồi biểu tình (sit-in), tuần hành và nỗ lực xóa bỏ phân biệt chủng tộc trong trường học suốt những năm 1950 và 1960. Điệp khúc, và vì thế cả tên bài hát, lấy từ Kinh Thánh, cho thấy nguồn gốc là một bài hát phúc âm (gospel).">Originally used in labor-union organizing in the early 20th century, the song was later adopted by civil-rights activists. It became connected to sit-ins, marches, and school-integration efforts throughout the 1950s and 1960s. Its chorus, and therefore title, comes from the Bible, showing its origins as a gospel song.</p>
+                    <p class="placard__src" data-lang-only="en">Recording: Freedom Singers, March on Washington, 1963. Lyrics: <em>Songs of the Southern Freedom Movement</em>, song 1.</p>
+                    <p class="placard__src" data-lang-only="vi" lang="vi" hidden>Bản thu: nhóm Freedom Singers, Cuộc tuần hành đến Washington, 1963. Lời bài hát: <em>Songs of the Southern Freedom Movement</em>, bài số 1.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=duvoETGVvYU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://www.crmvet.org/docs/63_songs.pdf" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=duvoETGVvYU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://www.crmvet.org/docs/63_songs.pdf" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
                     <div class="placard__top"><span class="placard__year">1964</span><span class="placard__artist">Nina Simone</span></div>
-                    <h3>Mississippi Goddam</h3>
-                    <p>Nina Simone wrote this song immediately after two major acts of racial violence: the murder of Medgar Evers in Mississippi and the bombing of the 16th Street Baptist Church in Birmingham, Alabama. Released in 1964, many southern radio stations banned the song.</p>
-                    <p class="placard__src">Recording: Carnegie Hall, 1964.</p>
+                    <h3 lang="en">Mississippi Goddam</h3>
+                    <p data-en="Nina Simone wrote this song immediately after two major acts of racial violence: the murder of Medgar Evers in Mississippi and the bombing of the 16th Street Baptist Church in Birmingham, Alabama. Released in 1964, many southern radio stations banned the song." data-vi="Nina Simone viết bài hát này ngay sau hai vụ bạo lực chủng tộc nghiêm trọng: vụ sát hại Medgar Evers ở Mississippi và vụ đánh bom Nhà thờ Baptist Phố 16 ở Birmingham, Alabama. Phát hành năm 1964, bài hát bị nhiều đài phát thanh miền Nam cấm phát.">Nina Simone wrote this song immediately after two major acts of racial violence: the murder of Medgar Evers in Mississippi and the bombing of the 16th Street Baptist Church in Birmingham, Alabama. Released in 1964, many southern radio stations banned the song.</p>
+                    <p class="placard__src" data-en="Recording: Carnegie Hall, 1964." data-vi="Bản thu: Carnegie Hall, 1964.">Recording: Carnegie Hall, 1964.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=teqWnF-HD1M" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://www.letras.com.br/nina-simone/mississippi-goddam" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=teqWnF-HD1M" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://www.letras.com.br/nina-simone/mississippi-goddam" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
                     <div class="placard__top"><span class="placard__year">1970</span><span class="placard__artist">Nina Simone</span></div>
-                    <h3>To Be Young, Gifted and Black</h3>
-                    <p>Simone wrote this song in honor of playwright Lorraine Hansberry, who died at age 34 after becoming one of the most important Black writers of her time. Released in 1970, it aligned with the growing Black Pride and Black Arts movements.</p>
+                    <h3 lang="en">To Be Young, Gifted and Black</h3>
+                    <p data-en="Simone wrote this song in honor of playwright Lorraine Hansberry, who died at age 34 after becoming one of the most important Black writers of her time. Released in 1970, it aligned with the growing Black Pride and Black Arts movements." data-vi="Simone viết bài hát này để tưởng nhớ nhà viết kịch Lorraine Hansberry, người qua đời ở tuổi 34 sau khi trở thành một trong những nhà văn da đen quan trọng nhất thời bấy giờ. Phát hành năm 1970, bài hát hòa nhịp với phong trào Black Pride (Tự hào da đen) và Black Arts (Nghệ thuật da đen) đang lớn mạnh.">Simone wrote this song in honor of playwright Lorraine Hansberry, who died at age 34 after becoming one of the most important Black writers of her time. Released in 1970, it aligned with the growing Black Pride and Black Arts movements.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=RTGiKYqk0gY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://www.songfacts.com/lyrics/nina-simone/young-gifted-and-black" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=RTGiKYqk0gY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://www.songfacts.com/lyrics/nina-simone/young-gifted-and-black" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
                     <div class="placard__top"><span class="placard__year">1970</span><span class="placard__artist">Gil Scott-Heron</span></div>
-                    <h3>The Revolution Will Not Be Televised</h3>
-                    <p>Recorded in 1970, this piece challenged the idea that major social change would be presented or controlled by mainstream media. It reflected critiques of political institutions, consumer culture, and racial inequality.</p>
+                    <h3 lang="en">The Revolution Will Not Be Televised</h3>
+                    <p data-en="Recorded in 1970, this piece challenged the idea that major social change would be presented or controlled by mainstream media. It reflected critiques of political institutions, consumer culture, and racial inequality." data-vi="Được thu âm năm 1970, tác phẩm này thách thức quan niệm rằng những thay đổi xã hội lớn sẽ được truyền thông chính thống trình bày hoặc kiểm soát. Nó thể hiện sự phê phán các thể chế chính trị, văn hóa tiêu dùng và bất bình đẳng chủng tộc.">Recorded in 1970, this piece challenged the idea that major social change would be presented or controlled by mainstream media. It reflected critiques of political institutions, consumer culture, and racial inequality.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=vwSRqaZGsPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://www.songfacts.com/lyrics/gil-scott-heron/the-revolution-will-not-be-televised" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=vwSRqaZGsPw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://www.songfacts.com/lyrics/gil-scott-heron/the-revolution-will-not-be-televised" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
                     <div class="placard__top"><span class="placard__year">1968</span><span class="placard__artist">James Brown</span></div>
-                    <h3>Say It Loud – I’m Black and I’m Proud</h3>
-                    <p>Released in 1968, just months after the assassination of Martin Luther King Jr., the song aligned with demands for racial justice and community empowerment. It became a popular song within the Black Power movement.</p>
+                    <h3 lang="en">Say It Loud – I’m Black and I’m Proud</h3>
+                    <p data-en="Released in 1968, just months after the assassination of Martin Luther King Jr., the song aligned with demands for racial justice and community empowerment. It became a popular song within the Black Power movement." data-vi="Phát hành năm 1968, chỉ vài tháng sau vụ ám sát Martin Luther King Jr., bài hát hòa cùng những đòi hỏi về công bằng chủng tộc và trao quyền cho cộng đồng. Bài hát trở nên phổ biến trong phong trào Black Power (Quyền lực da đen).">Released in 1968, just months after the assassination of Martin Luther King Jr., the song aligned with demands for racial justice and community empowerment. It became a popular song within the Black Power movement.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=5OkMUdi06bg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://www.shmoop.com/study-guides/say-it-loud/lyrics.html" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=5OkMUdi06bg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://www.shmoop.com/study-guides/say-it-loud/lyrics.html" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
                     <div class="placard__top"><span class="placard__year">1963</span><span class="placard__artist">Pete Seeger</span></div>
-                    <h3>If You Miss Me at the Back of the Bus</h3>
-                    <p>This song emerged during the Civil Rights Movement as a response to segregation on buses and other public facilities. Pete Seeger’s performances helped spread it among interracial activist groups. It symbolized the rejection of Jim Crow laws and the push toward integration during the early 1960s.</p>
-                    <p class="placard__src">Recording: Carnegie Hall, 1963. Lyrics: later cover version.</p>
+                    <h3 lang="en">If You Miss Me at the Back of the Bus</h3>
+                    <p data-en="This song emerged during the Civil Rights Movement as a response to segregation on buses and other public facilities. Pete Seeger’s performances helped spread it among interracial activist groups. It symbolized the rejection of Jim Crow laws and the push toward integration during the early 1960s." data-vi="Bài hát ra đời trong phong trào Dân quyền để đáp lại nạn phân biệt chủng tộc trên xe buýt và ở những nơi công cộng khác. Các buổi biểu diễn của Pete Seeger giúp bài hát lan rộng trong các nhóm hoạt động gồm cả người da trắng và da đen. Bài hát tượng trưng cho việc bác bỏ luật Jim Crow và thúc đẩy xóa bỏ phân biệt chủng tộc vào đầu những năm 1960.">This song emerged during the Civil Rights Movement as a response to segregation on buses and other public facilities. Pete Seeger’s performances helped spread it among interracial activist groups. It symbolized the rejection of Jim Crow laws and the push toward integration during the early 1960s.</p>
+                    <p class="placard__src" data-en="Recording: Carnegie Hall, 1963. Lyrics: later cover version." data-vi="Bản thu: Carnegie Hall, 1963. Lời bài hát: theo một bản hát lại sau này.">Recording: Carnegie Hall, 1963. Lyrics: later cover version.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=U8Ck8GL2DeI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://www.last.fm/music/Thea+Gilmore/_/If+You+Miss+Me+At+The+Back+Of+The+Bus/+lyrics" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=U8Ck8GL2DeI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://www.last.fm/music/Thea+Gilmore/_/If+You+Miss+Me+At+The+Back+Of+The+Bus/+lyrics" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
                 <li><article class="placard">
                     <div class="placard__top"><span class="placard__year">1965</span><span class="placard__artist">The Staple Singers</span></div>
-                    <h3>Freedom Highway</h3>
-                    <p>Written for the 1965 Selma-to-Montgomery march, the song was directly connected to the struggle for voting rights in the South. It was performed at numerous events supporting the Voting Rights Act.</p>
-                    <p class="placard__src">Lyrics: Mavis Staples live version.</p>
+                    <h3 lang="en">Freedom Highway</h3>
+                    <p data-en="Written for the 1965 Selma-to-Montgomery march, the song was directly connected to the struggle for voting rights in the South. It was performed at numerous events supporting the Voting Rights Act." data-vi="Được viết cho cuộc tuần hành từ Selma đến Montgomery năm 1965, bài hát gắn trực tiếp với cuộc đấu tranh cho quyền bầu cử ở miền Nam. Bài hát được trình diễn tại nhiều sự kiện ủng hộ Đạo luật Quyền Bầu cử (Voting Rights Act).">Written for the 1965 Selma-to-Montgomery march, the song was directly connected to the struggle for voting rights in the South. It was performed at numerous events supporting the Voting Rights Act.</p>
+                    <p class="placard__src" data-en="Lyrics: Mavis Staples live version." data-vi="Lời bài hát: theo bản trình diễn trực tiếp của Mavis Staples.">Lyrics: Mavis Staples live version.</p>
                     <div class="placard__links">
-                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=5wijlg4zM6g" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>Listen</a>
-                        <a class="btn btn--lyrics" href="https://www.last.fm/music/Mavis+Staples/_/Freedom+Highway/+lyrics" target="_blank" rel="noopener">Lyrics</a>
+                        <a class="btn btn--listen" href="https://www.youtube.com/watch?v=5wijlg4zM6g" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg><span data-en="Listen" data-vi="Nghe">Listen</span></a>
+                        <a class="btn btn--lyrics" href="https://www.last.fm/music/Mavis+Staples/_/Freedom+Highway/+lyrics" target="_blank" rel="noopener" data-en="Lyrics" data-vi="Lời bài hát">Lyrics</a>
                     </div>
                 </article></li>
             </ul>
@@ -241,21 +270,28 @@
         <section class="block" id="rubric" aria-labelledby="h-rubric">
             <span class="eyebrow" data-en="Rubric" data-vi="Thang đánh giá">Rubric</span>
             <h2 id="h-rubric" data-en="How You’ll Be Marked" data-vi="Cách chấm điểm">How You’ll Be Marked</h2>
-            <p>This playlist is marked on <strong>Criterion A: Analysing</strong> and <strong>Criterion C: Producing text</strong>, each out of 7. The descriptors are adapted from the MYP Year 5 Language and Literature criteria, which are used for MYP 4.</p>
-            <p>Your playlist is marked as a whole. The mark is the level that best fits all three annotations together, not an average of three separate marks.</p>
-            <p>First, mark yourself in each criterion table: find the row that best describes your work for each strand. Then complete the checklist at the end. Mr. Colin will then check whether he agrees with your marks.</p>
+            <div data-lang-only="en">
+                <p>This playlist is marked on <strong>Criterion A: Analysing</strong> and <strong>Criterion C: Producing text</strong>, each out of 7. The descriptors are adapted from the MYP Year 5 Language and Literature criteria, which are used for MYP 4.</p>
+                <p>Your playlist is marked as a whole. The mark is the level that best fits all three annotations together, not an average of three separate marks.</p>
+                <p>First, mark yourself in each criterion table: find the row that best describes your work for each strand. Then complete the checklist at the end. Mr. Colin will then check whether he agrees with your marks.</p>
+            </div>
+            <div data-lang-only="vi" lang="vi" hidden>
+                <p>Danh sách phát này được chấm theo <strong>Tiêu chí A: Phân tích</strong> và <strong>Tiêu chí C: Tạo lập văn bản</strong>, mỗi tiêu chí trên thang 7 điểm. Các mô tả được điều chỉnh từ tiêu chí Ngôn ngữ và Văn học MYP Năm 5, vốn được dùng cho MYP 4.</p>
+                <p>Bài của em được chấm như một tổng thể. Điểm là mức phù hợp nhất với cả ba đoạn chú giải cùng nhau, không phải điểm trung bình của ba điểm riêng lẻ.</p>
+                <p>Trước tiên, em tự chấm bài theo từng bảng tiêu chí: tìm dòng mô tả đúng nhất bài làm của em ở mỗi mục. Sau đó hoàn thành danh sách kiểm tra ở cuối trang. Thầy Colin sẽ xem lại và cho biết thầy có đồng ý với điểm em tự chấm hay không.</p>
+            </div>
 
             <div class="ladder" aria-hidden="true">
-                <div class="ladder__step"><div class="ladder__n">1–2</div><div class="ladder__name">Limited</div></div>
-                <div class="ladder__step"><div class="ladder__n">3–4</div><div class="ladder__name">Adequate</div></div>
-                <div class="ladder__step"><div class="ladder__n">5–6</div><div class="ladder__name">Competent / Substantial</div></div>
-                <div class="ladder__step"><div class="ladder__n">7</div><div class="ladder__name">Perceptive / Excellent</div></div>
+                <div class="ladder__step"><div class="ladder__n">1–2</div><div class="ladder__name" data-en="Limited" data-vi="Hạn chế">Limited</div></div>
+                <div class="ladder__step"><div class="ladder__n">3–4</div><div class="ladder__name" data-en="Adequate" data-vi="Đạt yêu cầu">Adequate</div></div>
+                <div class="ladder__step"><div class="ladder__n">5–6</div><div class="ladder__name" data-en="Competent / Substantial" data-vi="Vững vàng / Đầy đủ">Competent / Substantial</div></div>
+                <div class="ladder__step"><div class="ladder__n">7</div><div class="ladder__name" data-en="Perceptive / Excellent" data-vi="Sâu sắc / Xuất sắc">Perceptive / Excellent</div></div>
             </div>
 
             <div class="criterion">
-                <h3 id="crit-A">Criterion A: Analysing (out of 7)</h3>
-                <p class="strands">Criterion A assesses how well you explain how each song’s lyrics and music create meaning and affect an audience. A level of 0 means the work does not reach the 1–2 descriptors.</p>
-                <div class="table-wrap rubric-stack">
+                <h3 id="crit-A" data-en="Criterion A: Analysing (out of 7)" data-vi="Tiêu chí A: Phân tích (thang 7 điểm)">Criterion A: Analysing (out of 7)</h3>
+                <p class="strands" data-en="Criterion A assesses how well you explain how each song’s lyrics and music create meaning and affect an audience. A level of 0 means the work does not reach the 1–2 descriptors." data-vi="Tiêu chí A đánh giá mức độ em giải thích được cách lời và nhạc của mỗi bài hát tạo nên ý nghĩa và tác động đến người nghe. Mức 0 nghĩa là bài làm chưa đạt mô tả của mức 1–2.">Criterion A assesses how well you explain how each song’s lyrics and music create meaning and affect an audience. A level of 0 means the work does not reach the 1–2 descriptors.</p>
+                <div class="table-wrap rubric-stack" data-lang-only="en">
                 <table aria-labelledby="crit-A">
                     <thead>
                         <tr>
@@ -298,12 +334,55 @@
                     </tbody>
                 </table>
                 </div>
+                <div class="table-wrap rubric-stack" data-lang-only="vi" lang="vi" hidden>
+                <table aria-labelledby="crit-A">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mức</th>
+                            <th scope="col">i. Kỹ thuật, văn phong và bối cảnh</th>
+                            <th scope="col">ii. Tác động đến người nghe</th>
+                            <th scope="col">iii. Cách hiểu, dẫn chứng và thuật ngữ</th>
+                            <th scope="col">iv. Liên hệ với văn bản khác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><span class="lvl">7</span><span class="lvl-name">Sâu sắc</span></th>
+                            <td data-label="i. Kỹ thuật, văn phong và bối cảnh">Giải thích các kỹ thuật phối hợp với nhau như thế nào, chẳng hạn một hình ảnh ẩn dụ được giai điệu hoặc cách hát làm nổi bật. Bối cảnh giúp cách đọc bài hát sắc nét hơn. Nhận ra những lựa chọn tinh tế.</td>
+                            <td data-label="ii. Tác động đến người nghe">Giải thích chính xác, tinh tế tác động của những lựa chọn cụ thể về lời và nhạc. Có thể xét bài hát đã tác động thế nào đến người nghe thời đó và người nghe ngày nay.</td>
+                            <td data-label="iii. Cách hiểu, dẫn chứng và thuật ngữ">Đưa ra cách hiểu sâu sắc về điều bài hát nói về sự phản kháng hoặc công lý. Củng cố bằng nhiều trích dẫn được chọn lọc tốt, mỗi trích dẫn đều được giải thích kỹ. Dùng thuật ngữ chính xác.</td>
+                            <td data-label="iv. Liên hệ với văn bản khác">So sánh sâu sắc cách hai văn bản cùng sử dụng một đặc điểm hoặc ý tưởng, kể cả những khác biệt về mục đích hay tác động, có dẫn chứng từ cả hai.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="lvl">5–6</span><span class="lvl-name">Vững vàng</span></th>
+                            <td data-label="i. Kỹ thuật, văn phong và bối cảnh">Phân tích ít nhất hai kỹ thuật cho mỗi bài hát, gồm cả lời và nhạc, và giải thích mỗi kỹ thuật tạo nên ý nghĩa như thế nào. Dùng bối cảnh để giải thích thông điệp của bài hát.</td>
+                            <td data-label="ii. Tác động đến người nghe">Luôn liên kết những lựa chọn cụ thể với phản ứng cụ thể của người nghe, giải thích mỗi lựa chọn tạo ra cảm xúc hay suy nghĩ đó như thế nào.</td>
+                            <td data-label="iii. Cách hiểu, dẫn chứng và thuật ngữ">Đưa ra cách hiểu rõ ràng, có trích dẫn phù hợp và lời giải thích. Dùng thuật ngữ chính xác.</td>
+                            <td data-label="iv. Liên hệ với văn bản khác">Giải thích một đặc điểm hoặc ý tưởng chung có ý nghĩa, có dẫn chứng từ cả hai văn bản.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="lvl">3–4</span><span class="lvl-name">Đạt yêu cầu</span></th>
+                            <td data-label="i. Kỹ thuật, văn phong và bối cảnh">Xác định ít nhất hai kỹ thuật kèm trích dẫn, nhưng phần giải thích còn ngắn hoặc chưa đều. Có nhắc đến bối cảnh nhưng chưa liên hệ với ý nghĩa.</td>
+                            <td data-label="ii. Tác động đến người nghe">Liên kết một số tác động với các lựa chọn, nhưng chưa nhất quán. Một số tác động còn chung chung, như “nó làm mọi người buồn.”</td>
+                            <td data-label="iii. Cách hiểu, dẫn chứng và thuật ngữ">Cách hiểu còn chung chung, như “bài hát nói về sự bình đẳng.” Có một số ví dụ và giải thích. Dùng một số thuật ngữ.</td>
+                            <td data-label="iv. Liên hệ với văn bản khác">Nêu được một mối liên hệ và giải thích phần nào điểm giống hoặc khác, nhưng ít dẫn chứng.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="lvl">1–2</span><span class="lvl-name">Hạn chế</span></th>
+                            <td data-label="i. Kỹ thuật, văn phong và bối cảnh">Chủ yếu tóm tắt hoặc diễn đạt lại lời bài hát. Nêu tên một kỹ thuật nhưng hầu như không giải thích. Hầu như không nói đến bối cảnh.</td>
+                            <td data-label="ii. Tác động đến người nghe">Nêu một cảm xúc nhưng không liên kết với lựa chọn nào của người sáng tác.</td>
+                            <td data-label="iii. Cách hiểu, dẫn chứng và thuật ngữ">Ý kiến hiếm khi có ví dụ minh họa. Hầu như không dùng thuật ngữ.</td>
+                            <td data-label="iv. Liên hệ với văn bản khác">Nêu một mối liên hệ nhưng không giải thích.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
             </div>
 
             <div class="criterion">
-                <h3 id="crit-C">Criterion C: Producing text (out of 7)</h3>
-                <p class="strands">Criterion C assesses strand iii only: how well you select relevant details and examples to develop your ideas, and how accurately you cite research and follow the formatting instructions. A level of 0 means the work does not reach the 1–2 descriptor.</p>
-                <div class="table-wrap rubric-stack">
+                <h3 id="crit-C" data-en="Criterion C: Producing text (out of 7)" data-vi="Tiêu chí C: Tạo lập văn bản (thang 7 điểm)">Criterion C: Producing text (out of 7)</h3>
+                <p class="strands" data-en="Criterion C assesses strand iii only: how well you select relevant details and examples to develop your ideas, and how accurately you cite research and follow the formatting instructions. A level of 0 means the work does not reach the 1–2 descriptor." data-vi="Tiêu chí C chỉ đánh giá mục iii: mức độ em chọn được chi tiết và ví dụ phù hợp để phát triển ý tưởng, cũng như mức độ chính xác khi trích dẫn tư liệu và làm theo hướng dẫn định dạng. Mức 0 nghĩa là bài làm chưa đạt mô tả của mức 1–2.">Criterion C assesses strand iii only: how well you select relevant details and examples to develop your ideas, and how accurately you cite research and follow the formatting instructions. A level of 0 means the work does not reach the 1–2 descriptor.</p>
+                <div class="table-wrap rubric-stack" data-lang-only="en">
                 <table aria-labelledby="crit-C">
                     <thead>
                         <tr>
@@ -331,6 +410,34 @@
                     </tbody>
                 </table>
                 </div>
+                <div class="table-wrap rubric-stack" data-lang-only="vi" lang="vi" hidden>
+                <table aria-labelledby="crit-C">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mức</th>
+                            <th scope="col">iii. Chi tiết phù hợp, trích dẫn và định dạng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><span class="lvl">7</span><span class="lvl-name">Xuất sắc</span></th>
+                            <td data-label="iii. Chi tiết phù hợp, trích dẫn và định dạng">Nhiều trích dẫn, chi tiết âm nhạc và sự kiện lịch sử được chọn lọc tốt. Mọi chi tiết đều giúp phát triển ý tưởng. Mọi tư liệu đều được trích dẫn chính xác, có trích dẫn trong bài và danh mục tài liệu tham khảo. Định dạng đúng trong toàn bài.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="lvl">5–6</span><span class="lvl-name">Đầy đủ</span></th>
+                            <td data-label="iii. Chi tiết phù hợp, trích dẫn và định dạng">Mỗi bài viết (khoảng 300 từ) có đủ chi tiết phù hợp để phát triển ý tưởng. Tư liệu được trích dẫn, chỉ có lỗi nhỏ. Định dạng hầu hết đúng.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="lvl">3–4</span><span class="lvl-name">Đạt yêu cầu</span></th>
+                            <td data-label="iii. Chi tiết phù hợp, trích dẫn và định dạng">Có một số chi tiết phù hợp. Một số bài viết còn sơ sài, kéo dài không cần thiết hoặc ngắn hơn nhiều so với yêu cầu. Trích dẫn chưa đầy đủ hoặc chưa nhất quán. Một số hướng dẫn định dạng chưa được làm theo.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="lvl">1–2</span><span class="lvl-name">Hạn chế</span></th>
+                            <td data-label="iii. Chi tiết phù hợp, trích dẫn và định dạng">Ít chi tiết phù hợp. Ý tưởng chưa được phát triển. Tư liệu không được trích dẫn, hoặc phần lớn hướng dẫn định dạng không được làm theo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
             </div>
         </section>
 
@@ -339,21 +446,54 @@
             <div class="stub">
                 <span class="eyebrow" data-en="Before you submit" data-vi="Trước khi nộp bài" style="margin-top: 20px;">Before you submit</span>
                 <h2 id="h-check" data-en="Checklist" data-vi="Danh sách kiểm tra">Checklist</h2>
-                <p>Tick each requirement before you submit. Missing requirements will limit your marks.</p>
+                <p data-en="Tick each requirement before you submit. Missing requirements will limit your marks." data-vi="Đánh dấu từng yêu cầu trước khi nộp bài. Thiếu yêu cầu nào sẽ làm giới hạn điểm của em.">Tick each requirement before you submit. Missing requirements will limit your marks.</p>
                 <ul class="checklist">
-                    <li>Three Civil Rights protest songs from 1950–1974, from the list provided</li>
-                    <li>Each entry gives the title and creator</li>
-                    <li>Each entry is about 300 words, in at least 2 paragraphs, with no numbered sections</li>
-                    <li>Each entry analyzes at least two literary or musical techniques</li>
-                    <li>Each entry covers effect on the audience, your interpretation, and a connection to another text, either one we’ve looked at in class or one you already know</li>
-                    <li>Research is cited with in-text citations and a works cited page</li>
-                    <li>Times New Roman 12pt, 1 inch margins, double spaced</li>
-                    <li>Google Doc shared with Mr. Colin (edit access), linked in the spreadsheet, and submitted on ManageBac</li>
+                    <li data-en="Three Civil Rights protest songs from 1950–1974, from the list provided" data-vi="Ba bài hát phản kháng thời kỳ Dân quyền (1950–1974), chọn từ danh sách đã cho">Three Civil Rights protest songs from 1950–1974, from the list provided</li>
+                    <li data-en="Each entry gives the title and creator" data-vi="Mỗi bài viết có tên bài hát và tác giả">Each entry gives the title and creator</li>
+                    <li data-en="Each entry is about 300 words, in at least 2 paragraphs, with no numbered sections" data-vi="Mỗi bài viết khoảng 300 từ, có ít nhất 2 đoạn văn, không chia thành các mục đánh số">Each entry is about 300 words, in at least 2 paragraphs, with no numbered sections</li>
+                    <li data-en="Each entry analyzes at least two literary or musical techniques" data-vi="Mỗi bài viết phân tích ít nhất hai kỹ thuật văn học hoặc âm nhạc">Each entry analyzes at least two literary or musical techniques</li>
+                    <li data-en="Each entry covers effect on the audience, your interpretation, and a connection to another text, either one we’ve looked at in class or one you already know" data-vi="Mỗi bài viết nói về tác động đến người nghe, cách hiểu của em, và liên hệ với một văn bản khác, có thể là văn bản đã học trên lớp hoặc văn bản em đã biết">Each entry covers effect on the audience, your interpretation, and a connection to another text, either one we’ve looked at in class or one you already know</li>
+                    <li data-en="Research is cited with in-text citations and a works cited page" data-vi="Tư liệu được trích dẫn trong bài và có danh mục tài liệu tham khảo">Research is cited with in-text citations and a works cited page</li>
+                    <li data-en="Times New Roman 12pt, 1 inch margins, double spaced" data-vi="Times New Roman cỡ 12, lề 1 inch, giãn dòng đôi">Times New Roman 12pt, 1 inch margins, double spaced</li>
+                    <li data-en="Google Doc shared with Mr. Colin (edit access), linked in the spreadsheet, and submitted on ManageBac" data-vi="Google Doc đã chia sẻ với thầy Colin (quyền chỉnh sửa), đã dán đường dẫn vào bảng tính và đã nộp trên ManageBac">Google Doc shared with Mr. Colin (edit access), linked in the spreadsheet, and submitted on ManageBac</li>
                 </ul>
             </div>
         </section>
 
-        <p class="page-end">Grade 9 Zurich · MYP 4 Language &amp; Literature · The Dewey Schools THT, Hanoi · Due Tuesday, December 1</p>
+        <!-- Tips for parents -->
+        <section class="block parents" id="parents" aria-labelledby="h-parents">
+            <h2 id="h-parents" data-en="Tips for parents" data-vi="Gợi ý dành cho phụ huynh">Tips for parents</h2>
+            <div data-lang-only="en">
+                <p>The annotations are written in class, so the most useful help at home is conversation. The analysis and the writing need to be your child’s own work.</p>
+                <ul>
+                    <li><strong>Talk about protest songs from your own culture.</strong> Many cultures have songs that call for change, remember a struggle, or bring people together. Share one you know, and talk about how it is similar to or different from the Civil Rights songs: what it was responding to, what it asks listeners to feel or do, and how the words and music do that. Your child can even use a song like this for the connection part of an entry.</li>
+                    <li><strong>Listen together.</strong> Play one or two songs from the list and ask what your child notices: words or lines that repeat, the mood of the music, the singer’s voice, and what the song wants people to feel or do.</li>
+                    <li><strong>Ask “why this song?”</strong> When your child has chosen their three songs, ask why they picked each one and what they think it says about protest or justice. Explaining out loud is good practice for the “Your Interpretation” part of each entry.</li>
+                    <li><strong>Check the submission steps.</strong> The Google Doc must be shared with Mr. Colin, linked in the class spreadsheet, and submitted on ManageBac.</li>
+                </ul>
+                <p><strong>Please avoid:</strong></p>
+                <ul>
+                    <li>Writing, rewriting, or translating any part of the annotations.</li>
+                    <li>Using AI tools to produce the analysis.</li>
+                </ul>
+            </div>
+            <div data-lang-only="vi" lang="vi" hidden>
+                <p>Các đoạn chú giải được viết tại lớp, vì vậy cách giúp con hữu ích nhất ở nhà là trò chuyện. Phần phân tích và bài viết phải là của chính con.</p>
+                <ul>
+                    <li><strong>Trò chuyện về những bài hát phản kháng trong văn hóa của gia đình mình.</strong> Nhiều nền văn hóa có những bài hát kêu gọi thay đổi, ghi nhớ một cuộc đấu tranh hoặc gắn kết mọi người với nhau. Phụ huynh hãy chia sẻ một bài hát mình biết và cùng con bàn xem bài hát đó giống hay khác các bài hát thời kỳ Dân quyền ở điểm nào: bài hát ra đời để đáp lại điều gì, muốn người nghe cảm thấy hay làm gì, và lời cùng nhạc làm được điều đó ra sao. Con thậm chí có thể dùng một bài hát như vậy cho phần liên hệ trong bài viết.</li>
+                    <li><strong>Cùng nghe nhạc với con.</strong> Hãy mở một hoặc hai bài trong danh sách và hỏi con nhận thấy điều gì: những từ hoặc câu được lặp lại, không khí của bản nhạc, giọng hát, và bài hát muốn người nghe cảm thấy hay làm gì.</li>
+                    <li><strong>Hỏi con “vì sao chọn bài này?”</strong> Khi con đã chọn được ba bài hát, hãy hỏi vì sao con chọn từng bài và con nghĩ bài hát nói gì về sự phản kháng hoặc công lý. Giải thích thành lời là cách luyện tập tốt cho phần “Cách hiểu của em” trong mỗi bài viết.</li>
+                    <li><strong>Kiểm tra các bước nộp bài.</strong> Google Doc phải được chia sẻ với thầy Colin, dán đường dẫn vào bảng tính của lớp và nộp trên ManageBac.</li>
+                </ul>
+                <p><strong>Xin phụ huynh tránh:</strong></p>
+                <ul>
+                    <li>Viết, sửa hoặc dịch bất kỳ phần nào của bài chú giải thay con.</li>
+                    <li>Dùng công cụ AI để tạo ra phần phân tích.</li>
+                </ul>
+            </div>
+        </section>
+
+        <p class="page-end" data-en="Grade 9 Zurich · MYP 4 Language &amp; Literature · The Dewey Schools THT, Hanoi · Due Tuesday, December 1" data-vi="Khối 9 Zurich · MYP 4 Ngôn ngữ và Văn học · Trường Dewey THT, Hà Nội · Hạn nộp: Thứ Ba, ngày 1 tháng 12">Grade 9 Zurich · MYP 4 Language &amp; Literature · The Dewey Schools THT, Hanoi · Due Tuesday, December 1</p>
     </main>
 
     <footer class="site-footer">
