@@ -1,0 +1,197 @@
+/* ================================
+   9 Zurich · Unit 2 summative (Civil Rights Protest Song Playlist)
+   Layers on site.css + assignment.css. Colors come from body.accent-zurich.
+   ================================ */
+
+.assignment-hero .deadline-box { margin-top: 22px; }
+
+.block { scroll-margin-top: 16px; }
+
+.eyebrow {
+    display: block;
+    font-size: 0.9375rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.block h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin: 0 0 10px;
+}
+
+/* Links in content */
+.block a:not(.btn) {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-tint);
+    text-underline-offset: 3px;
+}
+.block a:not(.btn):hover { text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+
+/* Callout */
+.note {
+    background: var(--accent-pale);
+    border-left: 8px solid var(--accent);
+    padding: 16px 24px;
+    margin: 20px 0;
+    max-width: 70ch;
+}
+.note p { margin: 0; }
+
+/* Criteria badges */
+.badges {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 !important;
+    margin-top: 16px;
+}
+.badges li {
+    margin: 0;
+    padding: 6px 14px;
+    background: var(--accent);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Numbered entry cards */
+.entry-list {
+    list-style: none;
+    counter-reset: entry;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    padding: 0 !important;
+    max-width: none !important;
+    margin-top: 16px;
+}
+.entry-list > li {
+    counter-increment: entry;
+    border: 1px solid var(--hairline);
+    border-top: 6px solid var(--accent);
+    padding: 16px 20px 18px;
+    margin: 0;
+}
+.entry-list > li::before {
+    content: counter(entry);
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+.entry-list strong { display: block; margin-bottom: 4px; }
+
+/* Song cards */
+.songs {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    padding: 0 !important;
+    max-width: none !important;
+    margin-top: 16px;
+}
+.songs > li { margin: 0; }
+.song {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--hairline);
+    border-top: 6px solid var(--accent);
+    padding: 16px 20px 20px;
+}
+.song h3 { margin: 0 0 8px; font-size: 1.3125rem; line-height: 1.25; }
+.song p { margin: 0 0 14px; }
+.song__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.song__links .btn { font-size: 0.9375rem; padding: 8px 14px; }
+.btn--line {
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 12px !important;
+}
+.btn--line:hover, .btn--line:focus-visible { background: var(--accent-pale); }
+.song__src { display: block; font-size: 0.8125rem; font-weight: 400; opacity: 0.9; }
+
+/* Rubric: shaded first column; level name under the number */
+.criterion tbody th { width: 7.5rem; white-space: normal; }
+.criterion tbody th small { display: block; font-weight: 600; font-size: 0.9375rem; color: var(--ink-secondary); }
+.rubric-a { min-width: 0; }
+
+/* Static checklist */
+.checklist { list-style: none; padding-left: 0 !important; max-width: 72ch; }
+.checklist li { position: relative; padding-left: 2.1rem; margin-bottom: 12px; }
+.checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    width: 1.15rem;
+    height: 1.15rem;
+    border: 2px solid var(--accent);
+    background: #FFFFFF;
+}
+
+.page-end {
+    margin-top: 56px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+    font-size: 1rem;
+    color: var(--muted);
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 860px) {
+    .songs { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    .note { padding: 14px 18px; }
+
+    /* Stack the rubric: one card per level, each strand labelled */
+    .rubric-stack table,
+    .rubric-stack tbody,
+    .rubric-stack tr,
+    .rubric-stack th,
+    .rubric-stack td { display: block; width: auto !important; }
+    .rubric-stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .rubric-stack table { border: none; }
+    .rubric-stack tr { border: 1px solid var(--accent-tint); margin-bottom: 16px; }
+    .rubric-stack th, .rubric-stack td { border: none !important; }
+    .rubric-stack tbody th { background: var(--accent) !important; color: #FFFFFF !important; }
+    .rubric-stack tbody th small { display: inline; color: #FFFFFF; margin-left: 6px; }
+    .rubric-stack tbody td { border-top: 1px solid var(--hairline) !important; }
+    .rubric-stack tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.8125rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 2px;
+    }
+}
+
+/* ---------- Print ---------- */
+@media print {
+    .eyebrow, .entry-list > li::before { color: #000; }
+    .note { background: #fff; border: 1px solid #000; border-left-width: 6px; }
+    .badges li { background: #fff; color: #000; border: 1px solid #000; }
+    .entry-list > li, .song { border-color: #000; break-inside: avoid; }
+    .songs { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .song__links { display: none; }
+    .checklist li::before { border-color: #000; }
+    .block a:not(.btn) { color: #000; }
+    tr { break-inside: avoid; }
+    thead { display: table-header-group; }
+}
