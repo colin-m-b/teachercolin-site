@@ -124,22 +124,12 @@ html:not([lang="vi"]) .vi { display: none !important; }
 .soi { margin-top: 18px; padding: 26px 0 22px; border-top: 2px solid var(--deep); border-bottom: 1px solid var(--deep); max-width: 760px; }
 .soi__text { font-family: var(--font-heading); font-size: 1.55rem; line-height: 1.45; color: var(--deep); }
 .drv { background: linear-gradient(transparent 62%, var(--wash) 62%); padding: 0 2px; white-space: nowrap; }
-.drv sup, .era__drv b {
+.drv sup {
     display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%;
     background: var(--accent); color: #fff; font: 700 12px/1 var(--font-body); vertical-align: super; margin-left: 2px;
 }
-.era__drv b { vertical-align: middle; margin: 0 6px 0 0; }
 .concepts { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 14px; font-size: 16px; color: var(--ink-2); }
 .concepts b { color: var(--deep); font-weight: 600; }
-
-.eras { list-style: none; padding: 0 !important; margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
-.eras::before { content: ""; position: absolute; left: 0; right: 0; top: 34px; height: 2px; background: var(--deep); }
-.era { margin: 0 !important; padding: 0 16px 0 0; position: relative; }
-.era__date { display: block; font-family: var(--font-heading); font-weight: 600; font-size: 1.35rem; color: var(--deep); line-height: 1.2; height: 34px; }
-.era__dot { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--accent); margin: -6px 0 12px; position: relative; }
-.era__name { font-family: var(--font-heading); font-style: italic; font-size: 1.15rem; color: var(--accent); line-height: 1.25; }
-.era p { font-size: 15.5px; line-height: 1.5; margin-top: 4px; }
-.era__drv { display: flex; align-items: center; margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--deep); }
 
 .crit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; }
 .crit { border-top: 4px solid var(--accent); background: #fff; border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 16px 20px; }
@@ -241,10 +231,6 @@ details.strand summary:focus-visible { outline: 3px solid var(--light); outline-
 @media (max-width: 900px) {
     .cover__grid { grid-template-columns: 1fr; gap: 28px; }
     .prog { max-width: 420px; }
-    .eras { grid-template-columns: 1fr 1fr; row-gap: 28px; }
-    .eras::before { display: none; }
-    .era__date { height: auto; padding-bottom: 6px; border-bottom: 2px solid var(--deep); margin-bottom: 10px; }
-    .era__dot { display: none; }
     .grid2, .grid3, .fishbowl-wrap, .verdicts { grid-template-columns: 1fr; }
     .strand-card { grid-template-columns: 1fr; gap: 8px; }
     .levels { grid-template-columns: 1fr; }
@@ -258,7 +244,6 @@ details.strand summary:focus-visible { outline: 3px solid var(--light); outline-
     .paper { font-size: 17px; border-left: 0; border-right: 0; padding: 34px 16px 44px; }
     .soi__text { font-size: 1.25rem; }
     .drv { white-space: normal; }
-    .eras { grid-template-columns: 1fr; }
     .crit-row, .stems, .brief, .keys, .ask2 { grid-template-columns: 1fr; }
     .rounds li { grid-template-columns: 1fr; gap: 2px; }
     .form__part { grid-template-columns: 1fr; }
@@ -271,8 +256,8 @@ details.strand summary:focus-visible { outline: 3px solid var(--light); outline-
     .paper { border: 0; padding: 24px 0; max-width: none; }
     .panel[hidden] { display: block !important; }
     .panel + .panel { break-before: page; }
-    .cover, .box--deep, .form__n, .when-tag, .drv sup, .era__drv b { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    details.strand, .strand-card, .box, .form, .era { break-inside: avoid; }
+    .cover, .box--deep, .form__n, .when-tag, .drv sup { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    details.strand, .strand-card, .box, .form { break-inside: avoid; }
 }
     </style>
 </head>
@@ -357,38 +342,6 @@ details.strand summary:focus-visible { outline: 3px solid var(--light); outline-
         <span><b><span class="en">Global context:</span><span class="vi" lang="vi">Bối cảnh toàn cầu:</span></b> <span class="en">Personal and Cultural Expression</span><span class="vi" lang="vi">Biểu đạt cá nhân và văn hóa</span></span>
       </div>
     </div>
-  </div>
-
-  <div class="block">
-    <span class="label"><span class="en">The case so far</span><span class="vi" lang="vi">Cuộc tranh luận đến nay</span></span>
-    <h2><span class="en">A verdict that keeps changing</span><span class="vi" lang="vi">Một phán quyết liên tục thay đổi</span></h2>
-    <ol class="eras">
-      <li class="era">
-        <span class="era__date">1919</span><span class="era__dot" aria-hidden="true"></span>
-        <div class="era__name"><span class="en">The victors’ verdict</span><span class="vi" lang="vi">Phán quyết của bên thắng</span></div>
-        <p><span class="en">The Treaty of Versailles places responsibility on Germany and its allies.</span><span class="vi" lang="vi">Hiệp ước Versailles quy trách nhiệm cho Đức và các đồng minh.</span></p>
-        <div class="era__drv"><b>3</b><span class="en">Power</span><span class="vi" lang="vi">Quyền lực</span></div>
-      </li>
-      <li class="era">
-        <span class="era__date">1920s–30s</span><span class="era__dot" aria-hidden="true"></span>
-        <div class="era__name"><span class="en">Shared blame</span><span class="vi" lang="vi">Trách nhiệm chung</span></div>
-        <p><span class="en">Governments publish their diplomatic documents. Many writers argue all the great powers shared responsibility.</span><span class="vi" lang="vi">Các chính phủ công bố tài liệu ngoại giao. Nhiều người viết cho rằng tất cả các cường quốc cùng chịu trách nhiệm.</span></p>
-        <div class="era__drv"><b>1</b><span class="en">New evidence</span><span class="vi" lang="vi">Bằng chứng mới</span></div>
-      </li>
-      <li class="era">
-        <span class="era__date">1960s</span><span class="era__dot" aria-hidden="true"></span>
-        <div class="era__name"><span class="en">The case reopened</span><span class="vi" lang="vi">Vụ án được mở lại</span></div>
-        <p><span class="en">Research in German archives revives the argument that Germany’s leaders pursued aggressive aims.</span><span class="vi" lang="vi">Nghiên cứu trong các kho lưu trữ của Đức làm sống lại lập luận rằng giới lãnh đạo Đức theo đuổi mục tiêu hiếu chiến.</span></p>
-        <div class="era__drv"><b>1</b><span class="en">New evidence</span><span class="vi" lang="vi">Bằng chứng mới</span></div>
-      </li>
-      <li class="era">
-        <span class="era__date"><span class="en">Today</span><span class="vi" lang="vi">Ngày nay</span></span><span class="era__dot" aria-hidden="true"></span>
-        <div class="era__name"><span class="en">Many capitals, many causes</span><span class="vi" lang="vi">Nhiều thủ đô, nhiều nguyên nhân</span></div>
-        <p><span class="en">Historians compare decisions across Europe and question older national stories.</span><span class="vi" lang="vi">Các nhà sử học so sánh các quyết định trên khắp châu Âu và đặt câu hỏi về những câu chuyện dân tộc cũ.</span></p>
-        <div class="era__drv"><b>2</b><span class="en">Values and perspectives</span><span class="vi" lang="vi">Giá trị và góc nhìn</span></div>
-      </li>
-    </ol>
-    <p class="note"><span class="en">A simplified outline. Your secondary source packet shows the debate in detail. Is this the full story? That’s for the seminar.</span><span class="vi" lang="vi">Đây là bản tóm lược. Tập tư liệu thứ cấp của em trình bày chi tiết cuộc tranh luận. Đây đã là toàn bộ câu chuyện chưa? Đó là việc của buổi seminar.</span></p>
   </div>
 
   <div class="block">
