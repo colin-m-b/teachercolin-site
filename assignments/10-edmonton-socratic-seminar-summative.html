@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="10 Edmonton · MYP 5 Individuals and Societies · Unit 2 Summative · Socratic Seminar · Criteria A (ii), D (i, iv)">
+    <meta name="theme-color" content="#12403C">
+    <title>Socratic Seminar | 10 Edmonton</title>
+    <!--
+        DATE PLACEHOLDERS — search this file for "[DATE:" and replace every match.
+        Each placeholder appears in both the English and the Vietnamese text.
+          [DATE: focus question planning]   the planning lesson where the class writes the focus questions
+          [DATE: seminar]                   seminar day (both rounds)
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/site.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+/* ================================
+   Socratic Seminar — page styles (extends site.css)
+   10 Edmonton teal palette; a symposium programme on paper
+   ================================ */
+.accent-seminar {
+    --deep: #12403C;
+    --accent: #1F7A72;
+    --light: #6FB2AB;
+    --wash: #E4F1EF;
+    --paper: #FCFBF7;
+    --desk: #F2F1EC;
+    --ink-2: #47514F;
+    --rule: #CFD9D6;
+    /* site.css header tokens */
+    --accent-tint: #A9D3CE;
+    --accent-pale: #E4F1EF;
+    --accent-band: #D3E9E6;
+    background: var(--desk);
+}
+
+/* Language switching for rich content (header/footer use data-en/data-vi) */
+html[lang="vi"] .en,
+html:not([lang="vi"]) .vi { display: none !important; }
+
+.s-wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Cover: programme title page ---------- */
+.cover { background: var(--deep); color: #fff; }
+.cover .s-wrap { padding-top: 40px; padding-bottom: 92px; }
+.cover__label {
+    font: 600 14px/1.5 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--light);
+    padding-bottom: 14px; border-bottom: 1px solid rgba(111,178,171,.45);
+}
+.cover__eyebrow {
+    margin-top: 34px; font-family: var(--font-heading); font-style: italic; font-size: 1.25rem; color: var(--wash);
+}
+.cover h1 {
+    font-family: var(--font-heading); font-weight: 600; color: #fff;
+    font-size: clamp(2.5rem, 6.5vw, 4.2rem); line-height: 1.04; letter-spacing: -.015em; margin-top: 6px;
+}
+.cover__sub {
+    font-family: var(--font-heading); font-size: 1.35rem; line-height: 1.45; color: var(--wash);
+    margin-top: 16px; max-width: 38ch;
+}
+.cover__dates {
+    display: flex; flex-wrap: wrap; gap: 10px 36px; margin-top: 30px; padding-top: 16px;
+    border-top: 1px solid rgba(111,178,171,.45); font-size: 16px; color: var(--wash);
+}
+.cover__dates b { display: block; font-weight: 600; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--light); }
+
+/* ---------- Tabs: programme sessions ---------- */
+.tabs-shell { position: sticky; top: 0; z-index: 20; margin-top: -54px; }
+.tabs-shell.is-stuck { background: var(--deep); }
+.tabs {
+    display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none;
+    max-width: 1000px; margin: 0 auto; padding: 10px 24px 0;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+    flex: 0 0 auto; white-space: nowrap; cursor: pointer;
+    font: 600 15px/1 var(--font-body); color: var(--deep);
+    background: var(--wash); border: 1px solid var(--light); border-bottom: 0;
+    padding: 13px 14px 14px;
+}
+.tab:hover { background: #fff; }
+.tab[aria-selected="true"] { background: var(--paper); box-shadow: inset 0 3px 0 var(--accent); }
+.tab:focus-visible { outline: 3px solid var(--light); outline-offset: 2px; }
+.tab__num { font-family: var(--font-heading); font-style: italic; font-weight: 500; color: var(--accent); margin-right: 7px; }
+
+/* ---------- Paper ---------- */
+.paper {
+    display: block; max-width: 952px; margin: 0 auto 64px;
+    background: var(--paper); border: 1px solid var(--light);
+    padding: 44px clamp(18px, 5vw, 56px) 56px; min-height: 60vh;
+    font-size: 18px; line-height: 1.6; color: var(--ink);
+}
+.paper h2, .paper h3 { font-family: var(--font-heading); color: var(--deep); line-height: 1.2; }
+.paper h2 { font-size: 1.85rem; font-weight: 600; margin-bottom: 12px; }
+.paper h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 6px; }
+.paper ul, .paper ol { padding-left: 1.3em; }
+.paper li { margin: 6px 0; }
+.paper p + p { margin-top: 10px; }
+.panel { outline: none; }
+.panel[hidden] { display: none; }
+.block { margin-top: 44px; }
+.block:first-child { margin-top: 0; }
+.label {
+    display: block; font-size: 13px; font-weight: 600; color: var(--accent);
+    text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px;
+}
+.prose { max-width: 66ch; }
+.note { font-size: 16px; color: var(--ink-2); margin-top: 14px; }
+
+/* Date placeholders for Mr. Colin */
+.tbd {
+    font: 600 15px/1.4 var(--font-body); white-space: nowrap;
+    color: var(--deep); background: var(--wash); border: 2px dashed var(--accent); padding: 0 8px;
+}
+.cover .tbd { color: #fff; background: transparent; border-color: var(--light); }
+
+/* Shared pieces */
+.sessions { list-style: none; padding: 0 !important; margin-top: 14px; border-top: 2px solid var(--deep); max-width: 760px; }
+.sessions li { display: grid; grid-template-columns: 200px 1fr; gap: 18px; margin: 0; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.sessions .when { font-weight: 600; color: var(--deep); font-size: 16px; }
+.sessions .tbd { white-space: normal; }
+.label .tbd { text-transform: none; letter-spacing: 0; }
+.soi {
+    margin-top: 16px; max-width: 64ch; padding: 22px 26px; background: #fff;
+    border-top: 2px solid var(--deep); border-bottom: 2px solid var(--deep);
+    font-family: var(--font-heading); font-size: 1.4rem; line-height: 1.4; color: var(--deep);
+}
+.concepts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; font-size: 16px; color: var(--ink-2); }
+.concepts b { color: var(--deep); font-weight: 600; }
+.box { background: #fff; border: 1px solid var(--rule); padding: 20px 22px; }
+.box--wash { background: var(--wash); border-color: var(--light); }
+.box--deep { background: var(--deep); border-color: var(--deep); color: #fff; }
+.paper .box--deep h3 { color: #fff; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 14px; }
+.crit-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.crit-tag { border: 1px solid var(--accent); padding: 6px 12px; font-size: 16px; color: var(--deep); background: #fff; }
+.crit-tag b { color: var(--accent); }
+
+/* Focus questions */
+.formative {
+    display: inline-block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--accent); border: 1px solid var(--accent); padding: 2px 10px; margin-bottom: 10px;
+}
+.tests { list-style: none; padding: 0 !important; margin-top: 10px; max-width: 70ch; }
+.tests li { position: relative; padding-left: 34px; margin: 10px 0; }
+.tests li::before { content: "✓"; position: absolute; left: 4px; top: 0; font-weight: 700; color: var(--accent); }
+.tests li.no::before { content: "✗"; color: #8A3B2E; }
+.qtype { border-top: 3px solid var(--accent); }
+.qtype__n { font-family: var(--font-heading); font-style: italic; color: var(--accent); font-size: 1.05rem; }
+.qtype__eg { margin-top: 10px; font-family: var(--font-heading); font-size: 1.12rem; line-height: 1.4; color: var(--deep); }
+.qtype__eg::before { content: "e.g. "; font-family: var(--font-body); font-size: 14px; color: var(--ink-2); }
+html[lang="vi"] .qtype__eg::before { content: "Ví dụ: "; }
+
+/* Preparing */
+.prep { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 14px; border: 1px solid var(--rule); background: #fff; }
+.prep > div { padding: 18px 20px; border-left: 1px solid var(--rule); }
+.prep > div:first-child { border-left: 0; }
+.prep__num { display: block; font-family: var(--font-heading); font-size: 2.4rem; line-height: 1; color: var(--accent); }
+.prep__what { display: block; font-weight: 700; color: var(--deep); margin-top: 6px; }
+.prep p { font-size: 16px; color: var(--ink-2); margin-top: 4px; }
+.stems { list-style: none; padding: 0 !important; margin-top: 12px; display: grid; gap: 8px; max-width: 640px; }
+.stems li { margin: 0; padding: 10px 16px; background: #fff; border-left: 4px solid var(--light); font-family: var(--font-heading); font-size: 1.15rem; color: var(--deep); }
+.ai-col h3 { display: flex; align-items: center; gap: 10px; }
+.ai-col ul { list-style: none; padding: 0 !important; margin-top: 6px; }
+.ai-col li { margin: 0; padding: 10px 0; border-top: 1px solid var(--rule); font-size: 17px; }
+.box--deep.ai-col li { border-top-color: rgba(255,255,255,.2); }
+
+/* Seminar day */
+.fishbowl-wrap { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: center; margin-top: 16px; }
+.fishbowl { width: 100%; height: auto; max-width: 260px; display: block; margin: 0 auto; }
+.fishbowl text { font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+html[lang="vi"] .fishbowl text { font-size: 10px; letter-spacing: .02em; }
+.rounds { list-style: none; padding: 0 !important; border-top: 2px solid var(--deep); }
+.rounds li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; margin: 0; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.rounds .r { font-family: var(--font-heading); font-weight: 600; color: var(--deep); font-size: 1.1rem; }
+.sheet { margin-top: 14px; border: 1px solid var(--deep); background: #fff; }
+.sheet__part { display: grid; grid-template-columns: 90px 1fr; border-top: 1px solid var(--rule); }
+.sheet__part:first-child { border-top: 0; }
+.sheet__n { padding: 16px; background: var(--wash); font-family: var(--font-heading); font-weight: 600; color: var(--deep); font-size: 1.05rem; }
+.sheet__body { padding: 14px 18px; }
+.sheet__body p { font-size: 17px; }
+.labels { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.labels > span { font-size: 14px; font-weight: 600; color: var(--deep); border: 1px solid var(--light); padding: 1px 9px; }
+
+/* Assessment */
+.strands { display: grid; gap: 14px; margin-top: 14px; }
+.strand-card { display: grid; grid-template-columns: 120px 1fr 220px; gap: 20px; align-items: start; background: #fff; border: 1px solid var(--rule); border-left: 6px solid var(--accent); padding: 18px 20px; }
+.strand-card__id { font-family: var(--font-heading); font-weight: 600; color: var(--deep); font-size: 1.2rem; line-height: 1.25; }
+.strand-card__id small { display: block; font-family: var(--font-body); font-weight: 400; font-size: 14px; color: var(--ink-2); }
+.strand-card p { font-size: 17px; }
+.shows { font-size: 15px; }
+.shows b { display: block; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.shows ul { list-style: none; padding: 0 !important; }
+.shows li { margin: 2px 0; padding-left: 14px; position: relative; }
+.shows li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; background: var(--accent); }
+.expand-all {
+    margin-top: 12px; font: 600 15px var(--font-body); color: var(--deep); background: var(--wash);
+    border: 1px solid var(--light); padding: 7px 14px; cursor: pointer;
+}
+.expand-all:hover { background: #fff; }
+details.strand { margin-top: 10px; background: #fff; border: 1px solid var(--light); }
+details.strand summary {
+    list-style: none; cursor: pointer; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    font-weight: 700; color: var(--deep);
+}
+details.strand summary::-webkit-details-marker { display: none; }
+details.strand summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--accent); }
+details.strand[open] summary { background: var(--wash); }
+details.strand[open] summary::after { content: "−"; }
+details.strand summary:focus-visible { outline: 3px solid var(--light); outline-offset: -3px; }
+.levels { display: grid; grid-template-columns: repeat(4, 1fr); }
+.lvl { padding: 14px 16px 16px; border-left: 1px solid var(--wash); font-size: 16px; }
+.lvl:first-child { border-left: 0; }
+.lvl__band { display: block; font-family: var(--font-heading); font-weight: 600; font-size: 1.15rem; color: var(--accent); margin-bottom: 4px; }
+
+/* Parents */
+.parents { max-width: 680px; }
+.parents .intro { font-size: 1.15rem; }
+.p-list { list-style: none; padding: 0 !important; margin-top: 12px; }
+.p-list li { margin: 0; padding: 12px 0; border-top: 1px solid var(--rule); }
+.p-list li:last-child { border-bottom: 1px solid var(--rule); }
+.p-q { font-family: var(--font-heading); font-size: 1.15rem; color: var(--deep); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .grid2, .grid3, .fishbowl-wrap { grid-template-columns: 1fr; }
+    .strand-card { grid-template-columns: 1fr; gap: 8px; }
+    .levels { grid-template-columns: 1fr; }
+    .lvl { border-left: 0; border-top: 1px solid var(--wash); }
+}
+@media (max-width: 600px) {
+    .s-wrap { padding: 0 16px; }
+    .tabs { padding: 10px 12px 0; }
+    .tab { padding: 12px 11px 13px; font-size: 14.5px; }
+    .paper { font-size: 17px; border-left: 0; border-right: 0; padding: 32px 16px 44px; }
+    .prep { grid-template-columns: 1fr; }
+    .prep > div { border-left: 0; border-top: 1px solid var(--rule); }
+    .prep > div:first-child { border-top: 0; }
+    .sessions li, .rounds li { grid-template-columns: 1fr; gap: 2px; }
+    .sheet__part { grid-template-columns: 1fr; }
+    .sheet__n { padding: 10px 16px; }
+    .soi { font-size: 1.2rem; padding: 18px; }
+    .tbd { white-space: normal; }
+}
+@media print {
+    .accent-seminar { background: #fff; }
+    .tabs-shell, .lang-toggle, .expand-all { display: none !important; }
+    .cover .s-wrap { padding-bottom: 32px; }
+    .paper { border: 0; padding: 24px 0; max-width: none; }
+    .panel[hidden] { display: block !important; }
+    .panel + .panel { break-before: page; }
+    .cover, .box--deep, .sheet__n { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    details.strand, .strand-card, .box, .sheet { break-inside: avoid; }
+}
+    </style>
+</head>
+<body class="accent-seminar">
+
+    <header class="site-header">
+        <div class="wrap">
+            <div class="site-header__brand">
+                <span class="site-header__name">Teacher Colin</span>
+                <span class="site-header__tagline" data-en="Dewey Schools · IB MYP" data-vi="Trường Dewey · Chương trình IB MYP">Dewey Schools · IB MYP</span>
+            </div>
+            <nav class="site-header__nav" aria-label="Main">
+                <a href="../index.html" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="../8-athens.html">8 Athens</a><a href="../9-zurich.html">9 Zurich</a><a href="../10-edmonton.html" class="is-current">10 Edmonton</a>
+                <a href="../summer-learning.html" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+                <span class="lang-toggle">
+                    <button type="button" class="is-active" data-lang="en">EN</button>
+                    <button type="button" data-lang="vi">VI</button>
+                </span>
+            </nav>
+        </div>
+    </header>
+
+    <div class="cover">
+        <div class="s-wrap">
+            <div class="cover__label"><span class="en">Unit 2: What is History? · Summative · 10 Edmonton · MYP 5 Individuals &amp; Societies</span><span class="vi" lang="vi">Đơn vị 2: Lịch sử là gì? · Bài đánh giá tổng kết · 10 Edmonton · MYP 5 Cá nhân và Xã hội</span></div>
+            <p class="cover__eyebrow"><span class="en">A historians’ roundtable</span><span class="vi" lang="vi">Bàn tròn của các nhà sử học</span></p>
+            <h1><span class="en">Socratic Seminar</span><span class="vi" lang="vi">Seminar Socratic</span></h1>
+            <p class="cover__sub"><span class="en">How and why do historians disagree about the First World War?</span><span class="vi" lang="vi">Các nhà sử học bất đồng về Chiến tranh thế giới thứ nhất như thế nào, và vì sao?</span></p>
+            <div class="cover__dates">
+                <div><b><span class="en">Planning lesson</span><span class="vi" lang="vi">Buổi lên câu hỏi</span></b><span class="tbd">[DATE: focus question planning]</span></div>
+                <div><b><span class="en">Seminar</span><span class="vi" lang="vi">Buổi seminar</span></b><span class="tbd">[DATE: seminar]</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tabs-shell" id="tabs-shell">
+        <div class="tabs" role="tablist" aria-label="Seminar programme">
+<button type="button" class="tab" role="tab" id="tab-overview" aria-controls="overview" data-tab="overview"><span class="tab__num">i.</span><span class="en">Overview</span><span class="vi" lang="vi">Tổng quan</span></button>
+<button type="button" class="tab" role="tab" id="tab-questions" aria-controls="questions" data-tab="questions"><span class="tab__num">ii.</span><span class="en">Focus Questions</span><span class="vi" lang="vi">Câu hỏi trọng tâm</span></button>
+<button type="button" class="tab" role="tab" id="tab-preparing" aria-controls="preparing" data-tab="preparing"><span class="tab__num">iii.</span><span class="en">Preparing</span><span class="vi" lang="vi">Chuẩn bị</span></button>
+<button type="button" class="tab" role="tab" id="tab-seminar" aria-controls="seminar" data-tab="seminar"><span class="tab__num">iv.</span><span class="en">Seminar Day</span><span class="vi" lang="vi">Ngày seminar</span></button>
+<button type="button" class="tab" role="tab" id="tab-assessment" aria-controls="assessment" data-tab="assessment"><span class="tab__num">v.</span><span class="en">Assessment</span><span class="vi" lang="vi">Đánh giá</span></button>
+<button type="button" class="tab" role="tab" id="tab-parents" aria-controls="parents" data-tab="parents"><span class="tab__num">vi.</span><span class="en">For Parents</span><span class="vi" lang="vi">Phụ huynh</span></button>
+        </div>
+    </div>
+
+    <main class="paper" id="programme">
+
+<!-- ============ i. OVERVIEW ============ -->
+<section class="panel" id="overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
+  <div class="block">
+    <span class="label"><span class="en">The format</span><span class="vi" lang="vi">Hình thức</span></span>
+    <h2><span class="en">What is a Socratic Seminar?</span><span class="vi" lang="vi">Seminar Socratic là gì?</span></h2>
+    <p class="en prose">A Socratic Seminar is a discussion where you build understanding together by asking questions and testing each other’s ideas against evidence. There is no teacher lecture and no winner. The goal is to think more clearly, not to win an argument.</p>
+    <p class="vi prose" lang="vi">Seminar Socratic là một buổi thảo luận trong đó các em cùng nhau xây dựng hiểu biết bằng cách đặt câu hỏi và kiểm tra ý kiến của nhau dựa trên bằng chứng. Không có bài giảng của giáo viên và không có người thắng. Mục tiêu là suy nghĩ rõ ràng hơn, không phải thắng một cuộc tranh cãi.</p>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">The topic</span><span class="vi" lang="vi">Chủ đề</span></span>
+    <h2><span class="en">How and why historians disagree</span><span class="vi" lang="vi">Các nhà sử học bất đồng như thế nào và vì sao</span></h2>
+    <p class="en prose">Historians have argued about the causes of the First World War for more than a hundred years. In this seminar you discuss that debate: what the evidence shows, how historians have interpreted it, and why their explanations have changed. Use your primary source packet and your secondary source packet.</p>
+    <p class="vi prose" lang="vi">Các nhà sử học đã tranh luận về nguyên nhân của Chiến tranh thế giới thứ nhất trong hơn một trăm năm. Trong buổi seminar này, các em thảo luận về cuộc tranh luận đó: bằng chứng cho thấy điều gì, các nhà sử học đã diễn giải bằng chứng ra sao, và vì sao lời giải thích của họ đã thay đổi. Hãy dùng tập tư liệu sơ cấp và tập tư liệu thứ cấp của em.</p>
+    <span class="label" style="margin-top:22px"><span class="en">Statement of Inquiry</span><span class="vi" lang="vi">Tuyên bố tìm hiểu</span></span>
+    <p class="soi"><span class="en">Our understanding of history is changed by new evidence, by shifting cultural values and perspectives, and by changes in power structures.</span><span class="vi" lang="vi">Hiểu biết của chúng ta về lịch sử thay đổi nhờ bằng chứng mới, nhờ sự chuyển biến của các giá trị văn hóa và góc nhìn, và nhờ những thay đổi trong cấu trúc quyền lực.</span></p>
+    <div class="concepts">
+      <span><b><span class="en">Key concept:</span><span class="vi" lang="vi">Khái niệm chính:</span></b> <span class="en">Change</span><span class="vi" lang="vi">Sự thay đổi</span></span>
+      <span><b><span class="en">Related concepts:</span><span class="vi" lang="vi">Khái niệm liên quan:</span></b> <span class="en">Causality, Perspective, Power</span><span class="vi" lang="vi">Quan hệ nhân quả, Góc nhìn, Quyền lực</span></span>
+      <span><b><span class="en">Global context:</span><span class="vi" lang="vi">Bối cảnh toàn cầu:</span></b> <span class="en">Personal and Cultural Expression</span><span class="vi" lang="vi">Biểu đạt cá nhân và văn hóa</span></span>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">How it counts</span><span class="vi" lang="vi">Cách tính điểm</span></span>
+    <h2><span class="en">A summative assessment</span><span class="vi" lang="vi">Một bài đánh giá tổng kết</span></h2>
+    <p class="en prose">The seminar is assessed on two criteria. You are graded on what you say in the inner circle and on the sheet you complete in the outer circle.</p>
+    <p class="vi prose" lang="vi">Buổi seminar được đánh giá theo hai tiêu chí. Em được chấm điểm dựa trên những gì em nói trong vòng trong và phiếu em hoàn thành khi ở vòng ngoài.</p>
+    <div class="crit-tags">
+      <span class="crit-tag"><b><span class="en">Criterion A</span><span class="vi" lang="vi">Tiêu chí A</span></b> <span class="en">Knowing and Understanding · strand ii</span><span class="vi" lang="vi">Kiến thức và hiểu biết · nhánh ii</span></span>
+      <span class="crit-tag"><b><span class="en">Criterion D</span><span class="vi" lang="vi">Tiêu chí D</span></b> <span class="en">Thinking Critically · strands i and iv</span><span class="vi" lang="vi">Tư duy phản biện · nhánh i và iv</span></span>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Order of proceedings</span><span class="vi" lang="vi">Trình tự</span></span>
+    <h2><span class="en">Key dates</span><span class="vi" lang="vi">Các mốc thời gian</span></h2>
+    <ol class="sessions">
+      <li><span class="when"><span class="tbd">[DATE: focus question planning]</span></span><span><span class="en">Planning lesson: the class writes the focus questions together (practice, not graded).</span><span class="vi" lang="vi">Buổi lên kế hoạch: cả lớp cùng viết các câu hỏi trọng tâm (luyện tập, không chấm điểm).</span></span></li>
+      <li><span class="when"><span class="en">Before the seminar</span><span class="vi" lang="vi">Trước seminar</span></span><span><span class="en">You prepare your position, evidence and counterargument for each question.</span><span class="vi" lang="vi">Em chuẩn bị quan điểm, bằng chứng và lập luận phản biện cho từng câu hỏi.</span></span></li>
+      <li><span class="when"><span class="tbd">[DATE: seminar]</span></span><span><span class="en">Seminar: two rounds. One turn inside, one turn outside.</span><span class="vi" lang="vi">Seminar: hai vòng. Một lượt ở vòng trong, một lượt ở vòng ngoài.</span></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ii. FOCUS QUESTIONS ============ -->
+<section class="panel" id="questions" role="tabpanel" aria-labelledby="tab-questions" tabindex="0" hidden>
+  <div class="block">
+    <span class="formative"><span class="en">Formative · not graded</span><span class="vi" lang="vi">Hình thành · không chấm điểm</span></span>
+    <h2><span class="en">Building the focus questions</span><span class="vi" lang="vi">Xây dựng các câu hỏi trọng tâm</span></h2>
+    <p class="en prose">You don’t get the questions from Mr. Colin. The class writes them together in a planning lesson on <span class="tbd">[DATE: focus question planning]</span>. This part is practice and isn’t graded. The final questions are shared with you before the seminar and projected on the day.</p>
+    <p class="vi prose" lang="vi">Thầy Colin không đưa sẵn câu hỏi. Cả lớp cùng viết câu hỏi trong buổi lên kế hoạch vào <span class="tbd">[DATE: focus question planning]</span>. Phần này là luyện tập và không chấm điểm. Các câu hỏi cuối cùng sẽ được gửi cho em trước buổi seminar và chiếu lên màn hình vào hôm đó.</p>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">The test</span><span class="vi" lang="vi">Cách kiểm tra</span></span>
+    <h2><span class="en">What makes a good seminar question</span><span class="vi" lang="vi">Thế nào là một câu hỏi seminar tốt</span></h2>
+    <ul class="tests">
+      <li><span class="en">It has a real disagreement that evidence can help settle. There is more than one defensible answer.</span><span class="vi" lang="vi">Nó có một sự bất đồng thật sự mà bằng chứng có thể giúp giải quyết. Có nhiều hơn một câu trả lời có thể bảo vệ được.</span></li>
+      <li><span class="en">It can be argued from the source packets.</span><span class="vi" lang="vi">Có thể lập luận cho nó bằng các tập tư liệu.</span></li>
+      <li class="no"><span class="en">It isn’t answerable with a fact. “What were the alliances?” is a bad question: you can look it up.</span><span class="vi" lang="vi">Nó không thể trả lời bằng một sự kiện. “Các liên minh là gì?” là một câu hỏi kém: em có thể tra cứu được.</span></li>
+      <li class="no"><span class="en">It isn’t pure opinion. If no evidence is needed to answer it, it won’t work.</span><span class="vi" lang="vi">Nó không chỉ là ý kiến cá nhân. Nếu không cần bằng chứng để trả lời, câu hỏi đó sẽ không hiệu quả.</span></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Three types</span><span class="vi" lang="vi">Ba loại câu hỏi</span></span>
+    <h2><span class="en">Kinds of question that work</span><span class="vi" lang="vi">Những loại câu hỏi hiệu quả</span></h2>
+    <div class="grid3">
+      <div class="box qtype">
+        <span class="qtype__n"><span class="en">Type 1</span><span class="vi" lang="vi">Loại 1</span></span>
+        <h3><span class="en">Ranking or dividing responsibility</span><span class="vi" lang="vi">Xếp hạng hoặc phân chia trách nhiệm</span></h3>
+        <p class="qtype__eg"><span class="en">How should responsibility for the war be divided among the great powers?</span><span class="vi" lang="vi">Trách nhiệm về cuộc chiến nên được phân chia giữa các cường quốc như thế nào?</span></p>
+      </div>
+      <div class="box qtype">
+        <span class="qtype__n"><span class="en">Type 2</span><span class="vi" lang="vi">Loại 2</span></span>
+        <h3><span class="en">Counterfactual</span><span class="vi" lang="vi">Giả định phản thực tế</span></h3>
+        <p class="qtype__eg"><span class="en">If one cause had been removed, would the war still have happened?</span><span class="vi" lang="vi">Nếu một nguyên nhân bị loại bỏ, chiến tranh có còn xảy ra không?</span></p>
+      </div>
+      <div class="box qtype">
+        <span class="qtype__n"><span class="en">Type 3</span><span class="vi" lang="vi">Loại 3</span></span>
+        <h3><span class="en">Historiography</span><span class="vi" lang="vi">Sử học về sử học</span></h3>
+        <p class="qtype__eg"><span class="en">Why have historians’ explanations of the war’s causes changed over time?</span><span class="vi" lang="vi">Vì sao cách các nhà sử học giải thích nguyên nhân chiến tranh lại thay đổi theo thời gian?</span></p>
+      </div>
+    </div>
+    <p class="note"><span class="en">These are examples of the types, not the seminar questions.</span><span class="vi" lang="vi">Đây là ví dụ về các loại câu hỏi, không phải câu hỏi của buổi seminar.</span></p>
+  </div>
+</section>
+
+<!-- ============ iii. PREPARING ============ -->
+<section class="panel" id="preparing" role="tabpanel" aria-labelledby="tab-preparing" tabindex="0" hidden>
+  <div class="block">
+    <span class="label"><span class="en">Before the seminar</span><span class="vi" lang="vi">Trước buổi seminar</span></span>
+    <h2><span class="en">For each focus question, know:</span><span class="vi" lang="vi">Với mỗi câu hỏi trọng tâm, em cần biết:</span></h2>
+    <div class="prep">
+      <div><span class="prep__num">1</span><span class="prep__what"><span class="en">Position</span><span class="vi" lang="vi">Quan điểm</span></span><p><span class="en">What you think, in one sentence.</span><span class="vi" lang="vi">Em nghĩ gì, trong một câu.</span></p></div>
+      <div><span class="prep__num">2</span><span class="prep__what"><span class="en">Pieces of evidence</span><span class="vi" lang="vi">Bằng chứng</span></span><p><span class="en">From the packets. Know where to find them fast.</span><span class="vi" lang="vi">Lấy từ các tập tư liệu. Biết chỗ để tìm thật nhanh.</span></p></div>
+      <div><span class="prep__num">1</span><span class="prep__what"><span class="en">Counterargument</span><span class="vi" lang="vi">Lập luận phản biện</span></span><p><span class="en">The strongest case against you, and your answer to it.</span><span class="vi" lang="vi">Lập luận mạnh nhất chống lại em, và câu trả lời của em.</span></p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Sentence stems</span><span class="vi" lang="vi">Mẫu câu</span></span>
+    <h2><span class="en">Ways in</span><span class="vi" lang="vi">Cách bắt đầu</span></h2>
+    <p class="en prose">Speaking in a second language? These help you start. Practise them aloud.</p>
+    <p class="vi prose" lang="vi">Em nói bằng ngôn ngữ thứ hai? Những mẫu câu này giúp em bắt đầu. Hãy luyện nói to. Trong seminar em sẽ nói bằng tiếng Anh, nên các mẫu câu được giữ bằng tiếng Anh.</p>
+    <ul class="stems" lang="en">
+      <li>“The evidence in ___ suggests…”</li>
+      <li>“I’d build on ___’s point…”</li>
+      <li>“I see it differently because…”</li>
+      <li>“That interpretation depends on the historian’s perspective, because…”</li>
+      <li>“If we accept that, then…”</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">AI policy</span><span class="vi" lang="vi">Quy định về AI</span></span>
+    <h2><span class="en">Using AI</span><span class="vi" lang="vi">Sử dụng AI</span></h2>
+    <div class="grid2">
+      <div class="box box--wash ai-col">
+        <h3><span class="en">Allowed, while preparing</span><span class="vi" lang="vi">Được phép, khi chuẩn bị</span></h3>
+        <ul>
+          <li><span class="en">Explaining unfamiliar vocabulary, terms or references in the sources.</span><span class="vi" lang="vi">Giải thích từ vựng, thuật ngữ hoặc những điều được nhắc đến mà em chưa biết trong các nguồn tư liệu.</span></li>
+          <li><span class="en">That’s all.</span><span class="vi" lang="vi">Chỉ vậy thôi.</span></li>
+        </ul>
+      </div>
+      <div class="box box--deep ai-col">
+        <h3><span class="en">Not allowed</span><span class="vi" lang="vi">Không được phép</span></h3>
+        <ul>
+          <li><span class="en">Producing arguments, talking points, or anything you say or write.</span><span class="vi" lang="vi">Tạo lập luận, ý chính để nói, hoặc bất cứ điều gì em nói hay viết.</span></li>
+          <li><span class="en">Any AI at all during the seminar.</span><span class="vi" lang="vi">Bất kỳ AI nào trong buổi seminar.</span></li>
+          <li><span class="en">The outer-circle sheet is done by hand, on paper.</span><span class="vi" lang="vi">Phiếu vòng ngoài được làm bằng tay, trên giấy.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ iv. SEMINAR DAY ============ -->
+<section class="panel" id="seminar" role="tabpanel" aria-labelledby="tab-seminar" tabindex="0" hidden>
+  <div class="block">
+    <span class="label"><span class="tbd">[DATE: seminar]</span></span>
+    <h2><span class="en">How the fishbowl runs</span><span class="vi" lang="vi">Cách tổ chức “bể cá”</span></h2>
+    <div class="fishbowl-wrap">
+      <svg class="fishbowl" viewBox="0 0 260 260" role="img" aria-labelledby="fb-title">
+        <title id="fb-title">Fishbowl: an inner circle of about seven speakers, surrounded by an outer circle of observers</title>
+        <circle cx="130" cy="130" r="118" fill="none" stroke="#6FB2AB" stroke-width="2" stroke-dasharray="5 5"/>
+        <circle cx="130" cy="130" r="62" fill="#E4F1EF" stroke="#1F7A72" stroke-width="2"/>
+        <g fill="#12403C">
+          <circle cx="130" cy="82" r="9"/><circle cx="167.5" cy="100" r="9"/><circle cx="176.8" cy="140.7" r="9"/><circle cx="150.8" cy="173.2" r="9"/><circle cx="109.2" cy="173.2" r="9"/><circle cx="83.2" cy="140.7" r="9"/><circle cx="92.5" cy="100" r="9"/>
+        </g>
+        <g fill="#fff" stroke="#1F7A72" stroke-width="2">
+          <circle cx="130" cy="12" r="9"/><circle cx="222.3" cy="56.4" r="9"/><circle cx="245" cy="156.3" r="9"/><circle cx="181.2" cy="236.3" r="9"/><circle cx="78.8" cy="236.3" r="9"/><circle cx="15" cy="156.3" r="9"/><circle cx="37.7" cy="56.4" r="9"/>
+        </g>
+        <text x="130" y="134" text-anchor="middle" fill="#12403C"><tspan class="en">Inner</tspan><tspan class="vi">Vòng trong</tspan></text>
+        <text x="130" y="210" text-anchor="middle" fill="#1F7A72"><tspan class="en">Outer</tspan><tspan class="vi">Vòng ngoài</tspan></text>
+      </svg>
+      <ol class="rounds">
+        <li><span class="r"><span class="en">Round 1</span><span class="vi" lang="vi">Vòng 1</span></span><span><span class="en">About half the class sits in the inner circle and discusses the projected focus questions. The rest sit outside and complete the observation sheet by hand.</span><span class="vi" lang="vi">Khoảng một nửa lớp ngồi ở vòng trong và thảo luận các câu hỏi trọng tâm được chiếu lên. Những bạn còn lại ngồi ở vòng ngoài và hoàn thành phiếu quan sát bằng tay.</span></span></li>
+        <li><span class="r"><span class="en">Round 2</span><span class="vi" lang="vi">Vòng 2</span></span><span><span class="en">Swap. Everyone gets one turn inside and one turn outside.</span><span class="vi" lang="vi">Đổi chỗ. Mỗi người có một lượt ở vòng trong và một lượt ở vòng ngoài.</span></span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Expectations</span><span class="vi" lang="vi">Yêu cầu</span></span>
+    <div class="grid2">
+      <div class="box">
+        <h3><span class="en">Inner circle</span><span class="vi" lang="vi">Vòng trong</span></h3>
+        <ul>
+          <li><span class="en">Quality over quantity.</span><span class="vi" lang="vi">Chất lượng hơn số lượng.</span></li>
+          <li><span class="en">Respond to what was just said.</span><span class="vi" lang="vi">Phản hồi điều vừa được nói.</span></li>
+          <li><span class="en">Use evidence from the sources.</span><span class="vi" lang="vi">Dùng bằng chứng từ các nguồn tư liệu.</span></li>
+          <li><span class="en">Everyone speaks. Mr. Colin may invite quieter voices in.</span><span class="vi" lang="vi">Ai cũng phát biểu. Thầy Colin có thể mời những bạn ít nói tham gia.</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3><span class="en">Outer circle</span><span class="vi" lang="vi">Vòng ngoài</span></h3>
+        <ul>
+          <li><span class="en">Silent.</span><span class="vi" lang="vi">Giữ im lặng.</span></li>
+          <li><span class="en">Focused on your sheet.</span><span class="vi" lang="vi">Tập trung vào phiếu của em.</span></li>
+        </ul>
+        <h3 style="margin-top:18px"><span class="en">Laptops</span><span class="vi" lang="vi">Máy tính</span></h3>
+        <p><span class="en">Open, with your source packets only. No other tabs.</span><span class="vi" lang="vi">Được mở, chỉ với các tập tư liệu. Không mở tab nào khác.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">On paper, by hand</span><span class="vi" lang="vi">Trên giấy, viết tay</span></span>
+    <h2><span class="en">The outer-circle sheet</span><span class="vi" lang="vi">Phiếu vòng ngoài</span></h2>
+    <div class="sheet">
+      <div class="sheet__part">
+        <div class="sheet__n"><span class="en">Part 1</span><span class="vi" lang="vi">Phần 1</span></div>
+        <div class="sheet__body">
+          <h3><span class="en">Track your partner</span><span class="vi" lang="vi">Theo dõi bạn cặp</span></h3>
+          <p><span class="en">Log three claims your partner in the inner circle makes. Label each one:</span><span class="vi" lang="vi">Ghi lại ba nhận định mà bạn cặp của em ở vòng trong đưa ra. Gắn nhãn cho mỗi nhận định:</span></p>
+          <div class="labels"><span><span class="en">evidence</span><span class="vi" lang="vi">bằng chứng</span></span><span><span class="en">interpretation</span><span class="vi" lang="vi">diễn giải</span></span><span><span class="en">perspective</span><span class="vi" lang="vi">góc nhìn</span></span></div>
+        </div>
+      </div>
+      <div class="sheet__part">
+        <div class="sheet__n"><span class="en">Part 2</span><span class="vi" lang="vi">Phần 2</span></div>
+        <div class="sheet__body">
+          <h3><span class="en">Map the perspectives</span><span class="vi" lang="vi">Vẽ bản đồ các góc nhìn</span></h3>
+          <p><span class="en">Which perspectives came up, and what follows from each?</span><span class="vi" lang="vi">Những góc nhìn nào đã xuất hiện, và mỗi góc nhìn dẫn đến điều gì?</span></p>
+        </div>
+      </div>
+      <div class="sheet__part">
+        <div class="sheet__n"><span class="en">Part 3</span><span class="vi" lang="vi">Phần 3</span></div>
+        <div class="sheet__body">
+          <h3><span class="en">What the circle missed</span><span class="vi" lang="vi">Điều vòng trong bỏ sót</span></h3>
+          <p><span class="en">One point nobody raised, and why it matters.</span><span class="vi" lang="vi">Một ý mà không ai nêu ra, và vì sao nó quan trọng.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ v. ASSESSMENT ============ -->
+<section class="panel" id="assessment" role="tabpanel" aria-labelledby="tab-assessment" tabindex="0" hidden>
+  <div class="block">
+    <span class="label"><span class="en">What is assessed</span><span class="vi" lang="vi">Nội dung được đánh giá</span></span>
+    <h2><span class="en">Three strands</span><span class="vi" lang="vi">Ba nhánh tiêu chí</span></h2>
+    <div class="strands">
+      <div class="strand-card">
+        <div class="strand-card__id">A.ii<small><span class="en">Knowing and Understanding</span><span class="vi" lang="vi">Kiến thức và hiểu biết</span></small></div>
+        <p><span class="en">Show you understand history as a discipline: the difference between evidence and interpretation, why interpretations get revised, and that historians are in an ongoing debate. Get the WWI content right.</span><span class="vi" lang="vi">Cho thấy em hiểu lịch sử như một ngành học: sự khác nhau giữa bằng chứng và diễn giải, vì sao các cách diễn giải được xem xét lại, và rằng các nhà sử học đang ở trong một cuộc tranh luận chưa kết thúc. Nắm chính xác kiến thức về Thế chiến I.</span></p>
+        <div class="shows"><b><span class="en">Shown in</span><span class="vi" lang="vi">Thể hiện qua</span></b><ul><li><span class="en">Your speaking (mainly)</span><span class="vi" lang="vi">Phần phát biểu (chủ yếu)</span></li><li><span class="en">Sheet, Part 1</span><span class="vi" lang="vi">Phiếu, Phần 1</span></li></ul></div>
+      </div>
+      <div class="strand-card">
+        <div class="strand-card__id">D.i<small><span class="en">Thinking Critically</span><span class="vi" lang="vi">Tư duy phản biện</span></small></div>
+        <p><span class="en">Discuss the concepts of causality, perspective and power. Don’t just name them: use them to explain.</span><span class="vi" lang="vi">Thảo luận các khái niệm quan hệ nhân quả, góc nhìn và quyền lực. Đừng chỉ gọi tên: hãy dùng chúng để giải thích.</span></p>
+        <div class="shows"><b><span class="en">Shown in</span><span class="vi" lang="vi">Thể hiện qua</span></b><ul><li><span class="en">Your speaking</span><span class="vi" lang="vi">Phần phát biểu</span></li></ul></div>
+      </div>
+      <div class="strand-card">
+        <div class="strand-card__id">D.iv<small><span class="en">Thinking Critically</span><span class="vi" lang="vi">Tư duy phản biện</span></small></div>
+        <p><span class="en">Interpret different perspectives and their implications: why people see the war differently, and what follows if we accept each view.</span><span class="vi" lang="vi">Diễn giải các góc nhìn khác nhau và hệ quả của chúng: vì sao mọi người nhìn cuộc chiến khác nhau, và điều gì xảy ra nếu ta chấp nhận từng quan điểm.</span></p>
+        <div class="shows"><b><span class="en">Shown in</span><span class="vi" lang="vi">Thể hiện qua</span></b><ul><li><span class="en">Your speaking</span><span class="vi" lang="vi">Phần phát biểu</span></li><li><span class="en">The outer-circle sheet</span><span class="vi" lang="vi">Phiếu vòng ngoài</span></li></ul></div>
+      </div>
+    </div>
+    <p class="note"><span class="en">Mr. Colin observes your speaking during your inner-circle turn and collects your outer-circle sheet.</span><span class="vi" lang="vi">Thầy Colin quan sát phần phát biểu của em trong lượt ở vòng trong và thu phiếu vòng ngoài của em.</span></p>
+  </div>
+
+  <div class="block">
+    <span class="label"><span class="en">Rubric</span><span class="vi" lang="vi">Thang đánh giá</span></span>
+    <h2><span class="en">Level descriptors for this task</span><span class="vi" lang="vi">Mô tả mức độ cho bài này</span></h2>
+    <button type="button" class="expand-all" id="expand-all" aria-pressed="false"><span class="en">Open all strands</span><span class="vi" lang="vi">Mở tất cả</span></button>
+
+    <details class="strand">
+      <summary><span><span class="en">Criterion A, strand ii: understanding of content and concepts</span><span class="vi" lang="vi">Tiêu chí A, nhánh ii: hiểu nội dung và khái niệm</span></span></summary>
+      <div class="levels">
+        <div class="lvl"><span class="lvl__band">1–2</span><span class="en">Shows basic understanding of WWI content or of how history works. Few or no examples.</span><span class="vi" lang="vi">Thể hiện hiểu biết cơ bản về nội dung Thế chiến I hoặc về cách lịch sử vận hành. Ít hoặc không có ví dụ.</span></div>
+        <div class="lvl"><span class="lvl__band">3–4</span><span class="en">Shows adequate understanding. Gives some correct explanation of WWI events and of how historians use evidence, though sometimes confuses evidence with interpretation.</span><span class="vi" lang="vi">Thể hiện hiểu biết đầy đủ. Giải thích đúng một phần các sự kiện Thế chiến I và cách các nhà sử học dùng bằng chứng, nhưng đôi khi nhầm lẫn bằng chứng với diễn giải.</span></div>
+        <div class="lvl"><span class="lvl__band">5–6</span><span class="en">Shows substantial understanding. Explains WWI content accurately. Clearly separates evidence from interpretation and explains why interpretations change.</span><span class="vi" lang="vi">Thể hiện hiểu biết vững chắc. Giải thích chính xác nội dung Thế chiến I. Phân biệt rõ bằng chứng với diễn giải và giải thích vì sao các cách diễn giải thay đổi.</span></div>
+        <div class="lvl"><span class="lvl__band">7–8</span><span class="en">Shows excellent understanding. Gives thorough, accurate explanations with well-chosen examples of how and why historians’ interpretations of WWI have been revised.</span><span class="vi" lang="vi">Thể hiện hiểu biết xuất sắc. Giải thích kỹ lưỡng, chính xác, với ví dụ được chọn tốt về việc các cách diễn giải Thế chiến I của các nhà sử học đã được xem xét lại như thế nào và vì sao.</span></div>
+      </div>
+    </details>
+
+    <details class="strand">
+      <summary><span><span class="en">Criterion D, strand i: discussing concepts (causality, perspective, power)</span><span class="vi" lang="vi">Tiêu chí D, nhánh i: thảo luận khái niệm (quan hệ nhân quả, góc nhìn, quyền lực)</span></span></summary>
+      <div class="levels">
+        <div class="lvl"><span class="lvl__band">1–2</span><span class="en">Mentions a concept with limited analysis.</span><span class="vi" lang="vi">Nhắc đến một khái niệm nhưng phân tích còn hạn chế.</span></div>
+        <div class="lvl"><span class="lvl__band">3–4</span><span class="en">Analyses a concept, e.g. distinguishes a trigger from a long-term cause.</span><span class="vi" lang="vi">Phân tích một khái niệm, ví dụ: phân biệt nguyên nhân trực tiếp (ngòi nổ) với nguyên nhân sâu xa.</span></div>
+        <div class="lvl"><span class="lvl__band">5–6</span><span class="en">Discusses concepts and connects them to the evidence and to other speakers’ points.</span><span class="vi" lang="vi">Thảo luận các khái niệm và liên hệ chúng với bằng chứng và với ý kiến của những người nói khác.</span></div>
+        <div class="lvl"><span class="lvl__band">7–8</span><span class="en">Gives a detailed discussion that develops concepts across the seminar, e.g. how power shaped who wrote early explanations of the war.</span><span class="vi" lang="vi">Thảo luận chi tiết, phát triển các khái niệm xuyên suốt buổi seminar, ví dụ: quyền lực đã quyết định ai là người viết những lời giải thích đầu tiên về cuộc chiến như thế nào.</span></div>
+      </div>
+    </details>
+
+    <details class="strand">
+      <summary><span><span class="en">Criterion D, strand iv: interpreting perspectives and their implications</span><span class="vi" lang="vi">Tiêu chí D, nhánh iv: diễn giải các góc nhìn và hệ quả của chúng</span></span></summary>
+      <div class="levels">
+        <div class="lvl"><span class="lvl__band">1–2</span><span class="en">Identifies that people disagree, with minimal implications.</span><span class="vi" lang="vi">Nhận ra rằng mọi người có bất đồng, nhưng nêu rất ít hệ quả.</span></div>
+        <div class="lvl"><span class="lvl__band">3–4</span><span class="en">Interprets different perspectives and some of their implications.</span><span class="vi" lang="vi">Diễn giải các góc nhìn khác nhau và một số hệ quả của chúng.</span></div>
+        <div class="lvl"><span class="lvl__band">5–6</span><span class="en">Interprets perspectives (national, historiographical, period-based) and their implications.</span><span class="vi" lang="vi">Diễn giải các góc nhìn (theo quốc gia, theo trường phái sử học, theo thời kỳ) và hệ quả của chúng.</span></div>
+        <div class="lvl"><span class="lvl__band">7–8</span><span class="en">Thoroughly interprets a range of perspectives, explains why each arose, and says what follows if we accept them.</span><span class="vi" lang="vi">Diễn giải kỹ lưỡng nhiều góc nhìn, giải thích vì sao mỗi góc nhìn xuất hiện, và nêu điều gì xảy ra nếu ta chấp nhận chúng.</span></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ vi. PARENTS ============ -->
+<section class="panel parents" id="parents" role="tabpanel" aria-labelledby="tab-parents" tabindex="0" hidden>
+  <div class="block">
+    <span class="label"><span class="en">Tips for parents</span><span class="vi" lang="vi">Lời khuyên cho phụ huynh</span></span>
+    <h2><span class="en">How you can help</span><span class="vi" lang="vi">Quý phụ huynh có thể giúp như thế nào</span></h2>
+    <p class="en intro">Your child will discuss how and why historians disagree about the causes of the First World War. They are graded on their own thinking, out loud.</p>
+    <p class="vi intro" lang="vi">Con sẽ thảo luận về việc các nhà sử học bất đồng như thế nào và vì sao về nguyên nhân của Chiến tranh thế giới thứ nhất. Con được chấm điểm dựa trên suy nghĩ của chính mình, được nói thành lời.</p>
+    <ul class="p-list">
+      <li><span class="en">Ask your child to explain both sides of one focus question.</span><span class="vi" lang="vi">Nhờ con giải thích cả hai phía của một câu hỏi trọng tâm.</span></li>
+      <li><span class="en">Ask:</span><span class="vi" lang="vi">Hỏi con:</span> <span class="p-q"><span class="en">“What’s your evidence?”</span><span class="vi" lang="vi">“Bằng chứng của con là gì?”</span></span> <span class="en">and</span><span class="vi" lang="vi">và</span> <span class="p-q"><span class="en">“Why might a historian from another country see it differently?”</span><span class="vi" lang="vi">“Vì sao một nhà sử học ở nước khác có thể nhìn nhận khác đi?”</span></span></li>
+      <li><span class="en">Encourage them to practise saying their points aloud.</span><span class="vi" lang="vi">Khuyến khích con luyện nói to các ý của mình.</span></li>
+      <li><span class="en">Please don’t research answers for them or write their talking points.</span><span class="vi" lang="vi">Xin đừng tìm câu trả lời thay con hoặc viết sẵn ý để con nói.</span></li>
+      <li><span class="en">English is a second language for most students. Discussing the ideas in Vietnamese at home is fine, and it helps.</span><span class="vi" lang="vi">Tiếng Anh là ngôn ngữ thứ hai của hầu hết học sinh. Thảo luận các ý tưởng bằng tiếng Việt ở nhà là hoàn toàn được, và rất có ích.</span></li>
+    </ul>
+  </div>
+</section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <div class="site-footer__name">Mr. Colin Brownlie</div>
+                <div class="site-footer__meta" data-en="teachercolin.com · Dewey Schools, Hanoi" data-vi="teachercolin.com · Trường Dewey, Hà Nội">teachercolin.com · Dewey Schools, Hanoi</div>
+                <div class="site-footer__contact" data-en="Contact: Parents — Edufit App · Students — Email" data-vi="Liên hệ: Phụ huynh — Ứng dụng Edufit · Học sinh — Email">Contact: Parents — Edufit App · Students — Email</div>
+            </div>
+            <nav class="site-footer__links" aria-label="Footer">
+                <a href="../index.html" data-en="Home" data-vi="Trang chủ">Home</a>
+                <a href="../8-athens.html">8 Athens</a><a href="../9-zurich.html">9 Zurich</a><a href="../10-edmonton.html" class="is-current">10 Edmonton</a>
+                <a href="../summer-learning.html" data-en="Summer Learning" data-vi="Học tập mùa hè">Summer Learning</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="../assets/lang-toggle.js"></script>
+    <script>
+(function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    var shell = document.getElementById('tabs-shell');
+
+    function select(id, scroll) {
+        if (!document.getElementById(id) || !document.getElementById('tab-' + id)) id = 'overview';
+        tabs.forEach(function (t) {
+            var on = t.dataset.tab === id;
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+            t.tabIndex = on ? 0 : -1;
+            document.getElementById(t.dataset.tab).hidden = !on;
+            if (on) {
+                var strip = t.parentNode;
+                strip.scrollTo({ left: t.offsetLeft - (strip.clientWidth - t.offsetWidth) / 2 });
+            }
+        });
+        if (scroll) {
+            var top = document.getElementById('programme').getBoundingClientRect().top + window.scrollY - shell.offsetHeight;
+            if (window.scrollY > top) window.scrollTo({ top: top });
+        }
+    }
+    tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () {
+            if (location.hash !== '#' + t.dataset.tab) history.replaceState(null, '', '#' + t.dataset.tab);
+            select(t.dataset.tab, true);
+        });
+        t.addEventListener('keydown', function (e) {
+            var next = null;
+            if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+            else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+            else if (e.key === 'Home') next = tabs[0];
+            else if (e.key === 'End') next = tabs[tabs.length - 1];
+            if (!next) return;
+            e.preventDefault();
+            next.focus();
+            next.click();
+        });
+    });
+    window.addEventListener('hashchange', function () { select(location.hash.slice(1), true); });
+    select(location.hash.slice(1), false);
+    if (location.hash) {
+        window.addEventListener('load', function () {
+            var top = document.getElementById('programme').getBoundingClientRect().top + window.scrollY - shell.offsetHeight;
+            window.scrollTo(0, Math.max(0, top));
+        });
+    }
+
+    // Darken the tab strip once it sticks to the top
+    if (window.IntersectionObserver) {
+        new IntersectionObserver(function (entries) {
+            shell.classList.toggle('is-stuck', entries[0].intersectionRatio < 1);
+        }, { threshold: [1], rootMargin: '-1px 0px 0px 0px' }).observe(shell);
+    }
+
+    // Rubric: open / close all strands
+    var strands = Array.prototype.slice.call(document.querySelectorAll('details.strand'));
+    var expand = document.getElementById('expand-all');
+    function syncExpand() {
+        var allOpen = strands.every(function (d) { return d.open; });
+        expand.setAttribute('aria-pressed', allOpen ? 'true' : 'false');
+        expand.querySelector('.en').textContent = allOpen ? 'Close all strands' : 'Open all strands';
+        expand.querySelector('.vi').textContent = allOpen ? 'Đóng tất cả' : 'Mở tất cả';
+    }
+    expand.addEventListener('click', function () {
+        var open = !strands.every(function (d) { return d.open; });
+        strands.forEach(function (d) { d.open = open; });
+        syncExpand();
+    });
+    strands.forEach(function (d) { d.addEventListener('toggle', syncExpand); });
+
+    // Print: every tab, every strand open
+    var printState = null;
+    window.addEventListener('beforeprint', function () {
+        printState = strands.map(function (d) { return d.open; });
+        strands.forEach(function (d) { d.open = true; });
+    });
+    window.addEventListener('afterprint', function () {
+        if (printState) strands.forEach(function (d, i) { d.open = printState[i]; });
+        printState = null;
+        syncExpand();
+    });
+})();
+    </script>
+</body>
+</html>
