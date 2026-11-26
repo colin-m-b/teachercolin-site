@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 2: The Mood of the Movement | 9 Zurich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700;900&family=Overpass+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stations.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* Theme: a 1960s highway road map. Events are stops on the route; the panel is an elevation profile of the movement's mood. */
+        body {
+            font-family: 'Overpass', 'IBM Plex Sans', sans-serif;
+            background: #EDE7D3;
+            background-image: linear-gradient(rgba(90,120,90,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(90,120,90,.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        header.map-title { padding: 34px 0 6px; }
+        .shield {
+            display: inline-grid; place-items: center; width: 74px; height: 80px; float: left; margin: 4px 18px 6px 0;
+            background: #fff; border: 4px solid #1F2421; border-radius: 6px 6px 50% 50% / 6px 6px 40% 40%; font-weight: 900; font-size: 30px;
+        }
+        h1 { font-weight: 900; font-size: clamp(34px, 6vw, 60px); line-height: 1; text-transform: uppercase; letter-spacing: -.01em; }
+        .subtitle { font-size: 20px; margin-top: 6px; }
+        .st-meta { margin-top: 14px; }
+
+        .layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+        @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
+        .route { position: relative; padding-left: 48px; }
+        .route::before { content: ''; position: absolute; left: 18px; top: 10px; bottom: 10px; width: 10px; background: var(--accent); border-radius: 5px; }
+        .stop { position: relative; margin-bottom: 14px; background: #fff; border: 3px solid #1F2421; box-shadow: 3px 3px 0 #1F2421; padding: 10px 14px 12px; }
+        .stop::before { content: ''; position: absolute; left: -43px; top: 16px; width: 22px; height: 22px; background: #fff; border: 5px solid #1F2421; border-radius: 50%; }
+        .stop.rated::before { background: #F2C14E; }
+        .ev__date { font-family: 'Overpass Mono', monospace; font-weight: 700; font-size: 15px; color: var(--accent); }
+        .ev__name { font-weight: 900; font-size: 19px; line-height: 1.15; }
+        .ev__gloss { font-size: 16px; color: var(--ink-2); line-height: 1.35; margin-top: 2px; }
+
+        .scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-top: 10px; }
+        .scale button {
+            border: 2px solid #1F2421; background: #fff; padding: 6px 2px; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 13px; font-weight: 600; line-height: 1.15; touch-action: manipulation;
+        }
+        .scale button:hover { background: #FBF6E9; }
+        .scale button[aria-pressed="true"] { background: #1F2421; color: #fff; }
+
+        .panel { position: sticky; top: 14px; background: #1F2421; color: #fff; padding: 18px; }
+        @media (max-width: 860px) { .panel { position: static; } }
+        .panel h2 { font-weight: 900; text-transform: uppercase; font-size: 22px; }
+        .panel p { font-size: 15px; color: #ddd; margin: 4px 0 10px; }
+        .graph { background: #FBF6E9; width: 100%; height: auto; display: block; }
+        .count { font-family: 'Overpass Mono', monospace; color: #F2C14E; font-size: 14px; margin-top: 10px; }
+        .reflect { display: none; margin-top: 14px; border-top: 1px solid #555; padding-top: 12px; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; }
+        .reflect.show { display: block; }
+        .reflect li { margin: 6px 0 6px 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="st-bar">
+        <span class="st-bar__class">9 Zurich · Background stations</span>
+        <a href="index.html">← All stations</a>
+    </div>
+
+    <main class="st-wrap">
+        <header class="map-title">
+            <div class="shield">2</div>
+            <h1>The Mood of the Movement</h1>
+            <p class="subtitle">How did it feel to be in the movement, from 1954 to 1968?</p>
+            <div class="st-meta"><span>Station 2</span><span>12 minutes</span></div>
+            <div style="clear:both"></div>
+        </header>
+
+        <div class="st-task">
+            <h2>Your task</h2>
+            <ol>
+                <li>Read the 11 stops on the route. They are in time order.</li>
+                <li>For each stop, imagine you are a young Black activist hearing the news. Choose how you would feel, from <strong>very frustrated</strong> to <strong>very hopeful</strong>. There is no single right answer, but you must be able to explain your choice.</li>
+                <li>Watch your mood graph build on the right. When it is finished, record your ratings in your packet and answer the questions.</li>
+            </ol>
+        </div>
+
+        <div class="layout">
+            <div class="route" id="route"></div>
+            <aside class="panel">
+                <h2>Mood graph</h2>
+                <p>Higher means more hopeful. Lower means more frustrated.</p>
+                <svg class="graph" id="graph" viewBox="0 0 460 300" role="img" aria-label="Your mood graph"></svg>
+                <div class="count" id="count">0 / 11 stops rated</div>
+                <div class="reflect" id="reflect">
+                    <strong>Your graph is done. Look at its shape:</strong>
+                    <ul>
+                        <li>Where are the biggest rises and drops? Which events caused them?</li>
+                        <li>Compare the early years (1954–1964) with the later years (1965–1968). What changed?</li>
+                        <li>If people wrote songs at the highest point and at the lowest point, how might those songs sound different?</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <div class="st-source">
+            <h2>Sources</h2>
+            <ul>
+                <li>Event dates and details: <i>Martin Luther King, Jr. Encyclopedia</i>, Martin Luther King, Jr. Research and Education Institute, Stanford University. <a href="https://kinginstitute.stanford.edu/king-resources/king-encyclopedia">kinginstitute.stanford.edu</a>.</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+    const EVENTS = [
+        { date: 'May 1954',  name: 'Brown v. Board of Education', gloss: 'The Supreme Court rules that segregated public schools are unconstitutional. But it does not say how fast schools must change, and many Southern schools stay segregated for years.' },
+        { date: 'Dec 1955',  name: 'Montgomery Bus Boycott begins', gloss: 'Rosa Parks is arrested for refusing to give up her bus seat. Black residents stop riding the city’s buses. The boycott lasts more than a year and ends with the buses desegregated.' },
+        { date: 'Feb 1960',  name: 'Greensboro sit-ins', gloss: 'Four Black college students sit at a “whites only” lunch counter and refuse to leave. Sit-ins spread to dozens of cities. Protesters are heckled, beaten and arrested.' },
+        { date: 'May 1961',  name: 'Freedom Rides', gloss: 'Black and white activists ride buses through the South to test whether bus stations have really been desegregated. One bus is firebombed. Hundreds of riders are jailed in Mississippi.' },
+        { date: 'June 1963', name: 'Medgar Evers murdered', gloss: 'The NAACP’s leader in Mississippi is shot in the back outside his home.' },
+        { date: 'Aug 1963',  name: 'March on Washington', gloss: 'About 250,000 people march in Washington, D.C., for jobs and freedom. Martin Luther King Jr. gives his “I Have a Dream” speech.' },
+        { date: 'Sept 1963', name: '16th Street Baptist Church bombing', gloss: 'A bomb explodes at a Black church in Birmingham, Alabama, on a Sunday morning. Four girls are killed.' },
+        { date: 'July 1964', name: 'Civil Rights Act signed', gloss: 'A new federal law makes segregation in public places, such as restaurants, hotels and parks, illegal.' },
+        { date: 'Mar 1965',  name: 'Selma-to-Montgomery marches', gloss: 'Marchers for voting rights are beaten by state troopers on “Bloody Sunday.” They march again and reach Montgomery. That August, the Voting Rights Act becomes law.' },
+        { date: 'June 1966', name: '“Black Power” becomes a slogan', gloss: 'On a march in Mississippi, Stokely Carmichael leads the crowd in the cry “We want Black Power!” Some activists start to question nonviolence and working with white allies.' },
+        { date: 'Apr 1968',  name: 'Martin Luther King Jr. assassinated', gloss: 'King is shot and killed in Memphis, Tennessee. Protests and riots break out in more than 100 cities.' }
+    ];
+    const LABELS = ['Very frustrated', 'Frustrated', 'Mixed', 'Hopeful', 'Very hopeful'];
+    const scores = Array(EVENTS.length).fill(null);
+    const route = document.getElementById('route');
+
+    EVENTS.forEach((e, i) => {
+        const d = document.createElement('div');
+        d.className = 'stop'; d.dataset.i = i;
+        d.innerHTML = `<div class="ev__date">Stop ${i + 1} · ${e.date}</div><div class="ev__name">${e.name}</div><div class="ev__gloss">${e.gloss}</div>
+            <div class="scale" role="group" aria-label="How would you feel?">${LABELS.map((l, v) => `<button type="button" data-v="${v}" aria-pressed="false">${l}</button>`).join('')}</div>`;
+        route.appendChild(d);
+    });
+
+    route.addEventListener('click', ev => {
+        const b = ev.target.closest('.scale button'); if (!b) return;
+        const stop = b.closest('.stop'); const i = +stop.dataset.i;
+        scores[i] = +b.dataset.v;
+        stop.querySelectorAll('.scale button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+        stop.classList.add('rated');
+        draw();
+    });
+
+    function draw() {
+        const svg = document.getElementById('graph');
+        const L = 92, R = 448, T = 18, B = 250;
+        const x = i => L + (R - L) * i / (EVENTS.length - 1);
+        const y = v => B - (B - T) * v / 4;
+        let g = '';
+        LABELS.forEach((l, v) => {
+            g += `<line x1="${L}" x2="${R}" y1="${y(v)}" y2="${y(v)}" stroke="#ddd5bf"/>`;
+            g += `<text x="${L - 6}" y="${y(v) + 4}" font-size="11" text-anchor="end" fill="#555" font-family="IBM Plex Sans, sans-serif">${l}</text>`;
+        });
+        EVENTS.forEach((e, i) => g += `<text x="${x(i)}" y="${B + 18}" font-size="11" text-anchor="middle" fill="#333" font-family="Overpass Mono, monospace">${i + 1}</text>`);
+        g += `<text x="${(L + R) / 2}" y="${B + 40}" font-size="11" text-anchor="middle" fill="#555" font-family="IBM Plex Sans, sans-serif">Stop number (1954 → 1968)</text>`;
+        let path = '', started = false;
+        scores.forEach((v, i) => { if (v === null) { started = false; return; } path += `${started ? 'L' : 'M'}${x(i)},${y(v)} `; started = true; });
+        if (path) g += `<path d="${path}" fill="none" stroke="#C8452C" stroke-width="4" stroke-linejoin="round"/>`;
+        scores.forEach((v, i) => { if (v !== null) g += `<circle cx="${x(i)}" cy="${y(v)}" r="6" fill="#1F2421"/>`; });
+        svg.innerHTML = g;
+        const n = scores.filter(v => v !== null).length;
+        document.getElementById('count').textContent = `${n} / 11 stops rated`;
+        document.getElementById('reflect').classList.toggle('show', n === EVENTS.length);
+    }
+    draw();
+    </script>
+</body>
+</html>

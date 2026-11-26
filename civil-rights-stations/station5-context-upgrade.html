@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 5: Context Upgrade | 9 Zurich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Caveat:wght@600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stations.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* Theme: an editor's desk. Typed drafts, marked up in red pen. */
+        body { background: #6E7F74; font-family: 'Courier Prime', 'Courier New', monospace; }
+        .desk { max-width: 1040px; margin: 0 auto; padding: 30px clamp(16px, 4vw, 40px) 10px; }
+        .sheet {
+            background: #FFFEF8; padding: clamp(22px, 4vw, 44px); margin-bottom: 26px; position: relative;
+            box-shadow: 0 12px 28px rgba(0,0,0,.28);
+            background-image: repeating-linear-gradient(#FFFEF8 0 33px, #E3EAF3 33px 34px);
+        }
+        .sheet--tilt { transform: rotate(-.6deg); }
+        .sheet--tilt2 { transform: rotate(.5deg); }
+        .clip { position: absolute; top: -16px; left: 50%; width: 120px; height: 34px; margin-left: -60px; background: #9AA3A8; border-radius: 6px 6px 2px 2px; box-shadow: inset 0 -6px 0 #7C858A; }
+        h1 { font-size: clamp(38px, 7vw, 66px); line-height: 1; font-weight: 700; }
+        .pen { font-family: 'Caveat', cursive; color: #C0281B; font-size: 30px; line-height: 1.1; }
+        .sheet .st-meta { color: #1F2421; margin-top: 12px; font-family: 'IBM Plex Sans', sans-serif; }
+
+        .levels { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; font-family: 'IBM Plex Sans', sans-serif; }
+        @media (max-width: 700px) { .levels { grid-template-columns: 1fr; } }
+        .level { border: 2px solid #1F2421; padding: 12px 14px; background: #fff; }
+        .level b { display: block; font-size: 15px; text-transform: uppercase; letter-spacing: .08em; }
+        .level p { font-size: 18px; margin-top: 4px; }
+
+        .draft { margin-top: 10px; }
+        .draft__label { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 14px; color: var(--muted); margin: 18px 0 4px; }
+        .draft__text { font-size: 22px; line-height: 34px; }
+        .tag { display: inline-block; font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 14px; border: 2px solid #1F2421; padding: 0 8px; margin-right: 6px; vertical-align: middle; }
+
+        .formula { font-size: 22px; line-height: 1.6; border: 3px dashed #C0281B; padding: 14px 18px; margin-top: 10px; background: #fff; }
+        .formula span { background: #FFF0A8; padding: 0 4px; }
+        .checklist { font-family: 'IBM Plex Sans', sans-serif; font-size: 18px; list-style: none; margin-top: 10px; }
+        .checklist li::before { content: '☐ '; font-size: 22px; }
+
+        .st-task { background: #fff; }
+        .st-source { color: #E7ECE8; } .st-source h2 { color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="st-bar">
+        <span class="st-bar__class">9 Zurich · Background stations</span>
+        <a href="index.html">← All stations</a>
+    </div>
+
+    <div class="desk">
+        <div class="sheet sheet--tilt">
+            <div class="clip"></div>
+            <h1>Context Upgrade</h1>
+            <div class="pen">Don’t just mention the history. Use it to explain the song!</div>
+            <div class="st-meta"><span>Station 5</span><span>12 minutes</span></div>
+
+            <div class="levels">
+                <div class="level"><b>Level 3–4 (Adequate)</b><p>“Mentions context but doesn’t link it to meaning.”</p></div>
+                <div class="level"><b>Level 5–6 (Competent)</b><p>“Uses context to explain the song’s message.”</p></div>
+            </div>
+            <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:var(--muted); margin-top:8px;">From the Criterion A rubric, strand i: how well you use context.</p>
+        </div>
+
+        <div class="sheet sheet--tilt2">
+            <div class="pen">Draft 1: a song we studied in class</div>
+            <div class="draft">
+                <div class="draft__label"><span class="tag">X</span>Sentence X</div>
+                <p class="draft__text">“Swing Low, Sweet Chariot” is a spiritual that was sung by enslaved people in America.</p>
+                <div class="draft__label"><span class="tag">Y</span>Sentence Y</div>
+                <p class="draft__text">Because enslaved people could be punished for talking openly about freedom, the image of a “sweet chariot” coming to carry the singer “home” could hold a hidden meaning: escape to freedom, not only a journey to heaven.</p>
+            </div>
+        </div>
+
+        <div class="sheet sheet--tilt">
+            <div class="pen">Draft 2: a labor song we studied in class</div>
+            <div class="draft">
+                <div class="draft__label"><span class="tag">P</span>Sentence P</div>
+                <p class="draft__text">Because many coal miners were paid in “scrip” that could only be spent at the company-owned store, the line “I owe my soul to the company store” shows how debt trapped the miners and made the company feel like their owner.</p>
+                <div class="draft__label"><span class="tag">Q</span>Sentence Q</div>
+                <p class="draft__text">“Sixteen Tons” is a song about coal miners that was written by Merle Travis in 1946.</p>
+            </div>
+        </div>
+
+        <div class="sheet sheet--tilt2">
+            <div class="pen">Your turn: a context sentence that works</div>
+            <div class="formula">Because <span>[a specific fact about the time, place or event]</span>, the <span>[lyric or musical choice]</span> <span>[creates this meaning or effect]</span>.</div>
+            <ul class="checklist">
+                <li>Names one specific fact, such as a date, event, law or place</li>
+                <li>Links it with <em>because</em>, <em>so</em>, or <em>which means</em></li>
+                <li>Explains a lyric or a musical choice, not just the song in general</li>
+            </ul>
+        </div>
+
+        <div class="st-task">
+            <h2>Your task (write in your packet)</h2>
+            <ol>
+                <li>For each draft, decide which sentence is Level 3–4 and which is Level 5–6.</li>
+                <li>Underline the context fact in the stronger sentence. Then explain what the stronger sentence <em>does</em> with that fact.</li>
+                <li>Choose another song we studied in class: a spiritual, or a labor song such as “9 to 5” or “Take This Job and Shove It.” Write your own Level 5–6 context sentence about it, using a fact about when and why it was sung. Check it against the checklist.</li>
+            </ol>
+        </div>
+
+        <div class="st-source">
+            <h2>Sources</h2>
+            <ul>
+                <li>Rubric language: MYP Language and Literature Criterion A descriptors, as adapted by Mr. Colin.</li>
+                <li>Coal miners and scrip: “Scrip: A Coal Miner’s Credit Card,” Big South Fork National River and Recreation Area, National Park Service, <a href="https://home.nps.gov/biso/learn/historyculture/scrip.htm">nps.gov</a>; and “Tennessee Ernie Ford song about coal mining hit No. 1 60 years ago,” MPR News, December 22, 2015, <a href="https://www.mprnews.org/story/2015/12/22/tennessee-ernie-ford-sixteen-tons">mprnews.org</a>.</li>
+                <li>Lyrics quoted: “Swing Low, Sweet Chariot” (traditional, public domain); “Sixteen Tons” by Merle Travis (1946).</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
