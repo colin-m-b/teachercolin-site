@@ -1,0 +1,87 @@
+/* ================================
+   9 Zurich · Civil Rights background stations
+   Shared chrome only. Each station page adds its own theme.
+   ================================ */
+
+:root {
+    --ink: #1F2421;
+    --ink-2: #3B443E;
+    --muted: #6B736C;
+    --accent: #C8452C;
+    --accent-pale: #FDF0EC;
+    --yes: #2E6B3F;
+    --yes-pale: #E3F1E6;
+    --no: #A3321F;
+    --no-pale: #FBE6E1;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body { line-height: 1.55; font-size: 18px; color: var(--ink); }
+img { max-width: 100%; }
+button { font: inherit; }
+
+.st-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding: 10px clamp(16px, 4vw, 40px);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px;
+    background: #1F2421; color: #fff;
+}
+.st-bar a { color: #fff; text-decoration: none; opacity: .85; }
+.st-bar a:hover { opacity: 1; text-decoration: underline; }
+.st-bar__class { font-weight: 600; letter-spacing: .04em; }
+
+.st-wrap { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+
+.st-meta {
+    display: inline-flex; gap: 10px; flex-wrap: wrap;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; font-weight: 600;
+}
+.st-meta span { padding: 4px 10px; border: 2px solid currentColor; border-radius: 999px; }
+
+.st-task {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    border-left: 6px solid var(--accent);
+    background: #fff; color: var(--ink);
+    padding: 18px 22px; margin: 28px 0;
+    box-shadow: 0 1px 0 rgba(0,0,0,.08);
+}
+.st-task h2 { font-size: 20px; margin-bottom: 8px; }
+.st-task ol, .st-task ul { padding-left: 1.3em; }
+.st-task li { margin: 6px 0; }
+
+.st-source {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; color: var(--muted);
+    margin: 40px 0 60px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,.15);
+}
+.st-source h2 { font-size: 15px; color: var(--ink-2); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .08em; }
+.st-source li { margin: 4px 0 4px 1.2em; }
+.st-source a { color: inherit; }
+
+.st-note {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px;
+    background: #FFF8E1; border: 1px solid #E8D48A; padding: 10px 14px; margin: 16px 0;
+}
+
+/* Shared interactive pieces (Stations 2 and 4) */
+.is-selected { outline: 4px solid #F2C14E !important; outline-offset: 2px; }
+.is-right { background: var(--yes-pale) !important; border-color: var(--yes) !important; }
+.is-wrong { animation: shake .35s; background: var(--no-pale) !important; border-color: var(--no) !important; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+.st-btn {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 700; font-size: 17px;
+    background: var(--ink); color: #fff; border: 0; padding: 12px 22px; cursor: pointer;
+}
+.st-btn:disabled { opacity: .4; cursor: default; }
+.st-feedback { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 600; min-height: 1.6em; margin-top: 10px; }
+
+.st-done {
+    display: none; text-align: center; padding: 40px 20px; margin: 30px 0;
+    border: 4px solid var(--yes); background: var(--yes-pale);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+}
+.st-done.show { display: block; }
+.st-done h2 { font-size: 30px; margin-bottom: 8px; }
+
+@media print { .st-bar { display: none; } }

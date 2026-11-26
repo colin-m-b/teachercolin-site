@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 4: Listen Like an Analyst | 9 Zurich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stations.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* Theme: a 1960s field-recording session. Reel-to-reel tape boxes and a recordist's log sheet. */
+        body { background: #23201C; color: #F1E9D8; font-family: 'IBM Plex Sans', sans-serif; }
+        .head { padding: 36px 0 10px; }
+        .head small { font-family: 'IBM Plex Mono', monospace; letter-spacing: .14em; color: #E0A458; font-size: 14px; }
+        .head h1 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(54px, 10vw, 110px); line-height: .9; letter-spacing: .01em; }
+        .head .st-meta { color: #F1E9D8; margin-top: 10px; }
+        .reels { display: flex; gap: 10px; margin-top: 14px; }
+        .reel { width: 46px; height: 46px; border-radius: 50%; border: 5px solid #E0A458; position: relative; }
+        .reel::after { content: ''; position: absolute; inset: 14px; border-radius: 50%; background: #E0A458; }
+
+        .st-task { color: var(--ink); }
+        .tapes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        @media (max-width: 820px) { .tapes { grid-template-columns: 1fr; } }
+        .tape { background: #F1E9D8; color: #23201C; border: 3px solid #E0A458; }
+        .tape__label { display: flex; justify-content: space-between; align-items: baseline; background: #E0A458; padding: 6px 14px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; }
+        .tape__body { padding: 14px 16px 16px; }
+        .tape h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 36px; line-height: 1; }
+        .tape .by { font-weight: 700; margin: 2px 0 8px; }
+        .tape .ctx { font-size: 15px; color: #4A433A; margin-bottom: 12px; }
+        .video { position: relative; padding-top: 56.25%; background: #000; }
+        .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .alt { font-size: 13px; margin-top: 6px; }
+        .alt a { color: #23201C; }
+
+        .log { margin-top: 26px; background: #F1E9D8; color: #23201C; padding: 18px 20px; }
+        .log h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 34px; }
+        .terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-top: 10px; }
+        .term { border: 2px solid #23201C; padding: 8px 10px; background: #fff; font-size: 15px; }
+        .term b { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #8A3B22; }
+        .st-source { color: #CFC5B2; } .st-source h2 { color: #F1E9D8; } .st-source a { color: #F1E9D8; }
+    </style>
+</head>
+<body>
+    <div class="st-bar">
+        <span class="st-bar__class">9 Zurich · Background stations</span>
+        <a href="index.html">← All stations</a>
+    </div>
+
+    <main class="st-wrap">
+        <header class="head">
+            <small>FIELD RECORDING SESSION · TWO TAPES</small>
+            <h1>Listen Like an Analyst</h1>
+            <div class="st-meta"><span>Station 4</span><span>12 minutes</span></div>
+            <div class="reels"><span class="reel"></span><span class="reel"></span></div>
+        </header>
+
+        <div class="st-task">
+            <h2>Your task</h2>
+            <p>Freedom songs work through sound as much as words. At this station you listen to two real recordings and describe the <em>music</em>, not just the lyrics. Use headphones, or share one speaker quietly.</p>
+            <ol style="margin-top:8px;">
+                <li>Play Tape 1 all the way through. Fill in the Tape 1 column of the listening log on your packet.</li>
+                <li>Play Tape 2 all the way through. Fill in the Tape 2 column.</li>
+                <li>Use the musical terms below. Then answer the two “effect” questions on your packet.</li>
+            </ol>
+        </div>
+
+        <div class="tapes">
+            <section class="tape">
+                <div class="tape__label"><span>TAPE 1</span><span>recorded 1963 · about 3 min</span></div>
+                <div class="tape__body">
+                    <h2>This Little Light of Mine</h2>
+                    <div class="by">Fannie Lou Hamer</div>
+                    <p class="ctx">Hamer was a sharecropper and voting-rights organizer from Mississippi. This was one of her favorite songs, and she often sang it at meetings.</p>
+                    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/xhiV6DB_h_8" title="This Little Light of Mine, Fannie Lou Hamer" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+                    <div class="alt">Video not playing? <a href="https://www.youtube.com/watch?v=xhiV6DB_h_8" target="_blank" rel="noopener">Open it on YouTube</a>.</div>
+                </div>
+            </section>
+            <section class="tape">
+                <div class="tape__label"><span>TAPE 2</span><span>about 2½ min</span></div>
+                <div class="tape__body">
+                    <h2>Ain’t Gonna Let Nobody Turn Me Round</h2>
+                    <div class="by">The SNCC Freedom Singers</div>
+                    <p class="ctx">The Freedom Singers were young activists who formed a group in 1962 in Albany, Georgia, and toured the country singing to spread news of the movement. This song is based on an older spiritual.</p>
+                    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/_WxzBbDi0Ok" title="Ain't Gonna Let Nobody Turn Me Round, The Freedom Singers" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+                    <div class="alt">Video not playing? <a href="https://www.youtube.com/watch?v=_WxzBbDi0Ok" target="_blank" rel="noopener">Open it on YouTube</a>.</div>
+                </div>
+            </section>
+        </div>
+
+        <section class="log">
+            <h2>Musical terms to use</h2>
+            <div class="terms">
+                <div class="term"><b>solo / group</b>One singer, or many singers together.</div>
+                <div class="term"><b>call and response</b>A leader sings a line and the group answers.</div>
+                <div class="term"><b>harmony</b>Different notes sung at the same time, blending together.</div>
+                <div class="term"><b>a cappella</b>Singing with no instruments.</div>
+                <div class="term"><b>tempo</b>The speed of the music: slow, steady, fast.</div>
+                <div class="term"><b>rhythm / beat</b>The pulse you could clap or march to.</div>
+                <div class="term"><b>dynamics</b>How loud or soft the music is, and how that changes.</div>
+                <div class="term"><b>vocal delivery</b>How the voice sounds: strained, shouted, gentle, joyful, rough.</div>
+                <div class="term"><b>repetition</b>Words or lines that come back again and again.</div>
+                <div class="term"><b>lyric substitution</b>Swapping new words into a familiar song.</div>
+            </div>
+        </section>
+
+        <div class="st-source">
+            <h2>Sources</h2>
+            <ul>
+                <li>Fannie Lou Hamer, “This Little Light of Mine,” <i>Songs My Mother Taught Me</i>, Smithsonian Folkways Recordings, 2015. Based on a 1963 recording. <a href="https://folkways.si.edu/news-and-press/now-available-songs-my-mother-taught-me-by-fannie-lou-hamer">folkways.si.edu</a>.</li>
+                <li>The Freedom Singers, “Ain’t Gonna Let Nobody Turn Me Round,” <i>Sing for Freedom: The Story of the Civil Rights Movement Through Its Songs</i>, Smithsonian Folkways Recordings, 1990.</li>
+                <li>Background: “This Little Light of Mine,” Ballad of America, <a href="https://www.balladofamerica.org/this-little-light/">balladofamerica.org</a>; “Ain’t Gonna Let Nobody Turn Me ’Round” and “We Shall Overcome,” Voices Across Time Teacher’s Guide, University of Pittsburgh, <a href="https://voices.pitt.edu/TeachersGuide/Unit8/WeShallOvercome.htm">voices.pitt.edu</a>.</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
