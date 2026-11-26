@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 1: Living Under Jim Crow | 9 Zurich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stations.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* Theme: a bound book of state statutes */
+        body { background: #3A2F26; font-family: 'IM Fell English', Georgia, serif; }
+        .book {
+            background: #F3EAD3;
+            background-image: radial-gradient(ellipse at top left, rgba(255,255,255,.5), transparent 60%), radial-gradient(ellipse at bottom right, rgba(120,90,40,.12), transparent 60%);
+            max-width: 1000px; margin: 36px auto; padding: clamp(24px, 5vw, 64px);
+            box-shadow: 0 0 0 10px #5B4635, 0 0 0 12px #2A211A, 0 20px 50px rgba(0,0,0,.5);
+        }
+        .title-page { text-align: center; border-bottom: 3px double #2A211A; padding-bottom: 26px; margin-bottom: 10px; }
+        .title-page .st-meta { color: #5B4635; margin-bottom: 18px; }
+        .title-page small { font-family: 'IM Fell English SC', serif; font-size: 19px; letter-spacing: .2em; color: #5B4635; }
+        .title-page h1 { font-family: 'IM Fell English SC', serif; font-weight: 400; font-size: clamp(38px, 7vw, 70px); line-height: 1.05; margin: 8px 0; }
+        .title-page p { font-style: italic; font-size: 21px; max-width: 40ch; margin: 0 auto; }
+
+        .laws { columns: 2 340px; column-gap: 44px; column-rule: 1px solid rgba(42,33,26,.3); margin-top: 26px; }
+        .law { break-inside: avoid; margin-bottom: 26px; }
+        .law__head { display: flex; align-items: baseline; gap: 10px; border-bottom: 1px solid rgba(42,33,26,.35); padding-bottom: 4px; margin-bottom: 8px; }
+        .law__letter {
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 18px;
+            background: #2A211A; color: #F3EAD3; width: 32px; height: 32px; display: inline-grid; place-items: center; flex: none;
+        }
+        .law__topic { font-family: 'IM Fell English SC', serif; font-size: 22px; }
+        .law__state { margin-left: auto; font-style: italic; color: #5B4635; }
+        .law__text { font-size: 21px; line-height: 1.45; text-align: justify; hyphens: auto; }
+        .law__text::before { content: '§ '; color: #8A3B22; }
+
+        .st-note { margin-top: 26px; }
+        .st-task { background: #fff; }
+        .st-source { color: #D9CCB3; }
+        .st-source h2 { color: #F3EAD3; }
+    </style>
+</head>
+<body>
+    <div class="st-bar">
+        <span class="st-bar__class">9 Zurich · Background stations</span>
+        <a href="index.html">← All stations</a>
+    </div>
+
+    <div class="book">
+        <div class="title-page">
+            <div class="st-meta"><span>Station 1</span><span>12 minutes</span><span>Packet page 1</span></div><br>
+            <small>A sample of the laws of the</small>
+            <h1>Jim Crow South</h1>
+            <p>From the 1880s into the 1960s, laws like these decided where Black Americans could sit, eat, learn, work, play, marry, and be buried.</p>
+        </div>
+
+        <div class="st-note"><strong>About the language:</strong> these laws use the words “colored” and “negro.” Those were legal terms at the time and are offensive today. When you write, use “Black” or “African American.”</div>
+
+        <div class="laws">
+            <div class="law">
+                <div class="law__head"><span class="law__letter">A</span><span class="law__topic">Buses</span><span class="law__state">Alabama</span></div>
+                <p class="law__text">All passenger stations in this state operated by any motor transportation company shall have separate waiting rooms…</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">B</span><span class="law__topic">Restaurants</span><span class="law__state">Georgia</span></div>
+                <p class="law__text">All persons licensed to conduct a restaurant, shall serve either white people exclusively…</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">C</span><span class="law__topic">Barbers</span><span class="law__state">Georgia</span></div>
+                <p class="law__text">No colored barber shall serve as a barber [to] white women or girls.</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">D</span><span class="law__topic">Education</span><span class="law__state">Florida</span></div>
+                <p class="law__text">The schools for white children and the schools for negro children shall be conducted separately.</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">E</span><span class="law__topic">Textbooks</span><span class="law__state">North Carolina</span></div>
+                <p class="law__text">Books shall not be interchangeable between the white and colored schools…</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">F</span><span class="law__topic">Libraries</span><span class="law__state">North Carolina</span></div>
+                <p class="law__text">The state librarian is directed to fit up and maintain a separate place for the use of the colored people…</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">G</span><span class="law__topic">Parks</span><span class="law__state">Georgia</span></div>
+                <p class="law__text">It shall be unlawful for colored people to frequent any park owned or maintained by the city for the benefit, use and enjoyment of white persons…and unlawful for any white person to frequent any park owned or maintained by the city for the use and benefit of colored persons.</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">H</span><span class="law__topic">Mining</span><span class="law__state">Oklahoma</span></div>
+                <p class="law__text">The baths and lockers for the negroes shall be separate from the white race, but may be in the same building.</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">I</span><span class="law__topic">Marriage</span><span class="law__state">Georgia</span></div>
+                <p class="law__text">It shall be unlawful for a white person to marry anyone except a white person.</p>
+            </div>
+            <div class="law">
+                <div class="law__head"><span class="law__letter">J</span><span class="law__topic">Burial</span><span class="law__state">Georgia</span></div>
+                <p class="law__text">The officer in charge shall not bury, or allow to be buried, any colored persons upon ground set apart…</p>
+            </div>
+        </div>
+        <p style="font-style:italic; color:#5B4635; margin-top:6px;">“…” means the law continues. Only the first part is printed here.</p>
+
+        <div class="st-task">
+            <h2>Your task (packet page 1)</h2>
+            <ol>
+                <li><strong>Sort.</strong> Write each law’s letter in the right row of the “Areas of life” table.</li>
+                <li><strong>React.</strong> Which law surprised you most? Explain why in one or two sentences.</li>
+                <li><strong>Imagine.</strong> It is 1955. You are a Black teenager in a Southern town. Using at least three laws (give their letters), describe what an ordinary day would be like.</li>
+                <li><strong>Predict.</strong> Look at the song list on your packet. Which song do you think responds most directly to one of these laws? Explain.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="st-wrap">
+        <div class="st-source">
+            <h2>Source</h2>
+            <ul>
+                <li>“Jim Crow Laws.” Martin Luther King, Jr. National Historical Park, National Park Service, U.S. Department of the Interior. <a href="https://www.nps.gov/malu/learn/education/jim_crow_laws.htm">nps.gov/malu/learn/education/jim_crow_laws.htm</a>. The list was compiled by the park’s interpretive staff.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

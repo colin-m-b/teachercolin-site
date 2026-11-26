@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 2: Timeline Detectives | 9 Zurich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700;900&family=Overpass+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stations.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* Theme: a 1960s highway road map; events are stops on the route, songs are bus tickets */
+        body {
+            font-family: 'Overpass', 'IBM Plex Sans', sans-serif;
+            background: #EDE7D3;
+            background-image:
+                linear-gradient(rgba(90,120,90,.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(90,120,90,.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        header.map-title { padding: 34px 0 6px; }
+        .shield {
+            display: inline-grid; place-items: center; width: 74px; height: 80px; float: left; margin: 4px 18px 6px 0;
+            background: #fff; border: 4px solid #1F2421; border-radius: 6px 6px 50% 50% / 6px 6px 40% 40%;
+            font-weight: 900; font-size: 30px;
+        }
+        h1 { font-weight: 900; font-size: clamp(34px, 6vw, 60px); line-height: 1; text-transform: uppercase; letter-spacing: -.01em; }
+        .subtitle { font-size: 20px; margin-top: 6px; }
+        .st-meta { margin-top: 14px; }
+
+        .layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 10px; }
+        @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+
+        /* The route */
+        .route { position: relative; padding-left: 48px; }
+        .route::before { content: ''; position: absolute; left: 18px; top: 10px; bottom: 10px; width: 10px; background: var(--accent); border-radius: 5px; }
+        .stop { position: relative; margin-bottom: 12px; }
+        .stop::before {
+            content: ''; position: absolute; left: -40px; top: 18px; width: 22px; height: 22px;
+            background: #fff; border: 5px solid #1F2421; border-radius: 50%;
+        }
+        .stop__n { position: absolute; left: -110px; top: 18px; width: 56px; text-align: right; font-family: 'Overpass Mono', monospace; font-size: 13px; color: var(--muted); }
+        .slot {
+            min-height: 62px; border: 3px dashed rgba(31,36,33,.35); background: rgba(255,255,255,.55);
+            padding: 8px; cursor: pointer; transition: background .15s;
+        }
+        .slot:hover, .slot.drag-over { background: #fff; border-color: #1F2421; }
+        .slot.locked { border-style: solid; cursor: default; }
+
+        .era-label {
+            margin: 6px 0 12px -48px; padding: 6px 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; font-size: 15px;
+            background: #1F2421; color: #fff; display: none; position: relative; z-index: 2;
+        }
+        .part-b .era-label { display: inline-block; }
+
+        /* Event cards */
+        .ev {
+            background: #fff; border: 3px solid #1F2421; padding: 8px 12px; cursor: grab; user-select: none;
+            box-shadow: 3px 3px 0 #1F2421; touch-action: manipulation;
+        }
+        .ev__date { font-family: 'Overpass Mono', monospace; font-weight: 700; font-size: 15px; color: var(--accent); }
+        .ev__name { font-weight: 900; font-size: 18px; line-height: 1.15; }
+        .ev__gloss { font-size: 15px; color: var(--ink-2); line-height: 1.3; }
+        .slot .ev { box-shadow: none; }
+        .locked .ev { cursor: default; }
+
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+        .chip { background: #F2C14E; border: 2px solid #1F2421; padding: 2px 8px; font-size: 14px; font-weight: 700; }
+
+        /* Side panel */
+        .panel { position: sticky; top: 14px; background: #1F2421; color: #fff; padding: 18px; }
+        @media (max-width: 820px) { .panel { position: static; } }
+        .panel h2 { font-weight: 900; text-transform: uppercase; font-size: 22px; margin-bottom: 4px; }
+        .panel p { font-size: 16px; margin-bottom: 12px; color: #ddd; }
+        .deck { display: grid; gap: 10px; min-height: 80px; padding: 8px; border: 2px dashed rgba(255,255,255,.3); }
+        .deck .ev { color: var(--ink); }
+        .deck:empty::after { content: 'All cards placed. Press Check!'; color: #bbb; font-size: 15px; }
+        .panel .st-btn { background: #F2C14E; color: #1F2421; margin-top: 14px; width: 100%; }
+        .panel .st-feedback { color: #fff; }
+
+        /* Song tickets */
+        .ticket {
+            background: #FBF6E9; color: var(--ink); padding: 10px 14px 10px 18px; cursor: grab; user-select: none; position: relative;
+            border-left: 4px dashed #1F2421; touch-action: manipulation;
+        }
+        .ticket__top { display: flex; justify-content: space-between; gap: 8px; font-family: 'Overpass Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+        .ticket__title { font-weight: 900; font-size: 18px; line-height: 1.15; margin: 2px 0 4px; }
+        .ticket__blurb { font-size: 14.5px; line-height: 1.35; color: var(--ink-2); }
+        .ticket.placed { display: none; }
+
+        .progress { font-family: 'Overpass Mono', monospace; font-size: 14px; color: #F2C14E; margin-top: 8px; }
+
+        .part-a-only {}
+        .part-b .part-a-only { display: none; }
+        .part-b-only { display: none; }
+        .part-b .part-b-only { display: block; }
+    </style>
+</head>
+<body>
+    <div class="st-bar">
+        <span class="st-bar__class">9 Zurich · Background stations</span>
+        <a href="index.html">← All stations</a>
+    </div>
+
+    <main class="st-wrap" id="app">
+        <header class="map-title">
+            <div class="shield">2</div>
+            <h1>Timeline Detectives</h1>
+            <p class="subtitle">The road to civil rights, 1954–1968</p>
+            <div class="st-meta"><span>Station 2</span><span>12 minutes</span><span>Packet page 2</span></div>
+            <div style="clear:both"></div>
+        </header>
+
+        <div class="st-task part-a-only">
+            <h2>Part A: Build the route</h2>
+            <ol>
+                <li>Tap an event card on the right, then tap an empty stop on the route. (On a laptop you can also drag.)</li>
+                <li>Put all 11 events in time order, earliest at the top. To move a card, tap it again.</li>
+                <li>Press <strong>Check</strong>. Cards in the right place lock. The others go back so you can try again.</li>
+            </ol>
+        </div>
+        <div class="st-task part-b-only">
+            <h2>Part B: Match the songs</h2>
+            <ol>
+                <li>Read each song ticket. The description is from your playlist assignment sheet.</li>
+                <li>Tap a ticket, then tap the event it connects to most closely. Look for dates and event names.</li>
+                <li>If it’s right, the song sticks to that stop. If not, read again and try another stop.</li>
+                <li>When all 10 songs are placed, complete packet page 2.</li>
+            </ol>
+        </div>
+
+        <div class="layout">
+            <div class="route" id="route"></div>
+
+            <aside class="panel">
+                <div class="part-a-only">
+                    <h2>Event cards</h2>
+                    <p>Earliest goes at the top of the route.</p>
+                    <div class="deck" id="evDeck"></div>
+                    <button class="st-btn" id="checkBtn">Check my order</button>
+                    <div class="st-feedback" id="feedA" aria-live="polite"></div>
+                </div>
+                <div class="part-b-only">
+                    <h2>Song tickets</h2>
+                    <p>Tap a ticket, then tap a stop on the route.</p>
+                    <div class="progress" id="progress">0 / 10 songs placed</div>
+                    <div class="st-feedback" id="feedB" aria-live="polite"></div>
+                    <div class="deck" id="songDeck"></div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="st-done" id="done">
+            <h2>Route complete!</h2>
+            <p>Every event is in order and every song is matched. Now complete packet page 2.</p>
+        </div>
+
+        <div class="st-source">
+            <h2>Sources</h2>
+            <ul>
+                <li>Event dates: Martin Luther King, Jr. Encyclopedia, Martin Luther King, Jr. Research and Education Institute, Stanford University. <a href="https://kinginstitute.stanford.edu/king-resources/king-encyclopedia">kinginstitute.stanford.edu</a>.</li>
+                <li>Song descriptions: Mr. Colin, <a href="/assignments/9-zurich-civil-rights-playlist.html">Civil Rights Protest Song Playlist</a> assignment sheet.</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+    const EVENTS = [
+        { id: 'brown',   date: 'May 1954',  name: 'Brown v. Board of Education', gloss: 'The Supreme Court rules that segregated public schools are unconstitutional.' },
+        { id: 'boycott', date: 'Dec 1955',  name: 'Montgomery Bus Boycott begins', gloss: 'After Rosa Parks’s arrest, Black residents refuse to ride the city’s buses.' },
+        { id: 'sitins',  date: 'Feb 1960',  name: 'Greensboro sit-ins', gloss: 'Students sit at a “whites only” lunch counter and refuse to leave.' },
+        { id: 'rides',   date: 'May 1961',  name: 'Freedom Rides', gloss: 'Activists ride buses through the South to test bus-station segregation. Many are jailed in Mississippi.' },
+        { id: 'evers',   date: 'June 1963', name: 'Medgar Evers murdered', gloss: 'The NAACP’s Mississippi leader is shot outside his home.' },
+        { id: 'mow',     date: 'Aug 1963',  name: 'March on Washington', gloss: 'About 250,000 people march for jobs and freedom.' },
+        { id: 'bombing', date: 'Sept 1963', name: '16th Street Baptist Church bombing', gloss: 'A bomb at a Birmingham church kills four girls.' },
+        { id: 'cra',     date: 'July 1964', name: 'Civil Rights Act signed', gloss: 'Segregation in public places becomes illegal.' },
+        { id: 'selma',   date: 'Mar 1965',  name: 'Selma-to-Montgomery marches', gloss: 'Marchers for voting rights are attacked on “Bloody Sunday.” The Voting Rights Act follows that August.' },
+        { id: 'bp',      date: 'June 1966', name: '“Black Power” becomes a slogan', gloss: 'Stokely Carmichael leads the crowd’s cry on a march in Mississippi.' },
+        { id: 'mlk',     date: 'Apr 1968',  name: 'Martin Luther King Jr. assassinated', gloss: 'King is killed in Memphis, Tennessee.' }
+    ];
+    // Song descriptions are copied from the playlist assignment sheet.
+    const SONGS = [
+        { id: 's1', title: 'A Change Is Gonna Come', artist: 'Sam Cooke', year: '1964', ok: ['mow', 'cra'],
+          blurb: 'Sam Cooke wrote this song after experiencing racial discrimination, including being denied service at a whites-only motel. Released in 1964, it quickly became connected to the Civil Rights Movement because it spoke to ongoing struggles for legal and social equality.' },
+        { id: 's2', title: 'Oh, Freedom', artist: 'Odetta', year: '1950s–60s', ok: ['brown', 'boycott'],
+          blurb: 'Originally a spiritual sung by formerly enslaved people after the Civil War, “Oh, Freedom” was revived during the Civil Rights era. It linked the earlier struggle for emancipation with the ongoing fight for civil rights.' },
+        { id: 's3', title: 'Woke Up This Morning (With My Mind Stayed on Freedom)', artist: 'Various', year: '1961', ok: ['rides'],
+          blurb: 'This song was adapted in 1961 by Freedom Rider Robert Wesby while he was jailed in Jackson, Mississippi. It became closely tied to the Freedom Rides.' },
+        { id: 's4', title: 'We Shall Not Be Moved', artist: 'Various', year: '1930s–1960s', ok: ['brown', 'sitins', 'mow'],
+          blurb: 'Originally used in labor-union organizing in the early 20th century, the song was later adopted by civil-rights activists. It became connected to sit-ins, marches, and school-integration efforts throughout the 1950s and 1960s.' },
+        { id: 's5', title: 'Mississippi Goddam', artist: 'Nina Simone', year: '1964', ok: ['evers', 'bombing'],
+          blurb: 'Nina Simone wrote this song immediately after two major acts of racial violence: the murder of Medgar Evers in Mississippi and the bombing of the 16th Street Baptist Church in Birmingham, Alabama.' },
+        { id: 's6', title: 'To Be Young, Gifted and Black', artist: 'Nina Simone', year: '1970', ok: ['bp', 'mlk'],
+          blurb: 'Simone wrote this song in honor of playwright Lorraine Hansberry. Released in 1970, it aligned with the growing Black Pride and Black Arts movements.' },
+        { id: 's7', title: 'The Revolution Will Not Be Televised', artist: 'Gil Scott-Heron', year: '1970', ok: ['bp', 'mlk'],
+          blurb: 'Recorded in 1970, this piece challenged the idea that major social change would be presented or controlled by mainstream media. It reflected critiques of political institutions, consumer culture, and racial inequality.' },
+        { id: 's8', title: 'Say It Loud – I’m Black and I’m Proud', artist: 'James Brown', year: '1968', ok: ['mlk', 'bp'],
+          blurb: 'Released in 1968, just months after the assassination of Martin Luther King Jr., the song aligned with demands for racial justice and community empowerment. It became a popular song within the Black Power movement.' },
+        { id: 's9', title: 'If You Miss Me at the Back of the Bus', artist: 'Pete Seeger', year: '1963', ok: ['boycott', 'rides'],
+          blurb: 'This song emerged during the Civil Rights Movement as a response to segregation on buses and other public facilities. It symbolized the rejection of Jim Crow laws and the push toward integration during the early 1960s.' },
+        { id: 's10', title: 'Freedom Highway', artist: 'The Staple Singers', year: '1965', ok: ['selma'],
+          blurb: 'Written for the 1965 Selma-to-Montgomery march, the song was directly connected to the struggle for voting rights in the South.' }
+    ];
+
+    const $ = (s) => document.querySelector(s);
+    const route = $('#route'), evDeck = $('#evDeck'), songDeck = $('#songDeck');
+    let selected = null;      // element currently selected
+    let partB = false;
+    const placed = Array(EVENTS.length).fill(null); // event id in each slot
+    const locked = Array(EVENTS.length).fill(false);
+    let songsDone = 0;
+
+    function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+    const evById = Object.fromEntries(EVENTS.map(e => [e.id, e]));
+
+    function evCard(e) {
+        const d = document.createElement('div');
+        d.className = 'ev'; d.dataset.id = e.id; d.draggable = true; d.tabIndex = 0;
+        d.innerHTML = `<div class="ev__date">${e.date}</div><div class="ev__name">${e.name}</div><div class="ev__gloss">${e.gloss}</div>`;
+        return d;
+    }
+    function select(el) {
+        if (selected) selected.classList.remove('is-selected');
+        selected = (selected === el) ? null : el;
+        if (selected) selected.classList.add('is-selected');
+    }
+
+    // Build route slots
+    EVENTS.forEach((_, i) => {
+        if (i === 0) route.insertAdjacentHTML('beforeend', '<div class="era-label">Nonviolent direct action</div>');
+        if (i === 9) route.insertAdjacentHTML('beforeend', '<div class="era-label">Black Power and Black Pride</div>');
+        const stop = document.createElement('div');
+        stop.className = 'stop';
+        stop.innerHTML = `<div class="stop__n">Stop ${i + 1}</div><div class="slot" data-i="${i}"></div>`;
+        route.appendChild(stop);
+    });
+    shuffle(EVENTS).forEach(e => evDeck.appendChild(evCard(e)));
+
+    function renderSlot(i) {
+        const slot = route.querySelector(`.slot[data-i="${i}"]`);
+        const keepChips = slot.querySelector('.chips');
+        slot.innerHTML = '';
+        if (placed[i]) {
+            const c = evCard(evById[placed[i]]);
+            if (locked[i]) { c.draggable = false; slot.classList.add('locked', 'is-right'); }
+            slot.appendChild(c);
+        }
+        if (keepChips) slot.appendChild(keepChips);
+    }
+
+    function moveEventToSlot(id, i) {
+        if (locked[i]) return;
+        const from = placed.indexOf(id);
+        if (from > -1) { placed[from] = null; renderSlot(from); }
+        else { const card = evDeck.querySelector(`.ev[data-id="${id}"]`); if (card) card.remove(); }
+        if (placed[i]) evDeck.appendChild(evCard(evById[placed[i]])); // bump old card back
+        placed[i] = id; renderSlot(i);
+        selected = null;
+    }
+
+    // ---------- Part A interactions ----------
+    document.addEventListener('click', (ev) => {
+        const card = ev.target.closest('.ev');
+        const slot = ev.target.closest('.slot');
+        const ticket = ev.target.closest('.ticket');
+
+        if (!partB) {
+            if (card && !card.closest('.locked')) {
+                if (selected && selected !== card && slot) { // selected a deck card, tapped an occupied slot
+                    moveEventToSlot(selected.dataset.id, +slot.dataset.i); return;
+                }
+                select(card); return;
+            }
+            if (slot && selected) { moveEventToSlot(selected.dataset.id, +slot.dataset.i); return; }
+        } else {
+            if (ticket) { select(ticket); $('#feedB').textContent = ''; return; }
+            if (slot && selected) { placeSong(selected, +slot.dataset.i); return; }
+        }
+    });
+
+    // Drag and drop (mouse)
+    document.addEventListener('dragstart', (ev) => {
+        const el = ev.target.closest('.ev, .ticket');
+        if (!el) return;
+        ev.dataTransfer.setData('text/plain', el.dataset.id);
+        select(el); if (!selected) select(el);
+    });
+    route.addEventListener('dragover', (ev) => { const s = ev.target.closest('.slot'); if (s) { ev.preventDefault(); s.classList.add('drag-over'); } });
+    route.addEventListener('dragleave', (ev) => { const s = ev.target.closest('.slot'); if (s) s.classList.remove('drag-over'); });
+    route.addEventListener('drop', (ev) => {
+        const s = ev.target.closest('.slot'); if (!s) return;
+        ev.preventDefault(); s.classList.remove('drag-over');
+        const id = ev.dataTransfer.getData('text/plain');
+        if (!partB) moveEventToSlot(id, +s.dataset.i);
+        else { const t = songDeck.querySelector(`.ticket[data-id="${id}"]`); if (t) placeSong(t, +s.dataset.i); }
+    });
+
+    $('#checkBtn').addEventListener('click', () => {
+        if (placed.some(p => !p)) { $('#feedA').textContent = 'Place all 11 cards on the route first.'; return; }
+        let right = 0;
+        EVENTS.forEach((e, i) => {
+            if (placed[i] === e.id) { locked[i] = true; right++; }
+            else if (!locked[i]) { evDeck.appendChild(evCard(evById[placed[i]])); placed[i] = null; }
+            renderSlot(i);
+        });
+        if (right === EVENTS.length) { $('#feedA').textContent = 'Perfect order!'; setTimeout(startPartB, 700); }
+        else $('#feedA').textContent = `${right} of 11 are in the right place. The rest are back in the pile. Try again!`;
+    });
+
+    // ---------- Part B ----------
+    function startPartB() {
+        partB = true; selected = null;
+        document.getElementById('app').classList.add('part-b');
+        route.querySelectorAll('.slot').forEach(s => { s.classList.remove('locked', 'is-right'); s.style.cursor = 'pointer'; s.insertAdjacentHTML('beforeend', '<div class="chips"></div>'); });
+        shuffle(SONGS).forEach(s => {
+            const t = document.createElement('div');
+            t.className = 'ticket'; t.dataset.id = s.id; t.draggable = true; t.tabIndex = 0;
+            t.innerHTML = `<div class="ticket__top"><span>${s.artist}</span><span>${s.year}</span></div><div class="ticket__title">${s.title}</div><div class="ticket__blurb">${s.blurb}</div>`;
+            songDeck.appendChild(t);
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function placeSong(t, i) {
+        const song = SONGS.find(s => s.id === t.dataset.id);
+        const eventId = EVENTS[i].id;
+        const slot = route.querySelector(`.slot[data-i="${i}"]`);
+        if (song.ok.includes(eventId)) {
+            slot.querySelector('.chips').insertAdjacentHTML('beforeend', `<span class="chip">♪ ${song.title}</span>`);
+            t.classList.remove('is-selected'); t.classList.add('placed'); selected = null;
+            songsDone++;
+            $('#progress').textContent = `${songsDone} / 10 songs placed`;
+            $('#feedB').textContent = 'Yes! That connection works.';
+            if (songsDone === SONGS.length) { $('#done').classList.add('show'); $('#done').scrollIntoView({ behavior: 'smooth' }); }
+        } else {
+            slot.classList.remove('is-wrong'); void slot.offsetWidth; slot.classList.add('is-wrong');
+            setTimeout(() => slot.classList.remove('is-wrong'), 600);
+            $('#feedB').textContent = 'Not quite. Reread the ticket for a date or an event name.';
+        }
+    }
+    </script>
+</body>
+</html>

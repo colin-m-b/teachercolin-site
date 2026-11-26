@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station 4: Who Said It? | 9 Zurich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Libre+Franklin:wght@400;600;800;900&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stations.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* Theme: a 1960s newsroom. Quotes arrive on wire-service strips; leaders have press cards. */
+        body { background: #D9D6CE; font-family: 'Libre Franklin', 'IBM Plex Sans', sans-serif; }
+        .masthead { border-bottom: 6px solid #111; padding: 30px 0 12px; margin-bottom: 8px; }
+        .masthead small { font-family: 'Special Elite', monospace; font-size: 16px; letter-spacing: .1em; }
+        .masthead h1 { font-weight: 900; font-size: clamp(44px, 8vw, 86px); line-height: .95; letter-spacing: -.02em; text-transform: uppercase; }
+        .masthead .st-meta { margin-top: 12px; }
+        .dateline { display: flex; justify-content: space-between; border-bottom: 1px solid #111; padding: 4px 0; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+
+        .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 26px; margin-top: 20px; align-items: start; }
+        @media (max-width: 860px) { .cols { grid-template-columns: 1fr; } }
+        .col-h { font-weight: 900; text-transform: uppercase; font-size: 20px; border-bottom: 3px solid #111; margin-bottom: 12px; padding-bottom: 2px; }
+
+        .wire { display: grid; gap: 12px; position: sticky; top: 12px; }
+        @media (max-width: 860px) { .wire { position: static; } }
+        .strip {
+            font-family: 'Special Elite', monospace; font-size: 19px; line-height: 1.35;
+            background: #FFFDF2; border: 2px solid #111; padding: 12px 14px 10px; cursor: pointer; user-select: none;
+            box-shadow: 0 2px 0 #111; touch-action: manipulation;
+        }
+        .strip__tag { font-size: 13px; color: var(--accent); letter-spacing: .1em; }
+        .strip.used { opacity: .35; }
+        .strip.done { display: none; }
+
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+        .press {
+            background: #fff; border: 2px solid #111; padding: 0 0 12px; cursor: pointer; position: relative; touch-action: manipulation;
+        }
+        .press__top { background: #111; color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; padding: 4px 12px; }
+        .press__name { font-weight: 900; font-size: 22px; line-height: 1.1; padding: 10px 12px 2px; }
+        .press__dates { font-size: 14px; color: var(--muted); padding: 0 12px; }
+        .press__org { font-size: 15px; font-weight: 600; padding: 6px 12px 0; }
+        .press__desc { font-size: 15px; padding: 6px 12px 0; color: var(--ink-2); }
+        .press__desc q { font-style: italic; }
+        .press__quote { margin: 10px 12px 0; font-family: 'Special Elite', monospace; font-size: 15px; background: #FFFDF2; border: 1px dashed #111; padding: 6px 8px; display: none; }
+        .press__quote.show { display: block; }
+        .press.is-right .press__top { background: var(--yes); }
+
+        .partb { display: none; margin-top: 30px; }
+        .partb.show { display: block; }
+        .camps { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 700px) { .camps { grid-template-columns: 1fr; } }
+        .camp { border: 3px solid #111; background: #fff; min-height: 170px; padding: 10px; cursor: pointer; }
+        .camp h3 { font-weight: 900; text-transform: uppercase; font-size: 18px; }
+        .camp p { font-size: 14px; color: var(--ink-2); margin-bottom: 8px; }
+        .camp .chips, .pool { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pool { padding: 12px; border: 2px dashed #111; margin: 12px 0; min-height: 56px; background: rgba(255,255,255,.5); }
+        .chip { background: #F2C14E; border: 2px solid #111; padding: 4px 10px; font-weight: 800; cursor: pointer; user-select: none; touch-action: manipulation; }
+        .chip.locked { background: var(--yes-pale); border-color: var(--yes); cursor: default; }
+
+        .st-task { background: #fff; }
+        .row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+    </style>
+</head>
+<body>
+    <div class="st-bar">
+        <span class="st-bar__class">9 Zurich · Background stations</span>
+        <a href="index.html">← All stations</a>
+    </div>
+
+    <main class="st-wrap">
+        <header class="masthead">
+            <small>THE MOVEMENT WIRE · LATE EDITION</small>
+            <h1>Who Said It?</h1>
+            <div class="st-meta"><span>Station 4</span><span>12 minutes</span><span>Packet page 4</span></div>
+        </header>
+        <div class="dateline"><span>Eight leaders</span><span>Eight quotes</span><span>1955–1968</span></div>
+
+        <div class="st-task">
+            <h2>Your task (packet page 4)</h2>
+            <ol>
+                <li><strong>Part A.</strong> Tap a quote on the wire, then tap the press card of the leader you think said it. Read the press cards closely: the clues are in their roles and beliefs.</li>
+                <li>When all eight are paired, press <strong>Check</strong>. Right pairs lock. Wrong ones come back.</li>
+                <li><strong>Part B</strong> opens when Part A is done. Sort the leaders by approach, then complete packet page 4.</li>
+            </ol>
+        </div>
+
+        <div class="cols">
+            <div>
+                <div class="col-h">On the wire</div>
+                <div class="wire" id="wire"></div>
+            </div>
+            <div>
+                <div class="col-h">Press cards</div>
+                <div class="cards" id="cards"></div>
+                <div class="row">
+                    <button class="st-btn" id="checkA">Check pairs</button>
+                    <div class="st-feedback" id="feedA" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+
+        <section class="partb" id="partb">
+            <div class="st-task">
+                <h2>Part B: Two approaches</h2>
+                <p>By the mid-1960s, the movement disagreed about how to win. Tap a leader’s name, then tap the approach that fits them best. Use their press card and quote.</p>
+            </div>
+            <div class="pool" id="pool"></div>
+            <div class="camps">
+                <div class="camp" data-camp="int">
+                    <h3>Nonviolence and integration</h3>
+                    <p>Black and white Americans protest together, without violence, to end segregation and win equal rights.</p>
+                    <div class="chips"></div>
+                </div>
+                <div class="camp" data-camp="bp">
+                    <h3>Black self-determination</h3>
+                    <p>Black Americans build their own power and pride. Nonviolence and working with white allies are not required.</p>
+                    <div class="chips"></div>
+                </div>
+            </div>
+            <div class="st-feedback" id="feedB" aria-live="polite"></div>
+        </section>
+
+        <div class="st-done" id="done">
+            <h2>Story filed!</h2>
+            <p>All quotes matched and all leaders sorted. Now complete packet page 4.</p>
+        </div>
+
+        <div class="st-source">
+            <h2>Sources</h2>
+            <p>Press-card descriptions (in quotation marks) and quotes come from the <i>Martin Luther King, Jr. Encyclopedia</i>, Martin Luther King, Jr. Research and Education Institute, Stanford University. Each entry is linked below, and each quote’s original source is listed with it.</p>
+            <ul id="srcList"></ul>
+        </div>
+    </main>
+
+    <script>
+    const KI = 'https://kinginstitute.stanford.edu/';
+    const LEADERS = [
+        { id: 'king', name: 'Martin Luther King Jr.', dates: '1929–1968', org: 'Baptist minister · President, Southern Christian Leadership Conference (SCLC)',
+          desc: '<q>As a theologian, Martin Luther King reflected often on his understanding of nonviolence.</q>', entry: 'Nonviolence', url: KI + 'nonviolence', camp: 'int',
+          quote: 'Injustice anywhere is a threat to justice everywhere.', src: '“Letter from Birmingham Jail,” 1963. He used the line in earlier speeches too.' },
+        { id: 'parks', name: 'Rosa Parks', dates: '1913–2005', org: 'NAACP leader, Montgomery, Alabama',
+          desc: 'Arrested in 1955 for keeping her bus seat. <q>This single act of nonviolent resistance helped spark the Montgomery bus boycott</q>.', entry: 'Parks, Rosa', url: KI + 'encyclopedia/parks-rosa', camp: 'int',
+          quote: 'No, the only tired I was, was tired of giving in.', src: 'Rosa Parks, <i>Rosa Parks: My Story</i> (1992), describing December 1, 1955.' },
+        { id: 'lewis', name: 'John Lewis', dates: '1940–2020', org: 'Chairman, Student Nonviolent Coordinating Committee (SNCC), 1963–1966',
+          desc: 'Joined the Nashville sit-ins as a student. <q>one of the civil rights movement’s most courageous young leaders</q>', entry: 'Lewis, John', url: KI + 'encyclopedia/lewis-john', camp: 'int',
+          quote: 'We march today for jobs and freedom, but we have nothing to be proud of.', src: 'Address at the March on Washington for Jobs and Freedom, August 28, 1963.' },
+        { id: 'malcolm', name: 'Malcolm X', dates: '1925–1965', org: 'Minister, Nation of Islam · Founder, Organization of Afro-American Unity (1964)',
+          desc: '<q>the nation’s most visible proponent of Black Nationalism</q>', entry: 'Malcolm X', url: KI + 'encyclopedia/malcolm-x', camp: 'bp',
+          quote: 'We want freedom now, but we’re not going to get it saying ‘We Shall Overcome.’', src: 'Speech, in <i>Malcolm X Speaks</i> (1965).' },
+        { id: 'hamer', name: 'Fannie Lou Hamer', dates: '1917–1977', org: 'Sharecropper and organizer, Mississippi · SNCC · Mississippi Freedom Democratic Party',
+          desc: 'In 1964 she testified on national TV about <q>the torture and abuse she experienced in her attempt to register to vote</q>.', entry: 'Hamer, Fannie Lou', url: KI + 'encyclopedia/hamer-fannie-lou', camp: 'int',
+          quote: 'If the Freedom Democratic Party is not seated now, I question America.', src: 'Testimony to the Democratic National Convention credentials committee, August 1964.' },
+        { id: 'baker', name: 'Ella Baker', dates: '1903–1986', org: 'Organizer, SCLC · Adviser who helped students found SNCC (1960)',
+          desc: 'She told students to build <q>‘group-centered leaders’ rather than the ‘leader-centered’ style</q>.', entry: 'Baker, Ella Josephine', url: KI + 'encyclopedia/baker-ella-josephine', camp: 'int',
+          quote: '…the movement made Martin rather than Martin making the movement.', src: 'Interview by John Britton, June 19, 1968.' },
+        { id: 'carmichael', name: 'Stokely Carmichael', dates: '1941–1998', org: 'Chairman, SNCC, 1966–1967',
+          desc: 'As SNCC’s leader he <q>challenged the philosophy of nonviolence and interracial alliances</q>.', entry: 'Carmichael, Stokely', url: KI + 'encyclopedia/carmichael-stokely', camp: 'bp',
+          quote: 'We want Black Power!', src: 'Rally in Greenwood, Mississippi, June 16, 1966.' },
+        { id: 'evers', name: 'Medgar Evers', dates: '1925–1963', org: 'NAACP field secretary for Mississippi, 1954–1963',
+          desc: 'He <q>played a pivotal role in the civil rights organization’s expansion in the South</q>. Murdered outside his home in 1963.', entry: 'Evers, Medgar Wiley', url: KI + 'encyclopedia/evers-medgar-wiley', camp: 'int',
+          quote: 'We are prepared to demonstrate until we get our rights!', src: 'Quoted in the <i>New York Amsterdam News</i>, June 1, 1963.' }
+    ];
+
+    const $ = s => document.querySelector(s);
+    const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const wire = $('#wire'), cards = $('#cards');
+    let selQuote = null;
+    const pairs = {};   // leaderId -> quoteLeaderId (guess)
+    const lockedA = new Set();
+
+    // Quotes on the wire (letters A–H)
+    shuffle(LEADERS).forEach((l, i) => {
+        const d = document.createElement('div');
+        d.className = 'strip'; d.dataset.id = l.id; d.tabIndex = 0;
+        d.innerHTML = `<div class="strip__tag">QUOTE ${String.fromCharCode(65 + i)} ——</div>“${l.quote}”`;
+        wire.appendChild(d);
+    });
+    shuffle(LEADERS).forEach(l => {
+        const c = document.createElement('div');
+        c.className = 'press'; c.dataset.id = l.id; c.tabIndex = 0;
+        c.innerHTML = `<div class="press__top">Press · Movement Wire</div><div class="press__name">${l.name}</div><div class="press__dates">${l.dates}</div><div class="press__org">${l.org}</div><div class="press__desc">${l.desc}</div><div class="press__quote"></div>`;
+        cards.appendChild(c);
+    });
+    $('#srcList').innerHTML = LEADERS.map(l => `<li>${l.name}: entry “<a href="${l.url}">${l.entry}</a>.” Quote: ${l.src}</li>`).join('');
+
+    function refreshA() {
+        const used = new Set(Object.values(pairs));
+        wire.querySelectorAll('.strip').forEach(s => {
+            s.classList.toggle('used', used.has(s.dataset.id) && !lockedA.has(s.dataset.id));
+            s.classList.toggle('done', lockedA.has(s.dataset.id));
+        });
+        cards.querySelectorAll('.press').forEach(c => {
+            const q = c.querySelector('.press__quote');
+            const g = pairs[c.dataset.id];
+            if (g) { q.textContent = '“' + LEADERS.find(l => l.id === g).quote + '”'; q.classList.add('show'); }
+            else { q.textContent = ''; q.classList.remove('show'); }
+            c.classList.toggle('is-right', lockedA.has(c.dataset.id));
+        });
+    }
+
+    wire.addEventListener('click', e => {
+        const s = e.target.closest('.strip'); if (!s) return;
+        if (selQuote) selQuote.classList.remove('is-selected');
+        selQuote = (selQuote === s) ? null : s;
+        if (selQuote) selQuote.classList.add('is-selected');
+    });
+    cards.addEventListener('click', e => {
+        const c = e.target.closest('.press'); if (!c || lockedA.has(c.dataset.id)) return;
+        if (!selQuote) {   // tapping a card with a guess and no quote selected clears it
+            if (pairs[c.dataset.id]) { delete pairs[c.dataset.id]; refreshA(); }
+            return;
+        }
+        const qid = selQuote.dataset.id;
+        for (const k in pairs) if (pairs[k] === qid) delete pairs[k];  // a quote can sit on one card only
+        pairs[c.dataset.id] = qid;
+        selQuote.classList.remove('is-selected'); selQuote = null;
+        $('#feedA').textContent = '';
+        refreshA();
+    });
+
+    $('#checkA').addEventListener('click', () => {
+        if (Object.keys(pairs).length < LEADERS.length) { $('#feedA').textContent = 'Pair all eight quotes first. To undo a pair, tap the card.'; return; }
+        let right = 0;
+        LEADERS.forEach(l => {
+            if (pairs[l.id] === l.id) { lockedA.add(l.id); right++; }
+            else if (!lockedA.has(l.id)) delete pairs[l.id];
+        });
+        refreshA();
+        if (right === LEADERS.length) { $('#feedA').textContent = 'All eight correct!'; startB(); }
+        else $('#feedA').textContent = `${right} of 8 correct. The wrong quotes are back on the wire.`;
+    });
+
+    // ---------- Part B ----------
+    let selChip = null; let sorted = 0;
+    function startB() {
+        $('#checkA').disabled = true;
+        $('#partb').classList.add('show');
+        shuffle(LEADERS).forEach(l => $('#pool').insertAdjacentHTML('beforeend', `<span class="chip" data-id="${l.id}">${l.name}</span>`));
+        setTimeout(() => $('#partb').scrollIntoView({ behavior: 'smooth' }), 400);
+    }
+    $('#pool').addEventListener('click', e => {
+        const c = e.target.closest('.chip'); if (!c) return;
+        if (selChip) selChip.classList.remove('is-selected');
+        selChip = (selChip === c) ? null : c;
+        if (selChip) selChip.classList.add('is-selected');
+    });
+    document.querySelectorAll('.camp').forEach(camp => camp.addEventListener('click', () => {
+        if (!selChip) return;
+        const l = LEADERS.find(x => x.id === selChip.dataset.id);
+        if (l.camp === camp.dataset.camp) {
+            selChip.classList.remove('is-selected'); selChip.classList.add('locked');
+            camp.querySelector('.chips').appendChild(selChip); selChip = null; sorted++;
+            $('#feedB').textContent = 'Yes.';
+            if (sorted === LEADERS.length) { $('#done').classList.add('show'); $('#done').scrollIntoView({ behavior: 'smooth' }); }
+        } else {
+            camp.classList.remove('is-wrong'); void camp.offsetWidth; camp.classList.add('is-wrong');
+            setTimeout(() => camp.classList.remove('is-wrong'), 600);
+            $('#feedB').textContent = 'Look again at their press card and quote.';
+        }
+    }));
+    </script>
+</body>
+</html>
