@@ -35,7 +35,14 @@ h2{font-size:28px;margin:40px 0 12px}
 .mom>div:last-child{grid-column:3;padding-left:8px}
 .who{font-weight:600;color:var(--accent)}
 @media(max-width:800px){.tags{grid-template-columns:1fr}}
-</style></head><body><main>
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 32px;background:var(--deep);color:#fff;font-size:15px}
+.bar a{color:#fff;text-decoration:none;opacity:.85}
+.bar a:hover{opacity:1;text-decoration:underline}
+.bar b{font-weight:600;letter-spacing:.04em}
+@media print{.bar{display:none}}
+</style></head><body>
+<div class="bar"><b>10 Edmonton · Seminar Prep Stations</b><a href="index.html">← All stations</a></div>
+<main>
 <div class="top"><div class="num">1</div><div>
 <div class="meta">Seminar prep station<span class="timer">15 minutes</span></div>
 <h1>Fact or Interpretation?</h1></div></div>
